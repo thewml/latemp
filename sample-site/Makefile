@@ -5,7 +5,7 @@ DEVEL_VER_USE_CACHE = 1
 
 D = dest
 
-WML_FLAGS = -DBERLIOS=BERLIOS
+WML_FLAGS = -DBERLIOS=BERLIOS -DLATEMP_THEME=better-scm
 
 include include.mak
 # IMAGES_PRE1 = $(shell cd src && (ls *.tar.gz *.zip *.patch *.css *.png bk/*.html aegis/*.txt subversion/*.txt))
