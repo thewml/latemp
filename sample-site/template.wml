@@ -3,6 +3,7 @@
 #include "affiliations.wml"
 #include "licensing.wml"
 #include "template-params.wml"
+#include "texts.wml"
 
 <latemp_init_h_w_navmenu />
 <latemp_lang "en-US" />
@@ -59,9 +60,7 @@
 </div>
 
 <div class="foot_left">
-<p class="webmaster">
-Webmaster: <a href="http://www.shlomifish.org/">Shlomi Fish</a> (<a href="mailto:shlomif@iglu.org.il">shlomif@iglu.org.il</a>)
-</p>
+<latemp_webmaster />
 <p class="vcs">
 <b>Version Control ID:</b> <tt>{#VERSION_CONTROL_ID#}</tt>
 </p>
