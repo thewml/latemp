@@ -61,9 +61,7 @@
 
 <div class="foot_left">
 <latemp_webmaster />
-<p class="vcs">
-<b>Version Control ID:</b> <tt>{#VERSION_CONTROL_ID#}</tt>
-</p>
+<latemp_timestamp_text />
 </div>
 
 </div>
