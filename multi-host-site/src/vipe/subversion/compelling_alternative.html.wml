@@ -1,4 +1,4 @@
-#include '../template.wml'
+#include "template.wml"
 
 <latemp_subject "Subversion - A Compelling Alternative to CVS and BitKeeper" />
 <latemp_version_control_id "$Id: compelling_alternative.html.wml 154 2005-04-16 09:53:31Z shlomif $" />

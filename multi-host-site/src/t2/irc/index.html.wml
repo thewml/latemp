@@ -1,4 +1,4 @@
-#include '../template.wml'
+#include "template.wml"
 
 <latemp_subject "Better SCM Initiative : Discuss on IRC" />
 <latemp_version_control_id "$Id: index.html.wml 182 2005-04-17 10:10:22Z shlomif $" />

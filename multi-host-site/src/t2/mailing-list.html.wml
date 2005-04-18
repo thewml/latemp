@@ -1,4 +1,4 @@
-#include '../template.wml'
+#include "template.wml"
 
 <latemp_subject "Mailing List" />
 <latemp_version_control_id "$Id: mailing-list.html.wml 154 2005-04-16 09:53:31Z shlomif $" />

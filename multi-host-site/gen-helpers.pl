@@ -13,6 +13,7 @@ my @hosts = grep { -d "$dir/$_" } grep { !/^\./ } readdir(D);
 closedir(D);
 
 open O, ">", "include.mak";
+open RULES, ">", "rules.mak";
 foreach my $host (@hosts)
 {
     my $dir_path = "$dir/$host";
@@ -40,15 +41,15 @@ foreach my $host (@hosts)
     my @buckets = 
     (
         {
-            'name' => "IMAGES_PRE1",
+            'name' => "IMAGES",
             'filter' => sub { (!/\.wml$/) && (-f $make_path->($_)) },
         },
         {
-            'name' => "SUBDIRS_PROTO",
+            'name' => "DIRS",
             'filter' => sub { (-d $make_path->($_)) },
         },
         {
-            'name' => "HTMLS_PROTO",
+            'name' => "DOCS",
             'filter' => sub { /\.html\.wml$/ },
             'map' => sub { my $a = shift; $a =~ s{\.wml$}{}; return $a;},
         },
@@ -76,11 +77,54 @@ foreach my $host (@hosts)
         die "Uncategorized file $_ - host == $host!";
     }
 
+    my $host_uc = uc($host);
     foreach my $b (@buckets)
     {
-        print O uc($host) . "_" . $b->{'name'} . " = " . join(" ", @{$b->{'results'}}) . "\n";
-    }    
-}
+        print O $host_uc . "_" . $b->{'name'} . " = " . join(" ", @{$b->{'results'}}) . "\n";
+    }
+    
+    if ($host ne "common")
+    {
+        my $h_dest_star = "\$(${host_uc}_DEST)/%";
+        print RULES <<"EOF";
 
+${host_uc}_DEST_DIR = $host
+${host_uc}_DEST = \$(D)/\$(${host_uc}_DEST_DIR)
+
+${host_uc}_TARGETS = \$(${host_uc}_DIRS_DEST) \$(${host_uc}_COMMON_DIRS_DEST) \$(${host_uc}_COMMON_IMAGES_DEST) \$(${host_uc}_IMAGES_DEST) \$(${host_uc}_DOCS_DEST) 
+        
+${host_uc}_WML_FLAGS = \$(WML_FLAGS) -DLATEMP_SERVER=${host}
+
+${host_uc}_DOCS_DEST = \$(patsubst %,\$(${host_uc}_DEST)/%,\$(${host_uc}_DOCS))
+
+${host_uc}_DIRS_DEST = \$(patsubst %,\$(${host_uc}_DEST)/%,\$(${host_uc}_DIRS))
+
+${host_uc}_IMAGES_DEST = \$(patsubst %,\$(${host_uc}_DEST)/%,\$(${host_uc}_IMAGES))
+
+${host_uc}_COMMON_IMAGES_DEST = \$(patsubst %,\$(${host_uc}_DEST)/%,\$(COMMON_IMAGES))
+
+${host_uc}_COMMON_DIRS_DEST = \$(patsubst %,\$(${host_uc}_DEST)/%,\$(COMMON_DIRS))
+        
+\$(${host_uc}_DOCS_DEST) :: $h_dest_star : src/${host}/%.wml \$(DOCS_COMMON_DEPS) 
+	( cd src/${host} && wml \$(${host_uc}_WML_FLAGS) -DLATEMP_FILENAME=\$(patsubst $h_dest_star,%,\$(patsubst %.wml,%,\$@)) \$(patsubst src/${host}/%,%,\$<) ) > \$@
+
+\$(${host_uc}_DIRS_DEST) :: $h_dest_star : unchanged
+	mkdir -p \$@
+	touch \$@
+
+\$(${host_uc}_IMAGES_DEST) :: $h_dest_star : src/${host}/%
+	cp -f \$< \$@
+
+\$(${host_uc}_COMMON_IMAGES_DEST) :: $h_dest_star : src/common/%
+	cp -f \$< \$@
+
+\$(${host_uc}_COMMON_DIRS_DEST) :: $h_dest_star : unchanged
+	mkdir -p \$@
+	touch \$@
+ 
+EOF
+    }
+}
+close(RULES);
 close(O);
 1;

@@ -1,4 +1,4 @@
-#include '../template.wml'
+#include "template.wml"
 
 <latemp_subject "Subversion Installation Tutorial for Win32" />
 <latemp_version_control_id "$Id: Svn-Win32-Inst-Guide.html.wml 154 2005-04-16 09:53:31Z shlomif $" />
