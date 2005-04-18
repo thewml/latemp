@@ -1,0 +1,74 @@
+#include '../template.wml'
+
+<latemp_subject "Better SCM Initiative : Arch" />
+<latemp_version_control_id "$Id: index.html.wml 154 2005-04-16 09:53:31Z shlomif $" />
+<latemp_more_keywords "Arch, tla, ArX, Bazaar, Bazaar-NG, distributed" />
+
+<h2>Homepage</h2>
+
+<p>
+<a href="http://gnuarch.org/">Homepage of Arch</a>
+</p>
+
+<h2>Implementations</h2>
+
+<ul>
+<li>
+<a href="http://www.gnu.org/software/gnu-arch/">tla</a> - the most common
+Arch implementation. Written in C, and maintained by Tom Lord, the originator
+of Arch.
+</li>
+<li>
+<a href="http://www.nongnu.org/arx/">ArX</a> - a version of Arch that is
+incompatible with tla, and has some advantages.
+</li>
+<li>
+<A href="http://bazaar.canonical.com/">Bazaar</a> - a fork of tla, which aims
+to provide better Subversion compatibility, and other nice features.
+</li>
+<li>
+<a href="http://www.bazaar-ng.org/">Bazaar-NG</a> - a rewrite of Bazaar (from
+the same source) written in <a href="http://www.python.org/">Python</a>, which 
+offers some advantages.
+</li>
+</ul>
+
+<h2>Summary</h2>
+
+<p>
+Arch was created by Tom Lord to satisfy his and others revision control 
+needs. It handles file renames, branching, changesets and other things that 
+CVS lacks. 
+</p>
+
+<p>
+In <a href="http://subversion.tigris.org/servlets/ReadMsg?list=dev&amp;msgNo=24695">a 
+message to the Subversion Development Team</a> Tom Lord noted that it is
+worthwhile to unify Arch' approach to distribution and Subversion's approach to storage management. When the following will take course has yet to be seen.
+</p>
+
+<p>
+Arch has the advantage that its service is nothing more than a dumb remote
+file-transfer protocol (FTP, SFTP and WebDAV over HTTP or HTTPS are supported).
+This makes it very easy to set up a service of it.
+</p>
+
+<h2>Links</h2>
+
+<ul>
+<li>
+<a href="http://gnuarch.org/">gnuarch.org</a> - a portal for all things Arch.
+Contains a wiki, many links, bug list, a roadmap, popular essays, and other
+resources.
+</li>
+<li>
+<a href="http://dmoz.org/Computers/Software/Configuration_Management/Tools/Arch/">Dmoz.org 
+Category of Arch Resource</a> - contains other links.
+</li>
+</ul>
+<!--
+<p>
+<a href="http://gnuarch.org/bin/view/Main/ArchComparisons">Comparisons of
+Arch to BitKeeper, CVS, Darcs, Monotone and Subversion.</a>.
+</p>
+-->

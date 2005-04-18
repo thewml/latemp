@@ -1,0 +1,66 @@
+#include '../template.wml'
+
+<latemp_subject "Better SCM Initiative" />
+<latemp_version_control_id "$Id: index.html.wml 181 2005-04-17 10:09:14Z shlomif $" />
+
+<h2>Introduction</h2>
+
+<p>
+<b>Version control systems</b> (or Source Configuration Management systems) 
+allow developers or authors to keep track of the history of their projects
+source code - to checkout older versions, maintain several branches, and merge
+results. <a href="https://www.cvshome.org/">CVS</a> is the most commonly used 
+revision control system in the Open-Source world as of this writing. It 
+works well and is relatively reliable but has many limitations. It does not
+do file renames or copies, send the files to the server, no atomicity of 
+operations, and no good handling of binary files. Clearly it is showing its
+age.
+</p>
+
+<p>
+To address this problem several alternatives emerged, some of which are either
+open-source or available to the community of open-source developers. The 
+<b>Better SCM</b> project aims to empower them, to compare them, and criticize
+them, hopefully leading to each being a more complete and accessible 
+replacement.
+</p>
+
+<h2 class="link"><a href="$(ROOT)/alternatives/">Available
+CVS Alternatives</a></h2>
+
+<h2 class="link"><a href="./docs/">General Documents</a></h2>
+
+<h2>General Links</h2>
+
+<ul>
+
+<li>
+<a href="http://www.dwheeler.com/essays/scm.html">Comments on Software
+Configuration Management Systems</a> - an article by 
+<a href="http://www.dwheeler.com/">David A. Wheeler</a> that
+documents the pro's and cons of CVS, Subversion, Arch and Monotone, and
+covers other systems more briefly. Very comprehensive and enlightening.
+</li>
+
+<li>
+<a href="http://linuxmafia.com/faq/Apps/scm.html">Rick Moen's List of
+Version-Control and SCMs for Linux</a> - an overview listing the available 
+alternatives with brief descriptions.
+</li>
+
+<li>
+<a href="http://www.onlamp.com/pub/a/onlamp/2004/01/29/scm_overview.html">The
+New Breed of Version Control Systems</a> - an article on 
+<a href="http://www.onlamp.com/">ONLamp.com</a> with
+an overview of several prominent version control systems.
+</li>
+
+<li>
+<a href="http://dmoz.org/Computers/Software/Configuration_Management/">The
+Open Directory (Dmoz) Configuration Management Category</a> - a directory
+with links to resources on Software Configuration Management and Version 
+Control. Also see 
+<a href="http://dmoz.org/Computers/Software/Configuration_Management/Tools/">its
+"Tools" sub-category</a>.
+</li>
+</ul>

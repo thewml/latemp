@@ -1,0 +1,102 @@
+Subversion Installation Tutorial for Win32
+==========================================
+
+Requirements:
+-------------
+
+* For the client any Windows 32-bit system (Windows 95/98/ME/NT/2000/XP/2003)
+
+* For the server a Windows NT-based system (Windows NT/2000/XP/2003)
+
+Installation Procedure:
+-----------------------
+
+1. Install Apache 2.0.x:
+
+(skip this step if you only want to install the client)
+
+Go to:
+
+http://httpd.apache.org/download.cgi
+
+and press the Win32 Binary (MSI Installer) link. After the download
+is complete, install by double clicking.
+
+Fill in the details, and select the port 8080 option.
+
+2. Install Subversion:
+
+Go to http://subversion.tigris.org/ ==> Downloads ==>
+Packaged Distributions ==> Win32 ==> friendly Installer program ==>
+svn-X.Y.Z-setup.exe
+
+Install.
+
+3. Check the subversion client:
+
+    A. With your browser surf to http://svn.collab.net/repos/svn/trunk/ and
+    see that you see a list of files and directories there.
+
+    B. Start a command prompt (Start -> Run -> "cmd")
+
+    C. Change directory to a vacant directory.
+
+    D. Type:
+
+    svn checkout http://svn.collab.net/repos/svn/trunk/
+    
+    At the command line.
+
+    E. After a short while you should see an entire directory tree being
+    checked out.
+
+    F. It's OK, to cancel this operation by pressing Ctrl+Break
+    
+4. Setting up a subversion.so service
+
+    A. Copy the files "mod_dav_svn.so" and "mod_authz_svn.so" from
+       C:\Program Files\Subversion\apache2\modules to
+       C:\Program Files\Apache Group\Apache2\modules
+
+    B. Edit the file C:\Program Files\Apache Group\Apache2\conf\httpd.conf
+    using a text editor. Uncomment the line:
+
+        #LoadModule dav_module modules/mod_dav.so
+
+    and add a line:
+
+        LoadModule dav_svn_module modules/mod_dav_svn.so
+
+    to the end of the LoadModule block.
+
+    C. In the command prompt, goto an empty directory 
+    and type the command:
+
+        svnadmin create myrepos
+
+    D. Next, in httpd.conf add the following statements to the end of the 
+    file:
+
+        <Location /svn/myrepos>
+            DAV svn
+            SVNPath c:/path/to/directory/myrepos
+        </Location>
+
+    E. Start Apache.
+
+    F. Surf to http://localhost:8080/ and make sure the server is running.
+
+    G. Point your browser at http://localhost:8080/svn/myrepos/ and make
+    sure you see a "Revision 0" notice at the top.
+
+
+5. Congratulations!
+
+    You can now run:
+    
+        svn checkout http://localhost:8080/svn/myrepos 
+
+    from the command line and start populating your repository. Read the
+    Subversion book for more information on Subversion usage.
+
+
