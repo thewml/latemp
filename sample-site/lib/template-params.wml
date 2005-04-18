@@ -18,3 +18,7 @@
 {#LATEMP_AUTHOR#:%0:##}
 </define-tag>
 
+<define-tag latemp_webmaster endtag="required" whitespace="delete">
+{#LATEMP_WEBMASTER#:%body:##}
+</define-tag>
+
