@@ -34,7 +34,7 @@ $(SUBDIRS) :: % :
 	fi
 
 $(HTMLS) :: $(D)/% : src/%.wml template.wml $(INCLUDES)
-	(cd src && wml $(WML_FLAGS) -DFILENAME="$(patsubst src/%.wml,%,$<)"  $(patsubst src/%,%,$<)) > $@
+	(cd src && wml $(WML_FLAGS) -DFILENAME="$(patsubst src/%.wml,%,$<)" -DLATEMP_FILENAME="$(patsubst src/%.wml,%,$<)" $(patsubst src/%,%,$<)) > $@
 
 $(IMAGES) :: $(D)/% : src/%
 	cp -f $< $@
