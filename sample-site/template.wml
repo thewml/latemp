@@ -12,10 +12,10 @@
 # The Definition of the page itself
 <latemp_html_header standard="xhtml1.1" />
 <head>
-<title>{#SUBJECT_LOC#}</title>
+<title>{#LATEMP_SUBJECT_LOC#}</title>
 <meta http-equiv="Content-Type" content="text/html; charset={#LATEMP_ENCODING#}" />
 <meta name="Author" content="Shlomi Fish" />
-<meta name="Keywords" content="Better SCM, SCM, version control, source control, revision control, source configuration management, CVS, Subversion, BitKeeper, open source, Shlomi Fish{#MORE_KEYWORDS#}" />
+<meta name="Keywords" content="Better SCM, SCM, version control, source control, revision control, source configuration management, CVS, Subversion, BitKeeper, open source, Shlomi Fish{#LATEMP_MORE_KEYWORDS#}" />
 <link rel="stylesheet" href="$(ROOT)/style.css" type="text/css" media="screen, projection" title="Normal" />
 <link rel="stylesheet" href="$(ROOT)/print.css" type="text/css" media="print" />
 <latemp_get_html_head_nav_links />
@@ -47,8 +47,8 @@
 </div>
 
 <div class="main" id="main">
-<h1>{#SUBJECT_LOC#}</h1>
-{#BODY#}
+<h1>{#LATEMP_SUBJECT_LOC#}</h1>
+{#LATEMP_BODY#}
 
 </div>
 
@@ -70,5 +70,5 @@
 </html>
 
 #   per default we are in body
-{#BODY#:
+{#LATEMP_BODY#:
 

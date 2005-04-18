@@ -1,7 +1,7 @@
 #include '../template.wml'
 
-<subject "Better SCM Initiative" />
-<version_control_id "$Id: index.html.wml 181 2005-04-17 10:09:14Z shlomif $" />
+<latemp_subject "Better SCM Initiative" />
+<latemp_version_control_id "$Id: index.html.wml 181 2005-04-17 10:09:14Z shlomif $" />
 
 <h2>Introduction</h2>
 

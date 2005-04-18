@@ -1,7 +1,7 @@
 #include '../template.wml'
 
-<subject "Better SCM : Nice tries but" />
-<version_control_id "$Id: nice_trys.html.wml 154 2005-04-16 09:53:31Z shlomif $" />
+<latemp_subject "Better SCM : Nice tries but" />
+<latemp_version_control_id "$Id: nice_trys.html.wml 154 2005-04-16 09:53:31Z shlomif $" />
 
 <p>
 There are some attempts at creating better version control systems that I

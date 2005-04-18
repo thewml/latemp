@@ -1,8 +1,8 @@
 #include '../template.wml'
 
-<subject "Better SCM Initiative : Discuss on IRC" />
-<version_control_id "$Id: index.html.wml 182 2005-04-17 10:10:22Z shlomif $" />
-<more_keywords "IRC, Internet Relay Chat, Freenode" />
+<latemp_subject "Better SCM Initiative : Discuss on IRC" />
+<latemp_version_control_id "$Id: index.html.wml 182 2005-04-17 10:10:22Z shlomif $" />
+<latemp_more_keywords "IRC, Internet Relay Chat, Freenode" />
 
 <p>
 The IRC (Internet Relay Chat) is a mechanism to have textual conversations
