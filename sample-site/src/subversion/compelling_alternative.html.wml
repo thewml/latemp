@@ -1,0 +1,96 @@
+#include '../template.wml'
+
+<subject "Subversion - A Compelling Alternative to CVS and BitKeeper" />
+<version_control_id "$Id: compelling_alternative.html.wml 154 2005-04-16 09:53:31Z shlomif $" />
+    
+<h2>Introduction</h2>
+
+<p>
+First of all note, that I said alternative and not replacement. While 
+Subversion can easily take on CVS anyday, (except for a few missing features,
+which are going to be implemented soon enough), it by no means has everything
+BitKeeper has to offer. At least not yet. Still, Subversion is good enough to
+be used instead of either CVS or BitKeeper.
+</p>
+
+<p>
+That cannot be said of other version control systems I tried, namely Aegis and 
+Arch. In this article, I'd like to explain why.
+</p>
+
+<h2>The CVS/BitKeeper/Subversion Way of Doing Things</h2>
+
+<p>
+It took me time to get used to CVS. After I knew CVS pretty well, it took
+me some time to get used to BitKeeper. After that, there were still some
+things in Subversion that surprised me. However, working with all of them
+on a day to day basis, is more similar than not.
+</p>
+
+<p>
+There is such a principle as the "Keep it Simple, Stupid" (KISS). CVS is
+easy to get used to because it adheres to this principles. Most newbies can
+get by with <tt>cvs commit</tt>, <tt>cvs checkout</tt>, and <tt>add</tt>. 
+Afterwards, they can learn about <tt>cvs update</tt>, branching, tagging, 
+merging and everything else. BitKeeper is a bit more complex due to its
+explicit changesets and distributed nature, but it is still fairly easy
+to use with a subset of the commands. The same is true of Subversion, where
+the commands are practically identical to CVS at this point.
+</p>
+
+<p>
+A real test of the simplicity of an SCM is how much it takes to set up a 
+repository and commit a single file into it. This is fairly trivial to do in 
+either of these programs. Aegis, OTOH as the <a href="$(ROOT)/aegis/mark_veltzer_transcripts.log.txt">transcripts of my IRC session with Mark Veltzer show</a>,
+took a lot of commands, and a lot of tweaking of text files (as well as 
+downloading and installing the separate program fhist) just to get started. 
+Even Mark did not know the commands by heart.
+</p>
+
+<p>
+When I tried Arch and followed the <a href="http://www.linuxjournal.com/article.php?sid=5928">instructions in the Linux Journal article</a> it took me three 
+tries, a lot of improvising and a great deal of commands just to get started. 
+Arch expects everything to be done explicitly - starting an initial project, 
+an initial branch, an initial change etc. It's not a simple "modify; check in ;
+modify; check in" cycle.
+</p>
+
+<h2>Conclusion</h2>
+
+<p>
+Most programmers who use CVS like it enough and for a good reason. It keeps 
+several versions of the files, lets you branch them, tag them, and merge them, 
+and does it quickly and in a straightforward manner. For the same reason people
+will like Subversion (or BitKeeper) as well. What it does not do is enforce
+a particular working model that differes from this simple minded approach.
+</p>
+
+<p>
+In Aegis, I had to specify what test to run, who will be the reviewer of the
+code, and many other things that have nothing to do with version control. 
+Maybe it is better for large, distributed teams. Then again, there are some
+large scale projects out there (like KDE, GNOME or FreeBSD) which successfully 
+use CVS. They could convert to Subversion and enjoy less of CVS' limitations
+without changing the working model.
+</p>
+
+<p>
+As for BitKeeper, it is <a href="$(ROOT)/bk/bk_suitability.html">not 
+suitable for wide deployment by open-source projects</a> because of 
+its license. If this license <a href="$(ROOT)/bk/relicensing_bk.html">is 
+modified to a much more reasonable one</a>, 
+one can expect open source projects to widely convert to it. Still, 
+subversion may still be useful for the development of in-house and 
+proprietary software, as it requires no licensing, which some software
+houses cannot afford or are not willing to pay.
+</p>
+
+<p>
+For the record, despite its limitations in comparsion to BitKeeper, I found
+Subversion very nice and enjoyable to use, which is expected as I can even 
+get myself to use CVS. While it is possible that I would have preferred to
+use BitKeeper, if it were possible to me. But since it isn't, I must say, that
+Subversion corrects most of the standing issues with CVS very well, and is 
+quite enjoyable to work with. It is even used to maintain this site. ;-)
+</p>
+

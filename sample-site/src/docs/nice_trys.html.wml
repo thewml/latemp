@@ -1,0 +1,67 @@
+#include '../template.wml'
+
+<subject "Better SCM : Nice tries but" />
+<version_control_id "$Id: nice_trys.html.wml 154 2005-04-16 09:53:31Z shlomif $" />
+
+<p>
+There are some attempts at creating better version control systems that I
+think are flawed, and have no chance to provide a better alternative to CVS
+in the long run.
+</p>
+
+<p>
+In this space, I will explain why I believe they are flawed.
+</p>
+
+<h2>Meta-CVS</h2>
+
+<p>
+<a href="http://users.footprints.net/~kaz/mcvs.html">Meta-CVS</a>
+provides a sophisticated CVS client that while using unchanged 
+CVS servers, enables some features not present in CVS. The problem with this
+approach is that <b>all the developers</b> on your projects would have
+to use the Meta-CVS clients on their machines. You cannot mix Meta-CVS with
+plain CVS usage. Plus, some inherent flaws of the CVS system 
+(like non-atomicity of commits) are not resolved.
+</p>
+
+<p>
+I don't view attempts to keep CVS alive very optimistically. CVS is merely
+a group of scripts over RCS, that is very limited in what it can do, and so 
+provide little room for improvement. Projects like Subversion aim to provide
+everythin CVS has and more, while requiring an upgrade of the server. 
+I believe upgrading the servers is not such an issue that one has to try
+and create clients that overcome the servers' inherent deficiencies.
+</p>
+
+<p>
+Another downside to Meta-CVS is that it is written in Common LISP. Granted,
+Common LISP is a very powerful and flexible language. However, it is not very
+common (pardon the pun) on UNIX and other systems, and few people could be 
+expected to install a client if they need to install it first. If Meta-CVS' 
+author wishes to make it more popular, I strongly advise him to re-implement
+it in C, Perl, Python or something more standard.
+</p>
+
+<h2>OpenCM</h2>
+
+<p>
+<a href="http://www.opencm.org/">OpenCM</a> is a version control system that 
+was developed as part of the 
+<a href="http://www.eros-os.org">EROS</a> Operating System project. Its
+homepage says that it is "not as 'feature rich' as CVS, [but] supports some
+useful things that CVS lacks". The reason I don't like it is that people need
+<b>all</b> of CVS features, if they wish to convert to a better CVS 
+alternative. 
+</p>
+
+<p>
+OpenCM seems like an ad-hoc version control system that was written to 
+suit the needs and whims of a specific team. I don't see it becoming Shrinkwrap
+material unless it acquires all of CVS features. I suggest the OpenCM team
+to take a look at Subversion which aims to provide all of CVS' features and
+then some, and even eventually acquire the features present in BitKeeper. But
+it should know how to do everything CVS does.
+</p>
+
+

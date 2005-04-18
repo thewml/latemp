@@ -1,0 +1,74 @@
+#include '../template.wml'
+
+<subject "Better SCM Initiative : Subversion" />
+<version_control_id "$Id: index.html.wml 154 2005-04-16 09:53:31Z shlomif $" />
+
+<h2>Homepage</h2>
+
+<p>
+<a href="http://subversion.tigris.org/">subversion.tigris.org</a>
+</p>
+
+<h2>Summary</h2>
+
+<p>
+Subversion is a project that was meant to be a better replacement for CVS
+- solving the main issues that CVS has and offering some other power. 
+As opposed to other revision control systems, Subversion did not start
+as an internally used system that was eventaully made public, but was
+rather designed from the grounds up as "Shrinkwrap".
+</p>
+
+<p>
+Subversion has a very modular and algorithmically-sane design, and uses
+well-known technologies such as Berkeley DB 4.0, Apache 2.0, mod_dav,
+the Apache Portable Run-Time and the Neon library. Its code is of high
+quality and there are strict coding conventions. All in all it is a very
+professional product. Finally, Subversion is fully open-source and distributed
+under the Apache License.
+</p>
+
+<p>
+Among its extra features are versioned file renames and copies, atomic commits
+and implicit changesets, a comperhensive API, ability to be networked over
+HTTP and HTTPS, versioned directories, and efficient handling of binary 
+files.
+</p>
+
+<h2>Articles</h2>
+
+<p>
+<a href="compelling_alternative.html">Subversion - a Compelling Alternative to 
+CVS and BitKeeper</a>.
+</p>
+
+<p>
+<a href="Subversion-Win32-Installation-Guide.txt">Subversion Win32 Installation
+Tutorial</a> - a quick walkthrough for installing Subversion on Microsoft 
+Windows systems.
+</p>
+
+<h2>Links</h2>
+
+<ul>
+<li>
+<a href="http://dmoz.org/Computers/Software/Configuration_Management/Tools/Subversion/">Dmoz.org's Subversion Category</a> - contains many links.
+</li>
+<li>
+<a href="http://svk.elixus.org/">svk</a> - a version control systems based
+on Subversion that aims to offer other advantages. (like distributed 
+repositories)
+</li>
+<li>
+<a href="http://www.red-bean.com/sussman/svn-anti-fud.html">Dispelling 
+Subversion FUD</a> - an essay by Ben Collins-Sussman, that attempts to 
+dispel a lot of common dis-information regarding Subversion.
+</li>
+<li>
+<a href="http://subversion.tigris.org/bitmover-svn.html">Debunking BitMover's
+Subversion Comparison</a> - an essay on the subversion site, which debunks the
+<a href="http://www.bitkeeper.com/Comparisons.Subversion.html">comparison 
+between BitKeeper and Subversion</a> that was published on the BitKeeper 
+site.
+</li>
+</ul>

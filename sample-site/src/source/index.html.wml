@@ -1,0 +1,71 @@
+#include '../template.wml'
+
+<subject "Site Source Code" />
+<version_control_id "$Id: index.html.wml 154 2005-04-16 09:53:31Z shlomif $" />
+
+<p>
+The site source code is present in 
+<a href="svn://svn.berlios.de/better-scm/better-scm-site/trunk/">a
+directory</a> in a <a href="svn://svn.berlios.de/better-scm/">Subversion
+repository</a> kindly hosted by 
+<a href="http://opensvn.csie.org/">BerliOS</a>.
+</p>
+
+<p>
+To check it out, install a 
+<a href="http://subversion.tigris.org/">Subversion</a> client for your 
+system and issue the command:
+</p>
+
+<pre>
+svn checkout http://opensvn.csie.org/betterscm/better-scm-site/trunk/
+</pre>
+
+<p>
+You can browse the repository online using 
+<a href="http://svn.berlios.de/viewcvs/better-scm/">its web-interface</a>.
+</p>
+
+<define-tag cpan_link>
+<li><a href="http://search.cpan.org/%0/">%0</a></li>
+</define-tag>
+<p>
+To build the site you'll need the following extra software:
+</p>
+<ol>
+<li>
+<a href="http://www.perl.org/">perl</a> - preferablly 5.8.x or above. May
+work with 5.6.x, but was not tested.
+</li>
+<li>
+<a href="http://thewml.org/">Website Meta Language</a>
+</li>
+<li>
+<a href="http://www.gnu.org/software/make/">GNU Make</a>.
+</li>
+<li>
+The <a href="http://www.cpan.org/">CPAN</a> modules list in <cpan_link "Bundle-Sites-BetterScm" />. They can be installed using the a CPAN.pm or CPANPLUS.pm
+command.
+</li>
+</ol>
+
+<p>
+To build the site, first issue the command <tt>perl gen-helpers.pl</tt>
+and then type <tt>make</tt>. You'll need to run <tt>gen-helpers.pl</tt>
+again whenever you add or remove files from the <tt>./src</tt> directory.
+</p>
+
+<p>
+The programming code for the site is distributed under the
+<a href="http://www.opensource.org/licenses/mit-license.php">MIT
+X11 license</a> and the content (except for the comparison) is distributed
+under the <a href="http://creativecommons.org/licenses/by/2.0/">Creative
+Commons Attribution-License 2.0</a> (or at your option any greater version).
+Both of these licenses allow an almost completely unrestricted use of the
+content.
+</p>
+
+<p>
+Happy Hacking!
+</p>
+

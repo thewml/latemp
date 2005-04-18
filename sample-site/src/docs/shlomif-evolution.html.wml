@@ -1,0 +1,277 @@
+#include '../template.wml'
+
+<subject "Shlomi Fish - Evolution of a Revision Control User" />
+<version_control_id "$Id: shlomif-evolution.html.wml 154 2005-04-16 09:53:31Z shlomif $" />
+
+<h3>Last Updated: 5-February-2004</h3>
+
+<h2>Genesis</h2>
+
+<p>
+When you are a DOS programmer in the late 80's and early 90's people don't
+tell you about UNIX or about Source Control. Even when you start programming 
+in Windows and then in UNIX, not everybody use it. So you use poor man's methods
+of <tt>cp myfile myfile.bak</tt> or <tt>myfile.txt.1</tt> <tt>myfile.txt.2</tt>
+or copying everything to a different directory. Stuff like that.
+</p>
+
+<p>
+Those methods worked for me, and I rarely lost too much code. But still 
+they were kludgy. By and by I started hearing buzzwords like <b>RCS</b> or
+<b>CVS</b> floating around. When working on the 
+<a href="http://www.iglu.org.il/">IGLU server</a>, I was told that we can keep 
+different copies of the files by an obscure "rcs" command. Also, I received
+an account on the KDE CVS repository where I uploaded some code I had. But I 
+only had a vague idea of what revision control was and what it was good for.
+</p>
+
+<p>
+I remember reading the <a href="http://www.joelonsoftware.com/articles/fog0000000043.html">Joel Test</a> 
+and was surprised that Joel Spolsky necessitated the use of source control and 
+actually sais CVS is fine in comparison to commercial offerings. This made me
+intrigued of what I had done wrong so far.
+</p>
+
+<h2>The Pleasant CVS Experience</h2>
+
+<p>
+When I worked on 
+<a href="http://vipe.technion.ac.il/~shlomif/freecell-solver/">Freecell 
+Solver</a>, I kept a tar.gz containing every single 
+minor digit on my hard-disk. I have 295 of them here. But for the IP-Noise 
+Simulator project Roy Glasberg and I took for the Technion, I decided to use
+CVS. So, we registered a project at <a href="http://developer.berlios.de/">
+BerliOS</a> and started using it. The CVS <tt>import</tt> command gave us some
+trouble as we did not really know how to use it, but eventually we were back
+on track, and were amazed at the convenience.
+</p>
+
+<p>
+I worked on the project from School and from home and kept getting changes back
+and forth through the server. Wonderful. I used CVS for my second Technion 
+project (a Seminars Management web-interface), and was quite happy.
+</p>
+
+<h2>The BitKeeper Years</h2>
+
+<p>
+When I started working on 
+<a href="http://vipe.technion.ac.il/~shlomif/lm-solve/">LM-Solve</a>, I used 
+CVS (naturally) and quickly ran into some of its limitations like no file 
+renames, copies, etc. I had previously attended a lecture by Moshe Zadka about
+CVS (half of which I did not understand or it was still too advanced for me), 
+where he said a project called Subversion will address all the limitations 
+of CVS. I looked at Subversion and even joined the mailing list but could not 
+get a public hosting for it.
+</p>
+
+<p>
+I looked for something better and found <a href="http://www.bitkeeper.com/">
+BitKeeper</a>, which was free for open-source developers and it was clear on
+the site that they had a hosting service. I read a Linux Weekly News editorial
+about it and was quite impressed with Larry McVoy's, BitKeeper architect's 
+attitude towards his product and the free software developers community. 
+(As it turned out, it has changed a lot since the editorial had 
+been written).
+</p>
+
+<p>
+I contacted BitMover through the E-mails I found at the site, and got to 
+ask them a few questions. They were polite and explained to me what to do to
+set everything up. As it turned out, I should have used the bitkeeper-users 
+mailing list instead, as that specific address was geared towards paying 
+customers.
+</p>
+
+<p>
+In any case, after a period of neglect, I set up a repository and started 
+hacking. The only thing I can say about BitKeeper is that it is wonderful. It 
+feels very slick and is very slick. One works with a copy of the repository,
+so there isn't a constant client-server traffic, and its offers a lot of other
+power. I was very much impressed.
+</p>
+
+<p>
+I ran into a few problems for which I consulted the mailing list or was able 
+to solve on my own and I believe that once was able to help a newbie out. I 
+also discovered the BitKeeper source code was no longer available online for 
+all to download, which did not bother me much, as I was hoping I could 
+eventually win the vendor's trust to get it myself.
+</p>
+
+<p>
+In any case, I liked BitKeeper so much, that I even thought about eventually
+converting Freecell Solver (that was converted to CVS a few monthes back) to 
+BitKeeper and BKbits.
+</p>
+
+<h2>No BitKeeper for You!</h2>
+
+<p>
+This all changed when Larry McVoy announced a change in the BitKeeper license
+that required all the contents of the free users' repositories to be made 
+available online. I did not think too much of it at the
+time, but then I realized it was not something <a href="http://www.advogato.org/person/shlomif/diary.html?start=78">I could agree with ideologically</a>. 
+The BitKeeper license forced me to use the most recent version, even if it had 
+a different license. So BitKeeper was taken right out of my hands.
+</p>
+
+<p>
+I sent a letter to bitkeeper-users titled "Larry - You Lost Me". Larry calmly 
+responded that he was sorry to hear that, but such discussions were off topic 
+their. This caused an entire chain of events whose end results were:
+</p>
+
+<ol>
+<li>
+My public repositories were deleted without my explicit consent.
+</li>
+<li>
+Larry became angry several times.
+</li>
+<li>
+I started the "Better SCM" initiative, in order to empower the other
+open-source alternatives that were better than CVS (but perhaps not 
+as good as BitKeeper)
+</li>
+<li>
+I decided that I wished to contribute to one source control project or another.
+</li>
+</ol>
+
+<p>
+I liked BitKeeper and still would love to use it, but was appalled by Mr. 
+McVoy's attitude towards free users. Note that this was before the fiasco 
+with the non-compete clause was Slashdotted. (Note that I still respect Larry 
+as an engineer and a software vendor who is trying to sell BitKeeper to 
+software houses.)
+</p>
+
+<p>
+So I was looking for something else.
+</p>
+
+<h2>A brief encounter with Aegis</h2>
+
+<p>
+When I was first directed to the Aegis homepage by a user who read my Advogato
+diary where I had said I was looking for something better than CVS, I could not 
+understand half of the features that were presented there. But after I used
+BitKeeper, all those features made sense, and I was impressed by its 
+capabilites.
+</p>
+
+<p>
+I joined the Aegis mailing list introduced myself as a BitKeeper refuge and 
+asked for interactive tutoring at a timezone close to Israel. The first things 
+I found two people who could help me, one of them was Mark Veltzer, who
+was living in Israel and used Aegis.
+</p>
+
+<p>
+He tutored me through the IRC for two days, in a session of several hours on 
+setting it up and getting a change in. From the transcript I could gather the
+process for the other stuff, and I could continue work on it. However, I 
+noticed the Aegis process was an overkill for the small projects I wanted to 
+manage with it and for my programming habits.
+</p>
+
+<p>
+Being interested in other alternatives as well I also installed Arch and 
+Subversion.
+</p>
+
+<h2>Subversion - The Silver Bullet, that was not made of Gold</h2>
+
+<p>
+I started using Subversion, and immediately saw that it was very nice
+to use, a bit like CVS. It felt very slick and was very slick. Setting up
+was a bit hard, with having to set Berkeley DB 4.0 and Apache 2.0 beforehand,
+but afterwards it worked nicely. Upgrading turned out to be slightly easier,
+with the ability to check out the latest copy out of the repository, build it and install it.
+</p>
+
+<p>
+As opposed to BitKeeper, Subversion is not distributed, but this feature is 
+planned. Still, it is very stable and usable, (with a few quirks that can be 
+avoided with some expertise), so I have used it ever since. I still maintain 
+Freecell Solver with CVS, because I don't have Subversion hosting. 
+Nevertheless, I can probably become a junior partner in a Co-oped server 
+hosted at an Israeli ISP, where I can set up Subversion hosting. I'll have to 
+pay some money for it, but I guess there's no such thing as a free lunch 
+(at least until the hosting services start supporting Subversion as well, 
+which I hope will happen soon).
+</p>
+
+<div class="note">
+<p>
+<b>Recent Note:</b> There is now <a href="http://opensvn.csie.org/">a 
+Subversion hosting</a> at opensvn.csie.org. It is very discreet and requires
+no human intervention to register a project. It also seems very nice, and I
+am using it now for one of my projects 
+(<a href="http://perl-begin.berlios.de/">perl-begin</a>) and plan to use it 
+for more. If you cannot afford maintaining your own host it is a viable option.
+</p>
+<p>
+Furthermore, Subversion now has a zero bug count before its scheduled 1.0 
+release, which is going to be towards late February. After 1.0, it is expected
+that software hubs such as <a href="http://sourceforge.net/">SourceForge</a>
+will adopt it as well, and this will provide an even more accessible 
+alternative to csie.org.
+</p>
+<p>
+An Arch repository can be set up very easily because it just requires a space 
+with a  remote filesystem protocol access. (such as FTP, SFTP or WebDAV). As 
+a result many Arch repositories became hosted on the Net. (Here's a 
+<a href="http://mirrors.sourcecontrol.net/">partial 
+mirror of the public ones</a>)
+</p>
+<p>
+With the accessibility and ease of setup of Arch, Subversion and other similar 
+open source version control systems, it is probable that BitKeeper will 
+eventually have very little use among open source hackers, and have nothing
+too much besides the Linux kernel repositories to show for. (And a whole slew
+of flamewars in the <a href="http://www.tux.org/lkml/">Linux Kernel Mailing 
+List</a> about it).
+</p>
+</div>
+<h2>Verdict</h2>
+
+<p>
+I use revision control even at home for such things as doing my homework (in 
+LaTeX, C, or Scheme). I used CVS for this, but now converted to using 
+Subversion. Aegis seems very powerful, reliable and nice. Still, it suffers 
+from some childhood  diseases that make it unsuitable for me: its operation is 
+complicated and tedious, and it is a file-system only system (which can
+only be pseudo-networked over NFS) with many non-Win32 UNIXisms. Subversion, 
+on the other hand, is easy and fun and just works.
+</p>
+
+<p>
+I have started contributing to Subversion and one of my patches has already got 
+accepted. I plan to contribute more. I still miss BitKeeper, and wish I could 
+use it. If Larry McVoy is planning a land grab on a market dominated by CVS, 
+he'll have to make sure the license is acceptable by the free software 
+community. I am not a free software "fanatic", yet even I could not cope with
+the attitude and license change.
+</p>
+
+<p>
+Larry may be confident that there is not an open-source alternative that is 
+up-to-par with BitKeeper at present. But it does not mean there will never be 
+one. Small teams of open source hackers, were known to create products that 
+surpass in quality those of competing commercial companies who seemingly had 
+much more personnel and resources on their hands. (e.g: gcc, GNU Emacs, The 
+GIMP, KDE and GNOME, GNU/Linux itself, Perl/Python/PHP, Apache, Zope) While I 
+cannot  guarantee that the same will happen to BitKeeper (which at the moment 
+deviates very much from the Bazaar style of development), it is a 
+possibility if a few dedicated hackers populate the competing projects. 
+</p>
+
+<p>
+And even if this will not be the case, I am certain BitKeeper will not become 
+the de-facto standard of the Open-Source World that CVS is today. It's like 
+saying that Microsoft IIS+ASP will replace Apache and PHP or Perl soon.
+</p>
+
+
