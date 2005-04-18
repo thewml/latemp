@@ -9,16 +9,22 @@ use File::Basename;
 my $dir = "src";
 
 opendir D, "$dir";
-my @hosts = grep { -d "$_" } grep { !/^\./ } readdir(D);
+my @hosts = grep { -d "$dir/$_" } grep { !/^\./ } readdir(D);
 closedir(D);
 
+open O, ">", "include.mak";
 foreach my $host (@hosts)
 {
     my $dir_path = "$dir/$host";
+    my $make_path = sub {
+        my $path = shift;
+        return "$dir_path/$_";
+    };
+
     my @files = File::Find::Rule->in($dir_path);
 
     s!^$dir_path/!! for @files;
-    @files = (grep { $_ ne $dir } @files);
+    @files = (grep { $_ ne $dir_path } @files);
     @files = (grep { ! m{(^|/)\.svn(/|$)} } @files);
     @files = (grep { ! /~$/ } @files);
     @files = 
@@ -35,11 +41,11 @@ foreach my $host (@hosts)
     (
         {
             'name' => "IMAGES_PRE1",
-            'filter' => sub { (!/\.wml$/) && (-f "$dir/$_") },
+            'filter' => sub { (!/\.wml$/) && (-f $make_path->($_)) },
         },
         {
             'name' => "SUBDIRS_PROTO",
-            'filter' => sub { (-d "$dir/$_") },
+            'filter' => sub { (-d $make_path->($_)) },
         },
         {
             'name' => "HTMLS_PROTO",
@@ -67,14 +73,14 @@ foreach my $host (@hosts)
                 next FILE_LOOP;
             }
         }
-        die "Uncategorized file $_!";
+        die "Uncategorized file $_ - host == $host!";
     }
 
-    open O, ">", "include.mak";
     foreach my $b (@buckets)
     {
-        print O uc($host) . "_" . $$b->{'name'} . " = " . join(" ", @{$b->{'results'}}) . "\n";
-    }
-    close(O);
+        print O uc($host) . "_" . $b->{'name'} . " = " . join(" ", @{$b->{'results'}}) . "\n";
+    }    
 }
+
+close(O);
 1;
