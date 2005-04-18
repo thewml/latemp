@@ -1,4 +1,3 @@
-#include '../lib/bk-note.wml'
 #include "html-header.wml"
 #include "h-w-nav-menu.wml"
 #include "affiliations.wml"
