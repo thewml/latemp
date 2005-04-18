@@ -1,0 +1,23 @@
+#include '../template.wml'
+
+<latemp_subject "General Documents" />
+<latemp_version_control_id "$Id: index.html.wml 154 2005-04-16 09:53:31Z shlomif $" />
+
+
+<p>
+<a href="http://www.advogato.org/article/546.html">$20 million needed for the
+"Better CVS" Initiative</a> - a call for arms stressing the need for work
+on better revision control tools and hosting for them.
+</p>
+
+<p>
+<a href="./shlomif-evolution.html">Shlomi Fish' Evolution as a Revision
+Control User</a>
+</p>
+
+<p>
+<a href="./nice_trys.html">Nice tries, but...</a> - what I think of
+OpenCM, Meta-CVS and other attempts to make an incomplete version control 
+solution.
+</p>
+

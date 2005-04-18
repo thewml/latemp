@@ -1,0 +1,27 @@
+<define-tag latemp_html_header_xhtml11>
+<?xml version="1.0" encoding="{#LATEMP_ENCODING#}"?>
+<!DOCTYPE
+    html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{#LATEMP_LANG#}">
+</define-tag>
+
+<define-tag latemp_html_header>
+<preserve standard />
+<set-var %attributes />
+<ifeq "<get-var standard />" "xhtml1.1"
+    "<latemp_html_header_xhtml11 />"
+    "<ERORORE ASDKOASD KAOSDKASOD KASD OAKSD ASODKSAD S >"
+    ;;; To be filled in
+    />
+<restore standard />
+</define-tag>
+
+<define-tag latemp_encoding>
+{#LATEMP_ENCODING#:%0:##}
+</define-tag>
+
+<define-tag latemp_lang>
+{#LATEMP_LANG#:%0:##}
+</define-tag>
+

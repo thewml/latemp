@@ -1,0 +1,11 @@
+#include '../template.wml'
+
+<latemp_subject "Links" />
+<latemp_version_control_id "$Id: links.html.wml 154 2005-04-16 09:53:31Z shlomif $" />
+
+<h2>Articles</h2>
+
+<p>
+<a href="http://aegis.sourceforge.net/auug96.pdf">Using Revision Control for
+other things beside software</a> - an article by Peter Miller.
+</p>

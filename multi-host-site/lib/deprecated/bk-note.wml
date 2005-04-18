@@ -1,0 +1,12 @@
+<define-tag bk_note>
+<div class="note">
+<h2>Note about BitKeeper</h2>
+<p>
+Due to recent (as of 13 April 2005) developments, the information contained in 
+these pages, may no longer be fully relevant. Refer to 
+<a href="$(ROOT)/bk/demise-of-gratis-bitkeeper.html">our summary page about
+this</a> for more information.
+</p>
+</div>
+</define-tag>
+

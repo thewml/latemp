@@ -1,0 +1,9 @@
+#include "latemp/latemp-main.wml"
+
+<latemp_lang "en-US" />
+<latemp_encoding "iso-8859-1" />
+<latemp_common_keywords "Better SCM, SCM, version control, source control, revision control, source configuration management, CVS, Subversion, BitKeeper, open source, Shlomi Fish" />
+<latemp_author "Shlomi Fish" />
+<latemp_webmaster>
+<a href="http://www.shlomifish.org/">Shlomi Fish</a> (<a href="mailto:shlomif@iglu.org.il">shlomif@iglu.org.il</a>)
+</latemp_webmaster>
