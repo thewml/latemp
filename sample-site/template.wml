@@ -24,9 +24,7 @@
 </p>
 
 <div class="leading_path">
-<:{ 
-    print $leading_path_string;
-}:>
+<latemp_get_breadcrumbs_trail />
 </div>
 <div class="navbar">
 <p style="display:none;">
@@ -40,7 +38,7 @@
    print $nav_links_renderer->get_total_html('with_accesskey' => 1);
 }:>
 <div id="nav_menu">
-<:{ print join("\n", @$nav_html); }:>
+<latemp_get_nav_menu_html />
 </div>
 <define-tag validhtml>
 <p>
