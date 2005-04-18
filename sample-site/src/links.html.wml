@@ -1,7 +1,7 @@
 #include '../template.wml'
 
-<subject "Links" />
-<version_control_id "$Id: links.html.wml 154 2005-04-16 09:53:31Z shlomif $" />
+<latemp_subject "Links" />
+<latemp_version_control_id "$Id: links.html.wml 154 2005-04-16 09:53:31Z shlomif $" />
 
 <h2>Articles</h2>
 

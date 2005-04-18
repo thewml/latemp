@@ -1,9 +1,9 @@
 #include '../template.wml'
 
-<subject "Available CVS Alternatives" />
-<version_control_id "$Id: index.html.wml 154 2005-04-16 09:53:31Z shlomif $" />
+<latemp_subject "Available CVS Alternatives" />
+<latemp_version_control_id "$Id: index.html.wml 154 2005-04-16 09:53:31Z shlomif $" />
 
-<more_keywords "Arch, Aegis, Monotone, Vesta" />
+<latemp_more_keywords "Arch, Aegis, Monotone, Vesta" />
 
 <h3><a href="$(ROOT)/aegis/">Aegis</a></h3>
 

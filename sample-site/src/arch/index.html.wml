@@ -1,8 +1,8 @@
 #include '../template.wml'
 
-<subject "Better SCM Initiative : Arch" />
-<version_control_id "$Id: index.html.wml 154 2005-04-16 09:53:31Z shlomif $" />
-<more_keywords "Arch, tla, ArX, Bazaar, Bazaar-NG, distributed" />
+<latemp_subject "Better SCM Initiative : Arch" />
+<latemp_version_control_id "$Id: index.html.wml 154 2005-04-16 09:53:31Z shlomif $" />
+<latemp_more_keywords "Arch, tla, ArX, Bazaar, Bazaar-NG, distributed" />
 
 <h2>Homepage</h2>
 
