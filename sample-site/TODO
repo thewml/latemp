@@ -1,0 +1,12 @@
+* Make sure the files that are added to the buckets of src/ are present
+in the Subversion repository.
+
+* Comparison: generate a list of systems under comparison/index.html from
+the XML.
+
+* Submit to Open Source Web Designs.
+
+* Create a page for the logo.
+
+* Make sure that nav links and the such contain the title of the navigation
+page.

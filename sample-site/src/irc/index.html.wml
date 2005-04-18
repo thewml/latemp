@@ -1,0 +1,43 @@
+#include '../template.wml'
+
+<subject "Better SCM Initiative : Discuss on IRC" />
+<version_control_id "$Id: index.html.wml 182 2005-04-17 10:10:22Z shlomif $" />
+<more_keywords "IRC, Internet Relay Chat, Freenode" />
+
+<p>
+The IRC (Internet Relay Chat) is a mechanism to have textual conversations
+with several people at once over the Internet. We have set up 
+<a href="irc://irc.freenode.net/scm">a channel</a> for discussing 
+version control and source configuration management. It is <tt>#scm</tt>
+on the <a href="http://www.freenode.net/">Freenode</a> IRC Network. Hope to
+see you all there.
+</p>
+
+<p>
+The rest of this page explains how to connect to the IRC from your machine.
+</p>
+
+<h2>How to talk on the IRC?</h2>
+
+<p>
+IRC stands for Internet Relay Chat, and it is a distributed, real-time form
+of communication, that was common from relatively early in the history of
+the Internet and is still very popular. IRC servers form networks of servers
+- each network is separated from the other networks and the servers of each
+network share the same chat-rooms, user profiles and messages. Each network
+has different rules and conventions and a different culture. This allows
+chat-rooms (called channels in IRC-jargon) with the same name to exist in
+different networks.
+</p>
+
+<p>
+Some popular IRC clients include the cross-platform
+<a href="http://www.mozilla.org/projects/rt-messaging/chatzilla/">Chatzilla</a>
+(which is part of <a href="http://www.mozilla.org/">the Mozilla project</a>),
+the Windows-based <a href="http://www.mirc.com/">mIRC</a> and
+<a href="http://www.xchat.org/">XChat</a>, a cross-platform IRC client for all
+UNIX  systems including Linux and Mac OS X, and with a
+<a href="http://www.silverex.org/news/">port for Windows</a>. By
+downloading one, you can log in to an IRC network and start chatting.
+</p>
+

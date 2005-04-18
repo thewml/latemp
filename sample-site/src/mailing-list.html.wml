@@ -1,0 +1,30 @@
+#include '../template.wml'
+
+<subject "Mailing List" />
+<version_control_id "$Id: mailing-list.html.wml 154 2005-04-16 09:53:31Z shlomif $" />
+
+<set-var mailing-list-url="https://lists.berlios.de/mailman/listinfo/better-scm-discuss/" />
+
+<define-tag link-to-mailing-list endtag="required">
+<a href="<get-var mailing-list-url />">%body</a>
+</define-tag>
+
+<p>
+The "Better SCM" project has 
+<link-to-mailing-list>a 
+mailing list</link-to-mailing-list> hosted at <a href="http://lists.berlios.de/">the BerliOS 
+mailing lists server</a>.
+</p>
+
+<h2>Subscribing</h2>
+
+<p>
+Go to <link-to-mailing-list>the mailing list subscription page</link-to-mailing-list> and fill and submit the subscription form.
+</p>
+
+<h2><a href="https://lists.berlios.de/pipermail/better-scm-discuss/">Archive</a></h2>
+
+<p>
+This is an archive of past discussions.
+</p>
+
