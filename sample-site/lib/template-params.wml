@@ -10,3 +10,7 @@
 {#LATEMP_VERSION_CONTROL_ID#:%0:##}
 </define-tag>
 
+<define-tag latemp_common_keywords>
+{#LATEMP_COMMON_KEYWORDS#:%0:##}
+</define-tag>
+

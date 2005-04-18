@@ -15,7 +15,7 @@
 <title>{#LATEMP_SUBJECT_LOC#}</title>
 <meta http-equiv="Content-Type" content="text/html; charset={#LATEMP_ENCODING#}" />
 <meta name="Author" content="Shlomi Fish" />
-<meta name="Keywords" content="Better SCM, SCM, version control, source control, revision control, source configuration management, CVS, Subversion, BitKeeper, open source, Shlomi Fish{#LATEMP_MORE_KEYWORDS#}" />
+<meta name="Keywords" content="{#LATEMP_COMMON_KEYWORDS#}{#LATEMP_MORE_KEYWORDS#}" />
 <link rel="stylesheet" href="$(ROOT)/style.css" type="text/css" media="screen, projection" title="Normal" />
 <link rel="stylesheet" href="$(ROOT)/print.css" type="text/css" media="print" />
 <latemp_get_html_head_nav_links />
@@ -45,6 +45,7 @@
 <latemp_affiliation_buttons />
 <latemp_get_html_body_nav_links />
 </div>
+<latemp_common_keywords "Better SCM, SCM, version control, source control, revision control, source configuration management, CVS, Subversion, BitKeeper, open source, Shlomi Fish" />
 
 <div class="main" id="main">
 <h1>{#LATEMP_SUBJECT_LOC#}</h1>
