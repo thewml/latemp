@@ -15,14 +15,7 @@
 <meta name="Keywords" content="Better SCM, SCM, version control, source control, revision control, source configuration management, CVS, Subversion, BitKeeper, open source, Shlomi Fish{#MORE_KEYWORDS#}" />
 <link rel="stylesheet" href="$(ROOT)/style.css" type="text/css" media="screen, projection" title="Normal" />
 <link rel="stylesheet" href="$(ROOT)/print.css" type="text/css" media="print" />
-<:{
-my @keys = (sort { $a cmp $b } keys(%$nav_links));
-foreach my $key (@keys)
-{
-    my $url = CGI::escapeHTML($nav_links->{$key});
-    print "<link rel=\"$key\" href=\"$url\" />\n"
-}
-}:>
+<latemp_get_html_head_nav_links />
 </head>
 <body>
 
