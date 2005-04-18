@@ -1,11 +1,4 @@
-#include "html-header.wml"
-#include "h-w-nav-menu.wml"
-#include "affiliations.wml"
-#include "licensing.wml"
-#include "template-params.wml"
-#include "texts.wml"
-#include "html-head-tag.wml"
-#include "themes/$(LATEMP_THEME)/template.wml"
+#include "latemp/latemp-main.wml"
 
 <latemp_lang "en-US" />
 <latemp_encoding "iso-8859-1" />
