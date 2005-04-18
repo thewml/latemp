@@ -13,7 +13,7 @@ use vars qw($nav_bar);
 
 $nav_bar = HTML::Widgets::NavMenu->new(
     'path_info' => $filename,
-    'current_host' => "berlios",
+    'current_host' => "$(LATEMP_SERVER)",
     MyNavData::get_params(),
     'ul_classes' => [ "navbarmain", ("navbarnested") x 10 ],
     );

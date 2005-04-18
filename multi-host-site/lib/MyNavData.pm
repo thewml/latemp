@@ -2,15 +2,20 @@ package MyNavData;
 
 my $hosts =
 {
-    'berlios' =>
+    't2' =>
     {
-        'base_url' => "http://better-scm.berlios.de/",
+        'base_url' => "http://localhost/sites/latemp/multi/t2/",
     },
+    'vipe' =>
+    {
+        'base_url' => "http://localhost:8080/sites/latemp/multi/vipe/",
+    },
+    
 };
 
 my $tree_contents =
 {
-    'host' => "berlios",
+    'host' => "t2",
     'text' => "Better SCM",
     'title' => "Better SCM Initiative",
     'subs' =>
@@ -20,6 +25,7 @@ my $tree_contents =
             'url' => "",
         },
         {
+            'host' => "vipe",
             'text' => "General Docs",
             'url' => "docs/",
             'title' => ("General Documents that don't Belong to " . 
@@ -53,6 +59,7 @@ my $tree_contents =
                 {
                     'text' => "Subversion",
                     'url' => "subversion/",
+                    'host' => "vipe",
                     'title' => ("A Version Control System that Aims to " . 
                         "Provide a Good Alternative to CVS"),
                 },
