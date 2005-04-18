@@ -74,3 +74,17 @@ foreach my $key (@keys)
 <define-tag latemp_get_nav_menu_html>
 <:{ print join("\n", @$nav_html); }:>
 </define-tag>
+<define-tag latemp_get_html_body_nav_links>
+<preserve with_accesskey />
+<set-var %attributes />
+<:{
+    my $with_accesskey = "<get-var with_accesskey />";
+    my @params;
+    if ($with_accesskey ne "")
+    {
+        push @params, ('with_accesskey' => $with_accesskey);
+    }
+    print $nav_links_renderer->get_total_html(@params);
+}:>
+<restore with_accesskey />
+</define-tag>

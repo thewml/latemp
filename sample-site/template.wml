@@ -34,9 +34,7 @@
 <a href="$(ROOT)/" title="Home"><img 
     src="$(ROOT)/images/better-scm-logo.png"
     alt="Better SCM" class="bless" /></a>
-<:{
-   print $nav_links_renderer->get_total_html('with_accesskey' => 1);
-}:>
+<latemp_get_html_body_nav_links with_accesskey="1" />
 <div id="nav_menu">
 <latemp_get_nav_menu_html />
 </div>
@@ -74,9 +72,7 @@ width="100" height="50" /></a>
 </define-tag>
 
 <validhtml />
-<:{
-   print $nav_links_renderer->get_total_html('with_accesskey' => 0);
-}:>
+<latemp_get_html_body_nav_links />
 </div>
 
 <div class="main" id="main">
