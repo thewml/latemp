@@ -66,3 +66,11 @@ foreach my $key (@keys)
 }
 }:>
 </define-tag>
+<define-tag latemp_get_breadcrumbs_trail>
+<:{ 
+    print $leading_path_string;
+}:>
+</define-tag>
+<define-tag latemp_get_nav_menu_html>
+<:{ print join("\n", @$nav_html); }:>
+</define-tag>
