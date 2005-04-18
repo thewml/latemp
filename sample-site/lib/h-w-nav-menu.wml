@@ -56,4 +56,13 @@ $nav_links_renderer = MyNavLinks->new(
         );
 }:>
 </define-tag>
-
+<define-tag latemp_get_html_head_nav_links>
+<:{
+my @keys = (sort { $a cmp $b } keys(%$nav_links));
+foreach my $key (@keys)
+{
+    my $url = CGI::escapeHTML($nav_links->{$key});
+    print "<link rel=\"$key\" href=\"$url\" />\n"
+}
+}:>
+</define-tag>
