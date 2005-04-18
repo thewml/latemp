@@ -3,3 +3,9 @@
 Webmaster: <a href="http://www.shlomifish.org/">Shlomi Fish</a> (<a href="mailto:shlomif@iglu.org.il">shlomif@iglu.org.il</a>)
 </p>
 </define-tag>
+
+<define-tag latemp_timestamp_text>
+<p class="vcs">
+<b>Version Control ID:</b> <tt>{#VERSION_CONTROL_ID#}</tt>
+</p>
+</define-tag>
