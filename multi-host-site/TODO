@@ -1,2 +1,4 @@
 * Change the remaining -D WML macros to LATEMP_ONES.
 
+* Convert the host_struct in GenMakeHelpers.pm to use accessors.
+
