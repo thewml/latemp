@@ -8,7 +8,7 @@ use File::Basename;
 
 use base 'Class::Accessor';
 
-__PACKAGE__->mk_accessors(qw(base_dir));
+__PACKAGE__->mk_accessors(qw(base_dir hosts hosts_id_map));
 
 sub new
 {
@@ -22,8 +22,11 @@ sub new
 sub initialize
 {
     my $self = shift;
+    my (%args) = (@_);
 
     $self->base_dir("src");
+    $self->hosts($args{'hosts'});
+    $self->hosts_id_map(+{ map { $_->{'id'} => $_ } @{$self->hosts()}});
 }
 
 sub process_all
@@ -31,14 +34,12 @@ sub process_all
     my $self = shift;
     my $dir = $self->base_dir();
 
-    opendir D, "$dir";
-    my @hosts = grep { -d "$dir/$_" } grep { !/^\./ } readdir(D);
-    closedir(D);
+    my @hosts = @{$self->hosts()};
 
     open my $file_lists_fh, ">", "include.mak";
     open my $rules_fh, ">", "rules.mak";
 
-    print {$rules_fh} "COMMON_SRC_DIR = src/common\n\n";
+    print {$rules_fh} "COMMON_SRC_DIR = " . $self->hosts_id_map()->{'common'}->{'source_dir'} . "\n\n";
 
     foreach my $host (@hosts)
     {
@@ -47,7 +48,7 @@ sub process_all
         print {$rules_fh} $host_outputs->{'rules'};
     }
 
-    print {$rules_fh} "latemp_targets: " . join(" ", map { '$('.uc($_)."_TARGETS)" } grep { $_ ne "common" } @hosts) . "\n\n";
+    print {$rules_fh} "latemp_targets: " . join(" ", map { '$('.uc($_->{'id'})."_TARGETS)" } grep { $_->{'id'} ne "common" } @hosts) . "\n\n";
 
     close($rules_fh);
     close($file_lists_fh);
@@ -60,19 +61,19 @@ sub process_host
 
     my $dir = $self->base_dir();
 
-    my $dir_path = "$dir/$host";
+    my $source_dir_path = $host->{'source_dir'};
     my $make_path = sub {
         my $path = shift;
-        return "$dir_path/$path";
+        return "$source_dir_path/$path";
     };
 
     my $file_lists_text = "";
     my $rules_text = "";
 
-    my @files = File::Find::Rule->in($dir_path);
+    my @files = File::Find::Rule->in($source_dir_path);
 
-    s!^$dir_path/!! for @files;
-    @files = (grep { $_ ne $dir_path } @files);
+    s!^$source_dir_path/!! for @files;
+    @files = (grep { $_ ne $source_dir_path } @files);
     @files = (grep { ! m{(^|/)\.svn(/|$)} } @files);
     @files = (grep { ! /~$/ } @files);
     @files = 
@@ -121,25 +122,24 @@ sub process_host
                 next FILE_LOOP;
             }
         }
-        die "Uncategorized file $_ - host == $host!";
+        die "Uncategorized file $_ - host == " . $host->{id} . "!";
     }
 
-    my $host_uc = uc($host);
+    my $host_uc = uc($host->{id});
     foreach my $b (@buckets)
     {
         $file_lists_text .= $host_uc . "_" . $b->{'name'} . " = " . join(" ", @{$b->{'results'}}) . "\n";
     }
     
-    if ($host ne "common")
+    if ($host->{'id'} ne "common")
     {
-        my $h_dest_star = "\$(${host_uc}_DEST)/%";
+        my $h_dest_star = "\$(X8X_DEST)/%";
+        my $dest_dir = $host->{'dest_dir'};
         my $rules = <<"EOF";
 
-X8X_DEST_DIR = x8x
+X8X_SRC_DIR = $source_dir_path
 
-X8X_SRC_DIR = src/x8x
-
-X8X_DEST = \$(D)/\$(X8X_DEST_DIR)
+X8X_DEST = $dest_dir
 
 X8X_TARGETS = \$(X8X_DIRS_DEST) \$(X8X_COMMON_DIRS_DEST) \$(X8X_COMMON_IMAGES_DEST) \$(X8X_IMAGES_DEST) \$(X8X_DOCS_DEST) 
         
@@ -175,7 +175,7 @@ X8X_COMMON_DIRS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_DIRS))
 EOF
 
         $rules =~ s!X8X!$host_uc!g;
-        $rules =~ s!x8x!$host!g;
+        $rules =~ s!x8x!$host->{'id'}!ge;
         $rules_text .= $rules;
     }
 
