@@ -26,3 +26,7 @@
 {#LATEMP_LICENSE#:%body:##}
 </define-tag>
 
+<define-tag latemp_affiliations_buttons endtag="required" whitespace="delete">
+{#LATEMP_AFFILIATIONS_BUTTONS#:%body:##}
+</define-tag>
+
