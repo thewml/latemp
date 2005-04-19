@@ -89,6 +89,9 @@ foreach my $host (@hosts)
         print RULES <<"EOF";
 
 ${host_uc}_DEST_DIR = $host
+
+${host_uc}_SRC_DIR = src/${host}
+
 ${host_uc}_DEST = \$(D)/\$(${host_uc}_DEST_DIR)
 
 ${host_uc}_TARGETS = \$(${host_uc}_DIRS_DEST) \$(${host_uc}_COMMON_DIRS_DEST) \$(${host_uc}_COMMON_IMAGES_DEST) \$(${host_uc}_IMAGES_DEST) \$(${host_uc}_DOCS_DEST) 
@@ -105,14 +108,14 @@ ${host_uc}_COMMON_IMAGES_DEST = \$(patsubst %,\$(${host_uc}_DEST)/%,\$(COMMON_IM
 
 ${host_uc}_COMMON_DIRS_DEST = \$(patsubst %,\$(${host_uc}_DEST)/%,\$(COMMON_DIRS))
         
-\$(${host_uc}_DOCS_DEST) :: $h_dest_star : src/${host}/%.wml \$(DOCS_COMMON_DEPS) 
-	( cd src/${host} && wml \$(${host_uc}_WML_FLAGS) -DLATEMP_FILENAME=\$(patsubst $h_dest_star,%,\$(patsubst %.wml,%,\$@)) \$(patsubst src/${host}/%,%,\$<) ) > \$@
+\$(${host_uc}_DOCS_DEST) :: $h_dest_star : \$(${host_uc}_SRC_DIR)/%.wml \$(DOCS_COMMON_DEPS) 
+	( cd \$(${host_uc}_SRC_DIR) && wml \$(${host_uc}_WML_FLAGS) -DLATEMP_FILENAME=\$(patsubst $h_dest_star,%,\$(patsubst %.wml,%,\$@)) \$(patsubst \$(${host_uc}_SRC_DIR)/%,%,\$<) ) > \$@
 
 \$(${host_uc}_DIRS_DEST) :: $h_dest_star : unchanged
 	mkdir -p \$@
 	touch \$@
 
-\$(${host_uc}_IMAGES_DEST) :: $h_dest_star : src/${host}/%
+\$(${host_uc}_IMAGES_DEST) :: $h_dest_star : \$(${host_uc}_SRC_DIR)/%
 	cp -f \$< \$@
 
 \$(${host_uc}_COMMON_IMAGES_DEST) :: $h_dest_star : src/common/%
