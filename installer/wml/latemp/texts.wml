@@ -1,0 +1,20 @@
+<define-tag latemp_webmaster_text>
+<p class="webmaster">
+Webmaster: {#LATEMP_WEBMASTER#} 
+</p>
+</define-tag>
+
+<define-tag latemp_timestamp_text>
+<p class="vcs">
+<b>Version Control ID:</b> <tt>{#LATEMP_VERSION_CONTROL_ID#}</tt>
+</p>
+</define-tag>
+
+<define-tag latemp_license_text whitespace="delete">
+{#LATEMP_LICENSE#} 
+</define-tag>
+
+<define-tag latemp_affiliations_buttons_text whitespace="delete">
+{#LATEMP_AFFILIATIONS_BUTTONS#} 
+</define-tag>
+
