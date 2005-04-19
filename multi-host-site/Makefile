@@ -1,8 +1,6 @@
 
 RSYNC = rsync --progress --verbose --rsh=ssh
 
-DEVEL_VER_USE_CACHE = 1
-
 D = dest
 
 DOCS_COMMON_DEPS = template.wml lib/MyNavData.pm
@@ -17,16 +15,10 @@ all: dummy
 include include.mak
 include rules.mak
 
-
-
 WML_FLAGS += --passoption=2,-X3074 --passoption=3,-I../../lib/ \
 	--passoption=3,-w -I../../lib/ -I../../ -DROOT~.
 
-
-
 dummy : latemp_targets
-
-
 
 .PHONY: 
 
