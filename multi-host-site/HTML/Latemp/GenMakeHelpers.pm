@@ -1,35 +1,65 @@
+package HTML::Latemp::GenMakeHelpers;
+
 use strict;
 use warnings;
 
 use File::Find::Rule;
 use File::Basename;
 
-my $dir = "src";
+use base 'Class::Accessor';
 
-opendir D, "$dir";
-my @hosts = grep { -d "$dir/$_" } grep { !/^\./ } readdir(D);
-closedir(D);
+__PACKAGE__->mk_accessors(qw(base_dir));
 
-open O, ">", "include.mak";
-open RULES, ">", "rules.mak";
-
-print RULES "COMMON_SRC_DIR = src/common\n\n";
-
-foreach my $host (@hosts)
+sub new
 {
-    my $host_outputs = process_host($host);
-    print O $host_outputs->{'file_lists'};
-    print RULES $host_outputs->{'rules'};
+    my $class = shift;
+    my $self = {};
+    bless $self, $class;
+    $self->initialize(@_);
+    return $self;
 }
 
-print RULES "latemp_targets: " . join(" ", map { '$('.uc($_)."_TARGETS)" } grep { $_ ne "common" } @hosts) . "\n\n";
+sub initialize
+{
+    my $self = shift;
 
-close(RULES);
-close(O);
+    $self->base_dir("src");
+}
+
+sub process_all
+{
+    my $self = shift;
+    my $dir = $self->base_dir();
+
+    opendir D, "$dir";
+    my @hosts = grep { -d "$dir/$_" } grep { !/^\./ } readdir(D);
+    closedir(D);
+
+    open my $file_lists_fh, ">", "include.mak";
+    open my $rules_fh, ">", "rules.mak";
+
+    print {$rules_fh} "COMMON_SRC_DIR = src/common\n\n";
+
+    foreach my $host (@hosts)
+    {
+        my $host_outputs = $self->process_host($host);
+        print {$file_lists_fh} $host_outputs->{'file_lists'};
+        print {$rules_fh} $host_outputs->{'rules'};
+    }
+
+    print {$rules_fh} "latemp_targets: " . join(" ", map { '$('.uc($_)."_TARGETS)" } grep { $_ ne "common" } @hosts) . "\n\n";
+
+    close($rules_fh);
+    close($file_lists_fh);
+}
 
 sub process_host
 {
+    my $self = shift;
     my $host = shift;
+
+    my $dir = $self->base_dir();
+
     my $dir_path = "$dir/$host";
     my $make_path = sub {
         my $path = shift;
@@ -153,3 +183,4 @@ EOF
 }
 
 1;
+
