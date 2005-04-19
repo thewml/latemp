@@ -14,3 +14,7 @@ Webmaster: {#LATEMP_WEBMASTER#}
 {#LATEMP_LICENSE#} 
 </define-tag>
 
+<define-tag latemp_affiliations_buttons_text whitespace="delete">
+{#LATEMP_AFFILIATIONS_BUTTONS#} 
+</define-tag>
+
