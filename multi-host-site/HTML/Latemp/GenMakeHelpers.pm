@@ -1,14 +1,15 @@
 package HTML::Latemp::GenMakeHelpers;
 
+use vars qw($VERSION);
+
+$VERSION = '0.1.2';
+
+package HTML::Latemp::GenMakeHelpers::Base;
+
 use strict;
 use warnings;
 
-use File::Find::Rule;
-use File::Basename;
-
 use base 'Class::Accessor';
-
-__PACKAGE__->mk_accessors(qw(base_dir hosts hosts_id_map));
 
 sub new
 {
@@ -19,13 +20,49 @@ sub new
     return $self;
 }
 
+package HTML::Latemp::GenMakeHelpers::HostEntry;
+
+use vars qw(@ISA);
+
+@ISA=(qw(HTML::Latemp::GenMakeHelpers::Base));
+
+__PACKAGE__->mk_accessors(qw(id dest_dir source_dir));
+
+sub initialize
+{
+    my $self = shift;
+    my %args = (@_);
+
+    $self->id($args{'id'});
+    $self->source_dir($args{'source_dir'});
+    $self->dest_dir($args{'dest_dir'});
+}
+
+package HTML::Latemp::GenMakeHelpers;
+
+use vars qw(@ISA);
+
+@ISA=(qw(HTML::Latemp::GenMakeHelpers::Base));
+
+use File::Find::Rule;
+use File::Basename;
+
+__PACKAGE__->mk_accessors(qw(base_dir hosts hosts_id_map));
+
 sub initialize
 {
     my $self = shift;
     my (%args) = (@_);
 
     $self->base_dir("src");
-    $self->hosts($args{'hosts'});
+    $self->hosts(
+        map { 
+            HTML::Latemp::GenMakeHelpers::HostEntry->new(
+                %$_
+            ),
+        }
+        @{$args{'hosts'}}
+        );
     $self->hosts_id_map(+{ map { $_->{'id'} => $_ } @{$self->hosts()}});
 }
 
@@ -61,7 +98,7 @@ sub process_host
 
     my $dir = $self->base_dir();
 
-    my $source_dir_path = $host->{'source_dir'};
+    my $source_dir_path = $host->source_dir();
     my $make_path = sub {
         my $path = shift;
         return "$source_dir_path/$path";
@@ -122,19 +159,19 @@ sub process_host
                 next FILE_LOOP;
             }
         }
-        die "Uncategorized file $_ - host == " . $host->{id} . "!";
+        die "Uncategorized file $_ - host == " . $host->id() . "!";
     }
 
-    my $host_uc = uc($host->{id});
+    my $host_uc = uc($host->id());
     foreach my $b (@buckets)
     {
         $file_lists_text .= $host_uc . "_" . $b->{'name'} . " = " . join(" ", @{$b->{'results'}}) . "\n";
     }
     
-    if ($host->{'id'} ne "common")
+    if ($host->id() ne "common")
     {
         my $h_dest_star = "\$(X8X_DEST)/%";
-        my $dest_dir = $host->{'dest_dir'};
+        my $dest_dir = $host->dest_dir();
         my $rules = <<"EOF";
 
 X8X_SRC_DIR = $source_dir_path
@@ -175,7 +212,7 @@ X8X_COMMON_DIRS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_DIRS))
 EOF
 
         $rules =~ s!X8X!$host_uc!g;
-        $rules =~ s!x8x!$host->{'id'}!ge;
+        $rules =~ s!x8x!$host->id()!ge;
         $rules_text .= $rules;
     }
 
