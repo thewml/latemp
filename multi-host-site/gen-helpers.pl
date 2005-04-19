@@ -14,6 +14,9 @@ closedir(D);
 
 open O, ">", "include.mak";
 open RULES, ">", "rules.mak";
+
+print RULES "COMMON_SRC_DIR = src/common\n\n";
+
 foreach my $host (@hosts)
 {
     my $dir_path = "$dir/$host";
@@ -118,7 +121,7 @@ ${host_uc}_COMMON_DIRS_DEST = \$(patsubst %,\$(${host_uc}_DEST)/%,\$(COMMON_DIRS
 \$(${host_uc}_IMAGES_DEST) :: $h_dest_star : \$(${host_uc}_SRC_DIR)/%
 	cp -f \$< \$@
 
-\$(${host_uc}_COMMON_IMAGES_DEST) :: $h_dest_star : src/common/%
+\$(${host_uc}_COMMON_IMAGES_DEST) :: $h_dest_star : \$(COMMON_SRC_DIR)/%
 	cp -f \$< \$@
 
 \$(${host_uc}_COMMON_DIRS_DEST) :: $h_dest_star : unchanged
