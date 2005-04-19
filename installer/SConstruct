@@ -12,13 +12,26 @@ idir_prefix = '$PREFIX'
 Export('env idir_prefix')
 
 latemp_wml_files = []
+
+themes = [ 
+    { 'id':"better-scm" } 
+    ]
+
 for file in ['html-header.wml','html-head-tag.wml','h-w-nav-menu.wml', \
         'latemp-main.wml', 'template-params.wml', 'texts.wml', 'utils.wml']:
     latemp_wml_files.append(env.File(file, 'wml/latemp'))
 
+for t in themes:
+    id = t['id']
+    t['scons_file'] = env.File('template.wml', 'wml/latemp/themes/' + id + '/')
+    
 wml_install_path = idir_prefix + '/lib/wml/include/'
 latemp_wml_install_path = wml_install_path + 'latemp/'
 for file in latemp_wml_files:
     env.Install(latemp_wml_install_path, file)
+
+for t in themes:
+    env.Install(latemp_wml_install_path + 'themes/' + t['id'] + '/', t['scons_file'])
+
 env.Alias('install', idir_prefix)
 
