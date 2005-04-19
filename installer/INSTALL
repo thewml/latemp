@@ -1,0 +1,5 @@
+These are installation instructions.
+
+Install "scons" (http://www.scons.org/) and type "scons -Q install" to
+install.
+
