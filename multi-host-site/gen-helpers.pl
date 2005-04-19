@@ -22,7 +22,7 @@ foreach my $host (@hosts)
     my $dir_path = "$dir/$host";
     my $make_path = sub {
         my $path = shift;
-        return "$dir_path/$_";
+        return "$dir_path/$path";
     };
 
     my @files = File::Find::Rule->in($dir_path);
