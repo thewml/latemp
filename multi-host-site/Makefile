@@ -22,7 +22,11 @@ include rules.mak
 WML_FLAGS += --passoption=2,-X3074 --passoption=3,-I../../lib/ \
 	--passoption=3,-w -I../../lib/ -I../../ -DROOT~.
 
-dummy : $(T2_TARGETS) $(VIPE_TARGETS)
+
+
+dummy : latemp_targets
+
+
 
 .PHONY: 
 

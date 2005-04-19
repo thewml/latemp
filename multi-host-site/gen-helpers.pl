@@ -131,6 +131,9 @@ ${host_uc}_COMMON_DIRS_DEST = \$(patsubst %,\$(${host_uc}_DEST)/%,\$(COMMON_DIRS
 EOF
     }
 }
+
+print RULES "latemp_targets: " . join(" ", map { '$('.uc($_)."_TARGETS)" } grep { $_ ne "common" } @hosts) . "\n\n";
+
 close(RULES);
 close(O);
 1;
