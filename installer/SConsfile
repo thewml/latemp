@@ -1,8 +1,9 @@
 env = Environment()
 
-wml1 = env.File('latemp-main.wml', 'latemp')
+wml1 = env.File('latemp-main.wml', 'wml/latemp')
 
-wml_install_path = '/home/shlomi/apps/latemp/lib/wml/include'
+install_prefix = '/home/shlomi/apps/latemp/'
+wml_install_path = install_prefix + 'lib/wml/include'
 env.Install(wml_install_path, wml1)
 env.Alias('install', wml_install_path)
 
