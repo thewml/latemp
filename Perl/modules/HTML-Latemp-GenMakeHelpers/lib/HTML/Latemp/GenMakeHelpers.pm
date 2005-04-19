@@ -1,13 +1,13 @@
 package HTML::Latemp::GenMakeHelpers;
 
+use strict;
+use warnings;
+
 use vars qw($VERSION);
 
 $VERSION = '0.1.2';
 
 package HTML::Latemp::GenMakeHelpers::Base;
-
-use strict;
-use warnings;
 
 use base 'Class::Accessor';
 
@@ -224,4 +224,49 @@ EOF
 }
 
 1;
+
+__END__
+
+=head1 NAME
+
+HTML::Latemp::GenMakeHelpers - A Latemp Utility Module.
+
+=head1 SYNOPSIS
+
+    use HTML::Latemp::GenMakeHelpers;
+
+    my $generator = 
+        HTML::Latemp::GenMakeHelpers->new(
+            'hosts' =>
+            [ map { 
+                +{ 'id' => $_, 'source_dir' => $_, 
+                    'dest_dir' => "\$(ALL_DEST_BASE)/$_-homepage" 
+                } 
+            } (qw(common t2 vipe)) ],
+        );
+        
+    $generator->process_all();
+
+=head1 AUTHOR
+
+Shlomi Fish, C<< <shlomif@iglu.org.il> >>
+
+=head1 BUGS
+
+Please report any bugs or feature requests to
+C<bug-html-latemp-genmakehelpers@rt.cpan.org>, or through the web interface at
+L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=HTML-Latemp-GenMakeHelpers>.
+I will be notified, and then you'll automatically be notified of progress on
+your bug as I make changes.
+
+=head1 ACKNOWLEDGEMENTS
+
+=head1 COPYRIGHT & LICENSE
+
+Copyright 2005 Shlomi Fish, All Rights Reserved.
+
+This program is free software; you can redistribute it and/or modify it
+under the MIT X11 License.
+
+=cut
 
