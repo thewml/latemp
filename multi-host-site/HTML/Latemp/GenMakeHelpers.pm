@@ -133,46 +133,50 @@ sub process_host
     if ($host ne "common")
     {
         my $h_dest_star = "\$(${host_uc}_DEST)/%";
-        $rules_text .= <<"EOF";
+        my $rules = <<"EOF";
 
-${host_uc}_DEST_DIR = $host
+X8X_DEST_DIR = x8x
 
-${host_uc}_SRC_DIR = src/${host}
+X8X_SRC_DIR = src/x8x
 
-${host_uc}_DEST = \$(D)/\$(${host_uc}_DEST_DIR)
+X8X_DEST = \$(D)/\$(X8X_DEST_DIR)
 
-${host_uc}_TARGETS = \$(${host_uc}_DIRS_DEST) \$(${host_uc}_COMMON_DIRS_DEST) \$(${host_uc}_COMMON_IMAGES_DEST) \$(${host_uc}_IMAGES_DEST) \$(${host_uc}_DOCS_DEST) 
+X8X_TARGETS = \$(X8X_DIRS_DEST) \$(X8X_COMMON_DIRS_DEST) \$(X8X_COMMON_IMAGES_DEST) \$(X8X_IMAGES_DEST) \$(X8X_DOCS_DEST) 
         
-${host_uc}_WML_FLAGS = \$(WML_FLAGS) -DLATEMP_SERVER=${host}
+X8X_WML_FLAGS = \$(WML_FLAGS) -DLATEMP_SERVER=x8x
 
-${host_uc}_DOCS_DEST = \$(patsubst %,\$(${host_uc}_DEST)/%,\$(${host_uc}_DOCS))
+X8X_DOCS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(X8X_DOCS))
 
-${host_uc}_DIRS_DEST = \$(patsubst %,\$(${host_uc}_DEST)/%,\$(${host_uc}_DIRS))
+X8X_DIRS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(X8X_DIRS))
 
-${host_uc}_IMAGES_DEST = \$(patsubst %,\$(${host_uc}_DEST)/%,\$(${host_uc}_IMAGES))
+X8X_IMAGES_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(X8X_IMAGES))
 
-${host_uc}_COMMON_IMAGES_DEST = \$(patsubst %,\$(${host_uc}_DEST)/%,\$(COMMON_IMAGES))
+X8X_COMMON_IMAGES_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_IMAGES))
 
-${host_uc}_COMMON_DIRS_DEST = \$(patsubst %,\$(${host_uc}_DEST)/%,\$(COMMON_DIRS))
+X8X_COMMON_DIRS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_DIRS))
         
-\$(${host_uc}_DOCS_DEST) :: $h_dest_star : \$(${host_uc}_SRC_DIR)/%.wml \$(DOCS_COMMON_DEPS) 
-	( cd \$(${host_uc}_SRC_DIR) && wml \$(${host_uc}_WML_FLAGS) -DLATEMP_FILENAME=\$(patsubst $h_dest_star,%,\$(patsubst %.wml,%,\$@)) \$(patsubst \$(${host_uc}_SRC_DIR)/%,%,\$<) ) > \$@
+\$(X8X_DOCS_DEST) :: $h_dest_star : \$(X8X_SRC_DIR)/%.wml \$(DOCS_COMMON_DEPS) 
+	( cd \$(X8X_SRC_DIR) && wml \$(X8X_WML_FLAGS) -DLATEMP_FILENAME=\$(patsubst $h_dest_star,%,\$(patsubst %.wml,%,\$@)) \$(patsubst \$(X8X_SRC_DIR)/%,%,\$<) ) > \$@
 
-\$(${host_uc}_DIRS_DEST) :: $h_dest_star : unchanged
+\$(X8X_DIRS_DEST) :: $h_dest_star : unchanged
 	mkdir -p \$@
 	touch \$@
 
-\$(${host_uc}_IMAGES_DEST) :: $h_dest_star : \$(${host_uc}_SRC_DIR)/%
+\$(X8X_IMAGES_DEST) :: $h_dest_star : \$(X8X_SRC_DIR)/%
 	cp -f \$< \$@
 
-\$(${host_uc}_COMMON_IMAGES_DEST) :: $h_dest_star : \$(COMMON_SRC_DIR)/%
+\$(X8X_COMMON_IMAGES_DEST) :: $h_dest_star : \$(COMMON_SRC_DIR)/%
 	cp -f \$< \$@
 
-\$(${host_uc}_COMMON_DIRS_DEST) :: $h_dest_star : unchanged
+\$(X8X_COMMON_DIRS_DEST) :: $h_dest_star : unchanged
 	mkdir -p \$@
 	touch \$@
  
 EOF
+
+        $rules =~ s!X8X!$host_uc!g;
+        $rules =~ s!x8x!$host!g;
+        $rules_text .= $rules;
     }
 
     return
