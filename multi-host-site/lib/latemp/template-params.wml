@@ -22,3 +22,7 @@
 {#LATEMP_WEBMASTER#:%body:##}
 </define-tag>
 
+<define-tag latemp_license endtag="required" whitespace="delete">
+{#LATEMP_LICENSE#:%body:##}
+</define-tag>
+

@@ -33,3 +33,4 @@ dummy : latemp_targets
 upload_beta: all
 	cd $(D) && \
 	$(RSYNC) -r * shlomif@shell.berlios.de:/home/groups/web-cpan/htdocs/__LaTemp-Beta-Site-f67bu9o/
+
