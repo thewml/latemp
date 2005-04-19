@@ -10,3 +10,7 @@ Webmaster: {#LATEMP_WEBMASTER#}
 </p>
 </define-tag>
 
+<define-tag latemp_license_text whitespace="delete">
+{#LATEMP_LICENSE#} 
+</define-tag>
+
