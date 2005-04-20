@@ -14,7 +14,7 @@ GetOptions(
 
 if ($wml_include_path)
 {
-    print "$prefix/lib/wml/include/latemp/\n";
+    print "$prefix/lib/wml/include/\n";
     exit;
 }
 
