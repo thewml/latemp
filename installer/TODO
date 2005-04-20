@@ -6,3 +6,5 @@
     - Make sure that the perl executable is located and placed in the
     sh-bang.
 
+* Create theme-based skeletons with style.css, etc.
+
