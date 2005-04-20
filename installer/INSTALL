@@ -1,5 +1,10 @@
-These are installation instructions.
+These are the installation instructions.
 
 Install "scons" (http://www.scons.org/) and type "scons -Q install" to
 install.
+
+By default it will be installed under "/usr/local". If you'd like to install
+under a different prefix, specify it using the PREFIX parameter:
+
+    scons -Q PREFIX="$HOME/apps/latemp" install
 
