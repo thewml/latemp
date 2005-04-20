@@ -1,4 +1,26 @@
+import re
+import os
+
+def config_script_bld_action(target, source, env):
+    def quote(matchobj):
+        return "\\"+matchobj.group(0)
+    source_fn = str(source[0])
+    target_fn = str(target[0])
+    prefix = env['PREFIX']
+    prefix_quoted = re.sub("[\\\\\"$@]", quote, prefix, 0)
+    f = open(source_fn, 'rb')
+    source_text = f.read()
+    f.close()
+    target_text = source_text.replace('<<<PREFIX>>>', prefix_quoted)
+    f = open(target_fn, 'wb')
+    f.write(target_text)
+    f.close()
+    os.chmod(target_fn, 0755)
+
+config_script_bld = Builder(action = config_script_bld_action)
+
 env = Environment()
+env.Append(BUILDERS = {'ConfigScript': config_script_bld})
 
 config_file = 'latemp.conf'
 opts = Options(config_file)
@@ -24,7 +46,9 @@ for file in ['html-header.wml','html-head-tag.wml','h-w-nav-menu.wml', \
 for t in themes:
     id = t['id']
     t['scons_file'] = env.File('template.wml', 'wml/latemp/themes/' + id + '/')
-    
+
+config_script = env.ConfigScript(target = 'latemp-config', source = 'latemp-config.pl')
+
 wml_install_path = idir_prefix + '/lib/wml/include/'
 latemp_wml_install_path = wml_install_path + 'latemp/'
 for file in latemp_wml_files:
@@ -33,5 +57,6 @@ for file in latemp_wml_files:
 for t in themes:
     env.Install(latemp_wml_install_path + 'themes/' + t['id'] + '/', t['scons_file'])
 
+env.Install(idir_prefix + '/bin', config_script)
 env.Alias('install', idir_prefix)
 
