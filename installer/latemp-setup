@@ -131,9 +131,54 @@ dummy : latemp_targets
 .PHONY: 
 
 upload_beta: all
-	cd \$(ALL_DEST_BASE)/host && \
+	cd \$(ALL_DEST_BASE)/$host && \
 	\$(RSYNC) -r * $remote_path
 EOF
 
 close(O);
+
+mkpath("$project_dir/lib", 0, 0775);
+
+$current_file = "$project_dir/lib/MyNavData.pm";
+
+open O, ">", $current_file;
+print O, <<"EOF";
+package MyNavData;
+
+my \$hosts =
+{
+    '$host' =>
+    {
+        'base_url' => "http://myhost.mydomain/",
+    },
+};
+
+my $tree_contents =
+{
+    'host' => "$host",
+    'text' => "My Site",
+    'title' => "My Site",
+    'subs' =>
+    [
+        {
+            'text' => "Home",
+            'url' => "",
+        },
+    ],
+};
+
+sub get_params
+{
+    return 
+        (
+            'hosts' => $hosts,
+            'tree_contents' => $tree_contents,
+        );
+}
+
+1;
+EOF
+
+close(O);
+
 
