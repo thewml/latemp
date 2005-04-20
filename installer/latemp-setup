@@ -5,6 +5,7 @@ use warnings;
 
 use Getopt::Long;
 use File::Path;
+use Pod::Usage;
 
 my $theme;
 my $project_dir;
@@ -14,6 +15,9 @@ my $language = "en-US";
 my $encoding = "utf-8";
 my $remote_path;
 
+my $help = 0;
+my $man = 0;
+
 GetOptions(
     "theme=s" => \$theme,
     "dir=s" => \$project_dir,
@@ -22,7 +26,13 @@ GetOptions(
     "lang=s" => \$language,
     "encoding=s" => \$encoding,
     "remote-path=s" => \$remote_path,
-);
+    'help|h|?' => \$help, 
+    'man' => \$man
+) or pod2usage(2);
+
+pod2usage(1) if $help;
+pod2usage(-exitstatus => 0, -verbose => 2) if $man;
+
 
 if (!defined($theme))
 {
@@ -441,4 +451,79 @@ EOF
 close(O);
 
 print STDERR "Successfully Created Latemp Project";
+
+__END__
+
+=head1 NAME
+
+latemp-setup - Set up a Latemp Project
+
+=head1 SYNOPSIS
+
+B<latemp-setup> --theme=[Theme] --dir=[Dir] --host=[Host] [--author=[Author]]
+[--lang=[Language]] [--encoding=[Encoding]] [--remote-path=[Remote Path]]
+
+Or alternatively
+
+latemp-setup --help
+
+Or
+
+latemp-setup --man
+
+=head1 DESCRIPTION
+
+This program sets up a working skeleton for a Latemp project. The options
+I<--theme>, I<--dir> and I<--remote-path> are required.
+
+=head1 OPTIONS
+
+=over 8
+
+=item B<--help> B<-h> B<-?>
+
+Display a help message on the screen.
+
+=item B<--man>
+
+Invoke the UNIX B<man> command to display the man-page of this program.
+
+=item B<--theme>
+
+Chooses a Latemp theme to use. A Latemp theme controls the HTML layout of the
+page.
+
+=item B<--dir>
+
+This is a dir in which to create the project. It would be created if it does 
+not exist.
+
+=item B<--remote-path>
+
+This is the remote path to upload the final files to (using rsync).
+
+=item B<--author>
+
+This specifies the author of the files. It defaults to "John Smith"
+
+=item B<--lang>
+
+This chooses the language with which to mark the HTML.
+
+=item B<--encoding>
+
+This specifies an encoding to use ("utf-8", "iso-8859-8", etc.)
+
+=head1 SEE ALSO
+
+B<The Latemp Homepage>: 
+
+http://web-cpan.berlios.de/latemp/
+
+=head1 AUTHOR
+
+Shlomi Fish <shlomif@iglu.org.il>
+
+=cut
+
 
