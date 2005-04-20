@@ -4,4 +4,7 @@ play on "Template").
 
 Refer to the file INSTALL for installation instructions.
 
+After that type "latemp-setup" to set up an initial Latemp project, which
+you can start with. Follow the instructions in the "latemp-setup --help"
+or "latemp-setup --man" screens.
 
