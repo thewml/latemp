@@ -7,6 +7,12 @@ DOCS_COMMON_DEPS = template.wml lib/MyNavData.pm
 
 WML_FLAGS = -DLATEMP_THEME=better-scm
 
+LATEMP_WML_INCLUDE_PATH =$(shell latemp-config --wml-include-path)
+
+WML_FLAGS += --passoption=2,-X3074 --passoption=3,-I../../lib/ \
+	--passoption=3,-w -I$(LATEMP_WML_INCLUDE_PATH) -I../../lib/ -I../../ \
+	-DROOT~.
+
 all: dummy
 
 %.show:
@@ -15,8 +21,6 @@ all: dummy
 include include.mak
 include rules.mak
 
-WML_FLAGS += --passoption=2,-X3074 --passoption=3,-I../../lib/ \
-	--passoption=3,-w -I../../lib/ -I../../ -DROOT~.
 
 dummy : latemp_targets
 
