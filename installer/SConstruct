@@ -48,6 +48,7 @@ for t in themes:
     t['scons_file'] = env.File('template.wml', 'wml/latemp/themes/' + id + '/')
 
 config_script = env.ConfigScript(target = 'latemp-config', source = 'latemp-config.pl')
+setup_script = env.File('latemp-setup')
 
 wml_install_path = idir_prefix + '/lib/wml/include/'
 latemp_wml_install_path = wml_install_path + 'latemp/'
@@ -58,5 +59,6 @@ for t in themes:
     env.Install(latemp_wml_install_path + 'themes/' + t['id'] + '/', t['scons_file'])
 
 env.Install(idir_prefix + '/bin', config_script)
+env.Install(idir_prefix + '/bin', setup_script)
 env.Alias('install', idir_prefix)
 
