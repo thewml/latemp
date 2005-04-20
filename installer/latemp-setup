@@ -142,7 +142,7 @@ mkpath("$project_dir/lib", 0, 0775);
 $current_file = "$project_dir/lib/MyNavData.pm";
 
 open O, ">", $current_file;
-print O, <<"EOF";
+print O <<"EOF";
 package MyNavData;
 
 my \$hosts =
@@ -153,7 +153,7 @@ my \$hosts =
     },
 };
 
-my $tree_contents =
+my \$tree_contents =
 {
     'host' => "$host",
     'text' => "My Site",
@@ -171,8 +171,8 @@ sub get_params
 {
     return 
         (
-            'hosts' => $hosts,
-            'tree_contents' => $tree_contents,
+            'hosts' => \$hosts,
+            'tree_contents' => \$tree_contents,
         );
 }
 
@@ -181,4 +181,264 @@ EOF
 
 close(O);
 
+mkpath("$project_dir/src/common", 0, 0755);
+mkpath("$project_dir/src/$host", 0, 0755);
+open O, ">", "$project_dir/src/common/style.css";
+print O <<"EOF";
+/*
+    CSS Stylesheet for better-scm.berlios.de
+    Copyright (c) Shlomi Fish, 2003-2005
+    Feel free to use, modify and re-distribute under the terms of the 
+    MIT X11 License (http://www.opensource.org/licenses/mit-license.php)
+
+    \$Id: style.css 175 2005-04-17 07:43:41Z shlomif \$
+*/
+
+a:hover { color : red }
+
+.navbar {
+    float : left;
+    background-color : #C5CAE2;
+    width : 200px;
+    padding-left : 0.5em;
+    padding-top : 0.5em;
+}
+
+.main
+{
+    padding-left : 1em;
+    padding-bottom : 1em;
+    padding-top : 0em;
+    padding-right: 1em;
+    margin-left : 220px;
+    margin-top: 1em;
+    margin-right: 1em;
+    background-color : white;
+    border: thin solid black;
+}
+
+p.desc { margin-left : 3em }
+h2 
+{ 
+    background-color: #FFEE00  
+}
+h2, h3, h4
+{
+    padding-left: 0.3em;
+}
+.main p
+{
+    padding-left : 1em;
+}
+.link { background : transparent; }
+/* Opera has a very wide default for margin-left, which causes the navbar
+   to be misrendered. This rule fixes it.
+   */
+.navbar ul
+{
+    margin-left: 0;
+}
+ul.navbarmain
+{ 
+    padding-left : 1em; 
+    font-size: 80%;
+    font-family: sans-serif;
+}
+ul.navbarnested 
+{ 
+    padding-left : 0em ; 
+    margin-left : 2em;
+}
+.note 
+{ 
+    border-color : black; 
+    border-style : double;
+    padding : 0.5em;
+    background-color : #98FB98; /* PaleGreen */
+}
+.note h2
+{
+   background: transparent;
+}
+ul.my li
+{
+    padding-bottom: 0.5em;
+}
+.righty
+{
+   float: right;
+   text-align: center;
+   font-size: 80%;
+   width: 30%;
+}
+.righty img
+{
+    border : 0;
+}
+.foot_left
+{
+    float : left;
+}
+.webmaster
+{
+    margin-bottom: 0em;
+}
+.vcs
+{    
+    margin-top: 0.5em;
+    clear: left;
+}
+.vcs tt
+{
+    font-size: 83%;
+}
+
+.center
+{
+    text-align : center;
+}
+.nav_links
+{
+    text-align: center;
+    padding-left : 0em;
+    padding-top : 0em;
+}
+.nav_links li
+{
+    display: inline;
+    list-style-type: none;
+    padding-right: 0.2em;
+    padding-top: 0em;
+}
+.leading_path
+{
+    padding-left: 0.5em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    background-color : #40C040;
+    /* background-color: #FF7070; */
+    margin-bottom : 0.2em;
+    font-size: 85%;
+}
+.leading_path :hover
+{
+    color : yellow;
+}
+.footer {
+    clear : both;
+    margin-right : 30px;
+    padding-top: 0.5em;
+}
+/* Workaround to get the <hr /> element at the bottom to properly display 
+   with Konqueror 3.3.x
+   */
+.footer hr
+{
+    width:100%;
+    clear:both;
+}
+tt { color : #8a2be2; }
+pre
+{
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+    background-color: #FF8080;
+    border-width : thin;
+    border-color: #004000;
+    border-style: solid;
+}
+/* Border-less */
+.bless
+{
+    border : none;
+}
+EOF
+
+close(O);
+
+open O, ">", "$project_dir/src/common/print.css";
+print O <<"EOF";
+.navbar 
+{
+    display: none;
+}
+.main
+{
+    background-color : white;
+}
+p.desc { margin-left : 3em }
+.note 
+{ 
+    border-color : black; 
+    border-style : double;
+    padding : 0.5em;
+}
+.righty
+{
+   float: right;
+   text-align: center;
+   font-size: 80%;
+   width: 30%;
+}
+.righty img
+{
+    border : 0;
+}
+.webmaster
+{
+    float : left;
+}
+.center
+{
+    text-align : center;
+}
+.leading_path
+{
+    padding-left: 0.5em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    margin-bottom : 0.2em;
+    border-width : thin;
+    border-color : black;
+    border-style : groove;
+    font-size: 85%;
+}
+.footer {
+    clear : both;
+    margin-right : 30px;
+    padding-top: 0.5em;
+}
+tt { font-weight: bold; }
+pre
+{
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+    border-width : thin;
+    border-color: #004000;
+    border-style: solid;
+}
+/* Border-less */
+.bless
+{
+    border : none;
+}
+EOF
+close(O);
+
+open O, ">", "$project_dir/src/$host/index.html.wml";
+print O <<"EOF";
+#include "template.wml"
+
+<latemp_subject "My Subject" />
+<latemp_version_control_id "\$Id\$" />
+
+EOF
+
+close(O);
+
+print STDERR "Successfully Created Latemp Project";
 
