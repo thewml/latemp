@@ -30,3 +30,7 @@
 {#LATEMP_AFFILIATIONS_BUTTONS#:%body:##}
 </define-tag>
 
+<define-tag latemp_top_left_corner_logo endtag="required" whitespace="delete">
+{#LATEMP_TOP_LEFT_CORNER_LOGO#:%body:##}
+</define-tag>
+

@@ -85,6 +85,7 @@ EOF
 
 close(O);
 
+
 chmod 0755, $current_file;
 
 $current_file = "$project_dir/template.wml";
@@ -125,7 +126,7 @@ WML_FLAGS = -DLATEMP_THEME=$theme
 
 LATEMP_WML_INCLUDE_PATH =\$(shell latemp-config --wml-include-path)
 
-WML_FLAGS += --passoption=2,-X3074 --passoption=3,-I../../lib/ \
+WML_FLAGS += --passoption=2,-X3074 --passoption=3,-I../../lib/ \\
 	--passoption=3,-w -I\$(LATEMP_WML_INCLUDE_PATH) -I../../ -DROOT~.
 
 all: dummy
@@ -174,6 +175,14 @@ my \$tree_contents =
             'text' => "Home",
             'url' => "",
         },
+        {
+            'text' => "About",
+            'url' => "about.html",
+        },
+        {
+            'text' => "Links",
+            'url' => "links.html",
+        },
     ],
 };
 
@@ -188,6 +197,135 @@ sub get_params
 
 1;
 EOF
+
+close(O);
+
+open O, ">", "$project_dir/lib/MyNavLinks.pm";
+print O <<'ENDOFTHEFILE';
+package MyNavLinks;
+
+use strict;
+use warnings;
+
+use vars qw($nav_buttons_html);
+
+use base 'Class::Accessor';
+
+__PACKAGE__->mk_accessors(qw(root nav_links));
+
+use Template;
+
+# load Template::Stash to make method tables visible
+use Template::Stash;
+
+# Define a method to return a substring.
+$Template::Stash::SCALAR_OPS->{ 'substr' } = sub {
+    return substr($_[0], $_[1], $_[2]);
+};
+
+
+sub new
+{
+    my $class = shift;
+    my $self = {};
+    bless $self, $class;
+    $self->initialize(@_);
+    return $self;
+}
+
+sub initialize
+{
+    my $self = shift;
+    my %args = (@_);
+    %{$self} = %args;
+}
+
+sub get_nav_buttons_html
+{
+    my $self = shift;
+
+    my (%args) = (@_);
+    
+    my $with_accesskey = $args{'with_accesskey'};
+
+    my $nav_links = $self->nav_links();
+    my $root = $self->root();    
+
+    my $template = 
+        Template->new(
+        {
+            'POST_CHOMP' => 1,
+        }
+        );
+
+    my @buttons =
+    (
+        { 
+            'dir' => "prev", 
+            'button' => "left", 
+            'title' => "Previous Page",
+        },
+        { 
+            'dir' => "up", 
+            'button' => "up", 
+            'title' => "Up in the Site",
+        },
+        {
+            'dir' => "next", 
+            'button' => "right", 
+            'title' => "Next Page",
+        },
+    );
+
+    foreach my $button (@buttons)
+    {
+        my $dir = $button->{'dir'};
+        if ($button->{'exists'} = exists($nav_links->{$dir}))
+        {
+            $button->{'link'} = $nav_links->{$dir};
+        }
+    }
+    
+    my $vars = 
+    {
+        'buttons' => \@buttons,
+        'root' => $root,
+        'with_accesskey' => $with_accesskey,
+    };
+    
+    my $nav_links_template = <<'EOF';
+[% USE HTML %]
+[% FOREACH b = buttons %]
+[% SET key = b.dir.substr(0, 1) %]
+<li>[
+[% IF b.exists %]
+<a href="[% HTML.escape(b.link) %]" title="[% b.title %] (Alt+[% key FILTER upper %])"
+[% IF with_accesskey %]
+accesskey="[% key %]"
+[% END %]
+>[% END %] [% b.dir %] [% IF b.exists %]</a>
+[% END %]
+]</li>
+[% END %]
+EOF
+    
+    my $nav_buttons_html = "";
+    
+    $template->process(\$nav_links_template, $vars, \$nav_buttons_html);
+    return $nav_buttons_html;
+}
+
+sub get_total_html
+{
+    my $self = shift;
+
+    return "<ul class=\"nav_links\">\n" .
+        $self->get_nav_buttons_html(@_) .
+        "\n</ul>";
+}
+
+1;
+ENDOFTHEFILE
 
 close(O);
 
@@ -448,6 +586,47 @@ print O <<"EOF";
 
 EOF
 
+close(O);
+
+open O, ">", "$project_dir/src/$host/about.html.wml";
+print O <<"EOF";
+#include "template.wml"
+
+<latemp_subject "About this site" />
+<latemp_version_control_id "\$Id\$" />
+
+<p>
+Here you should put information about this site. A good idea may be moving
+it to about/index.html.wml.
+</p>
+
+EOF
+
+close(O);
+
+open O, ">", "$project_dir/src/$host/links.html.wml";
+print O <<"EOF";
+#include "template.wml"
+
+<latemp_subject "Links" />
+<latemp_version_control_id "\$Id\$" />
+
+<h2>Latemp Related Links</h2>
+
+<ul>
+<li>
+<a href="http://web-cpan.berlios.de/latemp/">The Latemp Homepage</a>
+</li>
+<li>
+<a href="http://thewml.org/">Web Meta Language</a>
+</li>
+</ul>
+EOF
+
+close(O);
+
+open O, ">", "$project_dir/unchanged";
+print O "";
 close(O);
 
 print STDERR "Successfully Created Latemp Project.\n";

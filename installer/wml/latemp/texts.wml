@@ -11,10 +11,14 @@ Webmaster: {#LATEMP_WEBMASTER#}
 </define-tag>
 
 <define-tag latemp_license_text whitespace="delete">
-{#LATEMP_LICENSE#} 
+{#LATEMP_LICENSE#}
 </define-tag>
 
 <define-tag latemp_affiliations_buttons_text whitespace="delete">
-{#LATEMP_AFFILIATIONS_BUTTONS#} 
+{#LATEMP_AFFILIATIONS_BUTTONS#}
+</define-tag>
+
+<define-tag latemp_top_left_corner_logo_text whitespace="delete">
+{#LATEMP_TOP_LEFT_CORNER_LOGO#}
 </define-tag>
 
