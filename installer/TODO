@@ -8,3 +8,5 @@
 
 * Create theme-based skeletons with style.css, etc.
 
+* Make sure that a utf8 project sets the appropriate wml flags.
+
