@@ -450,7 +450,7 @@ EOF
 
 close(O);
 
-print STDERR "Successfully Created Latemp Project";
+print STDERR "Successfully Created Latemp Project.\n";
 
 __END__
 
