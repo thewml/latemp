@@ -1,0 +1,139 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use Getopt::Long;
+use File::Path;
+
+my $theme;
+my $project_dir;
+my $host = "mysite";
+my $author = "John Smith";
+my $language = "en-US";
+my $encoding = "utf-8";
+my $remote_path;
+
+GetOptions(
+    "theme=s" => \$theme,
+    "dir=s" => \$project_dir,
+    "host=s", => \$host,
+    "author=s" => \$author,
+    "lang=s" => \$language,
+    "encoding=s" => \$encoding,
+    "remote-path=s" => \$remote_path,
+);
+
+if (!defined($theme))
+{
+    die "You must specify a theme.";
+}
+
+if (!defined($project_dir))
+{
+    die "You must specify a project directory.";
+}
+
+if (!defined($remote_path))
+{
+    die "You must specify a remote path.";
+}
+
+mkpath($project_dir, 0, 0755);
+
+# If mkpath did not suceeed it will throw an exception
+
+my $current_file;
+$current_file = "$project_dir/gen-helpers.pl";
+open O, ">", $current_file;
+print O <<"EOF";
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use HTML::Latemp::GenMakeHelpers;
+
+my \$generator = 
+    HTML::Latemp::GenMakeHelpers->new(
+        'hosts' =>
+        [ 
+            map 
+            { 
+                +{ 'id' => \$_, 'source_dir' => "src/\$_", 
+                   'dest_dir' => "\\\$(ALL_DEST_BASE)/\$_",
+               }, 
+            } 
+            (qw(common $host))
+        ]
+    );
+
+\$generator->process_all();
+
+1;
+EOF
+
+close(O);
+
+chmod 0755, $current_file;
+
+$current_file = "$project_dir/template.wml";
+
+open O, ">", $current_file;
+print O <<"EOF";
+#include "latemp/latemp-main.wml"
+
+<latemp_lang "$language" />
+<latemp_encoding "$encoding" />
+<latemp_common_keywords "" />
+<latemp_author "$author" />
+
+<latemp_webmaster>
+</latemp_webmaster>
+
+<latemp_license>
+</latemp_license>
+
+<latemp_affiliations_buttons>
+</latemp_affiliations_buttons>
+EOF
+
+close(O);
+
+$current_file = "$project_dir/Makefile";
+
+open O, ">", $current_file;
+print O <<"EOF";
+
+RSYNC = rsync --progress --verbose --rsh=ssh
+
+ALL_DEST_BASE = dest
+
+DOCS_COMMON_DEPS = template.wml lib/MyNavData.pm
+
+WML_FLAGS = -DLATEMP_THEME=$theme
+
+LATEMP_WML_INCLUDE_PATH =\$(shell latemp-config --wml-include-path)
+
+WML_FLAGS += --passoption=2,-X3074 --passoption=3,-I../../lib/ \
+	--passoption=3,-w -I\$(LATEMP_WML_INCLUDE_PATH) -I../../ -DROOT~.
+
+all: dummy
+
+%.show:
+	\@echo "\$* = \$(\$*)"
+
+include include.mak
+include rules.mak
+
+dummy : latemp_targets
+
+.PHONY: 
+
+upload_beta: all
+	cd \$(ALL_DEST_BASE)/host && \
+	\$(RSYNC) -r * $remote_path
+EOF
+
+close(O);
+
