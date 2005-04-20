@@ -1,5 +1,8 @@
 Revision history for HTML-Latemp-GenMakeHelpers
 
+0.1.3    2005-04-20
+    - Fixed a bug in which the directory X8X_DEST was not mkdir'ed.
+    
 0.1.2    2005-04-19
-         First version
+    - First version
 

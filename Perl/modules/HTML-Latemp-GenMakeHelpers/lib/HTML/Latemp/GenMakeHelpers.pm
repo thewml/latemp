@@ -5,7 +5,7 @@ use warnings;
 
 use vars qw($VERSION);
 
-$VERSION = '0.1.2';
+$VERSION = '0.1.3';
 
 package HTML::Latemp::GenMakeHelpers::Base;
 
@@ -178,7 +178,7 @@ X8X_SRC_DIR = $source_dir_path
 
 X8X_DEST = $dest_dir
 
-X8X_TARGETS = \$(X8X_DIRS_DEST) \$(X8X_COMMON_DIRS_DEST) \$(X8X_COMMON_IMAGES_DEST) \$(X8X_IMAGES_DEST) \$(X8X_DOCS_DEST) 
+X8X_TARGETS = \$(X8X_DEST) \$(X8X_DIRS_DEST) \$(X8X_COMMON_DIRS_DEST) \$(X8X_COMMON_IMAGES_DEST) \$(X8X_IMAGES_DEST) \$(X8X_DOCS_DEST)
         
 X8X_WML_FLAGS = \$(WML_FLAGS) -DLATEMP_SERVER=x8x
 
@@ -205,7 +205,11 @@ X8X_COMMON_DIRS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_DIRS))
 \$(X8X_COMMON_IMAGES_DEST) :: $h_dest_star : \$(COMMON_SRC_DIR)/%
 	cp -f \$< \$@
 
-\$(X8X_COMMON_DIRS_DEST) :: $h_dest_star : unchanged
+\$(X8X_COMMON_DIRS_DEST)  :: $h_dest_star : unchanged
+	mkdir -p \$@
+	touch \$@
+
+\$(X8X_DEST): unchanged
 	mkdir -p \$@
 	touch \$@
  
