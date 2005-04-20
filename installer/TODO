@@ -1,6 +1,8 @@
-* Install the themes.
-
 * Create the latemp-config script.
+    - Make sure that the perl executable is located and placed in the
+    sh-bang.
 
 * Create the latemp-setup script.
+    - Make sure that the perl executable is located and placed in the
+    sh-bang.
 
