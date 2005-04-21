@@ -13,7 +13,8 @@
 * Do something about the standard version being hard-coded in the theme
 files.
 
-* Add the perl-begin-1 theme.
-
-* Create a common conditional for the breadcrumbs trail a la perl-begin-1.
+* Put the MyNavLink variations on CPAN so people would be able to easily
+install them, and not need to set them up in their own pages.
+    - A Possible pre-requisite is to get the nav_links objects in
+    HTML::Widgets::NavMenu to work.
 
