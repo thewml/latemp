@@ -1,5 +1,27 @@
 #include "template.wml"
 
-<latemp_subject "My Subject" />
+<latemp_subject "Latemp - A Web Meta Language-Based Content Management System" />
 <latemp_version_control_id "$Id$" />
+
+<p>
+Welcome to the homepage of Latemp. Latemp (a play on "Template") is a 
+content management system based on <a href="http://thewml.org/">Website Meta
+Language</a>, a powerful framework for generating static HTML. Latemp allows
+one to create attractive, themable sites, which are very usable, accessible
+and fully standards compliant.
+</p>
+
+<p>
+You can find more information about Latemp in the 
+<a href="$(ROOT)/about/">about page</a>. You can also see 
+<a href="$(ROOT)/examples/">example sites that were prepared with 
+Latemp</a> and view their source code. The
+<a href="$(ROOT)/docs/">documentation page</a> contains various documents
+describing how to use Latemp.
+</p>
+
+<p>
+Finally, you can actually <a href="$(ROOT)/download/">download Latemp</a>
+, set it up and give it a try.
+</p>
 
