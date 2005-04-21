@@ -22,13 +22,13 @@
 </p>
 
 <latemp_top_left_corner_logo_text />
-<latemp_get_html_body_nav_links with_accesskey="1" />
+<latemp_get_html_body_nav_links place="top-left" with_accesskey="1" />
 <div id="nav_menu">
 <latemp_get_nav_menu_html />
 </div>
 
 <latemp_affiliations_buttons_text />
-<latemp_get_html_body_nav_links />
+<latemp_get_html_body_nav_links place="bottom-left" />
 </div>
 
 <div class="main" id="main">
