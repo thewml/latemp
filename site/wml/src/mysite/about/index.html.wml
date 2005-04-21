@@ -40,4 +40,36 @@ a powerful, integrated framework for maintaing static HTML web-sites. This site
 
 <h2>Technologies</h2>
 
+<p>
+Latemp makes use of the following technologies:
+</p>
+<ul>
+<li>
+<a href="http://thewml.org/">Website Meta Language</a> - a powerful HTML 
+generating system.
+</li>
+<li>
+<a href="http://www.gnu.org/software/make/">GNU Make</a> - a building system
+which is a superset of traditional UNIX make. Very powerful and usable.
+</li>
+<li>
+<a href="http://web-cpan.berlios.de/modules/HTML-Widgets-NavMenu/">HTML-Widgets-NavMenu</a> - a CPAN module used to maintain navigation menus and site flow.
+</li>
+<li>
+<a href="http://www.template-toolkit.org/">The Template Toolkit</a> - a 
+powerful templating system for Perl.
+</li>
+<li>
+<a href="http://search.cpan.org/dist/HTML-Latemp-GenMakeHelpers/">HTML-Latemp-GenMakeHelpers</a> -
+a small utility module used to maintain the files list to be inputted to the
+makefile.
+</li>
+</ul>
+
+<p>
+Additionally, in order to install Latemp, you'll need 
+<a href="http://www.scons.org/">SCons</a>, which is a Python-based build 
+system.
+</p>
+
 
