@@ -1,6 +1,10 @@
 import re
 import os
 from Autoscons.AutoBuild import Init
+from Autoscons.Tool import Tool
+import Autoscons.Tool.gzip
+
+gzip_tool = Tool('gzip')
 
 def config_script_bld_action(target, source, env):
     def quote(matchobj):
@@ -23,6 +27,8 @@ package_files = []
 config_script_bld = Builder(action = config_script_bld_action)
 
 env = Environment()
+f = gzip_tool.generate
+f(env)
 env.Append(BUILDERS = {'ConfigScript': config_script_bld})
 
 config_file = 'latemp.conf'
@@ -65,7 +71,7 @@ for file in latemp_wml_files:
 for t in themes:
     env.Install(latemp_wml_install_path + 'themes/' + t['id'] + '/', t['scons_file'])
 
-package = Init("latemp", "0.1.4")
+package = Init("latemp", "0.1.5")
 package.AddToDist(package_files)
 dist_node = package.BuildDist(env)
 env.Alias('dist', dist_node)
