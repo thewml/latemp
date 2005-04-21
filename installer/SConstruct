@@ -18,6 +18,8 @@ def config_script_bld_action(target, source, env):
     f.close()
     os.chmod(target_fn, 0755)
 
+package_files = []
+
 config_script_bld = Builder(action = config_script_bld_action)
 
 env = Environment()
@@ -43,13 +45,17 @@ themes = [
 for file in ['html-header.wml','html-head-tag.wml','h-w-nav-menu.wml', \
         'latemp-main.wml', 'template-params.wml', 'texts.wml', 'utils.wml']:
     latemp_wml_files.append(env.File(file, 'wml/latemp'))
+    package_files.append('wml/latemp/' + file)
 
 for t in themes:
     id = t['id']
     t['scons_file'] = env.File('template.wml', 'wml/latemp/themes/' + id + '/')
+    package_files.append('wml/latemp/themes/' + id + '/' + 'template.wml')
 
 config_script = env.ConfigScript(target = 'latemp-config', source = 'latemp-config.pl')
+package_files.append('latemp-config.pl')
 setup_script = env.File('latemp-setup')
+package_files.append('latemp-setup')
 
 wml_install_path = idir_prefix + '/lib/wml/include/'
 latemp_wml_install_path = wml_install_path + 'latemp/'
@@ -60,6 +66,7 @@ for t in themes:
     env.Install(latemp_wml_install_path + 'themes/' + t['id'] + '/', t['scons_file'])
 
 package = Init("latemp", "0.1.4")
+package.AddToDist(package_files)
 dist_node = package.BuildDist(env)
 env.Alias('dist', dist_node)
 
