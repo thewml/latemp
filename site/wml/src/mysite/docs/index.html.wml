@@ -1,5 +1,8 @@
 #include "template.wml"
 
-<latemp_subject "My Subject" />
+<latemp_subject "Latemp Documentation" />
 <latemp_version_control_id "$Id$" />
 
+<p>
+Nothing is available at the moment.
+</p>
