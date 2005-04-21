@@ -18,3 +18,5 @@ install them, and not need to set them up in their own pages.
     - A Possible pre-requisite is to get the nav_links objects in
     HTML::Widgets::NavMenu to work.
 
+* Fix the bug with the upload_beta target broken in the makefile.
+
