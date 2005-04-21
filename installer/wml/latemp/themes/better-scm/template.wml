@@ -1,3 +1,9 @@
+<define-tag latemp_theme_breadcrumbs_trail_html>
+<div class="leading_path">
+<latemp_get_breadcrumbs_trail_unconditionally />
+</div>
+</define-tag>
+
 <latemp_init_h_w_navmenu />
 
 # The Definition of the page itself
@@ -9,9 +15,7 @@
 <a href="#main">Go to main content</a>
 </p>
 
-<div class="leading_path">
 <latemp_get_breadcrumbs_trail />
-</div>
 <div class="navbar">
 <p style="display:none;">
 <a href="#nav_menu">Go to the navigation menu</a>

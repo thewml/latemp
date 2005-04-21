@@ -1,7 +1,7 @@
 <define-tag latemp_theme_breadcrumbs_trail_html>
 <tr>
 <td colspan="2" class="leading_path">
-<latemp_get_breadcrumbs_trail />
+<latemp_get_breadcrumbs_trail_unconditionally />
 </td>
 </tr>
 </define-tag>
@@ -13,9 +13,7 @@
 <body>
 
 <table summary="Layout Table: The first cell contains a navigation bar, the second the main page" border="0" width="99%">
-<if "<get-var latemp_with_breadcrumbs_trail />"
-    "<latemp_theme_breadcrumbs_trail_html />"
-    />
+<latemp_get_breadcrumbs_trail />
 <tr>
 <td valign="top" class="navbar" style="width:20%">
 
