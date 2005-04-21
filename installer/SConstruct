@@ -48,8 +48,9 @@ Export('env idir_prefix')
 
 latemp_wml_files = []
 
-themes = [ 
-    { 'id':"better-scm" } 
+themes = [
+    { 'id':"better-scm" },
+    { 'id':"perl-begin-1" }
     ]
 
 for file in ['html-header.wml','html-head-tag.wml','h-w-nav-menu.wml', \
