@@ -1,5 +1,19 @@
 #include "template.wml"
 
-<latemp_subject "My Subject" />
+<latemp_subject "Latemp Downloads" />
 <latemp_version_control_id "$Id$" />
+
+<h2>Development Version</h2>
+
+<p>
+<a href="./arcs/latemp-0.1.8.tar.gz">latemp-0.1.8.tar.gz</a> - 
+<b>Latest Development Version</b>
+</p>
+
+<p>
+Currently documentation is a bit scarce and you'll have to learn from the
+examples. See the files <tt>INSTALL</tt> and <tt>README</tt> at the 
+distribution.
+</p>
+
 
