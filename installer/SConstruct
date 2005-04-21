@@ -78,6 +78,7 @@ for t in themes:
 v_file = open('ver.txt', 'rb')
 version = v_file.readline()
 v_file.close()
+package_files.append('ver.txt')
 package = Init("latemp", version)
 package.AddToDist(package_files)
 dist_node = package.BuildDist(env)
