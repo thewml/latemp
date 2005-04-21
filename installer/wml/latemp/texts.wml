@@ -2,10 +2,14 @@
 {#LATEMP_WEBMASTER#} 
 </define-tag>
 
+<define-tag latemp_timestamp_text_helper>
+<latemp_timestamp_wrapper>{#LATEMP_VERSION_CONTROL_ID#}</latemp_timestamp_wrapper>
+</define-tag>
+
 <define-tag latemp_timestamp_text>
-<p class="vcs">
-<b>Version Control ID:</b> <tt>{#LATEMP_VERSION_CONTROL_ID#}</tt>
-</p>
+<if "<get-var latemp_with_timestamp />"
+    "<latemp_timestamp_text_helper />"
+    />
 </define-tag>
 
 <define-tag latemp_license_text whitespace="delete">
