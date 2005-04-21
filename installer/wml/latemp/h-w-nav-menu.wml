@@ -70,11 +70,6 @@ foreach my $key (@keys)
 }
 }:>
 </define-tag>
-<define-tag latemp_get_breadcrumbs_trail>
-<:{ 
-    print $leading_path_string;
-}:>
-</define-tag>
 <define-tag latemp_get_nav_menu_html>
 <:{ print join("\n", @$nav_html); }:>
 </define-tag>
@@ -91,4 +86,17 @@ foreach my $key (@keys)
     print $nav_links_renderer->get_total_html(@params);
 }:>
 <restore with_accesskey />
+</define-tag>
+
+<define-tag latemp_get_breadcrumbs_trail_unconditionally>
+<:{ 
+    print $leading_path_string;
+}:>
+</define-tag>
+
+
+<define-tag latemp_get_breadcrumbs_trail>
+<if "<get-var latemp_with_breadcrumbs_trail />"
+    "<latemp_theme_breadcrumbs_trail_html />"
+    />
 </define-tag>

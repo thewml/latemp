@@ -1,3 +1,4 @@
+<set-var latemp_with_breadcrumbs_trail="1" />
 #include "latemp/latemp-main.wml"
 
 <latemp_lang "en-US" />
@@ -5,7 +6,10 @@
 <latemp_common_keywords "Better SCM, SCM, version control, source control, revision control, source configuration management, CVS, Subversion, BitKeeper, open source, Shlomi Fish" />
 <latemp_author "Shlomi Fish" />
 <latemp_webmaster>
+<p class="webmaster">
+Webmaster:
 <a href="http://www.shlomifish.org/">Shlomi Fish</a> (<a href="mailto:shlomif@iglu.org.il">shlomif@iglu.org.il</a>)
+</p>
 </latemp_webmaster>
 <latemp_license>
 <p>
