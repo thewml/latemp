@@ -1,7 +1,5 @@
 <define-tag latemp_webmaster_text>
-<p class="webmaster">
-Webmaster: {#LATEMP_WEBMASTER#} 
-</p>
+{#LATEMP_WEBMASTER#} 
 </define-tag>
 
 <define-tag latemp_timestamp_text>
