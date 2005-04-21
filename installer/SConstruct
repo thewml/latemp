@@ -1,5 +1,6 @@
 import re
 import os
+from Autoscons.AutoBuild import Init
 
 def config_script_bld_action(target, source, env):
     def quote(matchobj):
@@ -57,6 +58,10 @@ for file in latemp_wml_files:
 
 for t in themes:
     env.Install(latemp_wml_install_path + 'themes/' + t['id'] + '/', t['scons_file'])
+
+package = Init("latemp", "0.1.4")
+dist_node = package.BuildDist(env)
+env.Alias('dist', dist_node)
 
 env.Install(idir_prefix + '/bin', config_script)
 env.Install(idir_prefix + '/bin', setup_script)
