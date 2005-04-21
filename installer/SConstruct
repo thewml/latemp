@@ -75,7 +75,10 @@ for file in latemp_wml_files:
 for t in themes:
     env.Install(latemp_wml_install_path + 'themes/' + t['id'] + '/', t['scons_file'])
 
-package = Init("latemp", "0.1.5")
+v_file = open('ver.txt', 'rb')
+version = v_file.readline()
+v_file.close()
+package = Init("latemp", version)
 package.AddToDist(package_files)
 dist_node = package.BuildDist(env)
 env.Alias('dist', dist_node)
