@@ -167,3 +167,25 @@ pre
 {
     border : none;
 }
+.example
+{
+    border-width : 1.5pt;
+    border-color : darkgreen;
+    border-style: solid;
+    margin-bottom : 1em;
+    background-color: #E0FF80;
+}
+.example:hover
+{    
+    border-color: red;
+    background-color:#C080C0;
+}
+.example:hover a:visited
+{
+    color: #00C0C0;
+}
+.example:hover a:visited:hover
+{
+    color: red;
+}
+

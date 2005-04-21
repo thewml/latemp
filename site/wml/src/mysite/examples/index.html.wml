@@ -1,5 +1,39 @@
 #include "template.wml"
 
-<latemp_subject "My Subject" />
+<latemp_subject "Latemp Example Sites" />
 <latemp_version_control_id "$Id$" />
+
+<define-tag example endtag="required">
+<preserve url source_url text />
+<set-var %attributes>
+<div class="example">
+<h2 class="link"><a href="<get-var url />"><get-var text /></a></h2>
+
+<p>
+<a href="<get-var source_url />"><b>Source</b></a>
+</p>
+
+%body
+</div>
+<restore url source_url text />
+</define-tag>
+
+<example url="$(ROOT)" text="Latemp Homepage" 
+source_url="svn://svn.berlios.de/web-cpan/latemp/trunk/site/wml/">
+<p>
+Yes, we're 
+<a href="http://www.joelonsoftware.com/articles/fog0000000012.html">eating 
+our own dog food</a>. This site is maintained using Latemp.
+</p>
+</example>
+
+<example url="http://www.shlomifish.org/" text="Shlomi Fish' Homepage" 
+source_url="http://stalker.iguide.co.il:8080/svn/shlomif-homepage/homepage/trunk/" >
+<p>
+The homepage of Latemp's originator. A site that spreads across two hosts, with
+a navigation menu, a breadcrumbs trail, navigation links, a site map, and lots
+and lots of pages.
+</p>
+</example>
+
 
