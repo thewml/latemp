@@ -165,7 +165,8 @@ class Package:
 			tnode.add_post_action(DeleteSourceAction)
 			env.AlwaysBuild(tnode)
 			if 'gzip' in env['TOOLS']:
-				cnode = env.Gzip(str(DistDir) + ".tar.gz", tnode)
+				cnode_list = env.Gzip(str(DistDir) + ".tar.gz", tnode)
+				cnode = cnode_list[0]
 				cnode.add_post_action(DeleteSourceAction)
 				env.AlwaysBuild(cnode)
 				self.dist_node = cnode

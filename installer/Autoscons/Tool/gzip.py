@@ -31,6 +31,7 @@ def generate(env):
     except KeyError:
         bld = GzipBuilder
         env['BUILDERS']['Gzip'] = bld
+        env['TOOLS'].append('gzip')
 
 	env['GZIP']        = 'gzip'
     env['GZIPFLAGS']   = '--best'
