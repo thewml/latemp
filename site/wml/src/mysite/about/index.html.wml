@@ -1,5 +1,43 @@
 #include "template.wml"
 
-<latemp_subject "My Subject" />
+<latemp_subject "About Latemp" />
 <latemp_version_control_id "$Id$" />
+
+<h2>History and Motivation</h2>
+
+<p>
+After <a href="http://www.shlomifish.org/">Shlomi Fish</a> has learned HTML,
+and has worked for a web-design company, he maintained his own web-site on
+his University servers by manually editing HTML pages and other such content.
+This, while being sufficient produced relatively uninteresting HTML with
+little resemblence to an integrated site. As he had to maintain some other
+sites he was looking for a better solution.
+</p>
+
+<p>
+He came across <a href="http://thewml.org/">Website Meta Language</a> which
+after he learned, and set up on his Linux servers, allowed him to build 
+integrated, usable and attractive sites. As time went by he created a great
+deal of sites this way, by copying the contents of an old site and adapting
+it to the needs of the new site.
+</p>
+
+<p>
+More recently, he came to the conclusion that he shouldn't duplicate his work
+in so many places. As he came upon older sites, he often found he had to 
+revise their build system or templates to adapt them to the knowledge he 
+acquired more recently. To remedy this, he decided to create a content 
+management system that will allow to maintain multiple sites by abstracting
+the common code.
+</p>
+
+<p>
+This was the birth of Latemp ("Latemp" being a play on the word "Template):
+a powerful, integrated framework for maintaing static HTML web-sites. This site
+, for example was created using Latemp, and so are 
+<a href="$(ROOT)/examples/">others</a>.
+</p>
+
+<h2>Technologies</h2>
+
 
