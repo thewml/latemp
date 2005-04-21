@@ -1,4 +1,5 @@
 <set-var latemp_with_breadcrumbs_trail="1" />
+<set-var latemp_nav_links_allowed_places="top-left bottom-left" />
 #include "latemp/latemp-main.wml"
 
 <latemp_lang "en-US" />

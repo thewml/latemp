@@ -16,11 +16,13 @@
 <latemp_get_breadcrumbs_trail />
 <tr>
 <td valign="top" class="navbar" style="width:20%">
-
+<latemp_top_left_corner_logo_text />
+<latemp_get_html_body_nav_links place="top-left" with_accesskey="1" />
 <latemp_get_nav_menu_html />
 
 <latemp_affiliations_buttons_text />
 
+<latemp_get_html_body_nav_links place="bottom-left" with_accesskey="1" />
 </td>
 <td valign="top" class="main">
 <h1>{#LATEMP_SUBJECT_LOC#}</h1>

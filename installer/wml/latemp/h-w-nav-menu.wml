@@ -73,7 +73,7 @@ foreach my $key (@keys)
 <define-tag latemp_get_nav_menu_html>
 <:{ print join("\n", @$nav_html); }:>
 </define-tag>
-<define-tag latemp_get_html_body_nav_links>
+<define-tag latemp_get_html_body_nav_links_helper>
 <preserve with_accesskey />
 <set-var %attributes />
 <:{
@@ -87,6 +87,20 @@ foreach my $key (@keys)
 }:>
 <restore with_accesskey />
 </define-tag>
+
+<define-tag latemp_get_html_body_nav_links>
+<preserve with_accesskey place />
+<set-var %attributes />
+<if "<match 
+    "<get-var latemp_nav_links_allowed_places />" 
+    "<get-var place />" 
+    action="report"
+    />"
+    "<latemp_get_html_body_nav_links_helper with_accesskey="<get-var with_accesskey />" />"
+    />
+<restore with_accesskey place />
+</define-tag>
+
 
 <define-tag latemp_get_breadcrumbs_trail_unconditionally>
 <:{ 
