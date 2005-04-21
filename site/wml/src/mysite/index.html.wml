@@ -8,7 +8,10 @@ Welcome to the homepage of Latemp. Latemp (a play on "Template") is a
 content management system based on <a href="http://thewml.org/">Website Meta
 Language</a>, a powerful framework for generating static HTML. Latemp allows
 one to create attractive, themable sites, which are very usable, accessible
-and fully standards compliant.
+and fully standards compliant. Latemp is open-source software, fully usable,
+modifiable and distributable under the terms of the 
+<a href="http://www.opensource.org/licenses/mit-license.php">MIT X11 
+license</a>.
 </p>
 
 <p>
