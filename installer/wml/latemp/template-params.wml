@@ -34,3 +34,6 @@
 {#LATEMP_TOP_LEFT_CORNER_LOGO#:%body:##}
 </define-tag>
 
+<define-tag latemp_meta_desc>
+{#LATEMP_META_DESC#:%0:##}
+</define-tag>

@@ -32,7 +32,7 @@
 </div>
 
 <div class="main" id="main">
-<h1>{#LATEMP_SUBJECT_LOC#}</h1>
+<latemp_default_h1_tag />
 {#LATEMP_BODY#}
 
 </div>

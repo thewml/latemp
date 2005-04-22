@@ -25,7 +25,7 @@
 <latemp_get_html_body_nav_links place="bottom-left" with_accesskey="1" />
 </td>
 <td valign="top" class="main">
-<h1>{#LATEMP_SUBJECT_LOC#}</h1>
+<latemp_default_h1_tag />
 {#LATEMP_BODY#}
 
 </td>
