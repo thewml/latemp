@@ -59,3 +59,8 @@ src="$(ROOT)/images/logo-wml.png" alt="Website Meta Language" class="bless"
 width="100" height="50" /></a>
 </p>
 </latemp_affiliations_buttons>
+
+<latemp_extra_head_elements>
+<link rel="alternate stylesheet" type="text/css" href="$(ROOT)/alternate1.css" media="screen, projection" title="Better SCM" />
+</latemp_extra_head_elements>
+
