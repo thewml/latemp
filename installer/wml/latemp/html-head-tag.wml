@@ -11,7 +11,7 @@
     "<link rel="shortcut icon" href="<if "<get-var latemp_favicon_url />" "<get-var latemp_favicon_url />" "$(ROOT)/favicon.ico" />" type="image/x-icon" />" />
     
 <latemp_get_html_head_nav_links />
-
+<latemp_extra_head_elements_text />
 </head>
 </define-tag>
 
