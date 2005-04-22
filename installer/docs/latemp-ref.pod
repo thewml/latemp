@@ -1,0 +1,20 @@
+=head1 Introduction to Latemp
+
+Latemp is a content management system (CMS) for static HTML pages, based
+on Website Meta Language (L<http://thewml.org/>). If you are not already
+familiar with Website Meta Language (from now on - WML), please familiarize
+yourself with it.
+
+There are two ways to start working with Latemp. The first is to start an
+entirely new site. That's what the command C<latemp-setup> is for. Just type
+C<latemp-setup -man> and follow the instructions. The second is to convert
+an existing WML-based site to Latemp. This is a matter of integrating the
+relevant code snippets, makefile excerpets and build logic from an existing
+Latemp project.
+
+This document provides a reference to all the Latemp directives.
+
+=head1 
+
+
+
