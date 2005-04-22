@@ -80,3 +80,19 @@ inside the destination folder.
 This is the Web Meta Language template that is used to control the site-wide
 preferences. It includes the header "latemp/latemp-main.wml" which brings in
 the Latemp logic.
+
+Before and after it one can write other WML directives to control the page
+generation.
+
+=head2 src/common
+
+This sub-directory contains files that are common to all the hosts on which
+your site is spread. Generally, it should contain CSS stylesheets, images
+that serve as backgrounds, buttons, logos, and so forth.
+
+=head2 src/mysite
+
+This sub-directory contains files that are generated for the host "mysite".
+If the file ends with the C<.html.wml> extension it will be pre-processed
+using the C<wml> WML processor. Else, it will be copied verbatim.
+
