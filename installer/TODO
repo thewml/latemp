@@ -24,3 +24,6 @@ install them, and not need to set them up in their own pages.
 
 * Document the <set-var latemp_screen_stylesheet_url + print.
 
+* Make the generated makefile more easily configurable:
+    - Create THEME = mytheme lines.
+

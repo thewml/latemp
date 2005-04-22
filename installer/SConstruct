@@ -52,7 +52,8 @@ doc_files = []
 
 themes = [
     { 'id':"better-scm" },
-    { 'id':"perl-begin-1" }
+    { 'id':"perl-begin-1" },
+    { 'id':"sinorca-2.0" },    
     ]
 
 for file in [ "render.pl", "latemp-ref.pod", "latemp-ref.html" ]:
