@@ -66,3 +66,10 @@ The Tel Aviv Linux Club Web-Site. A simple site with a small number of pages.
 </p>
 </example>
 
+<example url="http://fc-solve.berlios.de/" text="The Freecell Solver Homepage"
+source_url="svn://svn.berlios.de/fc-solve/trunk/fc-solve/site/wml/">
+<p>
+A relatively simple site Latemp-wise, but has a complex underlying build 
+system.
+</p>
+</example>
