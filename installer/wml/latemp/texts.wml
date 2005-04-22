@@ -24,7 +24,11 @@
 {#LATEMP_TOP_LEFT_CORNER_LOGO#}
 </define-tag>
 
-<define-tag latemp_defualt_h1_tag>
+<define-tag latemp_default_h1_tag>
 <if "<get-var latemp_supress_default_h1 />" ""
 "<h1>{#LATEMP_SUBJECT_LOC#}</h1>" />
+</define-tag>
+
+<define-tag latemp_extra_head_elements_text>
+{#LATEMP_EXTRA_HEAD_ELEMENTS#}
 </define-tag>
