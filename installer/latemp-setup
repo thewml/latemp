@@ -142,8 +142,8 @@ dummy : latemp_targets
 
 .PHONY: 
 
-upload_beta: all
-	cd \$(ALL_DEST_BASE)/$host && \
+upload: all
+	cd \$(ALL_DEST_BASE)/$host && \\
 	\$(RSYNC) -r * $remote_path
 EOF
 
