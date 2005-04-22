@@ -25,6 +25,10 @@ dummy : latemp_targets
 
 .PHONY: 
 
+upload: all
+	cd $(ALL_DEST_BASE)/mysite && \
+	$(RSYNC) -r * shlomif@shell.berlios.de:/home/groups/web-cpan/htdocs/latemp/
+
 upload_beta: all
 	cd $(ALL_DEST_BASE)/mysite && \
 	$(RSYNC) -r * shlomif@shell.berlios.de:/home/groups/web-cpan/htdocs/latemp/__Beta-Site/
