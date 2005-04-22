@@ -16,6 +16,13 @@ a
 {
     border: thin solid transparent;
 }
+
+a, .navbar b
+{
+    padding-left: 0.1em;
+    padding-right: 0.1em;    
+}
+
 a:hover 
 { 
     color : magenta;
@@ -26,13 +33,19 @@ a.bless:hover
     border: none;
 }
 
-.navbar {
+.navbar
+{
     float : left;
     background-color : #90EE90;
     width : 200px;
     padding-left : 0.5em;
     padding-top : 0.5em;
     border: black solid thin;
+}
+
+.navbar a:hover, .leading_path a:hover, .footer a:hover
+{
+    border-color: transparent;
 }
 
 .main
@@ -179,7 +192,7 @@ ul.my li
     width: 90%;
     border: 1.5pt solid teal;
 }
-.footer:hover
+.footer:hover, .main:hover, .navbar:hover, .leading_path:hover
 {
     border-color: red;
 }
@@ -210,6 +223,7 @@ pre
 }
 .example
 {
+    margin-left: 1.5em;
     border-width : 1.5pt;
     border-color : darkgreen;
     border-style: solid;
