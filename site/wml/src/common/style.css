@@ -4,7 +4,7 @@
     Feel free to use, modify and re-distribute under the terms of the 
     MIT X11 License (http://www.opensource.org/licenses/mit-license.php)
 
-    $Id: style.css 175 2005-04-17 07:43:41Z shlomif $
+    $Id$
 */
 
 a:hover { color : red }
@@ -178,14 +178,6 @@ pre
 .example:hover
 {    
     border-color: red;
-    background-color:#C080C0;
-}
-.example:hover a:visited
-{
-    color: #00C0C0;
-}
-.example:hover a:visited:hover
-{
-    color: red;
+    background-color:#E0FFA0;
 }
 
