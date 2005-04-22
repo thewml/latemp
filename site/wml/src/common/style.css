@@ -21,6 +21,10 @@ a:hover
     color : magenta;
     border: thin solid blue;
 }
+a.bless:hover
+{
+    border: none;
+}
 
 .navbar {
     float : left;
