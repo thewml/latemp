@@ -224,11 +224,13 @@ pre
 .example
 {
     margin-left: 1.5em;
+    margin-right: 2.5em;
     border-width : 1.5pt;
     border-color : darkgreen;
     border-style: solid;
     margin-bottom : 1em;
     background-color: #E0FF80;
+    padding-right: 0.5em;
 }
 .example:hover
 {    
