@@ -3,6 +3,9 @@
 <latemp_subject "Latemp Documentation" />
 <latemp_version_control_id "$Id$" />
 
+<h2 class="link"><a href="./latemp-ref.html">The Latemp Reference Guide</a></h2>
+
 <p>
-Nothing is available at the moment.
+A document that details all the Latemp workspace files and directives.
 </p>
+
