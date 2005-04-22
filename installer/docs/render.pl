@@ -23,6 +23,15 @@ a:hover { background-color : palegreen; }
 h1 { background-color : #96dd9a; }
 h2 { background-color : #ede550; }
 h3 { background-color : #8080FF; }
+h1, h2, h3
+{
+   padding-left: 0.2em;
+   padding-bottom: 0.1em;
+}
+p, pre, ul, ol
+{
+   margin-left: 1em;
+}
 </style>
 </head>
 <body>
