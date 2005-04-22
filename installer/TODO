@@ -22,3 +22,5 @@ install them, and not need to set them up in their own pages.
 
 * Write documentation.
 
+* Document the <set-var latemp_screen_stylesheet_url + print.
+

@@ -5,8 +5,8 @@
 <meta name="author" content="{#LATEMP_AUTHOR#}" />
 <meta name="description" content="{#LATEMP_META_DESC#}" />
 <meta name="keywords" content="{#LATEMP_COMMON_KEYWORDS#}{#LATEMP_MORE_KEYWORDS#}" />
-<link rel="stylesheet" href="$(ROOT)/style.css" type="text/css" media="screen, projection" title="Normal" />
-<link rel="stylesheet" href="$(ROOT)/print.css" type="text/css" media="print" />
+<link rel="stylesheet" href="<latemp_default_val "<get-var latemp_screen_stylesheet_url />" "$(ROOT)/style.css" />" type="text/css" media="screen, projection" title="Normal" />
+<link rel="stylesheet" href="<latemp_default_val "<get-var latemp_print_stylesheet_url />" "$(ROOT)/print.css" />" type="text/css" media="print" />
 <if "<get-var latemp_with_favicon />"
     "<link rel="shortcut icon" href="<if "<get-var latemp_favicon_url />" "<get-var latemp_favicon_url />" "$(ROOT)/favicon.ico" />" type="image/x-icon" />" />
     
