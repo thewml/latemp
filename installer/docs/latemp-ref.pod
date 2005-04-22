@@ -14,7 +14,69 @@ Latemp project.
 
 This document provides a reference to all the Latemp directives.
 
-=head1 
+=head1 Overview of a Standard Latemp Workspace
 
+This section will provide an overview of a standard latemp workspace. To 
+understand what is going here, invoke the following command:
 
+    latemp-setup --theme=better-scm --dir=my-project \
+        --remote-path=/tmp/my-project-dest
 
+This will create a sample, mostly empty but still functional, Latemp project
+in the my-project sub-directory of the current directory. You can build it by
+cding to this directory and invoking the following commands:
+
+    ./gen-helpers.pl
+    make
+
+Now, let's overview the files there:
+
+=head2 gen-helpers.pl
+
+This file searches for source files that should be used to generate the
+site's contents, and the files C<include.mak> and C<rules.mak> that will
+be included in the makefile. It uses the auxiliary module 
+L<HTML::Latemp::GenMakeHelpers> by default, but can be modified to have
+a different logic, but with common results.
+
+The most important modification that one can do to it is to add another host,
+or rename an existing ones. To do that, just manipulate the following line:
+
+    (qw(common mysite))
+
+And add or remove hosts. Note that you should always keep the C<common> 
+meta-host.
+
+This file should be run whenever files or directories are added or removed
+from the working copy.
+
+=head2 Makefile
+
+This file contains the makefile used to build the project. It can be modified
+as long as it includes C<include.mak> and C<rules.mak> and calls their
+C<latemp_target> template.
+
+=head2 lib/MyNavData.pm
+
+This file contains the definition for the navigation menu and site-flow. 
+Latemp makes use of L<HTML::Widgets::NavMenu> for this, and this module serves
+as an input to it. Read the online documentation of HTML::Widgets::NavMenu
+for more information how to edit this file.
+
+=head2 lib/MyNavLinks.pm
+
+This is a module that is used to generate the HTML navigation links 
+("Previous", "Up" and "Next"). It can be customized by the user to create more 
+sophisticated rendering of them. It should be noted that generating navigation
+links in the C<E<lt>headE<gt>> tag is not dependent on this. 
+
+=head2 unchanged
+
+This is an empty file that is used to control the creation of directories
+inside the destination folder.
+
+=head2 template.wml
+
+This is the Web Meta Language template that is used to control the site-wide
+preferences. It includes the header "latemp/latemp-main.wml" which brings in
+the Latemp logic.
