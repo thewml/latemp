@@ -1,5 +1,15 @@
 #include "template.wml"
 
-<latemp_subject "My Subject" />
+<latemp_subject "Latemp-Related Links" />
 <latemp_version_control_id "$Id$" />
 
+<p>
+This page contains a list of Latemp Related Links.
+</p>
+
+<ul>
+<li>
+<a href="http://thewml.org/">Website Meta Language</a> - a powerful framework 
+for generating static HTML.
+</li>
+</ul>

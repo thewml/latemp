@@ -3,6 +3,14 @@
 <latemp_subject "Latemp Example Sites" />
 <latemp_version_control_id "$Id$" />
 
+<h2>Overview</h2>
+
+<p>
+The best way to get going with Latemp (at least at the moment is to 
+look at examples. This page aims to provide a list of examples, with their
+sources for contributing to everybody's learning experience.
+</p>
+
 <define-tag example endtag="required">
 <preserve url source_url text />
 <set-var %attributes>
@@ -36,4 +44,9 @@ and lots of pages.
 </p>
 </example>
 
-
+<example url="http://perl-begin.berlios.de/" text="The Perl Beginners' Site" 
+source_url="http://opensvn.csie.org/perlbegin/perl-begin/trunk/" >
+<p>
+The Perl Beginners' Site - a portal for people who are new to Perl.
+</p>
+</example>
