@@ -33,3 +33,7 @@ upload_beta: all
 	cd $(ALL_DEST_BASE)/mysite && \
 	$(RSYNC) -r * shlomif@shell.berlios.de:/home/groups/web-cpan/htdocs/latemp/__Beta-Site/
 
+upload_iglu: all
+	cd $(ALL_DEST_BASE)/mysite && \
+	$(RSYNC) -r * shlomif@iglu.org.il:Home-Site/__Latemp-Beta-Site/
+
