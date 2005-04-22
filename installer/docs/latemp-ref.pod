@@ -101,54 +101,79 @@ using the C<wml> WML processor. Else, it will be copied verbatim.
 This section provides an overview of the Latemp-related directives that the
 Latemp-deployer can make use of.
 
-=head2 <latemp_subject "My Subject" />
+=head2 Latemp mp4h tags.
+
+=head3 <latemp_lang "en-US" />
+
+This tag specifies the language as present in the <html> tag C<lang> and
+C<xml:lang> attributes.
+
+=head3 <latemp_encoding "utf-8" />
+
+This tag controls the encoding of the page.
+
+=head3 <latemp_subject "My Subject" />
 
 This directive sets the subject of the page. Generally the subject appears
 within the C<E<lt>titleE<gt>> tag within the HTML C<E<lt>headE<gt>> and 
 possibly also the first C<E<lt>h1E<gt>> tag.
 
-=head2 <latemp_common_keywords "Keyword 1, other keyword" />
+=head3 <latemp_common_keywords "Keyword 1, other keyword" />
 
 This directive sets site-wide keywords to be mentioned in the 
 C<E<lt>meta name="keywords" /E<gt>> tag of the HTML head tag.
 
-=head2 <latemp_more_keywords "Foo, Bar" />
+=head3 <latemp_more_keywords "Foo, Bar" />
 
 This sets additional (usually page specific keywords).
 
-=head2 <latemp_version_control_id "$Id" />
+=head3 <latemp_version_control_id "$Id" />
 
 This sets a version control ID (such as CVS' or Subversion's C<$Id$> string)
 to be used to identify the timestamp of the page.
 
-=head2 <latemp_author "Jonh Smith" />
+=head3 <latemp_author "Jonh Smith" />
 
 This sets the name of the author within the head tag.
 
-=head2 <latemp_webmaster>...</latemp_webmaster>
+=head3 <latemp_webmaster>...</latemp_webmaster>
 
 This sets an HTML portion to identify the webmaster of the site. Note that
 this directive captures what comes between its start and end tags.
 
-=head2 <latemp_license>...</latemp_license>
+=head3 <latemp_license>...</latemp_license>
 
 A License information for the page.
 
-=head2 <latemp_affiliations_buttons>...</latemp_affiliations_buttons>
+=head3 <latemp_affiliations_buttons>...</latemp_affiliations_buttons>
 
 This sets out HTML code for various affiliations links that the site 
 maintainer would like to see in the side-bar.
 
-=head2 <latemp_top_left_corner_logo>...<latemp_top_left_corner_logo>
+=head3 <latemp_top_left_corner_logo>...<latemp_top_left_corner_logo>
 
 An HTML for a Logo to come at the side bar, right before the navigation menu.
 
-=head2 <latemp_meta_desc "My description" />
+=head3 <latemp_meta_desc "My description" />
 
 A description to put inside the appropriate C<E<lt>meta /E<gt>> tag.
 
-=head2 <latemp_extra_head_elements>...</latemp_extra_head_elements>
+=head3 <latemp_extra_head_elements>...</latemp_extra_head_elements>
 
 More HTML to put between the opening and closing C<E<lt>headE<gt>> tags.
 
 
+=head2 Variables with special meaning
+
+=head3 <set-var latemp_with_favicon="!" />
+
+The C<latemp_with_favicon> controls whether a link tag to a favicon should be 
+placed in the HTML head tag.
+
+=head3 <set-var latemp_with_breadcrumbs_trail="1" />
+
+This variable controls whether a breadcrumbs trail 
+(e.g: "Home -> Software -> Games -> Freecell") should be displayed at the
+top of the page.
+
+=head3 

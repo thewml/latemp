@@ -39,7 +39,7 @@ EOF
 
 $parser->parse_from_filehandle(\*I, \*O);
 close(I);
-print O "<body>\n<html>\n";
+print O "</body>\n</html>\n";
 close(O);
 
 1;
