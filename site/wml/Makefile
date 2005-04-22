@@ -27,5 +27,5 @@ dummy : latemp_targets
 
 upload_beta: all
 	cd $(ALL_DEST_BASE)/mysite && \
-	$(RSYNC) -r * shlomif@shell.berlios.de:/home/groups/web-cpan/htdocs/latemp/
+	$(RSYNC) -r * shlomif@shell.berlios.de:/home/groups/web-cpan/htdocs/latemp/__Beta-Site/
 
