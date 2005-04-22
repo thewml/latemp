@@ -48,10 +48,16 @@ Export('env idir_prefix')
 
 latemp_wml_files = []
 
+doc_files = []
+
 themes = [
     { 'id':"better-scm" },
     { 'id':"perl-begin-1" }
     ]
+
+for file in [ "render.pl", "latemp-ref.pod", "latemp-ref.html" ]:
+    doc_files.append(env.File(file, 'docs'))
+    package_files.append('docs/' + file)
 
 for file in ['html-header.wml','html-head-tag.wml','h-w-nav-menu.wml', \
         'latemp-main.wml', 'template-params.wml', 'texts.wml', 'utils.wml']:
