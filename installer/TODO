@@ -20,3 +20,5 @@ install them, and not need to set them up in their own pages.
 
 * Fix the bug with the upload_beta target broken in the makefile.
 
+* Write documentation.
+
