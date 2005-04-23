@@ -10,6 +10,15 @@ This page contains a list of Latemp Related Links.
 <ul>
 <li>
 <a href="http://thewml.org/">Website Meta Language</a> - a powerful framework 
-for generating static HTML.
+for generating static HTML, which Latemp is based on.
+</li>
+<li>
+<a href="http://www.perl.org/">Perl</a> - a portable high-level language with 
+a fast development cycle, and many user-made modules available on 
+<a href="http://www.cpan.org/">CPAN - the Comprehensive Perl Archive 
+Network</a>.
+</li>
+<li>
+<a href="http://web-cpan.berlios.de/modules/HTML-Widgets-NavMenu/">HTML-Widgets-NavMenu</a> - a CPAN module for maintaining navigation menus and site flow.
 </li>
 </ul>
