@@ -212,6 +212,14 @@ If set, overrides the standard stylesheet URL as placed in the HTML head tag.
 
 If set, overrides the URL of the print stylesheet.
 
+=head3 <set-var latemp_with_xml_declaration="1" />
+
+If set, includes an XML declaration:
+
+    <?xml version="1.0" encoding="utf-8" ?>
+
+at the beginning of the document.
+
 =head2 Tags to be defined by the user:
 
 =head3 <define-tag latemp_timestamp_wrapper endtag="required">...</define-tag>

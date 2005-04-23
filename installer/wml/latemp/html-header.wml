@@ -1,5 +1,14 @@
-<define-tag latemp_html_header_xhtml11>
+<define-tag latemp_xml_decl_raw>
 <?xml version="1.0" encoding="{#LATEMP_ENCODING#}"?>
+</define-tag>
+<define-tag latemp_xml_declaration>
+<if "<get-var latemp_with_xml_declaration />"
+    "<latemp_xml_decl_raw />"
+/>
+</define-tag>
+
+<define-tag latemp_html_header_xhtml11>
+<latemp_xml_declaration />
 <!DOCTYPE
     html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
     "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
@@ -7,12 +16,21 @@
 </define-tag>
 
 <define-tag latemp_html_header_xhtml10_strict>
-<?xml version="1.0" encoding="{#LATEMP_ENCODING#}"?>
+<latemp_xml_declaration />
 <!DOCTYPE html 
      PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{#LATEMP_LANG#}" lang="{#LATEMP_LANG#}">
 </define-tag>
+
+<define-tag latemp_html_header_xhtml10_trans>
+<latemp_xml_declaration />
+<!DOCTYPE html 
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{#LATEMP_LANG#}" lang="{#LATEMP_LANG#}">
+</define-tag>
+
 
 <define-tag latemp_html_header>
 <preserve standard />
@@ -20,9 +38,12 @@
 <ifeq "<get-var standard />" "xhtml1.1"
     "<latemp_html_header_xhtml11 />"
 <ifeq "<get-var standard />" "xhtml1.0-strict"
-    "<latemp_html_header_xhtml10_strict />"
+    "<latemp_html_header_xhtml10_strict />"    
+<ifeq "<get-var standard />" "xhtml1.0-trans"
+    "<latemp_html_header_xhtml10_trans />"
     "<ERORORE ASDKOASD KAOSDKASOD KASD OAKSD ASODKSAD S >"
     ;;; To be filled in
+    />
     />
     />
 <restore standard />
