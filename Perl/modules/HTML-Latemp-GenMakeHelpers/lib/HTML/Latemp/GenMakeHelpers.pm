@@ -56,12 +56,14 @@ sub initialize
 
     $self->base_dir("src");
     $self->hosts(
+        [ 
         map { 
             HTML::Latemp::GenMakeHelpers::HostEntry->new(
                 %$_
             ),
         }
         @{$args{'hosts'}}
+        ]
         );
     $self->hosts_id_map(+{ map { $_->{'id'} => $_ } @{$self->hosts()}});
 }
