@@ -204,6 +204,14 @@ This specifies that the timestamp for the page should be rendered.
 This directive causes the default C<E<lt>h1E<gt>> tag with the contents of the
 subject not to be displayed.
 
+=head3 <set-var latemp_screen_stylesheet_url="http://www.myhost.foo/style.css" />
+
+If set, overrides the standard stylesheet URL as placed in the HTML head tag.
+
+=head3 <set-var latemp_print_stylesheet_url="http://www.myhost.foo/print.css" />
+
+If set, overrides the URL of the print stylesheet.
+
 =head2 Tags to be defined by the user:
 
 =head3 <define-tag latemp_timestamp_wrapper endtag="required">...</define-tag>
