@@ -31,4 +31,12 @@ berlios.de</a> - the project page at
 <a href="http://www.berlios.de/">BerliOS</a>. Contains online bug tracker, 
 task list, and other services.
 </li>
+<li>
+<a href="http://www.shlomifish.org/lecture/LAMP/slides/">Web Publishing Using
+LAMP</a> - a presentation <a href="http://www.shlomifish.org/">Shlomi Fish</a>
+wrote about web-publishing using the Linux+Apache+MySQL+Perl/PHP/Python combo.
+Especially of interest is 
+<a href="http://www.shlomifish.org/lecture/LAMP/slides/compatibility/">its 
+designing for compatibility section</a>.
+</li>
 </ul>
