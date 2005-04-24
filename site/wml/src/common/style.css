@@ -21,7 +21,7 @@ body
 
 a:hover 
 { 
-    color : magenta;
+    color : #FF00FF; /* Magenta */
 }
 
 .main a:hover
@@ -161,7 +161,7 @@ ul.my li
     padding-left: 0.5em;
     padding-top: 0.2em;
     padding-bottom: 0.2em;
-    background-color : plum;
+    background-color : #DDA0DD; /* plum */
     /* background-color: #FF7070; */
     font-size: 85%;
     border-color: black;
@@ -222,7 +222,7 @@ pre
     margin-left: 1.5em;
     margin-right: 2.5em;
     border-width : 1.5pt;
-    border-color : darkgreen;
+    border-color : #006400; /* darkgreen; */
     border-style: solid;
     margin-bottom : 1em;
     background-color: #E0FF80;
@@ -242,7 +242,7 @@ pre
 .links li
 {
     margin-bottom: 1em;
-    background-color: lavender;
+    background-color: #E6E6FA; /* lavender; */
     padding-left: 0.3em;
     padding-top: 0.15em;
     padding-bottom: 0.2em;
