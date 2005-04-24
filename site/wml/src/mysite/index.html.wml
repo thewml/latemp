@@ -1,6 +1,6 @@
 #include "template.wml"
 
-<latemp_subject "Latemp - A Web Meta Language-Based Content Management System" />
+<latemp_subject "Latemp - A CMS for Static HTML" />
 <latemp_version_control_id "$Id$" />
 
 <p>
