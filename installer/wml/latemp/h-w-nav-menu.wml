@@ -1,7 +1,6 @@
 <define-tag latemp_init_h_w_navmenu>
 <preserve object_class />
-<set-var object_class="HTML::Widgets::NavMenu" />
-<set-var %attributes />
+<set-var object_class="<latemp_default_val "<get-var latemp_navmenu_object_class />" "HTML::Widgets::NavMenu" />" />
 <:{
 use MyNavData;
 use <get-var object_class />;

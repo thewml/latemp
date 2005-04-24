@@ -32,3 +32,16 @@
 <define-tag latemp_extra_head_elements_text>
 {#LATEMP_EXTRA_HEAD_ELEMENTS#}
 </define-tag>
+
+<define-tag latemp_foot_image_text>
+{#LATEMP_FOOT_IMAGE#}
+</define-tag>
+
+<define-tag latemp_get_end_layout>
+<if <latemp_mynot "<get-var latemp_gen_plain_page />" /> "<latemp_end_layout />" "" />
+</define-tag>
+
+<define-tag latemp_get_start_layout>
+<if <latemp_mynot "<get-var latemp_gen_plain_page />" /> "<latemp_start_layout />" "" />
+</define-tag>
+

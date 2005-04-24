@@ -6,12 +6,13 @@
 </tr>
 </define-tag>
 
-<latemp_init_h_w_navmenu object_class="HTML::Widgets::NavMenu::HeaderRole" />
+<latemp_init_h_w_navmenu />
 
 <latemp_html_header />
 <latemp_html_head_tag />
 <body>
 
+<define-tag latemp_start_layout>
 <table summary="Layout Table: The first cell contains a navigation bar, the second the main page" border="0" width="99%">
 <latemp_get_breadcrumbs_trail />
 <tr>
@@ -25,9 +26,14 @@
 <latemp_get_html_body_nav_links place="bottom-left" with_accesskey="1" />
 </td>
 <td valign="top" class="main">
+</define-tag>
+
+<latemp_get_start_layout />
+
 <latemp_default_h1_tag />
 {#LATEMP_BODY#}
 
+<define-tag latemp_end_layout>
 </td>
 </tr>
 </table>
@@ -35,6 +41,11 @@
 <latemp_webmaster_text />
 <latemp_timestamp_text />
 <latemp_license_text />
+<latemp_foot_image_text />
+</define-tag>
+
+<latemp_get_end_layout />
+
 </body>
 </html>
 

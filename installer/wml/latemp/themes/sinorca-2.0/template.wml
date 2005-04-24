@@ -5,6 +5,7 @@
 <latemp_html_header />
 <latemp_html_head_tag />
 <body>
+<define-tag latemp_start_layout>
     <!-- For non-visual user agents: -->
       <div id="top"><a href="#main-copy" class="doNotDisplay doNotPrint">Skip to main content.</a></div>
 
@@ -33,10 +34,13 @@
     <!-- ##### Main Copy ##### -->
 
     <div id="main-copy">
+</define-tag>
 
+<latemp_get_start_layout />
 
 {#LATEMP_BODY#}
 
+<define-tag latemp_end_layout>
 </div>
     <!-- ##### Footer ##### -->
 
@@ -51,8 +55,11 @@
       <div class="right">
         <latemp_license_text />
       </div>
+      <latemp_foot_image_text />
     </div>
+</define-tag>
 
+<latemp_get_end_layout />
 </body>
 </html>
 

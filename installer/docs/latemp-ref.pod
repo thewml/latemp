@@ -162,6 +162,11 @@ A description to put inside the appropriate C<E<lt>meta /E<gt>> tag.
 
 More HTML to put between the opening and closing C<E<lt>headE<gt>> tags.
 
+=head3 <latemp_foot_image>.../<latemp_foot_image>
+
+This sets the HTML for the image in the footer, which is typically the last
+thing displayed on the page. Use it to define a bottom "Back to my Homepage"
+or "Hosted at MyHosting" footer.
 
 =head2 Variables with special meaning
 
@@ -225,6 +230,17 @@ at the beginning of the document.
 Sets the default HTML standard to be declared in the DOCTYPE. Valid options
 are: "xhtml1.0-trans", "xhtml1.0-strict" and "xhtml1.1". The DOCTYPE defaults
 to XHTML 1.1 Transitional if this variable is not specified.
+
+=head3 <set-var latemp_navmenu_object_class="My::NavMenu" /> 
+
+Sets the class and module for the navigation menu. Defaults to the standard
+"HTML::Widgets::NavMenu".
+
+=head3 <set-var latemp_gen_plain_page="1" />
+
+If set, will generate a page with only the body of the page, and not with a
+sidebar, footer, breadcrumbs trail, etc. Useful for generating a version
+for printing.
 
 =head2 Tags to be defined by the user:
 

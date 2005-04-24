@@ -11,6 +11,7 @@
 <latemp_html_head_tag />
 <body>
 
+<define-tag latemp_start_layout>
 <p style="display:none;">
 <a href="#main">Go to main content</a>
 </p>
@@ -32,9 +33,14 @@
 </div>
 
 <div class="main" id="main">
+</define-tag>
+
+<latemp_get_start_layout />
+
 <latemp_default_h1_tag />
 {#LATEMP_BODY#}
 
+<define-tag latemp_end_layout>
 </div>
 
 <div class="footer">
@@ -49,7 +55,11 @@
 <latemp_timestamp_text />
 </div>
 
+<latemp_foot_image_text />
 </div>
+</define-tag>
+
+<latemp_get_end_layout />
 
 </body>
 </html>
