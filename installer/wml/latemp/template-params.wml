@@ -41,3 +41,8 @@
 <define-tag latemp_extra_head_elements endtag="required" whitespace="delete">
 {#LATEMP_EXTRA_HEAD_ELEMENTS#:%body:##}
 </define-tag>
+
+<define-tag latemp_foot_image endtag="required" whitespace="delete">
+{#LATEMP_FOOT_IMAGE#:%body:##}
+</define-tag>
+
