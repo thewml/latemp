@@ -7,7 +7,7 @@
 This page contains a list of Latemp Related Links.
 </p>
 
-<ul>
+<ul class="links">
 <li>
 <a href="http://thewml.org/">Website Meta Language</a> - a powerful framework 
 for generating static HTML, which Latemp is based on.

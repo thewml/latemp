@@ -234,4 +234,21 @@ pre
     background-color:#E0FFA0;
 }
 
-
+.links
+{
+    list-style-position: inside;
+    padding-left: 1em;
+}
+.links li
+{
+    margin-bottom: 1em;
+    background-color: lavender;
+    padding-left: 0.3em;
+    padding-top: 0.15em;
+    padding-bottom: 0.2em;
+    padding-right: 0.3em;
+}
+.links a
+{
+    font-weight: bold;
+}
