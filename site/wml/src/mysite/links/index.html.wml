@@ -39,4 +39,9 @@ Especially of interest is
 <a href="http://www.shlomifish.org/lecture/LAMP/slides/compatibility/">its 
 designing for compatibility section</a>.
 </li>
+<li>
+<a href="http://subversion.tigris.org/">Subversion</a> - a powerful and
+convenient version control system, used to maintain the source for Latemp
+and many sites built using it. Highly recommended.
+</li>
 </ul>
