@@ -2,7 +2,7 @@
 ;;; http://www.oswd.org/viewdesign.phtml?id=1165&referer=%2Fsearch.php%3Fsearchstring%3Dsinorca%26tab%3Ddescription
 <latemp_init_h_w_navmenu />
 
-<latemp_html_header standard="xhtml1.0-strict" />
+<latemp_html_header />
 <latemp_html_head_tag />
 <body>
     <!-- For non-visual user agents: -->
