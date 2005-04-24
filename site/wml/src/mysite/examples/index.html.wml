@@ -35,6 +35,14 @@ our own dog food</a>. This site is maintained using Latemp.
 </p>
 </example>
 
+<example url="http://better-scm.berlios.de/" text="Better SCM Site" 
+source_url="http://opensvn.csie.org/betterscm/better-scm-site/trunk/">
+<p>
+A single-host site with many pages, and sophisticated site flow and 
+navigation controls. Little was added above what Latemp provides.
+</p>
+</example>
+
 <example url="http://www.shlomifish.org/" text="Shlomi Fish' Homepage" 
 source_url="http://stalker.iguide.co.il:8080/svn/shlomif-homepage/homepage/trunk/" >
 <p>
