@@ -5,7 +5,7 @@ use warnings;
 
 use vars qw($VERSION);
 
-$VERSION = '0.1.3';
+$VERSION = '0.1.4';
 
 package HTML::Latemp::GenMakeHelpers::Base;
 
