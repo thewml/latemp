@@ -12,22 +12,23 @@ body
     background-image: url(images/wood022.jpg); 
 }
 
-a
+.main a
 {
     border: thin solid transparent;
-}
-
-a, .navbar b
-{
     padding-left: 0.1em;
-    padding-right: 0.1em;    
+    padding-right: 0.1em;        
 }
 
 a:hover 
 { 
     color : magenta;
+}
+
+.main a:hover
+{
     border: thin solid blue;
 }
+
 a.bless:hover
 {
     border: none;
@@ -41,11 +42,6 @@ a.bless:hover
     padding-left : 0.5em;
     padding-top : 0.5em;
     border: black solid thin;
-}
-
-.navbar a:hover, .leading_path a:hover, .footer a:hover
-{
-    border-color: transparent;
 }
 
 .main
