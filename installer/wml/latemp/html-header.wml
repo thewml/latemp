@@ -35,6 +35,8 @@
 <define-tag latemp_html_header>
 <preserve standard />
 <set-var %attributes />
+<set-var standard="<latemp_default_val "<get-var standard />" "<get-var latemp_html_standard />" />" />
+<set-var standard="<latemp_default_val "<get-var standard />" "xhtml1.0-trans" />" />
 <ifeq "<get-var standard />" "xhtml1.1"
     "<latemp_html_header_xhtml11 />"
 <ifeq "<get-var standard />" "xhtml1.0-strict"

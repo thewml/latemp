@@ -220,6 +220,12 @@ If set, includes an XML declaration:
 
 at the beginning of the document.
 
+=head3 <set-var latemp_html_standard="xhtml11" />
+
+Sets the default HTML standard to be declared in the DOCTYPE. Valid options
+are: "xhtml1.0-trans", "xhtml1.0-strict" and "xhtml1.1". The DOCTYPE defaults
+to XHTML 1.1 Transitional if this variable is not specified.
+
 =head2 Tags to be defined by the user:
 
 =head3 <define-tag latemp_timestamp_wrapper endtag="required">...</define-tag>
