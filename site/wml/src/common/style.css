@@ -10,6 +10,7 @@
 body
 {
     background-image: url(images/wood022.jpg); 
+    background-attachment: fixed;
 }
 
 .main a
