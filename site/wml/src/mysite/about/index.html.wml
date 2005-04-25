@@ -40,7 +40,7 @@ a powerful, integrated framework for maintaing static HTML web-sites. This site
 
 <h2 id="features">Features</h2>
 
-<ul>
+<ul class="links">
 <li>
 Generates Static HTML Files.
 </li>
@@ -80,6 +80,12 @@ contact, a timestamp, and a foot image.
 <li>
 Supports generating plain pages (without any additional content or layout
 aside from the body).
+</li>
+<li>
+Supported <tt>&lt;head&gt;</tt> elements: <tt>&lt;title&gt;</tt> tag,
+"author", "description" and "keywords" &lt;meta&gt; elements,
+Stylesheets (screen and print), favicon, Mozilla/Opera-style navigation 
+links, and customizable user-defined text to be inserted there.
 </li>
 </ul>
 
