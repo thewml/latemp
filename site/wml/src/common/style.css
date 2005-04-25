@@ -242,7 +242,6 @@ pre
 .links li
 {
     margin-bottom: 1em;
-    background-color: #E6E6FA; /* lavender; */
     padding-left: 0.3em;
     padding-top: 0.15em;
     padding-bottom: 0.2em;
@@ -252,3 +251,8 @@ pre
 {
     font-weight: bold;
 }
+.links li:hover
+{
+    background-color: #E6FAE6;
+}
+
