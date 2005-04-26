@@ -28,17 +28,17 @@
       <stop
          id="stop2347"
          offset="0.23364486"
-         style="stop-color:#000000;stop-opacity:0.49803922;" />
+         style="stop-color:#780ccb;stop-opacity:1.0000000;" />
       <stop
-         style="stop-color:#000000;stop-opacity:0;"
-         offset="1"
+         style="stop-color:#818181;stop-opacity:1.0000000;"
+         offset="1.0000000"
          id="stop2343" />
     </linearGradient>
     <linearGradient
-       y2="374.31464"
-       x2="190.47841"
-       y1="315.22729"
-       x1="190.47841"
+       y2="183.43912"
+       x2="204.72853"
+       y1="147.79912"
+       x1="204.72853"
        spreadMethod="pad"
        gradientUnits="userSpaceOnUse"
        id="linearGradient2056"
@@ -54,7 +54,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="1.5475126"
      inkscape:cx="216.47643"
-     inkscape:cy="682.47398"
+     inkscape:cy="812.62725"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:window-width="772"
@@ -80,17 +80,24 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
+    <rect
+       y="434.59662"
+       x="45.233879"
+       height="142.16362"
+       width="332.79211"
+       id="rect2058"
+       style="fill:#004beb;fill-opacity:1.0000000;fill-rule:nonzero;stroke:none;stroke-width:2.0000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000" />
     <text
        xml:space="preserve"
-       style="font-family:Crillee;stroke-opacity:1.0000000;stroke-linejoin:miter;stroke-linecap:butt;stroke-width:1.0000000pt;stroke:none;fill-opacity:1.0;fill:url(#linearGradient2056);text-anchor:start;writing-mode:lr-tb;line-height:100.00000%;font-stretch:normal;font-weight:normal;font-variant:normal;font-style:normal;font-size:72.000000"
-       x="45.724232"
-       y="360.63086"
+       style="writing-mode:lr-tb;text-anchor:start;font-family:Crillee;stroke-opacity:1.0000000;stroke-linejoin:miter;stroke-linecap:butt;stroke-width:1.0000000pt;stroke:none;fill-opacity:1.0;fill:url(#linearGradient2056);font-stretch:normal;font-weight:normal;font-variant:normal;font-style:normal;font-size:72.000000"
+       x="63.817783"
+       y="191.3269"
        id="text1288"
        sodipodi:linespacing="100.00000%"><tspan
+         style="fill-opacity:1.0"
          sodipodi:role="line"
          id="tspan1290"
-         x="45.724232"
-         y="360.63086"
-         style="fill-opacity:1.0;fill:url(#linearGradient2056)">Latemp</tspan></text>
+         x="63.817783"
+         y="191.32690">Latemp</tspan></text>
   </g>
 </svg>
