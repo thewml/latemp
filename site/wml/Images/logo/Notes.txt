@@ -1,0 +1,22 @@
+Possible fonts:
+
+* Amazone BT
+* Clarendon BT
+* Crillee
+* Diner
+* Paramount
+* Pythagoras
+* Raleigh BT
+* Times
+
+Not good:
+
+* Georgia.
+    - same as Times
+* Quill
+    - I don't like its effect.
+* Pegasus
+     - unsuitable.
+* Quorum Blk BT
+* Poster
+* Serifa BT
