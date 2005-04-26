@@ -10,7 +10,7 @@
 </define-tag>
 
 #include "latemp/latemp-main.wml"
-#include "affiliations.wml"
+#include "shlomif/affiliations.wml"
 
 <latemp_lang "en-US" />
 <latemp_encoding "utf-8" />
