@@ -60,6 +60,13 @@ class="bless"><img
 src="$(ROOT)/images/logo-wml.png" alt="Website Meta Language" class="bless" 
 width="100" height="50" /></a>
 </p>
+<p>
+<a href="http://web-cpan.berlios.de/latemp/" title="Made with Latemp" 
+class="bless"><img 
+src="$(ROOT)/images/latemp-button-rounded.png" alt="Made with Latemp" 
+class="bless" /></a>
+</p>
+
 </latemp_affiliations_buttons>
 
 <latemp_extra_head_elements>
