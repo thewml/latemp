@@ -101,15 +101,19 @@
          sodipodi:role="line">Latemp</tspan></text>
     <text
        transform="scale(1.143061,0.874844)"
-       sodipodi:linespacing="100%"
+       sodipodi:linespacing="130%"
        id="text1300"
-       y="306.12366"
-       x="51.127987"
-       style="font-size:26.273561;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Denmark;text-anchor:start;writing-mode:lr-tb"
+       y="306.83005"
+       x="175.19931"
+       style="font-size:22.816566;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Denmark;text-anchor:middle;writing-mode:lr-tb"
        xml:space="preserve"><tspan
-         y="306.12366"
-         x="51.127987"
+         y="306.83005"
+         x="175.19931"
          id="tspan1302"
-         sodipodi:role="line">Static HTML CMS</tspan></text>
+         sodipodi:role="line">Static HTML</tspan><tspan
+         y="336.49158"
+         x="175.19931"
+         id="tspan1306"
+         sodipodi:role="line">Content Management</tspan></text>
   </g>
 </svg>
