@@ -37,9 +37,10 @@ a.bless:hover
 .navbar
 {
     float : left;
-    background-color : #90EE90;
+    background-color : #EEEEA0;
     width : 200px;
     padding-left : 0.5em;
+    padding-right : 0.5em;
     padding-top : 0.5em;
     border: black solid thin;
 }
@@ -50,7 +51,7 @@ a.bless:hover
     padding-bottom : 1em;
     padding-top : 0em;
     padding-right: 1em;
-    margin-left : 220px;
+    margin-left : 240px;
     margin-right: 1em;
     background-color : white;
     border: thin solid black;
@@ -255,4 +256,12 @@ pre
 {
     background-color: #E6FAE6;
 }
-
+.logo
+{
+    margin-top: 0.5em;
+    text-align: center;
+}
+.logo img
+{
+    border : none;
+}
