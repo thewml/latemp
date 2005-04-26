@@ -7,11 +7,11 @@ DOCS_COMMON_DEPS = template.wml lib/MyNavData.pm
 
 WML_FLAGS = -DLATEMP_THEME=better-scm
 
-LATEMP_WML_INCLUDE_PATH =$(shell latemp-config --wml-include-path)
+LATEMP_WML_FLAGS =$(shell latemp-config --wml-flags)
 
 WML_FLAGS += --passoption=2,-X3074 --passoption=3,-I../../lib/ \
-	--passoption=3,-w -I$(LATEMP_WML_INCLUDE_PATH) -I../../ -DROOT~. \
-    -I../../lib/
+	--passoption=3,-w $(LATEMP_WML_FLAGS) -I../../ -DROOT~. \
+    -I../../lib/ -I/home/shlomi/.latemp/lib
 
 all: dummy
 
