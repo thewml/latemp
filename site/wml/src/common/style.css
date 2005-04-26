@@ -44,7 +44,10 @@ a.bless:hover
     padding-top : 0.5em;
     border: black solid thin;
 }
-
+.navbar, .leading_path, .footer
+{
+    margin-left: 10px;
+}
 .main
 {
     padding-left : 1em;
@@ -52,9 +55,15 @@ a.bless:hover
     padding-top : 0em;
     padding-right: 1em;
     margin-left : 240px;
-    margin-right: 1em;
+    margin-right: 10pt;
     background-color : white;
     border: thin solid black;
+}
+
+/* This is so the footer will be separated from the two other divs. */
+.main, .navbar
+{
+    margin-bottom: 1em;
 }
 
 p.desc { margin-left : 3em }
@@ -168,26 +177,28 @@ ul.my li
     border-color: black;
     border-width: thin;
     border-style: solid;
-    margin-bottom: 0.2em;
-    margin-right: 1em;
+    margin-top: 5pt;
+    margin-bottom: 0.5em;
+    margin-right: 10pt;
 }
 .leading_path :hover
 {
     color : yellow;
 }
-.footer 
+.main, .navbar
 {
-    display: table;
+    height: auto;
+}
+.footer
+{
     clear: both;
-    margin-right : 30px;
-    background-color: white;
-    margin-top: 0.5em;
-    margin-right: 1em;
     background-color: white;
     padding-left: 1em;
     padding-right: 1em;
-    width: 90%;
     border: 1.5pt solid teal;
+    margin-right: 10pt;
+    margin-bottom: 1em;
+    overflow: hidden;
 }
 .footer:hover, .main:hover, .navbar:hover, .leading_path:hover
 {
