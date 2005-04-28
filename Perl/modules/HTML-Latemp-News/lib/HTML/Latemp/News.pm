@@ -429,6 +429,10 @@ L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=HTML-Latemp-News>.
 I will be notified, and then you'll automatically be notified of progress on
 your bug as I make changes.
 
+=head1 SEE ALSO
+
+L<XML::RSS>, L<HTML::Widgets::NavMenu>.
+
 =head1 ACKNOWLEDGEMENTS
 
 =head1 COPYRIGHT & LICENSE
