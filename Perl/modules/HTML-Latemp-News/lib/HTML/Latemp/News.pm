@@ -146,6 +146,90 @@ sub initialize
     return 0;
 }
 
+=head1 DESCRIPTION
+
+This is a module that maintains news item for a web-site. It can generate
+an RSS feed, as well as a news page, and an HTML newsbox, all from the same
+data.
+
+=head1 FUNCTION
+
+=head2 HTML::Latemp::News->new(...)
+
+This is the constructor for the news manager. It accepts the following named
+parameters:
+
+=over 8
+
+=item 'news_items'
+
+This is a reference to a list of news_items. See below.
+
+=item 'title'
+
+The title of the RSS feed.
+
+=item 'link'
+
+The link to the homepage of the site.
+
+=item 'language'
+
+The language of the text.
+
+=item 'copyright'
+
+The copyright notice of the text.
+
+=item 'webmaster'
+
+The Webmaster.
+
+=item 'managing_editor'
+
+The managing editor.
+
+=item 'description'
+
+A description of the news feed as will be put in the RSS feed.
+
+=back
+
+=head3 Format of the news_items
+
+The news_items is a reference to an array, of which each element is a hash
+reference. The hash may contain the following keys:
+
+=over 8
+
+=item 'title'
+
+The title of the item.
+
+=item 'id'
+
+The ID of the item. This will also be used to calculate URLs.
+
+=item 'description'
+
+A text description explaining what the item is all about.
+
+=item 'author'
+
+The author of the item.
+
+=item 'date'
+
+A string representing the daet.
+
+=item 'category'
+
+The cateogry of the item.
+
+=back
+
+=cut
+
 sub add_item_to_rss_feed
 {
     my $self = shift;
@@ -235,6 +319,14 @@ sub generate_rss_feed
     $rss_feed->save($filename);
 }
 
+=head2 $news_manager->generate_rss_feed('output_filename' => "rss.xml")
+
+This generates an RSS feed. It accepts two named arguments. 
+C<'output_filename'> is the name of the RSS file to write to. C<'num_items'>
+is the number of items to include, which defaults to 10.
+
+=cut
+
 sub get_navmenu_items
 {
     my $self = shift;
@@ -252,6 +344,14 @@ sub get_navmenu_items
     }
     return \@ret;
 }
+
+=head2 $news_manager->get_navmenu_items('num_items' => 5)
+
+This generates navigation menu items for input to the navigation menu of
+L<HTML::Widgets::NavMenu>. It accepts a named argument C<'num_items'> which
+defaults to 10.
+
+=cut
 
 sub format_news_page_item
 {
@@ -279,6 +379,12 @@ sub get_news_page_entries
     return $html;
 }
 
+=head2 $news_manager->get_news_page_entries('num_items' => 5)
+
+This generates HTML for the news page. 
+
+=cut
+
 sub get_news_box
 {
     my $self = shift;
@@ -300,6 +406,12 @@ sub get_news_box
     $html .= qq{</div>\n};
     return $html;
 }
+
+=head2 $news_manager->get_news_box('num_items' => 5)
+
+This generates an HTML news box with the recent headlines.
+
+=cut
 
 1;
 
