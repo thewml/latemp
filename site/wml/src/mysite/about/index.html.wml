@@ -87,6 +87,10 @@ Supported <tt>&lt;head&gt;</tt> elements: <tt>&lt;title&gt;</tt> tag,
 Stylesheets (screen and print), favicon, Mozilla/Opera-style navigation 
 links, and customizable user-defined text to be inserted there.
 </li>
+<li>
+Supports a unified management of news items with navigation menu entries,
+a news box, an RSS Feed, and news page entries.
+</li>
 </ul>
 
 <h2 id="technologies">Technologies</h2>
@@ -115,6 +119,11 @@ powerful templating system for Perl.
 a small utility module used to maintain the files list to be inputted to the
 makefile.
 </li>
+<li>
+<a href="http://search.cpan.org/dist/HTML-Latemp-News/">HTML-Latemp-News</a> -
+a module for managing news items.
+</li>
+
 </ul>
 
 <p>
