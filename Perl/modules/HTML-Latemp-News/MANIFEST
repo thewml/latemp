@@ -5,5 +5,4 @@ META.yml # Will be created by "make dist"
 README
 lib/HTML/Latemp/News.pm
 t/00-load.t
-t/pod-coverage.t
 t/pod.t
