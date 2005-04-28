@@ -276,3 +276,19 @@ pre
 {
     border : none;
 }
+.image_list
+{
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    background-color: #FF80FF;
+}
+.image_list li
+{
+    vertical-align: middle;
+    margin-bottom: 0.5em;
+}
+.image_list img
+{
+    vertical-align:middle;
+}
+

@@ -38,6 +38,11 @@ my $tree_contents =
             'title' => "Complete Example Sites",
         },
         {
+            'text' => "Graphics",
+            'url' => "graphics/",
+            'title' => "Latemp Buttons, Logos and other Graphics",
+        },
+        {
             'separator' => 1,
             'skip' => 1,
         },

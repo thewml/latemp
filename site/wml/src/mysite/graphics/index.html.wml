@@ -1,0 +1,60 @@
+#include "template.wml"
+
+<latemp_subject "Latemp Graphics" />
+<latemp_version_control_id "$Id$" />
+
+<p>
+Here one can find Latemp Graphics. All the graphics here was created using
+<a href="http://www.inkscape.org/">Inkscape</a> - a cross-platform vector
+graphics editor.
+</p>
+
+<h2>Latemp Logo</h2>
+
+<img src="$(ROOT)/images/latemp-logo.png" alt="The Latemp Logo" 
+class="bless" />
+
+<p>
+This is the Latemp logo. Also available is the 
+<a href="./latemp-logo.svg">source in SVG Format</a>.
+</p>
+
+<h2>Latemp Buttons</h2>
+
+<div class="image_list">
+<ul>
+<li>
+<img src="$(ROOT)/images/latemp-button.png" alt="Large Latemp Button with Yellow Background" />
+</li>
+<li>
+<img src="$(ROOT)/images/latemp-button-white.png" alt="Large Latemp Button with White Background"/>
+</li>
+<li>
+<img src="$(ROOT)/images/latemp-button-white-sans.png" alt="Small Latemp Button with Sans-Serif Font and White Background" />
+</li>
+<li>
+<img src="$(ROOT)/images/latemp-button-rounded.png" alt="Small Latemp Button with Sans-Serif Font, a White Background and Rounded Corners" />
+</li>
+</ul>
+</div>
+
+<p>
+Here are some buttons that you can use to link from your Latemp created site
+back here. Here are the SVG files:
+</p>
+
+<ul>
+<li>
+<a href="latemp-button.svg">latemp-button.svg</a>
+</li>
+<li>
+<a href="latemp-button-white.svg">latemp-button-white.svg</a>
+</li>
+<li>
+<a href="latemp-button-rounded.svg">latemp-button-rounded.svg</a>
+</li>
+<li>
+<a href="latemp-button-white-gill-sans.svg">latemp-button-white-gill-sans.svg</a>
+</li>
+</ul>
+
