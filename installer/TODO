@@ -23,5 +23,5 @@ install them, and not need to set them up in their own pages.
 
 * Add the XHTML 1.0 Transitional DOCTYPE
 
-* Create a logo + "Created using Latemp" button + mini-button.
-
+* Add a meta-file to a working area saying which version of Latemp generated
+it.
