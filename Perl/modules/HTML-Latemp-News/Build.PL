@@ -9,7 +9,7 @@ my $builder = Module::Build->new(
     dist_version_from   => 'lib/HTML/Latemp/News.pm',
     requires => {
         'Test::More' => 0,
-        'Class::Accesor' => 0,
+        'Class::Accessor' => 0,
         'CGI' => 0,
         'XML::RSS' => 0,
     },
