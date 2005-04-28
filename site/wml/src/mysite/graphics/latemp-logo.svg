@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:xml="http://www.w3.org/XML/1998/namespace"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   sodipodi:docname="latemp-logo.svg"
+   sodipodi:docbase="/home/shlomi/progs/wml/Latemp/latemp/trunk/site/wml/Images/logo"
+   inkscape:version="0.41"
+   sodipodi:version="0.32"
+   id="svg2"
+   height="1052.3622047"
+   width="744.09448819">
+  <defs
+     id="defs3">
+    <linearGradient
+       id="linearGradient2070">
+      <stop
+         id="stop2072"
+         offset="0.0000000"
+         style="stop-color:#9c9c9c;stop-opacity:1.0000000;" />
+      <stop
+         id="stop2074"
+         offset="1.0000000"
+         style="stop-color:#fbfbfb;stop-opacity:1.0000000;" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient2339">
+      <stop
+         id="stop2341"
+         offset="0.0000000"
+         style="stop-color:#36d21c;stop-opacity:1.0000000;" />
+      <stop
+         style="stop-color:#780ccb;stop-opacity:1.0000000;"
+         offset="0.23364486"
+         id="stop2347" />
+      <stop
+         id="stop2343"
+         offset="1.0000000"
+         style="stop-color:#818181;stop-opacity:1.0000000;" />
+    </linearGradient>
+    <linearGradient
+       gradientTransform="translate(3.230992,42.00289)"
+       y2="183.43912"
+       x2="204.72853"
+       y1="147.79912"
+       x1="204.72853"
+       spreadMethod="pad"
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient1298"
+       xlink:href="#linearGradient2339"
+       inkscape:collect="always" />
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       y2="232.90671"
+       x2="128.16599"
+       y1="450.07196"
+       x1="131.49345"
+       gradientTransform="matrix(1.267546,0.000000,0.000000,0.600968,29.99065,27.71562)"
+       id="linearGradient2078"
+       xlink:href="#linearGradient2070"
+       inkscape:collect="always" />
+    <linearGradient
+       y2="232.90671"
+       x2="128.16599"
+       y1="450.07196"
+       x1="131.49345"
+       gradientTransform="matrix(1.267546,0.000000,0.000000,0.600968,29.99065,27.71562)"
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient2088"
+       xlink:href="#linearGradient2070"
+       inkscape:collect="always" />
+    <linearGradient
+       y2="183.43912"
+       x2="204.72853"
+       y1="147.79912"
+       x1="204.72853"
+       spreadMethod="pad"
+       gradientTransform="translate(3.230992,42.00289)"
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient2090"
+       xlink:href="#linearGradient2339"
+       inkscape:collect="always" />
+  </defs>
+  <sodipodi:namedview
+     inkscape:window-y="0"
+     inkscape:window-x="244"
+     inkscape:window-height="590"
+     inkscape:window-width="772"
+     inkscape:current-layer="layer1"
+     inkscape:document-units="px"
+     inkscape:cy="771.39038"
+     inkscape:cx="216.47643"
+     inkscape:zoom="1.5475126"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base" />
+  <metadata
+     id="metadata4">
+    <rdf:RDF
+       id="RDF5">
+      <cc:Work
+         id="Work6"
+         rdf:about="">
+        <dc:format
+           id="format7">image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+           id="type9" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <g
+       inkscape:export-ydpi="54.787716"
+       inkscape:export-xdpi="54.787716"
+       transform="translate(-17.44735,13.57017)"
+       id="g2080">
+      <rect
+         y="162.54715"
+         x="45.880074"
+         height="147.97940"
+         width="312.11377"
+         id="rect1308"
+         style="fill:url(#linearGradient2088);fill-opacity:1.0000000;fill-rule:nonzero;stroke:none;stroke-width:2.0000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000" />
+      <text
+         sodipodi:linespacing="100.00000%"
+         id="text1288"
+         y="233.32979"
+         x="67.048775"
+         style="font-size:72.000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:url(#linearGradient2090);fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Crillee;text-anchor:start;writing-mode:lr-tb"
+         xml:space="preserve"><tspan
+           y="233.32979"
+           x="67.048775"
+           id="tspan1290"
+           sodipodi:role="line">Latemp</tspan></text>
+      <text
+         transform="scale(1.143061,0.874844)"
+         sodipodi:linespacing="130%"
+         id="text1300"
+         y="306.83005"
+         x="175.19931"
+         style="font-size:22.816566;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Denmark;text-anchor:middle;writing-mode:lr-tb"
+         xml:space="preserve"><tspan
+           y="306.83005"
+           x="175.19931"
+           id="tspan1302"
+           sodipodi:role="line">Static HTML</tspan><tspan
+           y="336.49158"
+           x="175.19931"
+           id="tspan1306"
+           sodipodi:role="line">Content Management</tspan></text>
+    </g>
+    <rect
+       style="fill:#004beb;fill-opacity:1.0000000;fill-rule:nonzero;stroke:none;stroke-width:2.0000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000"
+       id="rect2058"
+       width="332.79211"
+       height="142.16362"
+       x="45.233879"
+       y="434.59662" />
+  </g>
+</svg>
