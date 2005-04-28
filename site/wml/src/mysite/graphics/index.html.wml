@@ -58,3 +58,13 @@ back here. Here are the SVG files:
 </li>
 </ul>
 
+<h2>Latemp Sticker Button</h2>
+
+<img src="$(ROOT)/images/latemp-sticker.png" 
+alt="Small Latemp &quot;Sticker&quote; Button" />
+
+<p>
+This is a sample sticker button for Latemp created using Adam Kalsey's 
+<a href="http://www.kalsey.com/tools/buttonmaker/">Button Maker</a>.
+</p>
+
