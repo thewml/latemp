@@ -1,6 +1,6 @@
 package Bundle::Latemp;
 
-$VERSION = '0.2.0';
+$VERSION = '0.2.1';
 
 1;
 
@@ -8,7 +8,7 @@ __END__
 
 =head1 NAME
 
-Bundle::Sites::BetterScm - A bundle to install external CPAN modules used by 
+Bundle::Latemp - A bundle to install external CPAN modules used by 
 the Latemp Content Management System 
 
 =head1 SYNOPSIS
