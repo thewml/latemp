@@ -1,6 +1,6 @@
 package Bundle::Latemp;
 
-$VERSION = '0.2.1';
+$VERSION = '0.2.2';
 
 1;
 
@@ -45,6 +45,8 @@ File::Path
 Getopt::Long
 
 HTML::Latemp::GenMakeHelpers
+
+HTML::Latemp::NavLinks::GenHtml
 
 HTML::Latemp::News
 
