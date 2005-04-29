@@ -58,6 +58,7 @@ use vars qw($nav_links_renderer);
 
 $nav_links_renderer = MyNavLinks->new(
         'nav_links' => $nav_links,
+        'nav_links_obj' => $nav_links_obj,
         'root' => "$(ROOT)",
         );
 }:>
