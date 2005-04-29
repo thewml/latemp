@@ -5,5 +5,6 @@ META.yml # Will be created by "make dist"
 README
 lib/HTML/Latemp/NavLinks/GenHtml.pm
 lib/HTML/Latemp/NavLinks/GenHtml/ArrowImages.pm
+lib/HTML/Latemp/NavLinks/GenHtml/Text.pm
 t/00-load.t
 t/pod.t
