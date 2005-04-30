@@ -21,7 +21,6 @@ install them, and not need to set them up in their own pages.
 * Write documentation.
     - write documentation for theme creators.
 
-* Add the XHTML 1.0 Transitional DOCTYPE
-
 * Add a meta-file to a working area saying which version of Latemp generated
 it.
+
