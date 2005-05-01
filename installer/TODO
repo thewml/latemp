@@ -13,10 +13,8 @@
 * Do something about the standard version being hard-coded in the theme
 files.
 
-* Put the MyNavLink variations on CPAN so people would be able to easily
-install them, and not need to set them up in their own pages.
-    - A Possible pre-requisite is to get the nav_links objects in
-    HTML::Widgets::NavMenu to work.
+* Modify NavLinks::GenHtml to make use of the extra attributes in 
+nav_links_obj.
 
 * Write documentation.
     - write documentation for theme creators.
@@ -25,4 +23,16 @@ install them, and not need to set them up in their own pages.
 it.
 
 * Document news-management.wml.
+
+* Set up MyManageNews along with the site template.
+
+* Split the include into a prelude (that defines all the functions) and a
+driver (that lays out the page).
+
+* Create a variable for the theme, and include the theme page using the
+mp4h include directive. (try it at first)
+
+* Test for internationalization.
+
+* Enable processing of template toolkit-processed files.
 
