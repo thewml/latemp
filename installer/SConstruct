@@ -61,7 +61,8 @@ for file in [ "render.pl", "latemp-ref.pod", "latemp-ref.html" ]:
     package_files.append('docs/' + file)
 
 for file in ['html-header.wml','html-head-tag.wml','h-w-nav-menu.wml', \
-        'latemp-main.wml', 'template-params.wml', 'texts.wml', 'utils.wml']:
+        'latemp-main.wml', 'news-management.wml', 'template-params.wml', 
+        'texts.wml', 'utils.wml']:
     latemp_wml_files.append(env.File(file, 'wml/latemp'))
     package_files.append('wml/latemp/' + file)
 

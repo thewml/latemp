@@ -4,5 +4,6 @@
 #include "latemp/template-params.wml"
 #include "latemp/texts.wml"
 #include "latemp/html-head-tag.wml"
+#include "latemp/news-management.wml"
 #include "latemp/themes/$(LATEMP_THEME)/template.wml"
 
