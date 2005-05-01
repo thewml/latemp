@@ -1,7 +1,15 @@
 These are the installation instructions.
 
-Install "scons" (http://www.scons.org/) and type "scons -Q install" to
-install.
+First install the "Bundle::Latemp" bundle from CPAN:
+
+    # perl -MCPANPLUS -e "install Bundle::Latemp"
+
+Or if you don't have CPANPLUS installed:
+
+    # perl -MCPAN -e "install Bundle::Latemp"
+
+Afterwards, install "scons" (http://www.scons.org/) and type 
+"scons -Q install" to install.
 
 By default it will be installed under "/usr/local". If you'd like to install
 under a different prefix, specify it using the PREFIX parameter:
