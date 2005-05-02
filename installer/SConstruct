@@ -22,14 +22,16 @@ def config_script_bld_action(target, source, env):
     f.close()
     os.chmod(target_fn, 0755)
 
+
 package_files = []
 
 config_script_bld = Builder(action = config_script_bld_action)
+scp_bld = Builder(action = 'scp $SOURCE shlomif@shell.berlios.de:/home/groups/web-cpan/htdocs/latemp/download/arcs/')
 
 env = Environment()
 f = gzip_tool.generate
 f(env)
-env.Append(BUILDERS = {'ConfigScript': config_script_bld})
+env.Append(BUILDERS = {'ConfigScript': config_script_bld, 'Upload':scp_bld})
 
 config_file = 'latemp.conf'
 opts = Options(config_file)
@@ -60,6 +62,8 @@ for file in [ "render.pl", "latemp-ref.pod", "latemp-ref.html" ]:
     doc_files.append(env.File(file, 'docs'))
     package_files.append('docs/' + file)
 
+env.Alias('build', env.Command('docs/latemp-ref.html', 'docs/latemp-ref.pod', "cd docs && perl render.pl"))
+
 for file in ['html-header.wml','html-head-tag.wml','h-w-nav-menu.wml', \
         'latemp-main.wml', 'news-management.wml', 'template-params.wml', 
         'texts.wml', 'utils.wml']:
@@ -72,6 +76,7 @@ for t in themes:
     package_files.append('wml/latemp/themes/' + id + '/' + 'template.wml')
 
 config_script = env.ConfigScript(target = 'latemp-config', source = 'latemp-config.pl')
+env.Alias('build', config_script)
 package_files.append('latemp-config.pl')
 setup_script = env.File('latemp-setup')
 package_files.append('latemp-setup')
@@ -95,8 +100,8 @@ package = Init("latemp", version)
 package.AddToDist(package_files)
 dist_node = package.BuildDist(env)
 env.Alias('dist', dist_node)
+env.Alias('dist_upload', env.Upload("h67jk343jvnsidnvnoisd", "latemp-" + version + ".tar.gz"))
 
 add_install(idir_prefix + '/bin', config_script)
 add_install(idir_prefix + '/bin', setup_script)
-# env.Alias('install', idir_prefix)
 
