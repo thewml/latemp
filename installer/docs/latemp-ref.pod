@@ -168,6 +168,18 @@ This sets the HTML for the image in the footer, which is typically the last
 thing displayed on the page. Use it to define a bottom "Back to my Homepage"
 or "Hosted at MyHosting" footer.
 
+=head3 <latemp_news_get_news_box_contents />
+
+This retrieves the HTML of a news box. The news box contains one HTML 
+C<E<lt>liE<gt>> tag for each news item, with summaries and links. See
+"News Management below".
+
+=head3 <latemp_news_get_news_page_entries />
+
+This retrieves the HTML of the entries for display in the news page. See "News
+Management below".
+
+
 =head2 Variables with special meaning
 
 =head3 <set-var latemp_with_favicon="!" />
