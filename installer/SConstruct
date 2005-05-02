@@ -76,13 +76,16 @@ package_files.append('latemp-config.pl')
 setup_script = env.File('latemp-setup')
 package_files.append('latemp-setup')
 
+def add_install(install_path, the_file):
+    env.Alias('install', env.Install(install_path, the_file))
+
 wml_install_path = idir_prefix + '/lib/wml/include/'
 latemp_wml_install_path = wml_install_path + 'latemp/'
 for file in latemp_wml_files:
-    env.Install(latemp_wml_install_path, file)
+    add_install(latemp_wml_install_path, file)
 
 for t in themes:
-    env.Install(latemp_wml_install_path + 'themes/' + t['id'] + '/', t['scons_file'])
+    add_install(latemp_wml_install_path + 'themes/' + t['id'] + '/', t['scons_file'])
 
 v_file = open('ver.txt', 'rb')
 version = v_file.readline()
@@ -93,7 +96,7 @@ package.AddToDist(package_files)
 dist_node = package.BuildDist(env)
 env.Alias('dist', dist_node)
 
-env.Install(idir_prefix + '/bin', config_script)
-env.Install(idir_prefix + '/bin', setup_script)
-env.Alias('install', idir_prefix)
+add_install(idir_prefix + '/bin', config_script)
+add_install(idir_prefix + '/bin', setup_script)
+# env.Alias('install', idir_prefix)
 
