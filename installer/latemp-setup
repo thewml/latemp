@@ -33,6 +33,7 @@ GetOptions(
 pod2usage(1) if $help;
 pod2usage(-exitstatus => 0, -verbose => 2) if $man;
 
+my $host_uc = uc($host);
 
 if (!defined($theme))
 {
@@ -88,6 +89,29 @@ close(O);
 
 chmod 0755, $current_file;
 
+open O, ">", "$project_dir/gen-feeds.pl";
+print O <<'EOF';
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use MyManageNews;
+use Getopt::Long;
+
+my $rss2_out = "dest/rss.xml";
+GetOptions ("rss2-out=s" => \$rss2_out);
+
+my $news_manager = get_news_manager();
+
+$news_manager->generate_rss_feed(
+    'output_filename' => $rss2_out,
+);
+
+1;
+EOF
+close(O);
+
 $current_file = "$project_dir/template.wml";
 
 open O, ">", $current_file;
@@ -120,7 +144,7 @@ RSYNC = rsync --progress --verbose --rsh=ssh
 
 ALL_DEST_BASE = dest
 
-DOCS_COMMON_DEPS = template.wml lib/MyNavData.pm
+DOCS_COMMON_DEPS = template.wml lib/MyNavData.pm lib/MyManageNews.pm
 
 WML_FLAGS = -DLATEMP_THEME=$theme
 
@@ -138,7 +162,15 @@ all: dummy
 include include.mak
 include rules.mak
 
+# Add news_feeds to this target if you want to generate an RSS feed.
 dummy : latemp_targets
+
+RSS_FEED = \$(${host_uc}_DEST)/rss.xml
+
+news_feeds: \$(RSS_FEED)
+
+\$(RSS_FEED): gen-feeds.pl lib/MyManageNews.pm
+	perl -Ilib gen-feeds.pl --rss2-out="\$\@"
 
 .PHONY: 
 
@@ -157,6 +189,11 @@ open O, ">", $current_file;
 print O <<"EOF";
 package MyNavData;
 
+use strict;
+use warnings;
+
+use MyManageNews;
+
 my \$hosts =
 {
     '$host' =>
@@ -164,6 +201,29 @@ my \$hosts =
         'base_url' => "http://myhost.mydomain/",
     },
 };
+
+my \$news_manager = get_news_manager();
+
+sub get_news_category
+{
+    my \$items = \$news_manager->get_navmenu_items('num_items' => 5);
+    if (\@\$items)
+    {
+        return
+        {
+            'text' => "News",
+            'url' => "news/",
+            'subs' =>
+            [
+                \@\$items,
+            ],
+        },
+    }
+    else
+    {
+        return ();
+    }
+}
 
 my \$tree_contents =
 {
@@ -180,6 +240,7 @@ my \$tree_contents =
             'text' => "About",
             'url' => "about.html",
         },
+        get_news_category(),
         {
             'text' => "Links",
             'url' => "links.html",
@@ -189,7 +250,7 @@ my \$tree_contents =
 
 sub get_params
 {
-    return 
+    return
         (
             'hosts' => \$hosts,
             'tree_contents' => \$tree_contents,
@@ -199,6 +260,67 @@ sub get_params
 1;
 EOF
 
+close(O);
+
+open O, ">", "$project_dir/lib/MyManageNews.pm";
+print O <<"EOF";
+package MyManageNews;
+
+use base 'Exporter';
+
+our \@EXPORT=(qw(get_news_manager));
+
+use strict;
+use warnings;
+
+use HTML::Latemp::News;
+
+my \@news_items =
+(
+    (map 
+        { 
+            +{\%\$_, 
+                'author' => "$author", 
+                'category' => "My Site Category", 
+            }
+        }
+        (
+            # TODO: Fill Items Here.
+        ),
+    )
+);
+
+sub gen_news_manager
+{
+    return
+        HTML::Latemp::News->new(
+            'news_items' => \\\@news_items,
+            'title' => "My Site News",
+            'link' => "http://www.link-to-my-site.tld/",
+            'language' => "en-US",
+            'copyright' => "Copyright by $author, (c) 2005",
+            'webmaster' => "$author <author\\\@domain.org>",
+            'managing_editor' => "$author <author\\\@domain.org>",
+            'description' => "News of the My Site",
+        );
+}
+
+# A singleton.
+{
+    my \$news_manager;
+
+    sub get_news_manager
+    {
+        if (!defined(\$news_manager))
+        {
+            \$news_manager = gen_news_manager();
+        }
+        return \$news_manager;
+    }
+}
+
+1;
+EOF
 close(O);
 
 open O, ">", "$project_dir/lib/MyNavLinks.pm";
