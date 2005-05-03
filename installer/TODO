@@ -10,9 +10,6 @@
 
 * Make sure that a utf8 project sets the appropriate wml flags.
 
-* Do something about the standard version being hard-coded in the theme
-files.
-
 * Modify NavLinks::GenHtml to make use of the extra attributes in 
 nav_links_obj.
 
@@ -23,8 +20,6 @@ nav_links_obj.
 it.
 
 * Document news-management.wml.
-
-* Set up MyManageNews along with the site template.
 
 * Split the include into a prelude (that defines all the functions) and a
 driver (that lays out the page).
