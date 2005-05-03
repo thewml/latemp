@@ -105,3 +105,6 @@ env.Alias('dist_upload', env.Upload("h67jk343jvnsidnvnoisd", "latemp-" + version
 add_install(idir_prefix + '/bin', config_script)
 add_install(idir_prefix + '/bin', setup_script)
 
+# Set the default target to build.
+env.Default('build');
+
