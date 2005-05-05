@@ -172,7 +172,7 @@ or "Hosted at MyHosting" footer.
 
 This retrieves the HTML of a news box. The news box contains one HTML 
 C<E<lt>liE<gt>> tag for each news item, with summaries and links. See
-"News Management below".
+"News Management" below.
 
 =head3 <latemp_news_get_news_page_entries />
 
@@ -261,3 +261,28 @@ for printing.
 C<%body> contains the version control ID as passed from 
 C<E<lt>latemp_version_control_id /E<gt>> and this wraps it in a display
 for the user.
+
+=head1 News Management
+
+To manage news one populates the C<@news_items> array in the file 
+C<lib/MyManageNews.pm> in your distribution. Generall the fields C<'author'>
+and C<'category'> will be common to all the items. (If not - specify them 
+explicitly in every item). Other items are specified in the 
+L<HTML::Latemp::News> man page. An example news item is brought here:
+
+        {
+            'title' => "Changes of 18-April-2005",
+            'id' => "changes-2005-04-18",
+            'description' => q{Around 18 April, 2005, Jane's Site has seen a 
+                lot of changes. Click the link for details on them.},
+            'date' => "2005-04-18",
+            'author' => "Jane Smith",
+            'category' => "Jane's Site",
+        },
+
+This will propogate the news into the navigation menu, etc. See the 
+news-related tags above for embedding news related content into your pages.
+
+If you want to build an RSS feed, you should add the C<news_feeds> target to
+the C<dummy>-invoked  targets in the makefile.
+
