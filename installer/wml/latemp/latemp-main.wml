@@ -5,5 +5,5 @@
 #include "latemp/texts.wml"
 #include "latemp/html-head-tag.wml"
 #include "latemp/news-management.wml"
-#include "latemp/themes/$(LATEMP_THEME)/template.wml"
+<include file=latemp/themes/"<latemp_default_val "<get-var latemp_theme />" "$(LATEMP_THEME)"/>"/template.wml />
 

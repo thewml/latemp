@@ -7,7 +7,7 @@ use <get-var object_class />;
 use CGI qw();
 use MyNavLinks;
 
-my $filename = "$(LATEMP_FILENAME)";
+my $filename = "<latemp_default_val "<get-var latemp_filename />" "$(LATEMP_FILENAME)" />";
 $filename =~ s!index\.html$!!;
 $filename = "/$filename";
 
@@ -15,7 +15,7 @@ use vars qw($nav_bar);
 
 $nav_bar = <get-var object_class />->new(
     'path_info' => $filename,
-    'current_host' => "$(LATEMP_SERVER)",
+    'current_host' => "<latemp_default_val "<get-var latemp_server />" "$(LATEMP_SERVER)" />",
     MyNavData::get_params(),
     'ul_classes' => [ "navbarmain", ("navbarnested") x 10 ],
     );
