@@ -19,15 +19,13 @@ nav_links_obj.
 * Add a meta-file to a working area saying which version of Latemp generated
 it.
 
-* Document news-management.wml.
-
 * Split the include into a prelude (that defines all the functions) and a
 driver (that lays out the page).
-
-* Create a variable for the theme, and include the theme page using the
-mp4h include directive. (try it at first)
 
 * Test for internationalization.
 
 * Enable processing of template toolkit-processed files.
+
+* Add a tag to retrieve relative links using the HTML::Widgets::NavMenu 
+get_relative_url function.
 

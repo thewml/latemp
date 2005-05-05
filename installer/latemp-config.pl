@@ -22,7 +22,12 @@ if ($opt_wml_include_path)
 }
 if ($opt_wml_flags)
 {
-    print "-I$wml_include_path -I" . $ENV{'HOME'} . "/.latemp/lib/". "\n";
+    my @inc_paths = 
+    (
+        $wml_include_path, 
+        ($ENV{'HOME'} . "/.latemp/lib/")
+    );
+    print join(" ", (map { "-I$_ --passoption=2,-I$_" } @inc_paths)) . "\n";
     exit;
 }
 

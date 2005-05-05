@@ -182,7 +182,23 @@ Management below".
 
 =head2 Variables with special meaning
 
-=head3 <set-var latemp_with_favicon="!" />
+=head3 <set-var latemp_theme="better-scm" />
+
+This variable specifies the theme to be used by Latemp. If it isn't specified
+the theme defaults to the value of the C<$(LATEMP_THEME)> pre-processor macro.
+
+=head3 <set-var latemp_filename="docs/index.html" />
+
+This variable specifies the path of the file relative to the server's
+root. If it is not specified, it defaults to C<$(LATEMP_FILENAME)>.
+
+=head3 <set-var latemp_server="myhost" />
+
+This variable specifies the server of the current file for input to 
+L<HTML::Widgets::NavMenu>. If not specified, it defaults to 
+C<$(LATEMP_SERVER)>.
+
+=head3 <set-var latemp_with_favicon="1" />
 
 The C<latemp_with_favicon> controls whether a link tag to a favicon should be 
 placed in the HTML head tag.
@@ -213,8 +229,6 @@ In the bottom of the side bar.
 =head3 <set-var latemp_with_timestamp="1" />
 
 This specifies that the timestamp for the page should be rendered.
-
-=head3
 
 =head3 <set-var latemp_supress_default_h1="1" />
 
@@ -261,6 +275,28 @@ for printing.
 C<%body> contains the version control ID as passed from 
 C<E<lt>latemp_version_control_id /E<gt>> and this wraps it in a display
 for the user.
+
+=head2 IPP Preprocessor Macros
+
+=head3 $(LATEMP_THEME)
+
+This specifies the default theme to be used if the C<latemp_theme> variable
+is not specified.
+
+=head3 $(LATEMP_FILENAME)
+
+This specifies the default filename of the file relative to the root directory 
+of the host to be used if the C<latemp_filename> variable is not specified.
+
+=head3 $(LATEMP_SERVER)
+
+This specifies the default server to be used if the C<latemp_server> variable
+is not set.
+
+=head3 $(ROOT)
+
+This variable gives a path to the root directory of the current server. It can 
+be used to construct relative links.
 
 =head1 News Management
 
