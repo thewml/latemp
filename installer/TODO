@@ -1,13 +1,5 @@
-* Make sure that a utf8 project sets the appropriate wml flags.
-
-* Modify NavLinks::GenHtml to make use of the extra attributes in
-nav_links_obj.
-
 * Add a meta-file to a working area saying which version of Latemp generated
 it.
-
-* Generalize the HTML head - let the users specify URLs for the stylesheet
-etc.
 
 Delay to later:
 ---------------
@@ -30,3 +22,10 @@ latemp-setup and latemp-config.
 
 * Create theme-based skeletons with style.css, etc.
 
+* Modify NavLinks::GenHtml to make use of the extra attributes in
+nav_links_obj.
+
+Things to investigate:
+----------------------
+
+* Make sure that a utf8 project sets the appropriate wml flags.
