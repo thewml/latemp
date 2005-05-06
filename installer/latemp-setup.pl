@@ -6,6 +6,7 @@ use warnings;
 use Getopt::Long;
 use File::Path;
 use Pod::Usage;
+use YAML qw();
 
 my $version = "<<<VERSION>>>";
 my $prefix = "<<<PREFIX>>>";
@@ -51,6 +52,12 @@ if (!defined($project_dir))
 if (!defined($remote_path))
 {
     die "You must specify a remote path.";
+}
+
+if (-e $project_dir)
+{
+    die "The directory $project_dir already exists! Cannot overwrite " .
+        "existing directory.";
 }
 
 mkpath($project_dir, 0, 0755);
@@ -644,7 +651,23 @@ open O, ">", "$project_dir/unchanged";
 print O "";
 close(O);
 
+my $latemp_params =
+{
+    'version' => $version,
+    'prefix' => $prefix,
+    'program' => 
+    {
+        'name' => "Latemp",
+        'author' => "Shlomi Fish",
+    },
+    'versioning_scheme' => 0,
+};
+
+YAML::DumpFile("$project_dir/params-latemp.yml", $latemp_params);
+
 print STDERR "Successfully Created Latemp Project.\n";
+
+1;
 
 __END__
 
