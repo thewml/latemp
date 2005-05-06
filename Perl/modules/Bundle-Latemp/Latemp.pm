@@ -1,6 +1,6 @@
 package Bundle::Latemp;
 
-$VERSION = '0.2.2';
+$VERSION = '0.2.3';
 
 1;
 
@@ -54,7 +54,9 @@ HTML::Widgets::NavMenu
 
 Pod::Usage
 
-Template 
+Template
+
+YAML
 
 =head1 DESCRIPTION
 
