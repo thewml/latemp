@@ -209,6 +209,11 @@ This variable controls whether a breadcrumbs trail
 (e.g: "Home -> Software -> Games -> Freecell") should be displayed at the
 top of the page.
 
+=head3 <set-var latemp_with_head_meta_tags="1" />
+
+This variable controls whether the "author", "description" and "keywords"
+C<<< <meta /> >>> tags should be inserted into the HTML head.
+
 =head3 <set-var latemp_nav_links_allowed_places="top-left bottom-left" />
 
 This should give a whitespace-separated list of places to render the HTML

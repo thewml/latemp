@@ -1,10 +1,16 @@
+<define-tag latemp_html_head_tag_meta_tags>
+<meta name="author" content="{#LATEMP_AUTHOR#}" />
+<meta name="description" content="{#LATEMP_META_DESC#}" />
+<meta name="keywords" content="{#LATEMP_COMMON_KEYWORDS#}{#LATEMP_MORE_KEYWORDS#}" />
+</define-tag>
+
 <define-tag latemp_html_head_tag>
 <head>
 <title>{#LATEMP_SUBJECT_LOC#}</title>
 <meta http-equiv="Content-Type" content="text/html; charset={#LATEMP_ENCODING#}" />
-<meta name="author" content="{#LATEMP_AUTHOR#}" />
-<meta name="description" content="{#LATEMP_META_DESC#}" />
-<meta name="keywords" content="{#LATEMP_COMMON_KEYWORDS#}{#LATEMP_MORE_KEYWORDS#}" />
+<if "<get-var latemp_with_head_meta_tags />"
+    "<latemp_html_head_tag_meta_tags />"
+    />
 <link rel="stylesheet" href="<latemp_default_val "<get-var latemp_screen_stylesheet_url />" "$(ROOT)/style.css" />" type="text/css" media="screen, projection" title="Normal" />
 <link rel="stylesheet" href="<latemp_default_val "<get-var latemp_print_stylesheet_url />" "$(ROOT)/print.css" />" type="text/css" media="print" />
 <if "<get-var latemp_with_favicon />"
