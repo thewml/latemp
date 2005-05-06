@@ -1,26 +1,10 @@
-* Create the latemp-config script.
-    - Make sure that the perl executable is located and placed in the
-    sh-bang.
-
-* Create the latemp-setup script.
-    - Make sure that the perl executable is located and placed in the
-    sh-bang.
-
-* Create theme-based skeletons with style.css, etc.
-
 * Make sure that a utf8 project sets the appropriate wml flags.
 
-* Modify NavLinks::GenHtml to make use of the extra attributes in 
+* Modify NavLinks::GenHtml to make use of the extra attributes in
 nav_links_obj.
-
-* Write documentation.
-    - write documentation for theme creators.
 
 * Add a meta-file to a working area saying which version of Latemp generated
 it.
-
-* Split the include into a prelude (that defines all the functions) and a
-driver (that lays out the page).
 
 * Generalize the HTML head - let the users specify URLs for the stylesheet
 etc.
@@ -38,4 +22,11 @@ get_relative_url function.
 
 * Test for internationalization.
 
+* Write documentation.
+    - write documentation for theme creators.
+
+* Make sure that the perl executable is located and placed in the sh-bang in
+latemp-setup and latemp-config.
+
+* Create theme-based skeletons with style.css, etc.
 

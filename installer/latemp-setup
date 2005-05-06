@@ -121,6 +121,8 @@ print O <<"EOF";
 
 # You can put some customizations here
 
+<set-var latemp_with_head_meta_tags="1" />
+
 # Actually start the page template.
 #include "latemp/latemp-driver.wml"
 <latemp_lang "$language" />
