@@ -1,0 +1,7 @@
+#include "latemp/utils.wml"
+#include "latemp/html-header.wml"
+#include "latemp/h-w-nav-menu.wml"
+#include "latemp/template-params.wml"
+#include "latemp/texts.wml"
+#include "latemp/html-head-tag.wml"
+#include "latemp/news-management.wml"

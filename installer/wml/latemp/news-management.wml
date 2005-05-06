@@ -7,6 +7,7 @@ my $news_manager = get_news_manager();
 print $news_manager->get_news_page_entries();
 }:>
 </define-tag>
+
 <define-tag latemp_news_get_news_box_contents>
 <:{
 use MyManageNews;

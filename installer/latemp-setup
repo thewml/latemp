@@ -116,8 +116,13 @@ $current_file = "$project_dir/template.wml";
 
 open O, ">", $current_file;
 print O <<"EOF";
-#include "latemp/latemp-main.wml"
+# Read all the latemp macros 
+#include "latemp/latemp-prelude.wml"
 
+# You can put some customizations here
+
+# Actually start the page template.
+#include "latemp/latemp-driver.wml"
 <latemp_lang "$language" />
 <latemp_encoding "$encoding" />
 <latemp_common_keywords "" />
