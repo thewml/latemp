@@ -76,11 +76,13 @@ for t in themes:
     t['scons_file'] = env.File('template.wml', 'wml/latemp/themes/' + id + '/')
     package_files.append('wml/latemp/themes/' + id + '/' + 'template.wml')
 
-config_script = env.ConfigScript(target = 'latemp-config', source = 'latemp-config.pl')
-env.Alias('build', config_script)
-package_files.append('latemp-config.pl')
-setup_script = env.File('latemp-setup')
-package_files.append('latemp-setup')
+latemp_scripts = []
+for name in ['latemp-config', 'latemp-setup']:
+    source_script = (name + '.pl')
+    script = env.ConfigScript(target = name, source = source_script )
+    env.Alias('build', script)
+    package_files.append(source_script)
+    latemp_scripts.append(script)
 
 def add_install(install_path, the_file):
     env.Alias('install', env.Install(install_path, the_file))
@@ -103,8 +105,8 @@ dist_node = package.BuildDist(env)
 env.Alias('dist', dist_node)
 env.Alias('dist_upload', env.Upload("h67jk343jvnsidnvnoisd", "latemp-" + version + ".tar.gz"))
 
-add_install(idir_prefix + '/bin', config_script)
-add_install(idir_prefix + '/bin', setup_script)
+for script in latemp_scripts:
+    add_install(idir_prefix + '/bin', script)
 
 # Set the default target to build.
 env.Default('build');
