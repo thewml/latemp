@@ -3,6 +3,7 @@
 <set-var latemp_with_timestamp="1" />
 <set-var latemp_with_xml_declaration="1" />
 <set-var latemp_html_standard="xhtml1.1" />
+<set-var latemp_with_head_meta_tags="1" />
 <define-tag latemp_timestamp_wrapper endtag="required">
 <p class="vcs">
 <b>Version Control ID:</b> <tt>%body</tt>
