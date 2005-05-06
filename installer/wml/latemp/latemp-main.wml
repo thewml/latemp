@@ -1,9 +1,3 @@
-#include "latemp/utils.wml"
-#include "latemp/html-header.wml"
-#include "latemp/h-w-nav-menu.wml"
-#include "latemp/template-params.wml"
-#include "latemp/texts.wml"
-#include "latemp/html-head-tag.wml"
-#include "latemp/news-management.wml"
-<include file=latemp/themes/"<latemp_default_val "<get-var latemp_theme />" "$(LATEMP_THEME)"/>"/template.wml />
+#include "latemp/latemp-prelude.wml"
+#include "latemp/latemp-driver.wml"
 

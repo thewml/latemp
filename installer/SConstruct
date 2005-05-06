@@ -65,8 +65,9 @@ for file in [ "render.pl", "latemp-ref.pod", "latemp-ref.html" ]:
 env.Alias('build', env.Command('docs/latemp-ref.html', 'docs/latemp-ref.pod', "cd docs && perl render.pl"))
 
 for file in ['html-header.wml','html-head-tag.wml','h-w-nav-menu.wml', \
-        'latemp-main.wml', 'news-management.wml', 'template-params.wml', 
-        'texts.wml', 'utils.wml']:
+        'latemp-driver.wml', 'latemp-main.wml', 'latemp-prelude.wml', 
+        'news-management.wml', 'template-params.wml', 'texts.wml', 
+        'utils.wml']:
     latemp_wml_files.append(env.File(file, 'wml/latemp'))
     package_files.append('wml/latemp/' + file)
 

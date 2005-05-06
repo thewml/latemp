@@ -22,10 +22,20 @@ it.
 * Split the include into a prelude (that defines all the functions) and a
 driver (that lays out the page).
 
-* Test for internationalization.
+* Generalize the HTML head - let the users specify URLs for the stylesheet
+etc.
 
-* Enable processing of template toolkit-processed files.
+Delay to later:
+---------------
+
+* Create a CSS Zen Garden based theme. (ask for copyright permission for the
+HTML).
 
 * Add a tag to retrieve relative links using the HTML::Widgets::NavMenu 
 get_relative_url function.
+
+* Enable processing of template toolkit-processed files.
+
+* Test for internationalization.
+
 

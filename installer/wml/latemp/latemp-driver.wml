@@ -1,0 +1,2 @@
+<include file=latemp/themes/"<latemp_default_val "<get-var latemp_theme />" "$(LATEMP_THEME)"/>"/template.wml />
+
