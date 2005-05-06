@@ -7,6 +7,9 @@ use Getopt::Long;
 use File::Path;
 use Pod::Usage;
 
+my $version = "<<<VERSION>>>";
+my $prefix = "<<<PREFIX>>>";
+
 my $theme;
 my $project_dir;
 my $host = "mysite";
