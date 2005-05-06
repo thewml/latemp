@@ -6,6 +6,13 @@ import Autoscons.Tool.gzip
 
 gzip_tool = Tool('gzip')
 
+v_file = open('ver.txt', 'rb')
+version = v_file.readline()
+v_file.close()
+
+def config_script_scanner_function(node, env, path):
+    return ['ver.txt']
+
 def config_script_bld_action(target, source, env):
     def quote(matchobj):
         return "\\"+matchobj.group(0)
@@ -16,7 +23,7 @@ def config_script_bld_action(target, source, env):
     f = open(source_fn, 'rb')
     source_text = f.read()
     f.close()
-    target_text = source_text.replace('<<<PREFIX>>>', prefix_quoted)
+    target_text = source_text.replace('<<<PREFIX>>>', prefix_quoted).replace('<<<VERSION>>>', version)
     f = open(target_fn, 'wb')
     f.write(target_text)
     f.close()
@@ -25,7 +32,8 @@ def config_script_bld_action(target, source, env):
 
 package_files = []
 
-config_script_bld = Builder(action = config_script_bld_action)
+config_script_scnr = Scanner(function = config_script_scanner_function)
+config_script_bld = Builder(action = config_script_bld_action, source_scanner = config_script_scnr)
 scp_bld = Builder(action = 'scp $SOURCE shlomif@shell.berlios.de:/home/groups/web-cpan/htdocs/latemp/download/arcs/')
 
 env = Environment()
@@ -95,9 +103,6 @@ for file in latemp_wml_files:
 for t in themes:
     add_install(latemp_wml_install_path + 'themes/' + t['id'] + '/', t['scons_file'])
 
-v_file = open('ver.txt', 'rb')
-version = v_file.readline()
-v_file.close()
 package_files.append('ver.txt')
 package = Init("latemp", version)
 package.AddToDist(package_files)
