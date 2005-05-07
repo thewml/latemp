@@ -35,11 +35,12 @@ package_files = []
 config_script_scnr = Scanner(function = config_script_scanner_function)
 config_script_bld = Builder(action = config_script_bld_action, source_scanner = config_script_scnr)
 scp_bld = Builder(action = 'scp $SOURCE shlomif@shell.berlios.de:/home/groups/web-cpan/htdocs/latemp/download/arcs/')
+rsync_bld = Builder(action = 'rsync -vv --progress --rsh=ssh $SOURCE shlomif@shell.berlios.de:/home/groups/web-cpan/htdocs/latemp/docs/')
 
 env = Environment()
 f = gzip_tool.generate
 f(env)
-env.Append(BUILDERS = {'ConfigScript': config_script_bld, 'Upload':scp_bld})
+env.Append(BUILDERS = {'ConfigScript': config_script_bld, 'Upload':scp_bld, 'Rsync':rsync_bld})
 
 config_file = 'latemp.conf'
 opts = Options(config_file)
@@ -71,6 +72,7 @@ for file in [ "render.pl", "latemp-ref.pod", "latemp-ref.html" ]:
     package_files.append('docs/' + file)
 
 env.Alias('build', env.Command('docs/latemp-ref.html', 'docs/latemp-ref.pod', "cd docs && perl render.pl"))
+env.Alias('doc_upload', env.Rsync("popd9j3490m2r8vnkwnc8", 'docs/latemp-ref.html'))
 
 for file in ['html-header.wml','html-head-tag.wml','h-w-nav-menu.wml', \
         'latemp-driver.wml', 'latemp-main.wml', 'latemp-prelude.wml', 
