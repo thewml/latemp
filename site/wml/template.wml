@@ -30,11 +30,18 @@ Webmaster:
 
 
 <latemp_affiliations_buttons>
+<p>
+<a href="$(ROOT)/rss.xml" rel="rss news"><img
+src="$(ROOT)/images/rss2feed.png"
+alt="RSS Feed" class="bless" style="margin-top:1em"
+title="Receive Site Updates using an RSS Reader" /></a>
+</p>
 <affil_collection_berlios />
 </latemp_affiliations_buttons>
 
 <latemp_extra_head_elements>
 <link rel="alternate stylesheet" type="text/css" href="$(ROOT)/alternate1.css" media="screen, projection" title="Better SCM" />
+<link rel="alternate" title="Better SCM RSS Feed" href="$(ROOT)/rss.xml" type="application/rss+xml" />
 </latemp_extra_head_elements>
 
 <latemp_top_left_corner_logo>

@@ -1,0 +1,9 @@
+#include "template.wml"
+
+<latemp_subject "Latemp News" />
+<latemp_version_control_id "$Id$" />
+
+<h2>Recent News</h2>
+
+<latemp_news_get_news_page_entries />
+
