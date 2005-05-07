@@ -3,15 +3,25 @@
 <latemp_subject "Latemp Downloads" />
 <latemp_version_control_id "$Id$" />
 
+<h2>Stable Version</h2>
+
+<p>
+<a href="./arcs/latemp-0.2.0.tar.gz">latemp-0.2.0.tar.gz</a> - 
+<b>Latest Stable Version</b>
+</p>
+
+<define-tag devel_version>
 <h2>Development Version</h2>
 
 <p>
 <a href="./arcs/latemp-0.1.21.tar.gz">latemp-0.1.21.tar.gz</a> - 
 <b>Latest Development Version</b>
 </p>
+</define-tag>
 
 <p>
 <a href="$(ROOT)/docs/">Documentation</a> is available. You can also
 consult <a href="$(ROOT)/examples/">the examples</a>. Also see the files 
 <tt>INSTALL</tt> and <tt>README</tt> inside the distribution.
 </p>
+
