@@ -1,0 +1,21 @@
+#include "template.wml"
+
+<latemp_subject "Latemp version 0.2.0 was released" />
+<latemp_version_control_id "$Id$" />
+
+<p>
+<b>Date:</b> 2005-May-07
+</p>
+
+<p>
+<a href="$(ROOT)/">Latemp</a> version 0.2.0 was released. This is the first
+stable version of Latemp, after some time when it was in the 0.1.x development
+branch. Everybody is welcome to download it and try it out.
+</p>
+
+<p>
+Latemp is a Content Management System for Static HTML Pages based on
+<a href="http://thewml.org/">Web Meta Language</a>. You can find more 
+information about it in <a href="$(ROOT)/about/">the about page</a>.
+</p>
+

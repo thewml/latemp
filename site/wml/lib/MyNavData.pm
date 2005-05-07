@@ -1,5 +1,10 @@
 package MyNavData;
 
+use strict;
+use warnings;
+
+use MyManageNews;
+
 my $hosts =
 {
     'mysite' =>
@@ -7,6 +12,8 @@ my $hosts =
         'base_url' => "http://web-cpan.berlios.de/latemp/",
     },
 };
+
+my $news_manager = get_news_manager();
 
 my $tree_contents =
 {
@@ -23,6 +30,14 @@ my $tree_contents =
             'text' => "About",
             'url' => "about/",
         },
+        {
+            'text' => "News",
+            'url' => "news/",
+            'subs' =>
+            [
+                @{$news_manager->get_navmenu_items('num_items' => 5)},
+            ],
+        },        
         {
             'text' => "Download",
             'url' => "download/",
