@@ -9,9 +9,9 @@
 After <a href="http://www.shlomifish.org/">Shlomi Fish</a> has learned HTML,
 and has worked for a web-design company, he maintained his own web-site on
 his University servers by manually editing HTML pages and other such content.
-This, while being sufficient produced relatively uninteresting HTML with
-little resemblence to an integrated site. As he had to maintain some other
-sites he was looking for a better solution.
+This, while being sufficient, produced relatively uninteresting HTML with
+little resemblance to an integrated site. As he had to maintain some other
+sites, he was looking for a better solution.
 </p>
 
 <p>
@@ -24,17 +24,17 @@ it to the needs of the new site.
 
 <p>
 More recently, he came to the conclusion that he shouldn't duplicate his work
-in so many places. As he came upon older sites, he often found he had to 
-revise their build system or templates to adapt them to the knowledge he 
-acquired more recently. To remedy this, he decided to create a content 
+in so many places. As he came upon older sites, he often found he had to
+revise their build system or templates to adapt them to the knowledge he
+acquired more recently. To remedy this, he decided to create a content
 management system that will allow to maintain multiple sites by abstracting
 the common code.
 </p>
 
 <p>
-This was the birth of Latemp ("Latemp" being a play on the word "Template):
-a powerful, integrated framework for maintaing static HTML web-sites. This site
-, for example was created using Latemp, and so are 
+This was the birth of Latemp ("Latemp" being a play on the word "Template"):
+a powerful, integrated framework for maintaining static HTML web-sites. This
+site, for example was created using Latemp, and so are 
 <a href="$(ROOT)/examples/">others</a>.
 </p>
 
@@ -53,7 +53,7 @@ links ("Up", "Next" and "Previous"), site maps with sophisticated site
 flow.
 </li>
 <li>
-Makes use of <a href="http://thewml.org/">Web Meta Language</a> so has
+Makes use of <a href="http://thewml.org/">Web Meta Language</a> and so has
 all of its power (including extending its functionality by using 
 embedded <a href="http://www.perl.org/">Perl</a>).
 </li>
@@ -75,7 +75,7 @@ Can generate valid XHTML 1.0 Transitional, XHTML 1.0 Strict or XHTML 1.1.
 Has pre-defined insertion points for including a breadcrumbs trail, a 
 navigation menu, various HTML <tt>&lt;head&gt;</tt> elements, a logo, 
 navigation links buttons, affiliation buttons, a license, a webmaster 
-contact, a timestamp, and a foot image.
+contact, a time stamp, and a foot image.
 </li>
 <li>
 Supports generating plain pages (without any additional content or layout
@@ -83,7 +83,7 @@ aside from the body).
 </li>
 <li>
 Supported <tt>&lt;head&gt;</tt> elements: <tt>&lt;title&gt;</tt> tag,
-"author", "description" and "keywords" &lt;meta&gt; elements,
+"author", "description" and "keywords" <tt>&lt;meta&gt;</tt> elements,
 Stylesheets (screen and print), favicon, Mozilla/Opera-style navigation 
 links, and customizable user-defined text to be inserted there.
 </li>
