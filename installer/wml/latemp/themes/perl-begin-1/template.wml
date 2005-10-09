@@ -27,11 +27,13 @@
 <latemp_get_html_body_nav_links place="bottom-left" with_accesskey="1" />
 </td>
 <td valign="top" class="main">
+<latemp_before_main_title_text />
 </define-tag>
 
 <latemp_get_start_layout />
 
 <latemp_default_h1_tag />
+<latemp_after_main_title_text />
 {#LATEMP_BODY#}
 
 <define-tag latemp_end_layout>

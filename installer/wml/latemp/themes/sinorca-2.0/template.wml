@@ -12,6 +12,8 @@
     <latemp_top_banner_text />
     <!-- ##### Header ##### -->
 
+    <latemp_before_main_title_text />
+
     <div id="header">
       <div class="midHeader">
         <h1 class="headerTitle">{#LATEMP_SUBJECT_LOC#}</h1>
@@ -35,6 +37,8 @@
     <!-- ##### Main Copy ##### -->
 
     <div id="main-copy">
+
+    <latemp_after_main_title_text />
 </define-tag>
 
 <latemp_get_start_layout />

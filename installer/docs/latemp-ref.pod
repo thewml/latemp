@@ -183,6 +183,16 @@ Management below".
 
 This tags defines the HTML of a banner to put at the top of the page.
 
+=head3 <latemp_before_main_title>...</latemp_before_main_title>
+
+This tags defines text that will come after all the layout but before the
+main title. (usually an C<E<lt>h1E<gt>> tag).
+
+=head3 <latemp_after_main_title>...</latemp_before_main_title>
+
+This tags defines text that will come after the
+main title (usually an C<E<lt>h1E<gt>> tag), but before the main body.
+
 =head2 Variables with special meaning
 
 =head3 <set-var latemp_theme="better-scm" />

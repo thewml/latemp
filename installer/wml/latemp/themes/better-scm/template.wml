@@ -34,11 +34,13 @@
 </div>
 
 <div class="main" id="main">
+<latemp_before_main_title_text />
 </define-tag>
 
 <latemp_get_start_layout />
 
 <latemp_default_h1_tag />
+<latemp_after_main_title_text />
 {#LATEMP_BODY#}
 
 <define-tag latemp_end_layout>
