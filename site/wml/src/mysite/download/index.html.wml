@@ -14,10 +14,12 @@
 <h2>Development Version</h2>
 
 <p>
-<a href="./arcs/latemp-0.1.21.tar.gz">latemp-0.1.21.tar.gz</a> - 
+<a href="http://download.berlios.de/web-cpan/latemp-0.3.1.tar.gz">latemp-0.3.1.tar.gz</a> - 
 <b>Latest Development Version</b>
 </p>
 </define-tag>
+
+<devel_version />
 
 <p>
 <a href="$(ROOT)/docs/">Documentation</a> is available. You can also
