@@ -179,6 +179,9 @@ C<E<lt>liE<gt>> tag for each news item, with summaries and links. See
 This retrieves the HTML of the entries for display in the news page. See "News
 Management below".
 
+=head3 <latemp_top_banner>...</latemp_to_banner>
+
+This tags defines the HTML of a banner to put at the top of the page.
 
 =head2 Variables with special meaning
 

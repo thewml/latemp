@@ -10,12 +10,26 @@
 {#LATEMP_VERSION_CONTROL_ID#:%0:##}
 </define-tag>
 
+<define-tag latemp_timestamp_text_helper>
+<latemp_timestamp_wrapper>{#LATEMP_VERSION_CONTROL_ID#}</latemp_timestamp_wrapper>
+</define-tag>
+
+<define-tag latemp_timestamp_text>
+<if "<get-var latemp_with_timestamp />"
+    "<latemp_timestamp_text_helper />"
+    />
+</define-tag>
+
 <define-tag latemp_common_keywords>
 {#LATEMP_COMMON_KEYWORDS#:%0:##}
 </define-tag>
 
 <define-tag latemp_author>
 {#LATEMP_AUTHOR#:%0:##}
+</define-tag>
+
+<define-tag latemp_webmaster_text>
+{#LATEMP_WEBMASTER#} 
 </define-tag>
 
 <define-tag latemp_webmaster endtag="required" whitespace="delete">
@@ -26,12 +40,24 @@
 {#LATEMP_LICENSE#:%body:##}
 </define-tag>
 
+<define-tag latemp_license_text whitespace="delete">
+{#LATEMP_LICENSE#}
+</define-tag>
+
 <define-tag latemp_affiliations_buttons endtag="required" whitespace="delete">
 {#LATEMP_AFFILIATIONS_BUTTONS#:%body:##}
 </define-tag>
 
+<define-tag latemp_affiliations_buttons_text whitespace="delete">
+{#LATEMP_AFFILIATIONS_BUTTONS#}
+</define-tag>
+
 <define-tag latemp_top_left_corner_logo endtag="required" whitespace="delete">
 {#LATEMP_TOP_LEFT_CORNER_LOGO#:%body:##}
+</define-tag>
+
+<define-tag latemp_top_left_corner_logo_text whitespace="delete">
+{#LATEMP_TOP_LEFT_CORNER_LOGO#}
 </define-tag>
 
 <define-tag latemp_meta_desc>
@@ -42,7 +68,36 @@
 {#LATEMP_EXTRA_HEAD_ELEMENTS#:%body:##}
 </define-tag>
 
+<define-tag latemp_extra_head_elements_text>
+{#LATEMP_EXTRA_HEAD_ELEMENTS#}
+</define-tag>
+
 <define-tag latemp_foot_image endtag="required" whitespace="delete">
 {#LATEMP_FOOT_IMAGE#:%body:##}
+</define-tag>
+
+<define-tag latemp_foot_image_text>
+{#LATEMP_FOOT_IMAGE#}
+</define-tag>
+
+<define-tag latemp_default_h1_tag>
+<if "<get-var latemp_supress_default_h1 />" ""
+"<h1>{#LATEMP_SUBJECT_LOC#}</h1>" />
+</define-tag>
+
+<define-tag latemp_top_banner_text>
+{#LATEMP_TOP_BANNER#}
+</define-tag>
+
+<define-tag latemp_top_banner endtag="required" whitespace="delete">
+{#LATEMP_TOP_BANNER#:%body:##}
+</define-tag>
+
+<define-tag latemp_get_end_layout>
+<if <latemp_mynot "<get-var latemp_gen_plain_page />" /> "<latemp_end_layout />" "" />
+</define-tag>
+
+<define-tag latemp_get_start_layout>
+<if <latemp_mynot "<get-var latemp_gen_plain_page />" /> "<latemp_start_layout />" "" />
 </define-tag>
 
