@@ -1,9 +1,14 @@
+Pressing:
+---------
+
 Done:
 -----
 
 * Document the top_banner tag.
 
 * Place both types of text diverts tags at one place.
+
+* Add the before <h1> and after <h1> texts.
 
 Delay to later:
 ---------------

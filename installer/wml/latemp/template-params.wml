@@ -101,3 +101,19 @@
 <if <latemp_mynot "<get-var latemp_gen_plain_page />" /> "<latemp_start_layout />" "" />
 </define-tag>
 
+<define-tag latemp_before_main_title_text>
+{#LATEMP_BEFORE_MAIN_TITLE#}
+</define-tag>
+
+<define-tag latemp_before_main_title endtag="required" whitespace="delete">
+{#LATEMP_BEFORE_MAIN_TITLE#:%body:##}
+</define-tag>
+
+<define-tag latemp_after_main_title_text>
+{#LATEMP_AFTER_MAIN_TITLE#}
+</define-tag>
+
+<define-tag latemp_after_main_title endtag="required" whitespace="delete">
+{#LATEMP_AFTER_MAIN_TITLE#:%body:##}
+</define-tag>
+
