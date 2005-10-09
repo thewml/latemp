@@ -13,6 +13,7 @@
 <body>
 
 <define-tag latemp_start_layout>
+<latemp_top_banner_text />
 <table summary="Layout Table: The first cell contains a navigation bar, the second the main page" border="0" width="99%">
 <latemp_get_breadcrumbs_trail />
 <tr>
