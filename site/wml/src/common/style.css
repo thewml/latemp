@@ -12,6 +12,16 @@ body
     background-image: url(images/wood022.jpg); 
 }
 
+/*
+Some browsers set the :visited colour to be Magenta by default. This makes
+sure it would be "Purple", so the Magenta in :hover would take effect, and 
+that it will look well in the breadcrumbs trail.
+*/
+:visited
+{
+    color: #800080; /* Purple */
+}
+
 a:hover 
 { 
     color : #FF00FF; /* Magenta */
