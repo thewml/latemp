@@ -1,6 +1,13 @@
 Revision history for HTML-Latemp-News
 
-0.1.5    1977-05-05
+0.1.7    2005-12-07
+    - Added a Makefile.PL wrapper to the Build.PL build process (taken
+    verbatim from http://search.cpan.org/dist/accessors/)
+
+0.1.6    2005-05-07
+    - Added the base_url argument to get_news_page_entries()
+
+0.1.5    2005-05-05
     - Some documentation updates: made the synopsis better.
     
 0.1.4    2005-04-30
