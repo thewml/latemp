@@ -10,7 +10,7 @@ web frameworks)
 
 =cut
 
-our $VERSION = '0.1.5';
+our $VERSION = '0.1.7';
 
 =head1 SYNOPSIS
 
@@ -372,8 +372,9 @@ sub format_news_page_item
     my (%args) = (@_);
 
     my $item = $args{'item'};
+    my $base_url = $args{'base_url'};
 
-    return "<h3><a href=\"" . $item->id() . "/\">" . 
+    return "<h3><a href=\"$base_url" . $item->id() . "/\">" . 
         CGI::escapeHTML($item->title()) . "</a></h3>\n" .
         "<p>\n" . $item->description() . "\n</p>\n";
 }
@@ -385,16 +386,23 @@ sub get_news_page_entries
 
     my $html = "";
 
+    my $base_url = exists($args{'base_url'}) ? $args{'base_url'} : "";
+
     foreach my $single_item (reverse(@{$self->get_items_to_include(\%args)}))
     {
-        $html .= $self->format_news_page_item('item' => $single_item);
+        $html .=
+            $self->format_news_page_item(
+                'item' => $single_item,
+                'base_url' => $base_url,
+            );
     }
     return $html;
 }
 
-=head2 $news_manager->get_news_page_entries('num_items' => 5)
+=head2 $news_manager->get_news_page_entries('num_items' => 5, 'base_url' => "news/")
 
-This generates HTML for the news page. 
+This generates HTML for the news page. 'base_url' points to a URL to be 
+appended to each item's ID.
 
 =cut
 
