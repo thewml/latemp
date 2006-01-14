@@ -16,6 +16,7 @@ package Template::Preprocessor::TTML::CmdLineProc::Results;
 use base 'Template::Preprocessor::TTML::Base';
 
 __PACKAGE__->mk_accessors(qw(
+    defines
     include_path
     input_filename
     output_to_stdout
@@ -27,6 +28,7 @@ sub initialize
     my $self = shift;
     $self->output_to_stdout(1);
     $self->include_path([]);
+    $self->defines(+{});
     return 0;
 }
 
@@ -35,6 +37,12 @@ sub add_to_inc
     my $self = shift;
     my $path = shift;
     push @{$self->include_path()}, $path;
+}
+
+sub add_to_defs
+{
+    my ($self, $k, $v) = @_;
+    $self->defines()->{$k} = $v;
 }
 
 package Template::Preprocessor::TTML::CmdLineProc;
@@ -92,6 +100,7 @@ sub _get_arged_longs_opts_map
     return
     {
         "include" => "_process_include_path_opt",
+        "define" => "_process_define_opt",
     };
 }
 
@@ -143,6 +152,7 @@ sub _get_arged_short_opts_map
     {
         "o" => "_process_output_short_opt",
         "I" => "_process_include_path_opt",
+        "D" => "_process_define_opt",
     };
 }
 
@@ -191,6 +201,18 @@ sub _process_include_path_opt
     my $self = shift;
     my $path = shift;
     $self->result()->add_to_inc($path);
+}
+
+sub _process_define_opt
+{
+    my $self = shift;
+    my $def = shift;
+    if ($def !~ m{^([^=]+)=(.*)$})
+    {
+        die "Variable definition should contain a \"=\", but instead it is \"$def\"!";
+    }
+    my ($var, $value) = ($1, $2);
+    $self->result()->add_to_defs($var, $value);
 }
 
 sub _assign_filename

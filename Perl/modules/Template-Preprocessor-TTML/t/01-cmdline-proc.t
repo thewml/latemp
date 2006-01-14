@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 23;
+use Test::More tests => 36;
 
 use Template::Preprocessor::TTML::CmdLineProc;
 
@@ -34,6 +34,8 @@ sub get_res
     ok($r->output_to_stdout(), "Outputting to stdout");
     # TEST
     is_deeply($r->include_path(), [], "Include Path is empty");
+    # TEST
+    is_deeply($r->defines(), +{}, "Defines are empty");
 }
 
 # Test for last filename is an option
@@ -126,5 +128,65 @@ sub get_res
         ["mydir/", "/hello/home", "/yes/no", "./you-say/",], 
         "Include Path is OK"
     );
+}
+
+# Test for defines
+{
+    my $r = get_res(argv => ["-Dmyarg=myval", "hello.ttml"]);
+    # TEST
+    is($r->input_filename(), "hello.ttml", "Input filename is OK");
+    # TEST
+    is_deeply($r->defines(), {'myarg' => "myval"}, "Defines are OK");
+}
+
+# Test for defines
+{
+    my $r = get_res(argv => ["-D", "myarg=myval", "hello.ttml"]);
+    # TEST
+    is($r->input_filename(), "hello.ttml", "Input filename is OK");
+    # TEST
+    is_deeply($r->defines(), {'myarg' => "myval"}, "Defines are OK");
+}
+
+# Test for defines
+{
+    my $r = get_res(argv => ["--define=myarg=myval", "hello.ttml"]);
+    # TEST
+    is($r->input_filename(), "hello.ttml", "Input filename is OK");
+    # TEST
+    is_deeply($r->defines(), {'myarg' => "myval"}, "Defines are OK");
+}
+
+# Test for defines
+{
+    my $r = get_res(argv => ["--define", "myarg=myval", "hello.ttml"]);
+    # TEST
+    is($r->input_filename(), "hello.ttml", "Input filename is OK");
+    # TEST
+    is_deeply($r->defines(), {'myarg' => "myval"}, "Defines are OK");
+}
+
+# Test for multiple defines
+{
+    my $r = get_res(argv => ["-Dmyarg=myval", "-Dsuper=par", "-D", "write=1", "hello.ttml"]);
+    # TEST
+    is($r->input_filename(), "hello.ttml", "Input filename is OK");
+    # TEST
+    is_deeply($r->defines(), 
+        {'myarg' => "myval", "super" => "par", "write" => "1"}, 
+        "Multiple Defines are OK");
+}
+
+# Test for multiple defines
+{
+    my $r = get_res(argv => ["-Dmyarg=myval", "-Dsuper=par", "-D", "write=1", "--define=hi=there", "--define", "ext=.txt", "hello.ttml"]);
+    # TEST
+    is($r->input_filename(), "hello.ttml", "Input filename is OK");
+    # TEST
+    is_deeply($r->defines(), 
+        {'myarg' => "myval", "super" => "par", "write" => "1", 
+         "hi" => "there", "ext" => ".txt",
+        }, 
+        "Multiple Defines are OK");
 }
 
