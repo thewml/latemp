@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 12;
+use Test::More tests => 23;
 
 use Template::Preprocessor::TTML::CmdLineProc;
 
@@ -32,6 +32,8 @@ sub get_res
     is($r->input_filename(), "hello.ttml", "Input filename is OK");
     # TEST
     ok($r->output_to_stdout(), "Outputting to stdout");
+    # TEST
+    is_deeply($r->include_path(), [], "Include Path is empty");
 }
 
 # Test for last filename is an option
@@ -75,5 +77,54 @@ sub get_res
     ok(!$r->output_to_stdout(), "Not outting to stdout");
     # TEST
     is ($r->output_filename(), "myout.html", "Output filename is OK");
+}
+
+# Test for includes
+{
+    my $r = get_res(argv => ["-I", "mydir/", "hello.ttml"]);
+    # TEST
+    is($r->input_filename(), "hello.ttml", "Input filename is OK");
+    # TEST
+    is_deeply($r->include_path(), ["mydir/"], "Include Path is OK");
+}
+
+# Test for includes
+{
+    my $r = get_res(argv => ["-Imydir/", "hello.ttml"]);
+    # TEST
+    is($r->input_filename(), "hello.ttml", "Input filename is OK");
+    # TEST
+    is_deeply($r->include_path(), ["mydir/"], "Include Path is OK");
+}
+
+# Test for includes
+{
+    my $r = get_res(argv => ["--include=mydir/", "hello.ttml"]);
+    # TEST
+    is($r->input_filename(), "hello.ttml", "Input filename is OK");
+    # TEST
+    is_deeply($r->include_path(), ["mydir/"], "Include Path is OK");
+}
+
+# Test for includes
+{
+    my $r = get_res(argv => ["--include", "mydir/", "hello.ttml"]);
+    # TEST
+    is($r->input_filename(), "hello.ttml", "Input filename is OK");
+    # TEST
+    is_deeply($r->include_path(), ["mydir/"], "Include Path is OK");
+}
+
+# Several includes
+{
+    my $r = get_res(argv => ["--include", "mydir/", "-I/hello/home", "--include=/yes/no", "-I", "./you-say/", "hello.ttml"]);
+    # TEST
+    is($r->input_filename(), "hello.ttml", "Input filename is OK");
+    # TEST
+    is_deeply(
+        $r->include_path(), 
+        ["mydir/", "/hello/home", "/yes/no", "./you-say/",], 
+        "Include Path is OK"
+    );
 }
 
