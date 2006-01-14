@@ -17,6 +17,7 @@ use base 'Template::Preprocessor::TTML::Base';
 
 __PACKAGE__->mk_accessors(qw(
     defines
+    include_files
     include_path
     input_filename
     output_to_stdout
@@ -29,6 +30,7 @@ sub initialize
     $self->output_to_stdout(1);
     $self->include_path([]);
     $self->defines(+{});
+    $self->include_files([]);
     return 0;
 }
 
@@ -43,6 +45,13 @@ sub add_to_defs
 {
     my ($self, $k, $v) = @_;
     $self->defines()->{$k} = $v;
+}
+
+sub add_include_file
+{
+    my $self = shift;
+    my $path = shift;
+    push @{$self->include_files()}, $path;
 }
 
 package Template::Preprocessor::TTML::CmdLineProc;
@@ -100,6 +109,7 @@ sub _get_arged_longs_opts_map
     return
     {
         "include" => "_process_include_path_opt",
+        "includefile" => "_process_add_includefile_opt",
         "define" => "_process_define_opt",
     };
 }
@@ -201,6 +211,13 @@ sub _process_include_path_opt
     my $self = shift;
     my $path = shift;
     $self->result()->add_to_inc($path);
+}
+
+sub _process_add_includefile_opt
+{
+    my $self = shift;
+    my $file = shift;
+    $self->result()->add_include_file($file);
 }
 
 sub _process_define_opt
