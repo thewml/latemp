@@ -16,6 +16,7 @@ package Template::Preprocessor::TTML::CmdLineProc::Results;
 use base 'Template::Preprocessor::TTML::Base';
 
 __PACKAGE__->mk_accessors(qw(
+    include_path
     input_filename
     output_to_stdout
     output_filename
@@ -25,7 +26,15 @@ sub initialize
 {
     my $self = shift;
     $self->output_to_stdout(1);
+    $self->include_path([]);
     return 0;
+}
+
+sub add_to_inc
+{
+    my $self = shift;
+    my $path = shift;
+    push @{$self->include_path()}, $path;
 }
 
 package Template::Preprocessor::TTML::CmdLineProc;
@@ -78,13 +87,46 @@ sub _no_args_left
     return (@{$self->argv()} == 0);
 }
 
+sub _get_arged_longs_opts_map
+{
+    return
+    {
+        "include" => "_process_include_path_opt",
+    };
+}
+
 sub _handle_long_option
 {
     my $self = shift;
-    my $arg = shift;
-    if ($arg eq "--")
+    my $arg_orig = shift;
+    if ($arg_orig eq "--")
     {
         return $self->_handle_no_more_options();
+    }
+    my $arg = $arg_orig;
+    $arg =~ s!^--!!;
+    my $map = $self->_get_arged_longs_opts_map();
+    $arg =~ m{^([^=]*)};
+    my $option = $1;
+    if (exists($map->{$option}))
+    {
+        my $sub = $self->can($map->{$option});
+        if (length($arg) eq length($option))
+        {
+            if ($self->_no_args_left())
+            {
+                die "An argument should be specified after \"$arg_orig\"";
+            }
+            return $sub->(
+               $self, $self->_get_next_arg()
+            );
+        }
+        else
+        {
+            return $sub->(
+                $self, substr($arg, length($option)+1)
+            );
+        }
     }
     die "Unknown option!";
 }
@@ -95,11 +137,12 @@ sub _handle_no_more_options
     $self->_assign_filename($self->_get_next_arg());
 }
 
-sub _get_standalone_short_opts_map
+sub _get_arged_short_opts_map
 {
     return
     {
-        "o" => "output",
+        "o" => "_process_output_short_opt",
+        "I" => "_process_include_path_opt",
     };
 }
 
@@ -110,12 +153,27 @@ sub _handle_short_option
 
     my $arg = $arg_orig;
     $arg =~ s!^-!!;
-    my $map = $self->_get_standalone_short_opts_map();
-    if (exists($map->{$arg}))
+    my $map = $self->_get_arged_short_opts_map();
+    my $first_char = substr($arg, 0, 1);
+    if (exists($map->{$first_char}))
     {
-        return $self->can("_process_" . $map->{$arg} . "_short_opt")->(
-            $self, $arg
-        );
+        my $sub = $self->can($map->{$first_char});
+        if (length($arg) > 1)
+        {
+            return $sub->(
+                $self, substr($arg, 1)
+            );
+        }
+        else
+        {
+            if ($self->_no_args_left())
+            {
+                die "An argument should be specified after \"$arg_orig\"";
+            }
+            return $sub->(
+                $self, $self->_get_next_arg()
+            );
+        }
     }
     die "Unknown option \"$arg_orig\"!";
 }
@@ -123,12 +181,16 @@ sub _handle_short_option
 sub _process_output_short_opt
 {
     my $self = shift;
-    if ($self->_no_args_left())
-    {
-        die "Output filename should be specified after \"-o\"";
-    }
+    my $filename = shift;
     $self->result()->output_to_stdout(0);
-    $self->result()->output_filename($self->_get_next_arg());
+    $self->result()->output_filename($filename);
+}
+
+sub _process_include_path_opt
+{
+    my $self = shift;
+    my $path = shift;
+    $self->result()->add_to_inc($path);
 }
 
 sub _assign_filename
