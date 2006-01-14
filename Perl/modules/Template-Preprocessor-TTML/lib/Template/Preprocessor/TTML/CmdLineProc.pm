@@ -18,6 +18,7 @@ use base 'Template::Preprocessor::TTML::Base';
 __PACKAGE__->mk_accessors(qw(
     input_filename
     output_to_stdout
+    output_filename
 ));
 
 sub initialize
@@ -94,10 +95,40 @@ sub _handle_no_more_options
     $self->_assign_filename($self->_get_next_arg());
 }
 
+sub _get_standalone_short_opts_map
+{
+    return
+    {
+        "o" => "output",
+    };
+}
+
 sub _handle_short_option
 {
     my $self = shift;
-    die "Unkown option!";
+    my $arg_orig = shift;
+
+    my $arg = $arg_orig;
+    $arg =~ s!^-!!;
+    my $map = $self->_get_standalone_short_opts_map();
+    if (exists($map->{$arg}))
+    {
+        return $self->can("_process_" . $map->{$arg} . "_short_opt")->(
+            $self, $arg
+        );
+    }
+    die "Unknown option \"$arg_orig\"!";
+}
+
+sub _process_output_short_opt
+{
+    my $self = shift;
+    if ($self->_no_args_left())
+    {
+        die "Output filename should be specified after \"-o\"";
+    }
+    $self->result()->output_to_stdout(0);
+    $self->result()->output_filename($self->_get_next_arg());
 }
 
 sub _assign_filename

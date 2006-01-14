@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 9;
+use Test::More tests => 12;
 
 use Template::Preprocessor::TTML::CmdLineProc;
 
@@ -64,5 +64,16 @@ sub get_res
     };
     # TEST
     ok ($@, "Junk after input filename");
+}
+
+# Test for -o
+{
+    my $r = get_res(argv => ["-o", "myout.html", "hello.ttml"]);
+    # TEST
+    is($r->input_filename(), "hello.ttml", "Input filename is OK");
+    # TEST
+    ok(!$r->output_to_stdout(), "Not outting to stdout");
+    # TEST
+    is ($r->output_filename(), "myout.html", "Output filename is OK");
 }
 
