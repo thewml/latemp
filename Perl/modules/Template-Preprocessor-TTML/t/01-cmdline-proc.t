@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 36;
+use Test::More tests => 39;
 
 use Template::Preprocessor::TTML::CmdLineProc;
 
@@ -36,6 +36,8 @@ sub get_res
     is_deeply($r->include_path(), [], "Include Path is empty");
     # TEST
     is_deeply($r->defines(), +{}, "Defines are empty");
+    # TEST
+    is_deeply($r->include_files(), [], "Include Files are empty");
 }
 
 # Test for last filename is an option
@@ -188,5 +190,17 @@ sub get_res
          "hi" => "there", "ext" => ".txt",
         }, 
         "Multiple Defines are OK");
+}
+
+# Test for include files
+{
+    my $r = get_res(argv => ["--includefile=myfile.ttml", "--includefile", "turn.txt", "hello.ttml"]);
+    # TEST
+    is($r->input_filename(), "hello.ttml", "Input filename is OK");
+    # TEST
+    is_deeply($r->include_files(), 
+        [qw(myfile.ttml turn.txt)], 
+        "Include files are ok"
+    );
 }
 
