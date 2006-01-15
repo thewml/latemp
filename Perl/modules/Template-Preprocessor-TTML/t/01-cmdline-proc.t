@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 39;
+use Test::More tests => 48;
 
 use Template::Preprocessor::TTML::CmdLineProc;
 
@@ -38,6 +38,8 @@ sub get_res
     is_deeply($r->defines(), +{}, "Defines are empty");
     # TEST
     is_deeply($r->include_files(), [], "Include Files are empty");
+    # TEST
+    is ($r->run_mode(), "regular", "Run mode is OK");
 }
 
 # Test for last filename is an option
@@ -204,3 +206,63 @@ sub get_res
     );
 }
 
+# Test for --version
+{
+    my $r = get_res(argv => ["--version"]);
+    # TEST
+    is ($r->run_mode(), "version", "Testing for --version");
+}
+
+# Test for -V
+{
+    my $r = get_res(argv => ["-V"]);
+    # TEST
+    is ($r->run_mode(), "version", "Testing for -V");
+}
+
+# Test for --help
+{
+    my $r = get_res(argv => ["--help"]);
+    # TEST
+    is ($r->run_mode(), "help", "Testing --help");
+}
+
+# Test for -h
+{
+    my $r = get_res(argv => ["-h"]);
+    # TEST
+    is ($r->run_mode(), "help", "-h");
+}
+
+# Test the --help and --version flags inside other command lines.
+{
+    eval {
+        my $r = get_res(argv => ["-o", "hello", "--version", "test.ttml"]);
+    };
+    # TEST
+    ok($@, "An exception was thrown because --version is specified as well as other args");
+}
+
+{
+    eval {
+        my $r = get_res(argv => ["-o", "hello", "--help", "test.ttml"]);
+    };
+    # TEST
+    ok($@, "An exception was thrown because --help is specified as well as other args");
+}
+
+{
+    eval {
+        my $r = get_res(argv => ["-o", "hello", "-V", "test.ttml"]);
+    };
+    # TEST
+    ok($@, "An exception was thrown because -V is specified as well as other args");
+}
+
+{
+    eval {
+        my $r = get_res(argv => ["-o", "hello", "-h", "test.ttml"]);
+    };
+    # TEST
+    ok($@, "An exception was thrown because -h is specified as well as other args");
+}
