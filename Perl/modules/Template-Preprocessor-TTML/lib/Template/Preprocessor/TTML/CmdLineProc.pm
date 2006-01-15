@@ -22,6 +22,7 @@ __PACKAGE__->mk_accessors(qw(
     input_filename
     output_to_stdout
     output_filename
+    run_mode
 ));
 
 sub initialize
@@ -31,6 +32,7 @@ sub initialize
     $self->include_path([]);
     $self->defines(+{});
     $self->include_files([]);
+    $self->run_mode("regular");
     return 0;
 }
 
@@ -104,6 +106,17 @@ sub _no_args_left
     return (@{$self->argv()} == 0);
 }
 
+sub _get_run_mode_opts_map
+{
+    return
+    {
+        "--version" => "version",
+        "-V" => "version",
+        "--help" => "help",
+        "-h" => "help",
+    };
+}
+
 sub _get_arged_longs_opts_map
 {
     return
@@ -114,6 +127,15 @@ sub _get_arged_longs_opts_map
     };
 }
 
+sub _handle_middle_run_mode_opt
+{
+    my ($self, $arg) = @_;
+    if (exists($self->_get_run_mode_opts_map()->{$arg}))
+    {
+        die "Option \"$arg\" was specified in the middle of the command line. It should be a standalone option.";
+    }
+}
+
 sub _handle_long_option
 {
     my $self = shift;
@@ -122,6 +144,7 @@ sub _handle_long_option
     {
         return $self->_handle_no_more_options();
     }
+    $self->_handle_middle_run_mode_opt($arg_orig);
     my $arg = $arg_orig;
     $arg =~ s!^--!!;
     my $map = $self->_get_arged_longs_opts_map();
@@ -170,6 +193,8 @@ sub _handle_short_option
 {
     my $self = shift;
     my $arg_orig = shift;
+
+    $self->_handle_middle_run_mode_opt($arg_orig);
 
     my $arg = $arg_orig;
     $arg =~ s!^-!!;
@@ -245,6 +270,23 @@ sub _assign_filename
     }
 }
 
+sub _handle_exclusive_run_mode_opt
+{
+    my $self = shift;
+    if ((@{$self->argv()} == 1))
+    {
+        my $opt = $self->argv()->[0];
+        if (exists($self->_get_run_mode_opts_map()->{$opt}))
+        {
+            $self->result()->run_mode(
+                $self->_get_run_mode_opts_map()->{$opt}
+            );
+            return 1;
+        }
+    }
+    return 0;
+}
+
 =head2 $cmd_line->get_result()
 
 This function calculates the results from the arguments. If something wrong
@@ -260,23 +302,26 @@ sub get_result
     {
         die "Incorrect usage: you need to specify a filename";
     }
-    
-    while (defined(my $arg = $self->_get_next_arg()))
+
+    if (! $self->_handle_exclusive_run_mode_opt())
     {
-        if ($arg =~ m{^-})
+        while (defined(my $arg = $self->_get_next_arg()))
         {
-            if ($arg =~ m{^--})
+            if ($arg =~ m{^-})
             {
-                $self->_handle_long_option($arg);
+                if ($arg =~ m{^--})
+                {
+                    $self->_handle_long_option($arg);
+                }
+                else
+                {
+                    $self->_handle_short_option($arg);
+                }
             }
             else
             {
-                $self->_handle_short_option($arg);
+                $self->_assign_filename($arg);
             }
-        }
-        else
-        {
-            $self->_assign_filename($arg);
         }
     }
     return $self->result();
