@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 48;
+use Test::More tests => 56;
 
 use Template::Preprocessor::TTML::CmdLineProc;
 
@@ -266,3 +266,26 @@ sub get_res
     # TEST
     ok($@, "An exception was thrown because -h is specified as well as other args");
 }
+
+# Some grand finale testing schemes
+# Test for one filename
+{
+    my $r = get_res(argv => ["-DFILENAME=hoola", "-o", "shlomif200.html", "-I", "/home/tt2/", "--include=./mydir/", "Goola.ttml"]);
+    # TEST
+    ok($r, "Result is OK");
+    # TEST
+    is($r->input_filename(), "Goola.ttml", "Input filename is OK");
+    # TEST
+    ok(!$r->output_to_stdout(), "Not outputting to stdout");
+    # TEST
+    is($r->output_filename(), "shlomif200.html", "Output file is OK.");
+    # TEST
+    is_deeply($r->include_path(), ["/home/tt2/", "./mydir/"], "Include Path is OK");
+    # TEST
+    is_deeply($r->defines(), +{'FILENAME' => "hoola",}, "Defines are OK");
+    # TEST
+    is_deeply($r->include_files(), [], "Include Files are empty");
+    # TEST
+    is ($r->run_mode(), "regular", "Run mode is OK");
+}
+
