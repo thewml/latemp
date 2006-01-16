@@ -89,7 +89,21 @@ sub _get_mode_callbacks
     return {
         'regular' => "_mode_regular",
         'help' => "_mode_help",
+        'version' => "_mode_version",
     };
+}
+
+sub _mode_version
+{
+    print <<"EOF";
+This is TTML version $VERSION
+TTML is a Command Line Preprocessor based on the Template Toolkit 
+(http://www.template-toolkit.org/)
+
+More information about TTML can be found at:
+
+http://search.cpan.org/dist/Template-Preprocessor-TTML/
+EOF
 }
 
 sub _get_help_text
