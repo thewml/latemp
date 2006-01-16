@@ -10,6 +10,7 @@ use Template::Preprocessor::TTML::CmdLineProc;
 
 __PACKAGE__->mk_accessors(qw(
     argv
+    opts
 ));
 
 =head1 NAME
@@ -63,14 +64,37 @@ Performs the processing.
 
 =cut
 
-sub run
+sub _calc_opts
 {
     my $self = shift;
     my $cmd_line = Template::Preprocessor::TTML::CmdLineProc->new(argv => $self->argv());
-    my $opts = $cmd_line->get_result();
+    $self->opts($cmd_line->get_result());
+}
+
+sub _get_output
+{
+    my $self = shift;
+    if ($self->opts()->output_to_stdout())
+    {
+        return ();
+    }
+    else
+    {
+        return ($self->opts()->output_filename());
+    }
+}
+
+sub run
+{
+    my $self = shift;
+    $self->_calc_opts();
     my $template = Template->new();
 
-    $template->process($opts->input_filename(), $opts->defines())
+    $template->process(
+        $self->opts()->input_filename(), 
+        $self->opts()->defines(),
+        $self->_get_output(),
+    )
 }
 
 =head1 AUTHOR
