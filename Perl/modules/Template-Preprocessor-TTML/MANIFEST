@@ -9,6 +9,9 @@ README
 t/00-load.t
 t/01-cmdline-proc.t
 t/02-main.t
+t/data/include/dir1/header.tt2
+t/data/include/dir2/inc2.tt2
+t/data/input/explicit-includes.ttml
 t/data/input/hello.ttml
 t/data/input/simple.ttml
 t/data/input/two-params.ttml
