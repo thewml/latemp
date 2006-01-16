@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 6;
+use Test::More tests => 7;
 use File::Spec;
 use Template::Preprocessor::TTML;
 
@@ -51,11 +51,14 @@ sub trap
 my $t_dir = File::Spec->catdir( File::Spec->curdir, "t" );
 my $data_dir = File::Spec->catdir( $t_dir, "data" );
 my $input_dir = File::Spec->catdir( $data_dir, "input" );
+my $include_dir = File::Spec->catdir( $data_dir, "include" );
+my $inc1_dir = File::Spec->catdir( $include_dir, "dir1" );
+my $inc2_dir = File::Spec->catdir( $include_dir, "dir2" );
 
 my $simple_ttml = File::Spec->catfile( $input_dir, "simple.ttml" );
 my $hello_ttml = File::Spec->catfile( $input_dir, "hello.ttml" );
 my $two_params_ttml = File::Spec->catfile( $input_dir, "two-params.ttml" );
-
+my $explicit_includes_ttml = File::Spec->catfile( $input_dir, "explicit-includes.ttml" );
 {
     my $pp = Template::Preprocessor::TTML->new('argv' => [$simple_ttml]);
     my $ret = trap(sub { $pp->run(); });
@@ -92,4 +95,11 @@ my $two_params_ttml = File::Spec->catfile( $input_dir, "two-params.ttml" );
     is ($ret->{'out'}, "", "Output is Empty on -o");
     # TEST
     is (slurp("myout.txt"), "18+6=24\n", "Two Params");
+}
+
+{
+    my $pp = Template::Preprocessor::TTML->new('argv' => ["--include", $inc1_dir, "-I".$inc2_dir, $explicit_includes_ttml]);
+    my $ret = trap(sub { $pp->run(); });
+    # TEST
+    like ($ret->{'out'}, qr{posix is smith}, "Includes");
 }

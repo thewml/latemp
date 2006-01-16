@@ -88,10 +88,16 @@ sub run
 {
     my $self = shift;
     $self->_calc_opts();
-    my $template = Template->new();
+    
+    my $config =
+    {
+        INCLUDE_PATH => [ ".", @{$self->opts()->include_path()}],
+        EVAL_PERL => 1,
+    };
+    my $template = Template->new($config);
 
     $template->process(
-        $self->opts()->input_filename(), 
+        $self->opts()->input_filename(),
         $self->opts()->defines(),
         $self->_get_output(),
     )
