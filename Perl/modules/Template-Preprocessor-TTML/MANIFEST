@@ -19,3 +19,4 @@ t/data/input/simple.ttml
 t/data/input/two-params.ttml
 t/pod-coverage.t
 t/pod.t
+Makefile.PL

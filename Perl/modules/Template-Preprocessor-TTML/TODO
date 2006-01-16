@@ -1,3 +1,2 @@
-* Add create_makefile_pl to Build.PL.
+* Fix the ::TTML POD.
 
-* Add the module dependencies there.
