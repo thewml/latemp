@@ -1,3 +1,4 @@
+bin/ttml
 Build.PL
 Changes
 lib/Template/Preprocessor/TTML/Base.pm
