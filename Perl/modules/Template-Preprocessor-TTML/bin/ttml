@@ -1,0 +1,5 @@
+#!/usr/bin/perl
+
+use Template::Preprocessor::TTML;
+
+Template::Preprocessor::TTML->new('argv' => [@ARGV])->run();

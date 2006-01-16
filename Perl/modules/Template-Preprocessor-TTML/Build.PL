@@ -11,6 +11,7 @@ my $builder = Module::Build->new(
         'Test::More' => 0,
     },
     add_to_cleanup      => [ 'Template-Preprocessor-TTML-*' ],
+    script_files => [ 'bin/ttml' ],
 );
 
 $builder->create_build_script();
