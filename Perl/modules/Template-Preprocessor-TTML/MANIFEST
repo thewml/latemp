@@ -8,5 +8,9 @@ META.yml # Will be created by "make dist"
 README
 t/00-load.t
 t/01-cmdline-proc.t
+t/02-main.t
+t/data/input/hello.ttml
+t/data/input/simple.ttml
+t/data/input/two-params.ttml
 t/pod-coverage.t
 t/pod.t
