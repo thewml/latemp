@@ -93,6 +93,7 @@ sub run
     {
         INCLUDE_PATH => [ ".", @{$self->opts()->include_path()}],
         EVAL_PERL => 1,
+        PRE_PROCESS => $self->opts()->include_files(),
     };
     my $template = Template->new($config);
 
