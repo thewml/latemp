@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 7;
+use Test::More tests => 8;
 use File::Spec;
 use Template::Preprocessor::TTML;
 
@@ -59,6 +59,10 @@ my $simple_ttml = File::Spec->catfile( $input_dir, "simple.ttml" );
 my $hello_ttml = File::Spec->catfile( $input_dir, "hello.ttml" );
 my $two_params_ttml = File::Spec->catfile( $input_dir, "two-params.ttml" );
 my $explicit_includes_ttml = File::Spec->catfile( $input_dir, "explicit-includes.ttml" );
+my $implicit_includes_ttml = File::Spec->catfile( $input_dir, "implicit-includes.ttml" );
+
+
+
 {
     my $pp = Template::Preprocessor::TTML->new('argv' => [$simple_ttml]);
     my $ret = trap(sub { $pp->run(); });
@@ -102,4 +106,17 @@ my $explicit_includes_ttml = File::Spec->catfile( $input_dir, "explicit-includes
     my $ret = trap(sub { $pp->run(); });
     # TEST
     like ($ret->{'out'}, qr{posix is smith}, "Includes");
+}
+
+{
+    my $pp = Template::Preprocessor::TTML->new(
+        'argv' => 
+        [
+            "--include", $inc1_dir, "-I".$inc2_dir, 
+            "--includefile", "header.tt2", "--includefile=inc2.tt2",
+            $implicit_includes_ttml
+        ]);
+    my $ret = trap(sub { $pp->run(); });
+    # TEST
+    like ($ret->{'out'}, qr{posix is smith}, "Implicit Includes");
 }
