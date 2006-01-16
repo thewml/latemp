@@ -3,6 +3,15 @@ package Template::Preprocessor::TTML;
 use warnings;
 use strict;
 
+use base 'Template::Preprocessor::TTML::Base';
+
+use Template;
+use Template::Preprocessor::TTML::CmdLineProc;
+
+__PACKAGE__->mk_accessors(qw(
+    argv
+));
+
 =head1 NAME
 
 Template::Preprocessor::TTML - The great new Template::Preprocessor::TTML!
@@ -33,18 +42,35 @@ if you don't export anything, such as for a purely object-oriented module.
 
 =head1 FUNCTIONS
 
-=head2 function1
+=head2 initialize()
+
+Internal function for initializing the object.
 
 =cut
 
-sub function1 {
+sub initialize
+{
+    my $self = shift;
+    my %args = (@_);
+    $self->argv([@{$args{'argv'}}]);
+
+    return 0;
 }
 
-=head2 function2
+=head2 run
+
+Performs the processing.
 
 =cut
 
-sub function2 {
+sub run
+{
+    my $self = shift;
+    my $cmd_line = Template::Preprocessor::TTML::CmdLineProc->new(argv => $self->argv());
+    my $opts = $cmd_line->get_result();
+    my $template = Template->new();
+
+    $template->process($opts->input_filename(), $opts->defines())
 }
 
 =head1 AUTHOR
