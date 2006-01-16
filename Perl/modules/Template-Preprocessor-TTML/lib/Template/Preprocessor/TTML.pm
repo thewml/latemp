@@ -15,31 +15,21 @@ __PACKAGE__->mk_accessors(qw(
 
 =head1 NAME
 
-Template::Preprocessor::TTML - The great new Template::Preprocessor::TTML!
-
-=head1 VERSION
-
-Version 0.01
+Template::Preprocessor::TTML - Preprocess files using the Template Toolkit 
+from the command line.
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.0100';
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
     use Template::Preprocessor::TTML;
 
-    my $foo = Template::Preprocessor::TTML->new();
+    my $obj = Template::Preprocessor::TTML->new(argv => [@ARGV]);
+    $obj->run()
+    
     ...
-
-=head1 EXPORT
-
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
 
 =head1 FUNCTIONS
 
@@ -178,8 +168,9 @@ your bug as I make changes.
 
 Copyright 2006 Shlomi Fish, all rights reserved.
 
-This program is released under the following license: BSD
+This program is released under the MIT X11 License.
 
 =cut
 
-1; # End of Template::Preprocessor::TTML
+1; 
+
