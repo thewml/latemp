@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 8;
+use Test::More tests => 11;
 use File::Spec;
 use Template::Preprocessor::TTML;
 
@@ -120,3 +120,17 @@ my $implicit_includes_ttml = File::Spec->catfile( $input_dir, "implicit-includes
     # TEST
     like ($ret->{'out'}, qr{posix is smith}, "Implicit Includes");
 }
+
+{
+    my $pp = Template::Preprocessor::TTML->new(
+        'argv' => ["--help"],
+    );
+    my $ret = trap(sub { $pp->run(); });
+    # TEST
+    like ($ret->{'out'}, qr{--help}, "Help #1");
+    # TEST
+    like ($ret->{'out'}, qr{--include}, "Help #2");
+    # TEST
+    like ($ret->{'out'}, qr{-D}, "Help #3");
+}
+
