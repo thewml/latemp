@@ -3,9 +3,15 @@
 use strict;
 use warnings;
 
-use Test::More tests => 4;
+use Test::More tests => 6;
 use File::Spec;
 use Template::Preprocessor::TTML;
+
+sub slurp
+{
+    my $filename = shift;
+    return do { local $/; local *I; open I, "<", $filename; <I>};
+}
 
 sub trap
 {
@@ -34,8 +40,8 @@ sub trap
     {
         die $except;
     }
-    my $out = do { local $/; local *I; open I, "<", "altout.txt"; <I>};
-    my $error = do { local $/; local *I; open I, "<", "alterr.txt"; <I>};
+    my $out = slurp("altout.txt");
+    my $error = slurp("alterr.txt");
     return 
     { 
         'out' => $out, 'err' => $error, 'ret' => \@ret
@@ -78,3 +84,12 @@ my $two_params_ttml = File::Spec->catfile( $input_dir, "two-params.ttml" );
     is ($ret->{'out'}, "18+6=24\n", "Two Params");
 }
 
+{
+    unlink("myout.txt");
+    my $pp = Template::Preprocessor::TTML->new('argv' => ["-Da=18", "--define", "b=6", "-o", "myout.txt", $two_params_ttml]);
+    my $ret = trap(sub { $pp->run(); });
+    # TEST
+    is ($ret->{'out'}, "", "Output is Empty on -o");
+    # TEST
+    is (slurp("myout.txt"), "18+6=24\n", "Two Params");
+}
