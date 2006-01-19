@@ -147,7 +147,7 @@ sub process_host
         $_->{'results'}=[]; 
         if (!exists($_->{'map'}))
         {
-            $_->{'map'} = sub { return shift;},
+            $_->{'map'} = sub { return shift;};
         }
     }
 
