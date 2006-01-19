@@ -5,7 +5,7 @@ use warnings;
 
 use vars qw($VERSION);
 
-$VERSION = '0.1.5';
+$VERSION = '0.1.6';
 
 package HTML::Latemp::GenMakeHelpers::Base;
 
@@ -129,7 +129,7 @@ sub process_host
     (
         {
             'name' => "IMAGES",
-            'filter' => sub { (!/\.wml$/) && (-f $make_path->($_)) },
+            'filter' => sub { (!/\.(?:tt|w)ml$/) && (-f $make_path->($_)) },
         },
         {
             'name' => "DIRS",
@@ -139,6 +139,11 @@ sub process_host
             'name' => "DOCS",
             'filter' => sub { /\.html\.wml$/ },
             'map' => sub { my $a = shift; $a =~ s{\.wml$}{}; return $a;},
+        },
+        {
+            'name' => "TTMLS",
+            'filter' => sub { /\.ttml$/ },
+            'map' => sub { my $a = shift; $a =~ s{\.ttml$}{}; return $a;},
         },
     );
 
@@ -180,9 +185,11 @@ X8X_SRC_DIR = $source_dir_path
 
 X8X_DEST = $dest_dir
 
-X8X_TARGETS = \$(X8X_DEST) \$(X8X_DIRS_DEST) \$(X8X_COMMON_DIRS_DEST) \$(X8X_COMMON_IMAGES_DEST) \$(X8X_IMAGES_DEST) \$(X8X_DOCS_DEST)
+X8X_TARGETS = \$(X8X_DEST) \$(X8X_DIRS_DEST) \$(X8X_COMMON_DIRS_DEST) \$(X8X_COMMON_IMAGES_DEST) \$(X8X_COMMON_TTMLS_DEST) \$(X8X_IMAGES_DEST) \$(X8X_DOCS_DEST \$(X8X_TTMLS_DEST)
         
 X8X_WML_FLAGS = \$(WML_FLAGS) -DLATEMP_SERVER=x8x
+
+X8X_TTML_FLAGS = \$(TTML_FLAGS) -DLATEMP_SERVER=x8x
 
 X8X_DOCS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(X8X_DOCS))
 
@@ -190,12 +197,19 @@ X8X_DIRS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(X8X_DIRS))
 
 X8X_IMAGES_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(X8X_IMAGES))
 
+X8X_TTMLS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(X8X_TTMLS))
+
 X8X_COMMON_IMAGES_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_IMAGES))
 
 X8X_COMMON_DIRS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_DIRS))
-        
+
+X8X_COMMON_TTMLS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_TTMLS))
+
 \$(X8X_DOCS_DEST) :: $h_dest_star : \$(X8X_SRC_DIR)/%.wml \$(DOCS_COMMON_DEPS) 
 	( cd \$(X8X_SRC_DIR) && wml \$(X8X_WML_FLAGS) -DLATEMP_FILENAME=\$(patsubst $h_dest_star,%,\$(patsubst %.wml,%,\$@)) \$(patsubst \$(X8X_SRC_DIR)/%,%,\$<) ) > \$@
+
+\$(X8X_TTMLS_DEST) :: $h_dest_star : \$(X8X_SRC_DIR)/%.ttml \$(TTMLS_COMMON_DEPS)
+	ttml -o \$@ \$(X8X_TTML_FLAGS) -DLATEMP_FILENAME=\$(patsubst $h_dest_star,%,\$(patsubst %.ttml,%,\$@)) \$<
 
 \$(X8X_DIRS_DEST) :: $h_dest_star : unchanged
 	mkdir -p \$@
@@ -206,6 +220,9 @@ X8X_COMMON_DIRS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_DIRS))
 
 \$(X8X_COMMON_IMAGES_DEST) :: $h_dest_star : \$(COMMON_SRC_DIR)/%
 	cp -f \$< \$@
+
+\$(X8X_COMMON_TTMLS_DEST) :: $h_dest_star : \$(COMMON_SRC_DIR)/%.ttml \$(TTMLS_COMMON_DEPS)
+	ttml -o \$@ \$(X8X_TTML_FLAGS) -DLATEMP_FILENAME=\$(patsubst $h_dest_star,%,\$(patsubst %.ttml,%,\$@)) \$<
 
 \$(X8X_COMMON_DIRS_DEST)  :: $h_dest_star : unchanged
 	mkdir -p \$@
