@@ -1,5 +1,7 @@
 Revision history for HTML-Latemp-GenMakeHelpers
 
+    - Added support for the TTMLS target to generate TTML-processed files.
+    - Fixed a bug where a parenthesis was missing.
 0.1.5    2005-12-07
     - Added a Makefile.PL wrapper to the Build.PL build process (taken
     verbatim from http://search.cpan.org/dist/accessors/)
