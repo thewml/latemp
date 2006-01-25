@@ -20,7 +20,7 @@ from the command line.
 
 =cut
 
-our $VERSION = '0.0100';
+our $VERSION = '0.0101';
 
 =head1 SYNOPSIS
 
@@ -143,11 +143,16 @@ sub _mode_regular
     };
     my $template = Template->new($config);
 
-    $template->process(
-        $self->opts()->input_filename(),
-        $self->opts()->defines(),
-        $self->_get_output(),
+    if (!
+        $template->process(
+            $self->opts()->input_filename(),
+            $self->opts()->defines(),
+            $self->_get_output(),
+        )
     )
+    {
+        die $template->error();
+    }
 }
 
 =head1 AUTHOR

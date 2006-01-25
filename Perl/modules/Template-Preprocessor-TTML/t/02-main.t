@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 12;
+use Test::More tests => 13;
 use File::Spec;
 use Template::Preprocessor::TTML;
 
@@ -60,7 +60,7 @@ my $hello_ttml = File::Spec->catfile( $input_dir, "hello.ttml" );
 my $two_params_ttml = File::Spec->catfile( $input_dir, "two-params.ttml" );
 my $explicit_includes_ttml = File::Spec->catfile( $input_dir, "explicit-includes.ttml" );
 my $implicit_includes_ttml = File::Spec->catfile( $input_dir, "implicit-includes.ttml" );
-
+my $invalid_ttml = File::Spec->catfile( $input_dir, "invalid.ttml" );
 
 
 {
@@ -141,4 +141,14 @@ my $implicit_includes_ttml = File::Spec->catfile( $input_dir, "implicit-includes
     my $ret = trap(sub { $pp->run(); });
     # TEST
     like ($ret->{'out'}, qr{This is TTML version}, "Help #1");
+}
+
+{
+    my $pp = Template::Preprocessor::TTML->new('argv' => [$invalid_ttml]);
+    my $ret;
+    eval {
+        $ret = trap(sub { $pp->run(); });
+    };
+    # TEST
+    ok ($@, "Throws an excpetion on invalid input.");
 }
