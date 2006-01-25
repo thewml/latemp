@@ -1,5 +1,7 @@
 Revision history for Template-Preprocessor-TTML
 
+0.0101  Wed Jan 25 19:54:45 IST 2006
+  - Now throwing an exception if the template processing failed.
 0.0100  Mon Jan 16 21:01:57 IST 2006
         First version, released on an unsuspecting world.
 

@@ -4,6 +4,7 @@ Changes
 lib/Template/Preprocessor/TTML/Base.pm
 lib/Template/Preprocessor/TTML/CmdLineProc.pm
 lib/Template/Preprocessor/TTML.pm
+Makefile.PL
 MANIFEST
 META.yml # Will be created by "make dist"
 README
@@ -15,8 +16,8 @@ t/data/include/dir2/inc2.tt2
 t/data/input/explicit-includes.ttml
 t/data/input/hello.ttml
 t/data/input/implicit-includes.ttml
+t/data/input/invalid.ttml
 t/data/input/simple.ttml
 t/data/input/two-params.ttml
 t/pod-coverage.t
 t/pod.t
-Makefile.PL
