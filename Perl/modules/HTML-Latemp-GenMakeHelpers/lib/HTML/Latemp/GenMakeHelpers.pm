@@ -185,8 +185,8 @@ X8X_SRC_DIR = $source_dir_path
 
 X8X_DEST = $dest_dir
 
-X8X_TARGETS = \$(X8X_DEST) \$(X8X_DIRS_DEST) \$(X8X_COMMON_DIRS_DEST) \$(X8X_COMMON_IMAGES_DEST) \$(X8X_COMMON_TTMLS_DEST) \$(X8X_IMAGES_DEST) \$(X8X_DOCS_DEST) \$(X8X_TTMLS_DEST)
-        
+X8X_TARGETS = \$(X8X_DEST) \$(X8X_DIRS_DEST) \$(X8X_COMMON_DIRS_DEST) \$(X8X_COMMON_IMAGES_DEST) \$(X8X_COMMON_DOCS_DEST) \$(X8X_COMMON_TTMLS_DEST) \$(X8X_IMAGES_DEST) \$(X8X_DOCS_DEST) \$(X8X_TTMLS_DEST)
+
 X8X_WML_FLAGS = \$(WML_FLAGS) -DLATEMP_SERVER=x8x
 
 X8X_TTML_FLAGS = \$(TTML_FLAGS) -DLATEMP_SERVER=x8x
@@ -204,6 +204,8 @@ X8X_COMMON_IMAGES_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_IMAGES))
 X8X_COMMON_DIRS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_DIRS))
 
 X8X_COMMON_TTMLS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_TTMLS))
+
+X8X_COMMON_DOCS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_DOCS))
 
 \$(X8X_DOCS_DEST) :: $h_dest_star : \$(X8X_SRC_DIR)/%.wml \$(DOCS_COMMON_DEPS) 
 	( cd \$(X8X_SRC_DIR) && wml \$(X8X_WML_FLAGS) -DLATEMP_FILENAME=\$(patsubst $h_dest_star,%,\$(patsubst %.wml,%,\$@)) \$(patsubst \$(X8X_SRC_DIR)/%,%,\$<) ) > \$@
@@ -223,6 +225,9 @@ X8X_COMMON_TTMLS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_TTMLS))
 
 \$(X8X_COMMON_TTMLS_DEST) :: $h_dest_star : \$(COMMON_SRC_DIR)/%.ttml \$(TTMLS_COMMON_DEPS)
 	ttml -o \$@ \$(X8X_TTML_FLAGS) -DLATEMP_FILENAME=\$(patsubst $h_dest_star,%,\$(patsubst %.ttml,%,\$@)) \$<
+
+\$(X8X_COMMON_DOCS_DEST) :: $h_dest_star : \$(COMMON_SRC_DIR)/%.wml \$(DOCS_COMMON_DEPS)
+	( cd \$(COMMON_SRC_DIR) && wml \$(X8X_WML_FLAGS) -DLATEMP_FILENAME=\$(patsubst $h_dest_star,%,\$(patsubst %.wml,%,\$@)) \$(patsubst \$(COMMON_SRC_DIR)/%,%,\$<) ) > \$@
 
 \$(X8X_COMMON_DIRS_DEST)  :: $h_dest_star : unchanged
 	mkdir -p \$@
