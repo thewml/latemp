@@ -27,6 +27,13 @@ my @news_items =
             the first stable version of Latemp.},
             'date' => "2005-05-07",
         },
+        {
+            'title' => "Latemp Now Runs on windows",
+            'id' => "windows-portability",
+            'description' => q{Latemp now runs on Microsoft Windows, after
+            Website META Language was fixed to build on cygwin},
+            'date' => "2006-06-14",
+        },
         )
     )
 );
