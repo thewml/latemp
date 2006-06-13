@@ -11,7 +11,8 @@ LATEMP_WML_INCLUDE_PATH =$(shell latemp-config --wml-include-path)
 
 WML_FLAGS += --passoption=2,-X3074 --passoption=3,-I../../lib/ \
 	--passoption=3,-w -I$(LATEMP_WML_INCLUDE_PATH) -I../../lib/ -I../../ \
-	-DROOT~.
+	-DROOT~. \
+	--passoption=2,-I$(LATEMP_WML_INCLUDE_PATH)
 
 all: dummy
 
