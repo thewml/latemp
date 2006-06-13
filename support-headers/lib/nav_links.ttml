@@ -1,0 +1,14 @@
+.nav_links
+{
+    text-align: center;
+    padding-left : 0em;
+    padding-top : 0em;
+}
+.nav_links li
+{
+    display: inline;
+    list-style-type: none;
+    padding-right: 0.2em;
+    padding-top: 0em;
+}
+

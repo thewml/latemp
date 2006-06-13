@@ -1,0 +1,12 @@
+.note 
+{ 
+    border-color : black; 
+    border-style : double;
+    padding : 0.5em;
+    background-color : #98FB98; /* PaleGreen */
+    margin-top: 1em;
+}
+.note h2
+{
+   background: transparent;
+}
