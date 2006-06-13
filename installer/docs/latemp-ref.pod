@@ -286,6 +286,18 @@ If set, will generate a page with only the body of the page, and not with a
 sidebar, footer, breadcrumbs trail, etc. Useful for generating a version
 for printing.
 
+=head3 <set-var latemp_with_html_head_nav_links="1" />
+
+If set, puts up <link rel="next" />, <link rel="prev" />, etc. navigation
+links within the <head> ... </head> tag. These will appear in naviagtion
+bars available for popular browsers, for easy navigation within the site.
+
+=head3 <set-var latemp_with_html_head_stylesheets="1" />
+
+This variable controls whether or not the default <link /> tags to the 
+stylesheets will be displayed within the <head>...</head> section of 
+the document.
+
 =head2 Tags to be defined by the user:
 
 =head3 <define-tag latemp_timestamp_wrapper endtag="required">...</define-tag>
