@@ -1,0 +1,9 @@
+.navbar 
+{ 
+    float : left;
+    width : [% navbar_width %];
+    padding-left : 0.5em;    
+    padding-right : 0.5em;
+    padding-top : 1.5em;
+    padding-bottom: 2em;
+}
