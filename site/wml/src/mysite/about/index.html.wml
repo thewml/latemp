@@ -42,6 +42,11 @@ site, for example was created using Latemp, and so are
 
 <ul class="links">
 <li>
+Portable. Runs on all UNIX Systems (including Mac OS X) as well as on
+Microsoft Windows using the <a href="http://www.cygwin.com/">cygwin UNIX 
+emulation</a>.
+</li>
+<li>
 Generates Static HTML Files.
 </li>
 <li>
