@@ -28,7 +28,7 @@ my @news_items =
             'date' => "2005-05-07",
         },
         {
-            'title' => "Latemp Now Runs on windows",
+            'title' => "Latemp Now Runs on Windows",
             'id' => "windows-portability",
             'description' => q{Latemp now runs on Microsoft Windows, after
             Website META Language was fixed to build on cygwin},
