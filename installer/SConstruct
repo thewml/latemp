@@ -108,8 +108,11 @@ for t in themes:
 package_files.append('ver.txt')
 package = Init("latemp", version)
 package.AddToDist(package_files)
-dist_node = package.BuildDist(env)
-env.Alias('dist', dist_node)
+
+# Temporary disabling because of an SCons regression.
+# dist_node = package.BuildDist(env)
+# env.Alias('dist', dist_node)
+
 env.Alias('dist_upload', env.Upload("h67jk343jvnsidnvnoisd", "latemp-" + version + ".tar.gz"))
 
 for script in latemp_scripts:

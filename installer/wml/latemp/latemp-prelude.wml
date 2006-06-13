@@ -5,3 +5,7 @@
 #include "latemp/texts.wml"
 #include "latemp/html-head-tag.wml"
 #include "latemp/news-management.wml"
+
+<set-var latemp_with_html_head_nav_links="1" />
+<set-var latemp_with_html_head_stylesheets="1" />
+
