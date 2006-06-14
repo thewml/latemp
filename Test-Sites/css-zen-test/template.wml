@@ -4,7 +4,7 @@
 # You can put some customizations here
 
 <set-var latemp_with_head_meta_tags="1" />
-<set-var latemp_screen_stylesheet_url="http://www.csszengarden.com/zengarden-sample.css" />
+<set-var latemp_screen_stylesheet_url="http://www.csszengarden.com/188/188.css" />
 # Actually start the page template.
 #include "latemp/latemp-driver.wml"
 <latemp_lang "en-US" />
