@@ -1,5 +1,9 @@
 Revision history for HTML-Latemp-GenMakeHelpers
 
+0.1.7    Thu Jul 13 12:56:07 IDT 2006
+    - Made the wml commands use -o instead of a > $@ redirection. This way,
+    an empty file won't be created if wml failed, which in turn will cause
+    it to be re-compiled upon the next invocation of make.
 0.1.6
     - Added support for the TTMLS target to generate TTML-processed files.
     - Fixed a bug where a parenthesis was missing.
