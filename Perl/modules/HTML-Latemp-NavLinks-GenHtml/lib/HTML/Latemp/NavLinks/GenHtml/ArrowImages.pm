@@ -87,6 +87,7 @@ sub get_nav_buttons_html
         'buttons' => \@buttons,
         'root' => $root,
         'with_accesskey' => $with_accesskey,
+        'image_base' => $self->get_image_base(),
     };
     
     my $nav_links_template = <<'EOF';
@@ -99,7 +100,7 @@ sub get_nav_buttons_html
 [% IF with_accesskey %]
 accesskey="[% key %]"
 [% END %]
->[% END %]<img src="[% root %]/images/arrow-[% b.button %][% UNLESS b.exists %]-disabled[% END %].png"
+>[% END %]<img src="[% root %]/images/[% image_base %][% b.button %][% UNLESS b.exists %]-disabled[% END %].png"
 alt="[% b.title %]" class="bless" />[% IF b.exists %]</a>
 [% END %]
 </li>
@@ -119,6 +120,13 @@ sub get_total_html
     return "<ul class=\"nav_links\">\n" .
         $self->get_nav_buttons_html(@_) .
         "\n</ul>";
+}
+
+sub get_image_base
+{
+    my $self = shift;
+
+    return "arrow-";
 }
 
 1;
