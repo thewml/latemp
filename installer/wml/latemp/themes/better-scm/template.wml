@@ -12,14 +12,14 @@
 <body>
 
 <define-tag latemp_start_layout>
-<p style="display:none;">
+<p class="invisible">
 <a href="#main">Go to main content</a>
 </p>
 
 <latemp_top_banner_text />
 <latemp_get_breadcrumbs_trail />
 <div class="navbar">
-<p style="display:none;">
+<p class="invisible">
 <a href="#nav_menu">Go to the navigation menu</a>
 </p>
 
