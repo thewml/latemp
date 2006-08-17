@@ -65,7 +65,7 @@ h1
 [% SET h2_bgcolor = "#8080FF" %]
 [% INCLUDE "shlomif/note.ttml" %]
 [% SET leading_path_bgcolor = "#DDA0DD" %]
-[% PROCESS "common-styles.css.ttml" %]
+[% PROCESS "shlomif/better-scm-common-styles.ttml" %]
 [% INCLUDE "nav_links.ttml" %]
 .main, .navbar
 {

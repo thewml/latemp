@@ -1,0 +1,167 @@
+a:hover
+{ 
+    color : [% a_hover_color %];
+}
+.main
+{
+    padding-left : 1em;
+    padding-bottom : 1em;
+    padding-top : 0em;
+    padding-right: 1em;
+
+    margin-left : 240px;
+}
+
+.main
+{
+    background-color: white;
+}
+
+/* This is so list items will have spacing between them. */
+.main li
+{
+    padding-bottom: 0.5em;
+}
+.righty
+{
+   float: right;
+   text-align: center;
+   font-size: 80%;
+   width: 30%;
+}
+.righty img
+{
+    border : 0;
+}
+.foot_left
+{
+    float : left;
+    width: 60%;
+}
+.webmaster
+{
+    margin-bottom: 0em;
+}
+.vcs
+{    
+    margin-top: 0.5em;
+    clear: left;
+}
+.vcs tt
+{
+    font-size: 83%;
+}
+.center
+{
+    text-align : center;
+}
+.leading_path a:hover
+{
+    color : yellow;
+}
+.leading_path
+{
+    padding-left: 0.5em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+
+    background-color : [% leading_path_bgcolor %];
+
+    font-size: 85%;
+
+    margin-top: 5pt;
+    margin-bottom: 0.5em;
+    margin-right: 10pt;
+}
+/* Workaround to get the <hr /> element at the bottom to properly display 
+   with Konqueror 3.3.x
+   */
+.footer hr
+{
+    width:100%;
+    clear:both;
+}
+tt { color : #8a2be2; }
+pre
+{
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+    background-color: #FF8080;
+    border-width : thin;
+    border-color: #004000;
+    border-style: solid;
+}
+/* Border-less */
+.bless
+{
+    border : none;
+}
+.news
+{
+    border: dashed 1.5pt black;
+    float: right;
+    background-color: #ebb9ea;
+    font-size: 60%;
+    font-family: sans-serif;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-left: 0.5em;
+    margin-bottom: 0.5em;
+    padding-bottom: 1em;
+}
+.news ul
+{
+    list-style-position: inside;
+    margin-left: 0em;
+    padding-left: 0em;
+    margin-bottom: 0em;
+}
+.news h3
+{
+    margin-top:0.5em;
+}
+.logo
+{
+    margin-top: 0.5em;
+    text-align: center;
+}
+.logo img
+{
+    border : none;
+}
+.links li
+{
+    margin-bottom: 0.5em;
+    padding-left: 0.5em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    padding-right: 0.5em;
+}
+.links li:hover
+{
+    background-color: #E6FAE6;
+}
+.link { background : transparent; }
+ul.navbarmain
+{ 
+    font-size: 80%;
+    font-family: sans-serif;
+}
+.main p, .main img
+{
+    padding-left : 1em;
+}
+h2, h3, h4
+{
+    padding-left: 0.3em;
+}
+.navbar 
+{
+    background-color : [% navbar_bgcolor %];
+}
+h2 
+{ 
+    background-color: [% h2_bgcolor %];
+}
