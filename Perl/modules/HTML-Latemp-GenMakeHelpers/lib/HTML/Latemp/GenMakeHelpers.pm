@@ -213,16 +213,12 @@ sub get_buckets
         ];
 }
 
-sub get_non_bucketed_files
+sub _filter_out_special_files
 {
-    my ($self, $host) = @_;
+    my ($self, $host, $files_ref) = @_;
 
-    my $source_dir_path = $host->source_dir();
+    my @files = @$files_ref;
 
-    my @files = File::Find::Rule->in($source_dir_path);
-
-    s!^$source_dir_path/!! for @files;
-    @files = (grep { $_ ne $source_dir_path } @files);
     @files = (grep { ! m{(^|/)\.svn(/|$)} } @files);
     @files = (grep { ! /~$/ } @files);
     @files = 
@@ -233,9 +229,31 @@ sub get_non_bucketed_files
         } 
         @files
         );
-    @files = sort { $a cmp $b } @files;
 
     return \@files;
+}
+
+sub _sort_files
+{
+    my ($self, $host, $files_ref) = @_;
+
+    return [ sort { $a cmp $b } @$files_ref ];
+}
+
+sub get_non_bucketed_files
+{
+    my ($self, $host) = @_;
+
+    my $source_dir_path = $host->source_dir();
+
+    my $files = [ File::Find::Rule->in($source_dir_path) ];
+
+    s!^$source_dir_path/!! for @$files;
+    $files = [grep { $_ ne $source_dir_path } @$files];
+
+    $files = $self->_filter_out_special_files($host, $files);
+
+    return $self->_sort_files($host, $files);
 }
 
 sub place_files_into_buckets
