@@ -93,6 +93,83 @@ sub process_all
     close($file_lists_fh);
 }
 
+sub _make_path
+{
+    my $self = shift;
+
+    my $host = shift;
+    my $path = shift;
+
+    return $host->source_dir(). "/".$path;
+}
+
+
+
+sub get_initial_buckets
+{
+    my $self = shift;
+    my $host = shift;
+
+    return
+    [
+        {
+            'name' => "IMAGES",
+            'filter' =>
+            sub 
+            { 
+                (!/\.(?:tt|w)ml$/) && (-f $self->_make_path($host, $_)) 
+            },
+        },
+        {
+            'name' => "DIRS",
+            'filter' => 
+            sub { (-d $self->_make_path($host, $_)) },
+        },
+        {
+            'name' => "DOCS",
+            'filter' => sub { /\.html\.wml$/ },
+            'map' => sub { my $a = shift; $a =~ s{\.wml$}{}; return $a;},
+        },
+        {
+            'name' => "TTMLS",
+            'filter' => sub { /\.ttml$/ },
+            'map' => sub { my $a = shift; $a =~ s{\.ttml$}{}; return $a;},
+        },
+    ];
+}
+
+sub _identity
+{
+    return shift;
+}
+
+sub _process_bucket
+{
+    my ($self, $bucket) = @_;
+    return 
+        { 
+            %$bucket, 
+            'results' => [],
+            (
+                (!exists($bucket->{'map'})) ?
+                    ('map' => \&_identity) :
+                    ()
+            ),
+        };
+}
+
+sub get_buckets
+{
+    my ($self, $host) = @_;
+
+    return 
+        [ 
+            map 
+            { $self->_process_bucket($_) } 
+            @{$self->get_initial_buckets($host)} 
+        ];
+}
+
 sub process_host
 {
     my $self = shift;
@@ -101,10 +178,6 @@ sub process_host
     my $dir = $self->base_dir();
 
     my $source_dir_path = $host->source_dir();
-    my $make_path = sub {
-        my $path = shift;
-        return "$source_dir_path/$path";
-    };
 
     my $file_lists_text = "";
     my $rules_text = "";
@@ -125,42 +198,14 @@ sub process_host
         );
     @files = sort { $a cmp $b } @files;
 
-    my @buckets = 
-    (
-        {
-            'name' => "IMAGES",
-            'filter' => sub { (!/\.(?:tt|w)ml$/) && (-f $make_path->($_)) },
-        },
-        {
-            'name' => "DIRS",
-            'filter' => sub { (-d $make_path->($_)) },
-        },
-        {
-            'name' => "DOCS",
-            'filter' => sub { /\.html\.wml$/ },
-            'map' => sub { my $a = shift; $a =~ s{\.wml$}{}; return $a;},
-        },
-        {
-            'name' => "TTMLS",
-            'filter' => sub { /\.ttml$/ },
-            'map' => sub { my $a = shift; $a =~ s{\.ttml$}{}; return $a;},
-        },
-    );
+    my @buckets = @{$self->get_buckets($host)};
 
-    foreach (@buckets) 
-    { 
-        $_->{'results'}=[]; 
-        if (!exists($_->{'map'}))
-        {
-            $_->{'map'} = sub { return shift;};
-        }
-    }
 
     FILE_LOOP: foreach (@files)
     {
         for my $b (@buckets)
         {
-            if ($b->{'filter'}->())
+            if ($b->{'filter'}->($host, $_))
             {
                 push @{$b->{'results'}}, $b->{'map'}->($_);
                 next FILE_LOOP;
