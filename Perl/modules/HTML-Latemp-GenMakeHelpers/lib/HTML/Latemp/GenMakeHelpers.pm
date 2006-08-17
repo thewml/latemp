@@ -237,7 +237,7 @@ X8X_COMMON_DOCS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_DOCS))
 \$(X8X_DEST): unchanged
 	mkdir -p \$@
 	touch \$@
- 
+
 EOF
 
         $rules =~ s!X8X!$host_uc!g;
