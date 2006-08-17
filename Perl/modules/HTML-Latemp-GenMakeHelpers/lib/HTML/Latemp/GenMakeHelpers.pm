@@ -222,14 +222,13 @@ sub process_host
     my $file_lists_text = "";
     my $rules_text = "";
 
-    my @files = @{$self->get_non_bucketed_files($host)};
+    my $files = $self->get_non_bucketed_files($host);
 
-    my @buckets = @{$self->get_buckets($host)};
+    my $buckets = $self->get_buckets($host);
 
-
-    FILE_LOOP: foreach my $f (@files)
+    FILE_LOOP: foreach my $f (@$files)
     {
-        for my $b (@buckets)
+        for my $b (@$buckets)
         {
             if ($b->{'filter'}->($f))
             {
@@ -241,7 +240,7 @@ sub process_host
     }
 
     my $host_uc = uc($host->id());
-    foreach my $b (@buckets)
+    foreach my $b (@$buckets)
     {
         $file_lists_text .= $host_uc . "_" . $b->{'name'} . " = " . join(" ", @{$b->{'results'}}) . "\n";
     }
