@@ -262,36 +262,16 @@ sub place_files_into_buckets
     }
 }
 
-sub process_host
+sub get_rules_template
 {
-    my $self = shift;
-    my $host = shift;
+    my ($self, $host) = @_;
 
-    my $dir = $self->base_dir();
-
+    my $h_dest_star = "\$(X8X_DEST)/%";
+    my $wml_path = qq{WML_LATEMP_PATH="\$\$(perl -MFile::Spec -e 'print File::Spec->rel2abs(shift)' '\$\@')"};
+    my $dest_dir = $host->dest_dir();
     my $source_dir_path = $host->source_dir();
 
-    my $file_lists_text = "";
-    my $rules_text = "";
-
-    my $files = $self->get_non_bucketed_files($host);
-
-    my $buckets = $self->get_buckets($host);
-
-    $self->place_files_into_buckets($host, $files, $buckets);
-
-    my $host_uc = uc($host->id());
-    foreach my $b (@$buckets)
-    {
-        $file_lists_text .= $host_uc . "_" . $b->{'name'} . " = " . join(" ", @{$b->{'results'}}) . "\n";
-    }
-    
-    if ($host->id() ne "common")
-    {
-        my $h_dest_star = "\$(X8X_DEST)/%";
-        my $wml_path = qq{WML_LATEMP_PATH="\$\$(perl -MFile::Spec -e 'print File::Spec->rel2abs(shift)' '\$\@')"};
-        my $dest_dir = $host->dest_dir();
-        my $rules = <<"EOF";
+    return <<"EOF";
 
 X8X_SRC_DIR = $source_dir_path
 
@@ -350,6 +330,35 @@ X8X_COMMON_DOCS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_DOCS))
 	touch \$@
 
 EOF
+}
+
+sub process_host
+{
+    my $self = shift;
+    my $host = shift;
+
+    my $dir = $self->base_dir();
+
+    my $source_dir_path = $host->source_dir();
+
+    my $file_lists_text = "";
+    my $rules_text = "";
+
+    my $files = $self->get_non_bucketed_files($host);
+
+    my $buckets = $self->get_buckets($host);
+
+    $self->place_files_into_buckets($host, $files, $buckets);
+
+    my $host_uc = uc($host->id());
+    foreach my $b (@$buckets)
+    {
+        $file_lists_text .= $host_uc . "_" . $b->{'name'} . " = " . join(" ", @{$b->{'results'}}) . "\n";
+    }
+    
+    if ($host->id() ne "common")
+    {
+        my $rules = $self->get_rules_template($host);
 
         $rules =~ s!X8X!$host_uc!g;
         $rules =~ s!x8x!$host->id()!ge;
