@@ -1,0 +1,37 @@
+/*
+    CSS Stylesheet for better-scm.berlios.de
+    Copyright (c) Shlomi Fish, 2003-2005
+    Feel free to use, modify and re-distribute under the terms of the 
+    MIT X11 License (http://www.opensource.org/licenses/mit-license.php)
+
+    $Id: style.css.ttml 275 2006-06-13 21:11:53Z shlomif $
+*/
+[% SET a_hover_color = "red" %]
+[% SET navbar_width = "200px" %]
+[% PROCESS "shlomif/navbar.ttml" %]
+[% SET navbar_bgcolor = "#C5CAE2" %]
+
+.main
+{
+    margin-top: 2em;
+    margin-right: 1em;
+    border: thin solid black;
+}
+[% SET h2_bgcolor = "#FFEE00" %]
+[% INCLUDE "shlomif/note.ttml" %]
+[% SET leading_path_bgcolor = "#40C040" %]
+[% INCLUDE "common-styles.css.ttml" %]
+[% INCLUDE "nav_links.ttml" %]
+.footer
+{
+    clear: both;
+    margin-right : 30px;
+    padding-top: 0.5em;
+}
+.links
+{
+    margin-top: 2em;
+    padding-left:1.5em;
+    margin-left: 0em;
+}
+[% PROCESS "shlomif/common_defs.ttml" %]

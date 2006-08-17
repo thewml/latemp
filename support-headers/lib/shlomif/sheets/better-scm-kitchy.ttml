@@ -1,0 +1,99 @@
+/*
+    CSS Stylesheet for better-scm.berlios.de
+    Copyright (c) Shlomi Fish, 2003-2005
+    Feel free to use, modify and re-distribute under the terms of the 
+    MIT X11 License (http://www.opensource.org/licenses/mit-license.php)
+
+    $Id: style.css 521 2005-04-28 08:54:06Z shlomif $
+*/
+
+body
+{
+    background-image: url(images/wood022.jpg); 
+}
+
+.main a
+{
+    border: thin solid transparent;
+    padding-left: 0.1em;
+    padding-right: 0.1em;        
+}
+
+[% SET a_hover_color = "#FF00FF" %]
+
+.main a:hover
+{
+    border: thin solid blue;
+}
+
+a.bless:hover
+{
+    border: none;
+}
+[% SET navbar_width = "200px" %]
+[% PROCESS "shlomif/navbar.ttml" %]
+
+[% SET navbar_bgcolor = "#EEEEA0" %]
+
+.navbar, .leading_path, .footer
+{
+    margin-left: 10px;
+}
+.main
+{
+    margin-right: 10pt;
+}
+
+.main, .navbar, .leading_path
+{
+    border: thin solid black;
+}
+
+/* This is so the footer will be separated from the two other divs. */
+.main, .navbar
+{
+    margin-bottom: 1em;
+}
+[% PROCESS "shlomif/common_defs.ttml" %]
+h1
+{
+    background-color : #FFB060;
+    border: 4pt double green;
+    padding-left: 0.2em;
+    padding-bottom: 0.2em;
+}
+[% SET h2_bgcolor = "#8080FF" %]
+[% INCLUDE "shlomif/note.ttml" %]
+[% SET leading_path_bgcolor = "#DDA0DD" %]
+[% PROCESS "common-styles.css.ttml" %]
+[% INCLUDE "nav_links.ttml" %]
+.main, .navbar
+{
+    height: auto;
+}
+.footer
+{
+    clear: both;
+    background-color: white;
+    padding-left: 1em;
+    padding-right: 1em;
+    border: 1.5pt solid teal;
+    margin-right: 10pt;
+    margin-bottom: 1em;
+    overflow: hidden;
+}
+.footer:hover, .main:hover, .navbar:hover, .leading_path:hover
+{
+    border-color: red;
+}
+.links
+{
+    list-style-position: inside;
+    padding-left: 1em;
+}
+.links a
+{
+    font-weight: bold;
+}
+
+
