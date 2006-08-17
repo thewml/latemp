@@ -20,7 +20,7 @@
 [% SET h2_bgcolor = "#FFEE00" %]
 [% INCLUDE "shlomif/note.ttml" %]
 [% SET leading_path_bgcolor = "#40C040" %]
-[% INCLUDE "common-styles.css.ttml" %]
+[% PROCESS "shlomif/better-scm-common-styles.ttml" %]
 [% INCLUDE "nav_links.ttml" %]
 .footer
 {
