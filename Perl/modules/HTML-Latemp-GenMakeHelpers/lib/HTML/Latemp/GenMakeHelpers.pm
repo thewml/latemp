@@ -170,17 +170,11 @@ sub get_buckets
         ];
 }
 
-sub process_host
+sub get_non_bucketed_files
 {
-    my $self = shift;
-    my $host = shift;
-
-    my $dir = $self->base_dir();
+    my ($self, $host) = @_;
 
     my $source_dir_path = $host->source_dir();
-
-    my $file_lists_text = "";
-    my $rules_text = "";
 
     my @files = File::Find::Rule->in($source_dir_path);
 
@@ -197,6 +191,23 @@ sub process_host
         @files
         );
     @files = sort { $a cmp $b } @files;
+
+    return \@files;
+}
+
+sub process_host
+{
+    my $self = shift;
+    my $host = shift;
+
+    my $dir = $self->base_dir();
+
+    my $source_dir_path = $host->source_dir();
+
+    my $file_lists_text = "";
+    my $rules_text = "";
+
+    my @files = @{$self->get_non_bucketed_files($host)};
 
     my @buckets = @{$self->get_buckets($host)};
 
