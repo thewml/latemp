@@ -38,6 +38,34 @@ sub initialize
     $self->dest_dir($args{'dest_dir'});
 }
 
+package HTML::Latemp::GenMakeHelpers::Error;
+
+use vars qw(@ISA);
+
+@ISA=(qw(HTML::Latemp::GenMakeHelpers::Base));
+
+package HTML::Latemp::GenMakeHelpers::Error::UncategorizedFile;
+
+use vars qw(@ISA);
+
+@ISA=(qw(HTML::Latemp::GenMakeHelpers::Error));
+
+__PACKAGE__->mk_accessors(qw(
+    file
+    host
+));
+
+sub initialize
+{
+    my $self = shift;
+    my $args = shift;
+
+    $self->file($args->{'file'});
+    $self->host($args->{'host'});
+
+    return 0;
+}
+
 package HTML::Latemp::GenMakeHelpers;
 
 use vars qw(@ISA);
@@ -210,6 +238,30 @@ sub get_non_bucketed_files
     return \@files;
 }
 
+sub place_files_into_buckets
+{
+    my ($self, $host, $files, $buckets) = @_;
+
+    FILE_LOOP:
+    foreach my $f (@$files)
+    {
+        foreach my $b (@$buckets)
+        {
+            if ($b->{'filter'}->($f))
+            {
+                push @{$b->{'results'}}, $b->{'map'}->($f);
+                next FILE_LOOP;
+            }
+        }
+        die HTML::Latemp::GenMakeHelpers::Error::UncategorizedFile->new(
+            {
+                'file' => $f,
+                'host' => $host->id(),
+            }
+        );
+    }
+}
+
 sub process_host
 {
     my $self = shift;
@@ -226,18 +278,7 @@ sub process_host
 
     my $buckets = $self->get_buckets($host);
 
-    FILE_LOOP: foreach my $f (@$files)
-    {
-        for my $b (@$buckets)
-        {
-            if ($b->{'filter'}->($f))
-            {
-                push @{$b->{'results'}}, $b->{'map'}->($f);
-                next FILE_LOOP;
-            }
-        }
-        die "Uncategorized file $f - host == " . $host->id() . "!";
-    }
+    $self->place_files_into_buckets($host, $files, $buckets);
 
     my $host_uc = uc($host->id());
     foreach my $b (@$buckets)
