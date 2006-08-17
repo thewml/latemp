@@ -117,22 +117,37 @@ sub get_initial_buckets
             'filter' =>
             sub 
             { 
-                (!/\.(?:tt|w)ml$/) && (-f $self->_make_path($host, $_)) 
+                my $file = shift;
+                return ($file !~ /\.(?:tt|w)ml$/) && (-f $self->_make_path($host, $file)) 
             },
         },
         {
             'name' => "DIRS",
             'filter' => 
-            sub { (-d $self->_make_path($host, $_)) },
+            sub 
+            {
+                my $file = shift; 
+                return (-d $self->_make_path($host, $file)) 
+            },
         },
         {
             'name' => "DOCS",
-            'filter' => sub { /\.html\.wml$/ },
+            'filter' => 
+            sub 
+            { 
+                my $file = shift;
+                return $file =~ /\.html\.wml$/; 
+            },
             'map' => sub { my $a = shift; $a =~ s{\.wml$}{}; return $a;},
         },
         {
             'name' => "TTMLS",
-            'filter' => sub { /\.ttml$/ },
+            'filter' =>
+            sub 
+            { 
+                my $file = shift;
+                return $file =~ /\.ttml$/;
+            },
             'map' => sub { my $a = shift; $a =~ s{\.ttml$}{}; return $a;},
         },
     ];
@@ -212,17 +227,17 @@ sub process_host
     my @buckets = @{$self->get_buckets($host)};
 
 
-    FILE_LOOP: foreach (@files)
+    FILE_LOOP: foreach my $f (@files)
     {
         for my $b (@buckets)
         {
-            if ($b->{'filter'}->($host, $_))
+            if ($b->{'filter'}->($f))
             {
-                push @{$b->{'results'}}, $b->{'map'}->($_);
+                push @{$b->{'results'}}, $b->{'map'}->($f);
                 next FILE_LOOP;
             }
         }
-        die "Uncategorized file $_ - host == " . $host->id() . "!";
+        die "Uncategorized file $f - host == " . $host->id() . "!";
     }
 
     my $host_uc = uc($host->id());
