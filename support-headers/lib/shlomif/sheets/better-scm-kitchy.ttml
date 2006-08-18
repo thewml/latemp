@@ -12,19 +12,7 @@ body
     background-image: url(images/wood022.jpg); 
 }
 
-.main a
-{
-    border: thin solid transparent;
-    padding-left: 0.1em;
-    padding-right: 0.1em;        
-}
-
 [% SET a_hover_color = "#FF00FF" %]
-
-.main a:hover
-{
-    border: thin solid blue;
-}
 
 a.bless:hover
 {
