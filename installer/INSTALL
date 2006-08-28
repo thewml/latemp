@@ -16,3 +16,6 @@ under a different prefix, specify it using the PREFIX parameter:
 
     scons -Q PREFIX="$HOME/apps/latemp" install
 
+You'll also need to install Website Meta Language ( http://thewml.org/ ).
+Check your distribution for packages, or install it from source.
+
