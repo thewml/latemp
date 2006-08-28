@@ -1,12 +1,12 @@
 These are the installation instructions.
 
-First install the "Bundle::Latemp" bundle from CPAN:
+First install the "Task::Latemp" meta-module from CPAN:
 
-    # perl -MCPANPLUS -e "install Bundle::Latemp"
+    # perl -MCPANPLUS -e "install Task::Latemp"
 
 Or if you don't have CPANPLUS installed:
 
-    # perl -MCPAN -e "install Bundle::Latemp"
+    # perl -MCPAN -e "install Task::Latemp"
 
 Afterwards, install "scons" (http://www.scons.org/) and type 
 "scons -Q install" to install.
