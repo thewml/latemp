@@ -1,0 +1,84 @@
+<define-tag latemp_theme_breadcrumbs_trail_html>
+<div>
+<latemp_get_breadcrumbs_trail_unconditionally />
+</div>
+</define-tag>
+
+<latemp_init_h_w_navmenu />
+
+<latemp_html_header />
+<latemp_html_head_tag />
+
+<body id="css-zen-garden">
+
+<define-tag latemp_start_layout>
+<div id="container">
+	<div id="intro">
+		<div id="pageHeader">
+            <latemp_top_banner_text />
+            <latemp_get_breadcrumbs_trail />
+
+            <latemp_top_left_corner_logo_text />
+            <latemp_get_html_body_nav_links 
+                place="top-left" 
+                with_accesskey="1" 
+                />
+		</div>
+
+        <div id="preamble">
+            <latemp_before_main_title_text />
+</define-tag>
+
+<latemp_get_start_layout />
+<latemp_default_h1_tag />
+<latemp_after_main_title_text />
+{#LATEMP_BODY#}
+
+<define-tag latemp_end_layout>
+        </div>
+    </div>
+    <div id="supportingText">
+		<div id="footer">
+            <latemp_license_text />
+            <latemp_webmaster_text />
+            <latemp_timestamp_text />
+            <latemp_foot_image_text />
+		</div>
+
+	</div>
+
+	
+	<div id="linkList">
+		<!--extra div for flexibility - this list will probably be the trickiest spot youll deal with -->
+		<div id="linkList2">
+
+		<!-- If youre wondering about the extra &nbsp; at the end of the link, it's a hack to meet WCAG 1 Accessibility. -->
+		<!-- I dont like having to do it, but this is a visual exercise. It's a compromise. -->
+			<div id="lselect">
+                <latemp_get_nav_menu_html />
+			</div>
+
+			<div id="larchives">
+                <latemp_affiliations_buttons_text />
+                <latemp_get_html_body_nav_links place="bottom-left" />
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+<!-- These extra divs/spans may be used as catch-alls to add extra imagery. -->
+<!-- Add a background image to each and use width and height to control sizing, place with absolute positioning -->
+<div id="extraDiv1"><span></span></div><div id="extraDiv2"><span></span></div><div id="extraDiv3"><span></span></div>
+<div id="extraDiv4"><span></span></div><div id="extraDiv5"><span></span></div><div id="extraDiv6"><span></span></div>
+
+</define-tag>
+
+<latemp_get_end_layout />
+
+</body>
+</html>
+
+#   per default we are in body
+{#LATEMP_BODY#:
+
