@@ -1,13 +1,8 @@
 import re
 import os
-from Autoscons.AutoBuild import Init
-from Autoscons.Tool import Tool
-import Autoscons.Tool.gzip
-
-gzip_tool = Tool('gzip')
 
 v_file = open('ver.txt', 'rb')
-version = v_file.readline()
+version = v_file.readline().rstrip()
 v_file.close()
 
 def config_script_scanner_function(node, env, path):
@@ -37,9 +32,7 @@ config_script_bld = Builder(action = config_script_bld_action, source_scanner = 
 scp_bld = Builder(action = 'scp $SOURCE shlomif@shell.berlios.de:/home/groups/web-cpan/htdocs/latemp/download/arcs/')
 rsync_bld = Builder(action = 'rsync -vv --progress --rsh=ssh $SOURCE shlomif@shell.berlios.de:/home/groups/web-cpan/htdocs/latemp/docs/')
 
-env = Environment()
-f = gzip_tool.generate
-f(env)
+env = Environment(tools = ["default", "disttar"], toolpath=".")
 env.Append(BUILDERS = {'ConfigScript': config_script_bld, 'Upload':scp_bld, 'Rsync':rsync_bld})
 
 config_file = 'latemp.conf'
@@ -106,13 +99,18 @@ for file in latemp_wml_files:
 for t in themes:
     add_install(latemp_wml_install_path + 'themes/' + t['id'] + '/', t['scons_file'])
 
-package_files.append('ver.txt')
-package = Init("latemp", version)
-package.AddToDist(package_files)
+package_files = package_files + [
+        'COPYING',
+        'disttar.py', 
+        'INSTALL',
+        'README',
+        'SConstruct', 
+        'TODO',
+        'ver.txt', 
+        ]
 
-# Temporary disabling because of an SCons regression.
-# dist_node = package.BuildDist(env)
-# env.Alias('dist', dist_node)
+dist_node = env.DistTar("latemp-" + version + ".tar.gz", package_files)
+env.Alias('dist', dist_node)
 
 env.Alias('dist_upload', env.Upload("h67jk343jvnsidnvnoisd", "latemp-" + version + ".tar.gz"))
 
