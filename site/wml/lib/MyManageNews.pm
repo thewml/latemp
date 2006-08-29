@@ -34,6 +34,13 @@ my @news_items =
             Website META Language was fixed to build on cygwin},
             'date' => "2006-06-14",
         },
+        {
+            'title' => "Version 0.4.0",
+            'id' => "0.4.0",
+            'description' => q{Latemp version 0.4.0 was released. This is
+            a new stable version.},
+            'date' => "2006-08-29",
+        },
         )
     )
 );
