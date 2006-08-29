@@ -1,7 +1,7 @@
 #include "template.wml"
 
 <latemp_subject "Latemp Version 0.4.0 was Released" />
-<latemp_version_control_id "$Id: index.html.wml 583 2005-05-07 08:47:48Z shlomif $" />
+<latemp_version_control_id "$Id$" />
 
 <p>
 <b>Date:</b> 2006-August-29
