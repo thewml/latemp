@@ -1,0 +1,22 @@
+Changes from 0.2.0 to 0.4.0:
+----------------------------
+
+* Added support for TTML - Template Toolkit ML - a preprocessor, that can
+be used to preprocess CSS files, etc.
+
+* Added an experimenal css-zen-garden theme, that can be used to style the
+site using a CSS Zen Garden stylehseet. (Which possibly has to be adapted
+somewhat.)
+
+* Converted Bundle::Latemp to Task::Latemp.
+
+* Added the HTML::Latemp::NavLinks::GenHtml::ArrowImages module.
+
+* HTML::Latemp::GenMakeHelpers:
+    - Added tests
+    - Refactored
+    - Added .ttml support.
+    - Added the ability to post-process the file lists.
+
+* Added the support-headers sub-dir to the trunk with some .ttml headers
+for creating dynamic TTML.
