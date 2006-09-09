@@ -1,0 +1,32 @@
+/*
+    The styles for the products' syndication.
+
+    See: http://search.cpan.org/dict/XML-Grammar-ProductsSyndication/ .
+*/
+
+.prod_cat, .prod
+{
+  margin-left:1em;
+}
+.prod .head
+{
+   display: table;
+}
+.prod_img
+{
+  vertical-align: top;
+  display: table-cell;
+}
+.prod_img img
+{
+   border-width:0;
+}
+.prod_title
+{
+   vertical-align: top;
+   display: table-cell;
+   padding-top: 1em;
+}
+.prod .desc
+{
+}
