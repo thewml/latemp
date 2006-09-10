@@ -8,9 +8,22 @@
 {
   margin-left:1em;
 }
+.prod
+{
+margin-right: 1em;
+margin-top: 1em;
+margin-bottom: 1em;
+padding:1em;
+border: transparent 1.5pt solid;
+}
+.prod:hover
+{
+   border-color: #006000;
+   background-color:#FFF5E8;
+}
 .prod .head
 {
-   display: table;
+   display: inline-table;
 }
 .prod_img
 {
@@ -27,6 +40,4 @@
    display: table-cell;
    padding-top: 1em;
 }
-.prod .desc
-{
-}
+
