@@ -18,7 +18,7 @@
 
 <latemp_top_banner_text />
 <latemp_get_breadcrumbs_trail />
-<div class="navbar">
+<div class="navbar" id="navbar">
 <p class="invisible">
 <a href="#nav_menu">Go to the navigation menu</a>
 </p>
