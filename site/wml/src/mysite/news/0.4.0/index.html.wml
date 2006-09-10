@@ -47,7 +47,7 @@ Added the ability to post-process the file lists.
 </ul>
 </li>
 <li>
-* Added the support-headers sub-dir to the trunk with some .ttml headers
+Added the support-headers sub-dir to the trunk with some .ttml headers
 for creating dynamic TTML.
 </li>
 </ol>
