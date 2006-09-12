@@ -164,7 +164,7 @@ sub get_initial_buckets
             sub 
             { 
                 my $file = shift;
-                return $file =~ /\.html\.wml$/; 
+                return $file =~ /\.x?html\.wml$/; 
             },
             'map' => sub { my $a = shift; $a =~ s{\.wml$}{}; return $a;},
         },
