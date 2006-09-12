@@ -4,19 +4,19 @@
     See: http://search.cpan.org/dict/XML-Grammar-ProductsSyndication/ .
 */
 
-.prod_cat, .prod
+.prod_cat, .prod, .prod_set
 {
-  margin-left:1em;
+    margin-left:1em;
 }
-.prod
+.prod, .prod_set
 {
-margin-right: 1em;
-margin-top: 1em;
-margin-bottom: 1em;
-padding:1em;
-border: transparent 1.5pt solid;
+    margin-right: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding:1em;
+    border: transparent 1.5pt solid;
 }
-.prod:hover
+.prod:hover, .prod_set:hover
 {
    border-color: #006000;
    background-color:#FFF5E8;
@@ -40,4 +40,11 @@ border: transparent 1.5pt solid;
    display: table-cell;
    padding-top: 1em;
 }
+.prod_set .head ul
+{
+    margin-left:0;
+    list-style-type:none;
+    padding-left:0;
+}
+
 
