@@ -1,53 +1,80 @@
 <define-tag latemp_xml_decl_raw>
 <?xml version="1.0" encoding="{#LATEMP_ENCODING#}"?>
 </define-tag>
+
 <define-tag latemp_xml_declaration>
 <if "<get-var latemp_with_xml_declaration />"
     "<latemp_xml_decl_raw />"
 />
 </define-tag>
 
-<define-tag latemp_html_header_xhtml11>
-<latemp_xml_declaration />
+
+<define-tag latemp_html_doctype_xhtml11>
 <!DOCTYPE
     html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
     "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{#LATEMP_LANG#}">
 </define-tag>
 
-<define-tag latemp_html_header_xhtml10_strict>
-<latemp_xml_declaration />
+<define-tag latemp_html_doctype_xhtml10_strict>
 <!DOCTYPE html 
      PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{#LATEMP_LANG#}" lang="{#LATEMP_LANG#}">
 </define-tag>
 
-<define-tag latemp_html_header_xhtml10_trans>
-<latemp_xml_declaration />
+<define-tag latemp_html_doctype_xhtml10_trans>
 <!DOCTYPE html 
     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{#LATEMP_LANG#}" lang="{#LATEMP_LANG#}">
 </define-tag>
 
+<define-tag latemp_html_doctype_xhtml11_mathml>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN" 
+    "http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd">
+</define-tag>
+
+<define-tag latemp_html_doctype_xhtml11_mathml_svg>
+<!DOCTYPE html PUBLIC
+    "-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN"
+    "http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd">
+</define-tag>
+
+<define-tag latemp_html_doctype>
+<preserve standard />
+<set-var %attributes />
+<ifeq "<get-var standard />" "xhtml1.1"
+    "<latemp_html_doctype_xhtml11 />"
+<ifeq "<get-var standard />" "xhtml1.0-strict"
+    "<latemp_html_doctype_xhtml10_strict />"    
+<ifeq "<get-var standard />" "xhtml1.0-trans"
+    "<latemp_html_doctype_xhtml10_trans />"
+<ifeq "<get-var standard />" "xhtml1.1-mathml"
+    "<latemp_html_doctype_xhtml11_mathml />"
+<ifeq "<get-var standard />" "xhtml1.1-mathml-svg"
+    "<latemp_html_doctype_xhtml11_mathml_svg />"
+    
+    "<ERORORE ASDKOASD KAOSDKASOD KASD OAKSD ASODKSAD S >"
+    ;;; To be filled in
+    />
+    />
+    />
+    />
+    />
+<restore standard />
+</define-tag>
+
+<define-tag latemp_html_html_start_tag>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{#LATEMP_LANG#}">
+</define-tag>
 
 <define-tag latemp_html_header>
 <preserve standard />
 <set-var %attributes />
 <set-var standard="<latemp_default_val "<get-var standard />" "<get-var latemp_html_standard />" />" />
 <set-var standard="<latemp_default_val "<get-var standard />" "xhtml1.0-trans" />" />
-<ifeq "<get-var standard />" "xhtml1.1"
-    "<latemp_html_header_xhtml11 />"
-<ifeq "<get-var standard />" "xhtml1.0-strict"
-    "<latemp_html_header_xhtml10_strict />"    
-<ifeq "<get-var standard />" "xhtml1.0-trans"
-    "<latemp_html_header_xhtml10_trans />"
-    "<ERORORE ASDKOASD KAOSDKASOD KASD OAKSD ASODKSAD S >"
-    ;;; To be filled in
-    />
-    />
-    />
+<latemp_xml_declaration />
+<latemp_html_doctype standard="<get-var standard />" />
+<latemp_html_html_start_tag />
 <restore standard />
 </define-tag>
 

@@ -193,6 +193,11 @@ main title. (usually an C<E<lt>h1E<gt>> tag).
 This tags defines text that will come after the
 main title (usually an C<E<lt>h1E<gt>> tag), but before the main body.
 
+=head3 <latemp_html_doctype standard="MyStandard" />
+
+This tag (that can be customised by the user after the prelude and before the
+driver) is used to generate the text of the DOCTYPE.
+
 =head2 Variables with special meaning
 
 =head3 <set-var latemp_theme="better-scm" />
@@ -272,8 +277,10 @@ at the beginning of the document.
 =head3 <set-var latemp_html_standard="xhtml11" />
 
 Sets the default HTML standard to be declared in the DOCTYPE. Valid options
-are: "xhtml1.0-trans", "xhtml1.0-strict" and "xhtml1.1". The DOCTYPE defaults
-to XHTML 1.1 Transitional if this variable is not specified.
+are: "xhtml1.0-trans", "xhtml1.0-strict", "xhtml1.1-mathml" (XHTML 1.1 with 
+MathML), "xhmtl1.1-mathml-svg (XHTML 1.1 with MathML and SVG). 
+The DOCTYPE defaults to XHTML 1.1 Transitional if this variable is not 
+specified.
 
 =head3 <set-var latemp_navmenu_object_class="My::NavMenu" /> 
 
