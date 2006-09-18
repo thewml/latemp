@@ -2,7 +2,12 @@ use strict;
 use warnings;
 use Module::Build;
 
-my $builder = Module::Build->new(
+use File::Spec;
+use lib File::Spec->catdir(File::Spec->curdir(), "inc");
+
+use Test::Run::Builder;
+
+my $builder = Test::Run::Builder->new(
     module_name         => 'HTML::Latemp::NavLinks::GenHtml',
     license             => 'bsd',
     dist_author         => 'Shlomi Fish <shlomif@iglu.org.il>',
