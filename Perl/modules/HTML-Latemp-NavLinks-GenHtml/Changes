@@ -1,5 +1,14 @@
 Revision history for HTML-Latemp-NavLinks-GenHtml
 
+0.1.8    2006-10-07
+    - Added the pod-coverage.t file and made the files have
+    full POD coverage.
+    - Upgraded Test::Run::Builder.
+    - Unified the derived modules interface and extracted methods
+    out of both.
+    - Added a test to test for a successful output.
+    - Added an examples under examples/.
+
 0.1.7    2006-09-18
     - Added the get_image_base() (over-ridable) method to customize the base 
     filename of the images.
