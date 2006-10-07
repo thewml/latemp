@@ -7,11 +7,6 @@ use vars qw($nav_buttons_html);
 
 use base 'HTML::Latemp::NavLinks::GenHtml';
 
-__PACKAGE__->mk_accessors(qw(
-    nav_links_obj
-    root
-    ));
-
 =head1 NAME
 
 HTML::Latemp::NavLinks::GenHtml::ArrowImages - A class to generate the image-based HTML of the navigation links.
@@ -26,8 +21,8 @@ HTML::Latemp::NavLinks::GenHtml::ArrowImages - A class to generate the image-bas
 =head1 DESCRIPTION
 
 This module generates text navigation links. C<root> is the relative path to 
-the site's root directory. C<nav_links_obj> are the navigation links object 
-as returned by L<HTML::Widgets::NavMenu> or something similar.
+the site's root directory. C<nav_links_obj> are the hash of navigation links'
+objects as returned by L<HTML::Widgets::NavMenu> or something similar.
 
 =head1 METHODS
 
@@ -51,7 +46,6 @@ sub _get_nav_buttons_html
     
     my $with_accesskey = $args{'with_accesskey'};
 
-    my $nav_links_obj = $self->nav_links_obj();
     my $root = $self->root();
 
     my $template = 
@@ -60,38 +54,10 @@ sub _get_nav_buttons_html
             'POST_CHOMP' => 1,
         }
         );
-
-    my @buttons =
-    (
-        {
-            'dir' => "prev",
-            'button' => "left",
-            'title' => "Previous Page",
-        },
-        {
-            'dir' => "up",
-            'button' => "up",
-            'title' => "Up in the Site",
-        },
-        {
-            'dir' => "next",
-            'button' => "right",
-            'title' => "Next Page",
-        },
-    );
-
-    foreach my $button (@buttons)
-    {
-        my $dir = $button->{'dir'};
-        if ($button->{'exists'} = exists($nav_links_obj->{$dir}))
-        {
-            $button->{'link_obj'} = $nav_links_obj->{$dir};
-        }
-    }
     
     my $vars =
     {
-        'buttons' => \@buttons,
+        'buttons' => $self->_get_buttons(),
         'root' => $root,
         'with_accesskey' => $with_accesskey,
         'image_base' => $self->get_image_base(),

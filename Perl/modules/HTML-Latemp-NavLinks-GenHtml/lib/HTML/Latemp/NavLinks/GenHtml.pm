@@ -5,6 +5,11 @@ use strict;
 
 use base 'Class::Accessor';
 
+__PACKAGE__->mk_accessors(qw(
+    nav_links_obj
+    root
+    ));
+
 =head1 NAME
 
 HTML::Latemp::NavLinks::GenHtml - A module to generate the HTML of the 
@@ -41,6 +46,43 @@ sub new
 =head2 $obj->get_total_html()
 
 Calculates the HTML and returns it.
+
+=cut
+
+sub _get_buttons
+{
+    my $self = shift;
+
+    my @buttons =
+    (
+        {
+            'dir' => "prev",
+            'button' => "left",
+            'title' => "Previous Page",
+        },
+        {
+            'dir' => "up",
+            'button' => "up",
+            'title' => "Up in the Site",
+        },
+        {
+            'dir' => "next",
+            'button' => "right",
+            'title' => "Next Page",
+        },
+    );
+
+    foreach my $button (@buttons)
+    {
+        my $dir = $button->{'dir'};
+        if ($button->{'exists'} = exists($self->nav_links_obj->{$dir}))
+        {
+            $button->{'link_obj'} = $self->nav_links_obj->{$dir};
+        }
+    }
+
+    return \@buttons;
+}
 
 =head1 AUTHOR
 

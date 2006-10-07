@@ -16,14 +16,14 @@ the navigation links.
 
     my $obj = HTML::Latemp::NavLinks::GenHtml::Text->new(
         root => $path_to_root,
-        nav_links => $links,
+        nav_links_obj => $links,
         );
 
 =head1 DESCRIPTION
 
 This module generates text navigation links. C<root> is the relative path to 
-the site's root directory. C<nav_links> are the navigation links hash 
-as returned by L<HTML::Widgets::NavMenu> or something similar.
+the site's root directory. C<nav_links> are the navigation links' objects
+hash as returned by L<HTML::Widgets::NavMenu> or something similar.
 
 =head1 METHODS
 
@@ -75,7 +75,6 @@ sub _get_nav_buttons_html
     
     my $with_accesskey = $args{'with_accesskey'};
 
-    my $nav_links = $self->nav_links();
     my $root = $self->root();    
 
     my $template = 
@@ -84,38 +83,10 @@ sub _get_nav_buttons_html
             'POST_CHOMP' => 1,
         }
         );
-
-    my @buttons =
-    (
-        { 
-            'dir' => "prev", 
-            'button' => "left", 
-            'title' => "Previous Page",
-        },
-        { 
-            'dir' => "up", 
-            'button' => "up", 
-            'title' => "Up in the Site",
-        },
-        {
-            'dir' => "next", 
-            'button' => "right", 
-            'title' => "Next Page",
-        },
-    );
-
-    foreach my $button (@buttons)
-    {
-        my $dir = $button->{'dir'};
-        if ($button->{'exists'} = exists($nav_links->{$dir}))
-        {
-            $button->{'link'} = $nav_links->{$dir};
-        }
-    }
-    
+ 
     my $vars = 
     {
-        'buttons' => \@buttons,
+        'buttons' => $self->_get_buttons(),
         'root' => $root,
         'with_accesskey' => $with_accesskey,
     };
@@ -126,7 +97,7 @@ sub _get_nav_buttons_html
 [% SET key = b.dir.substr(0, 1) %]
 <li>[
 [% IF b.exists %]
-<a href="[% HTML.escape(b.link) %]" title="[% b.title %] (Alt+[% key FILTER upper %])"
+<a href="[% HTML.escape(b.link_obj.direct_url()) %]" title="[% b.title %] (Alt+[% key FILTER upper %])"
 [% IF with_accesskey %]
 accesskey="[% key %]"
 [% END %]
