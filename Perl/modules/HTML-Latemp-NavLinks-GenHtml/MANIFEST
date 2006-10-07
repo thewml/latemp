@@ -1,5 +1,6 @@
 Build.PL
 Changes
+examples/HTML-Widgets-NavMenu.pl
 inc/Test/Run/Builder.pm
 lib/HTML/Latemp/NavLinks/GenHtml/ArrowImages.pm
 lib/HTML/Latemp/NavLinks/GenHtml.pm
