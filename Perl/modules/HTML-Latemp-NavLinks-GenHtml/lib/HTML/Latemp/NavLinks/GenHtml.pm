@@ -3,6 +3,8 @@ package HTML::Latemp::NavLinks::GenHtml;
 use warnings;
 use strict;
 
+use base 'Class::Accessor';
+
 =head1 NAME
 
 HTML::Latemp::NavLinks::GenHtml - A module to generate the HTML of the 
@@ -18,6 +20,28 @@ our $VERSION = '0.1.7';
 
     use base 'HTML::Latemp::NavLinks::GenHtml::ArrowImages';
     
+
+=head1 METHODS
+
+=head2 $specialised_class->new('param1' => $value1, 'param2' => $value2)
+
+Initialises the object.
+
+=cut
+
+sub new
+{
+    my $class = shift;
+    my $self = {};
+    bless $self, $class;
+    $self->_init(@_);
+    return $self;
+}
+
+=head2 $obj->get_total_html()
+
+Calculates the HTML and returns it.
+
 =head1 AUTHOR
 
 Shlomi Fish, C<< <shlomif@iglu.org.il> >>

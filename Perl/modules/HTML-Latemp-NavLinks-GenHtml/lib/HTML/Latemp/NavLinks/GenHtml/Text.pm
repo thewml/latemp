@@ -5,9 +5,57 @@ use warnings;
 
 use vars qw($nav_buttons_html);
 
-use base 'Class::Accessor';
+use base 'HTML::Latemp::NavLinks::GenHtml';
 
-__PACKAGE__->mk_accessors(qw(root nav_links));
+=head1 NAME
+
+HTML::Latemp::NavLinks::GenHtml::Text - A class to generate the text HTML of
+the navigation links.
+
+=head1 SYNOPSIS
+
+    my $obj = HTML::Latemp::NavLinks::GenHtml::Text->new(
+        root => $path_to_root,
+        nav_links => $links,
+        );
+
+=head1 DESCRIPTION
+
+This module generates text navigation links. C<root> is the relative path to 
+the site's root directory. C<nav_links> are the navigation links hash 
+as returned by L<HTML::Widgets::NavMenu> or something similar.
+
+=head1 METHODS
+
+=head2 $obj->get_total_html()
+
+Calculates and returns the final HTML.
+
+=head1 AUTHOR
+
+Shlomi Fish, C<< <shlomif@iglu.org.il> >>
+
+=head1 BUGS
+
+Please report any bugs or feature requests to
+C<bug-html-latemp-navlinks-genhtml@rt.cpan.org>, or through the web interface at
+L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=HTML-Latemp-NavLinks-GenHtml>.
+I will be notified, and then you'll automatically be notified of progress on
+your bug as I make changes.
+
+=head1 COPYRIGHT & LICENSE
+
+Copyright 2005 Shlomi Fish, All Rights Reserved.
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of the MIT X11 license.
+
+=cut
+
+__PACKAGE__->mk_accessors(qw(
+    nav_links
+    root
+    ));
 
 use Template;
 
@@ -19,24 +67,7 @@ $Template::Stash::SCALAR_OPS->{ 'substr' } = sub {
     return substr($_[0], $_[1], $_[2]);
 };
 
-
-sub new
-{
-    my $class = shift;
-    my $self = {};
-    bless $self, $class;
-    $self->initialize(@_);
-    return $self;
-}
-
-sub initialize
-{
-    my $self = shift;
-    my %args = (@_);
-    %{$self} = %args;
-}
-
-sub get_nav_buttons_html
+sub _get_nav_buttons_html
 {
     my $self = shift;
 
@@ -116,7 +147,7 @@ sub get_total_html
     my $self = shift;
 
     return "<ul class=\"nav_links\">\n" .
-        $self->get_nav_buttons_html(@_) .
+        $self->_get_nav_buttons_html(@_) .
         "\n</ul>";
 }
 
