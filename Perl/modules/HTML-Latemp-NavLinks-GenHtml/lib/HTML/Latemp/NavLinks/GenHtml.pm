@@ -43,6 +43,17 @@ sub new
     return $self;
 }
 
+sub _init
+{
+    my $self = shift;
+    my (%args) = @_;
+
+    $self->root($args{root});
+    $self->nav_links_obj($args{nav_links_obj});
+
+    return $self;
+}
+
 =head2 $obj->get_total_html()
 
 Calculates the HTML and returns it.
