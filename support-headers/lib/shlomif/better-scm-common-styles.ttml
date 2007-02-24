@@ -81,7 +81,7 @@ a:hover
     width:100%;
     clear:both;
 }
-tt { color : #8a2be2; }
+tt { color : #8a2be2; /* The BlueViolet Color */ }
 pre
 {
     padding-left: 1em;
@@ -165,3 +165,41 @@ h2
 { 
     background-color: [% h2_bgcolor %];
 }
+
+.comparison h2 { background-color : #98FB98; /* PaleGreen */ }
+.comparison h3 { background-color : #FFA500; /* Orange */ }
+table.compare 
+{ 
+    margin-left : 1em; 
+    margin-right : 1em; 
+    width: 90%;
+    max-width : 40em;
+}
+.compare td 
+{ 
+    border-color : black; border-style : solid ; border-width : thin;
+    vertical-align : top;
+    padding : 0.2em;
+}
+.comparison ul.toc
+{
+    list-style-type : none ; padding-left : 0em;
+}
+.comparison .toc ul
+{
+    list-style-type : none ; 
+    padding-left : 0em; 
+    margin-left : 2em;
+}
+.comparison .expl
+{
+    border-style : solid ; border-width : thin;
+    background-color : #E6E6FA; /* Lavender */
+    border-color : black;
+    padding : 0.3em;
+}
+.comparison li
+{
+    padding-bottom: 0;
+}
+
