@@ -46,5 +46,7 @@
     list-style-type:none;
     padding-left:0;
 }
-
-
+.prod_set .head li
+{
+    margin-bottom:0.5em;
+}
