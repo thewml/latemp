@@ -1,9 +1,12 @@
+[% IF not(note_background_color) %]
+[% SET note_background_color = "#98FB98" %]
+[% END %]
 .note 
 { 
     border-color : black; 
     border-style : double;
     padding : 0.5em;
-    background-color : #98FB98; /* PaleGreen */
+    background-color : [% note_background_color %];
     margin-top: 1em;
 }
 .note h2
