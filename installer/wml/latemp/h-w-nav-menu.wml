@@ -34,7 +34,8 @@ use vars qw($nav_html);
 
 $nav_html = $rendered_results->{html};
 
-my $leading_path = $rendered_results->{leading_path};
+use vars qw($leading_path);
+$leading_path = $rendered_results->{leading_path};
 
 my $render_leading_path_component = sub {
     my $component = shift;
