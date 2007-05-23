@@ -68,8 +68,16 @@
 {#LATEMP_EXTRA_HEAD_ELEMENTS#:%body:##}
 </define-tag>
 
+<define-tag latemp_after_title_head_elements endtag="required" whitespace="delete">
+{#LATEMP_AFTER_TITLE_HEAD_ELEMENTS#:%body:##}
+</define-tag>
+
 <define-tag latemp_extra_head_elements_text>
 {#LATEMP_EXTRA_HEAD_ELEMENTS#}
+</define-tag>
+
+<define-tag latemp_after_title_head_elements_text>
+{#LATEMP_AFTER_TITLE_HEAD_ELEMENTS#}
 </define-tag>
 
 <define-tag latemp_foot_image endtag="required" whitespace="delete">
