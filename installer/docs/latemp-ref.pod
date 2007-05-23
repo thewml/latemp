@@ -160,7 +160,13 @@ A description to put inside the appropriate C<E<lt>meta /E<gt>> tag.
 
 =head3 <latemp_extra_head_elements>...</latemp_extra_head_elements>
 
-More HTML to put between the opening and closing C<E<lt>headE<gt>> tags.
+More HTML to put between the opening and closing C<E<lt>headE<gt>> tags 
+at the end.
+
+=head3 <latemp_after_title_head_elements>...</latemp_after_title_head_elements>
+
+More HTML to put between the opening and closing C<E<lt>headE<gt>> tags,
+at the beginning, right after the title.
 
 =head3 <latemp_foot_image>.../<latemp_foot_image>
 

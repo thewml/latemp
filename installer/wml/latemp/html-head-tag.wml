@@ -12,6 +12,7 @@
 <define-tag latemp_html_head_tag>
 <head>
 <title>{#LATEMP_SUBJECT_LOC#}</title>
+<latemp_after_title_head_elements_text />
 <meta http-equiv="Content-Type" content="text/html; charset={#LATEMP_ENCODING#}" />
 <if "<get-var latemp_with_head_meta_tags />"
     "<latemp_html_head_tag_meta_tags />"
