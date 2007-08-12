@@ -3,8 +3,20 @@
 
 # You can put some customizations here
 
+<set-var latemp_with_xml_declaration="1" />
 <set-var latemp_with_head_meta_tags="1" />
-<set-var latemp_screen_stylesheet_url="http://www.csszengarden.com/188/188.css" />
+<set-var latemp_screen_stylesheet_url="http://www.csszengarden.com/010/010.css" />
+<set-var latemp_with_html_head_nav_links="1" />
+<set-var latemp_nav_links_allowed_places="top-left" />
+
+<latemp_extra_head_elements>
+<link rel="alternate stylesheet" type="text/css" href="http://www.csszengarden.com/011/011.css" media="screen, projection" title="Zen 11" />
+<link rel="alternate stylesheet" type="text/css" href="http://www.csszengarden.com/012/012.css" media="screen, projection" title="Zen 12" />
+<link rel="alternate stylesheet" type="text/css" href="http://www.csszengarden.com/013/013.css" media="screen, projection" title="Zen 13" />
+<link rel="alternate stylesheet" type="text/css" href="http://www.csszengarden.com/014/014.css" media="screen, projection" title="Zen 14" />
+<link rel="alternate stylesheet" type="text/css" href="http://www.csszengarden.com/015/015.css" media="screen, projection" title="Zen 15" />
+<link rel="alternate stylesheet" type="text/css" href="http://www.csszengarden.com/016/016.css" media="screen, projection" title="Zen 16" />
+</latemp_extra_head_elements>
 # Actually start the page template.
 #include "latemp/latemp-driver.wml"
 <latemp_lang "en-US" />
