@@ -68,6 +68,40 @@ sub initialize
 
 package HTML::Latemp::GenMakeHelpers;
 
+=head1 NAME
+
+HTML::Latemp::GenMakeHelpers - A Latemp Utility Module.
+
+=head1 SYNOPSIS
+
+    use HTML::Latemp::GenMakeHelpers;
+
+    my $generator = 
+        HTML::Latemp::GenMakeHelpers->new(
+            'hosts' =>
+            [ map { 
+                +{ 'id' => $_, 'source_dir' => $_, 
+                    'dest_dir' => "\$(ALL_DEST_BASE)/$_-homepage" 
+                } 
+            } (qw(common t2 vipe)) ],
+        );
+        
+    $generator->process_all();
+
+=head1 API METHODS
+
+=head2 my $generator = HTML::Latemp::GenMakeHelpers->new('hosts => [@hosts])
+
+Construct an object with the host defined in @hosts.
+
+=head2 $generator->process_all()
+
+Process all hosts.
+
+=head1 INTERNAL METHODS
+=cut
+
+
 use vars qw(@ISA);
 
 @ISA=(qw(HTML::Latemp::GenMakeHelpers::Base));
@@ -76,6 +110,13 @@ use File::Find::Rule;
 use File::Basename;
 
 __PACKAGE__->mk_accessors(qw(base_dir hosts hosts_id_map));
+
+=head2 initialize()
+
+Called by the constructor to initialize the object. Can be sub-classes by
+derived classes.
+
+=cut
 
 sub initialize
 {
@@ -132,6 +173,11 @@ sub _make_path
 }
 
 
+=head2 $generator->get_initial_buckets($host)
+
+Get the initial buckets for the host $host.
+
+=cut
 
 sub get_initial_buckets
 {
@@ -201,6 +247,12 @@ sub _process_bucket
         };
 }
 
+=head2 $generator->get_buckets($host)
+
+Get the processed buckets.
+
+=cut
+
 sub get_buckets
 {
     my ($self, $host) = @_;
@@ -240,6 +292,12 @@ sub _sort_files
     return [ sort { $a cmp $b } @$files_ref ];
 }
 
+=head2 $self->get_non_bucketed_files($host)
+
+Get the files that were not placed in any bucket.
+
+=cut
+
 sub get_non_bucketed_files
 {
     my ($self, $host) = @_;
@@ -255,6 +313,12 @@ sub get_non_bucketed_files
 
     return $self->_sort_files($host, $files);
 }
+
+=head2 $self->place_files_into_buckets($host, $files, $buckets)
+
+Sort the files into the buckets.
+
+=cut
 
 sub place_files_into_buckets
 {
@@ -279,6 +343,12 @@ sub place_files_into_buckets
         );
     }
 }
+
+=head2 $self->get_rules_template($host)
+
+Get the makefile rules template for the host $host.
+
+=cut
 
 sub get_rules_template
 {
@@ -350,6 +420,12 @@ X8X_COMMON_DOCS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_DOCS))
 EOF
 }
 
+=head2 $self->process_host($host)
+
+Process the host $host.
+
+=cut
+
 sub process_host
 {
     my $self = shift;
@@ -393,26 +469,6 @@ sub process_host
 1;
 
 __END__
-
-=head1 NAME
-
-HTML::Latemp::GenMakeHelpers - A Latemp Utility Module.
-
-=head1 SYNOPSIS
-
-    use HTML::Latemp::GenMakeHelpers;
-
-    my $generator = 
-        HTML::Latemp::GenMakeHelpers->new(
-            'hosts' =>
-            [ map { 
-                +{ 'id' => $_, 'source_dir' => $_, 
-                    'dest_dir' => "\$(ALL_DEST_BASE)/$_-homepage" 
-                } 
-            } (qw(common t2 vipe)) ],
-        );
-        
-    $generator->process_all();
 
 =head1 AUTHOR
 
