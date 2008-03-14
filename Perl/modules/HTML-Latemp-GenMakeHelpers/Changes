@@ -1,5 +1,14 @@
 Revision history for HTML-Latemp-GenMakeHelpers
 
+0.1.9    Fri Mar 14 22:06:49 IST 2008
+    - Removed a {{{ use lib "./lib"; }}} declaration from t/01-output-basic.t.
+        - I don't know what it was doing there in the first place.
+    - Added t/pod.t and t/pod-coverage.t (for better Kwalitee.)
+        - made sure we have full POD coverage.
+    - Added an example at examples/ (Kwalitee)
+    - Changed the license declaration in Build.PL from "bsd" to "mit".
+    - Added more modules to "requires" and "build_requires".
+
 0.1.8    Thu Aug 17 20:46:55 IDT 2006
     - Added a system test.
     - Factored out many methods and created several classes. Functionality
