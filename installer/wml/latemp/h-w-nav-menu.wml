@@ -18,6 +18,7 @@ $nav_bar = <get-var object_class />->new(
     'current_host' => "<latemp_default_val "<get-var latemp_server />" "$(LATEMP_SERVER)" />",
     MyNavData::get_params(),
     'ul_classes' => [ "navbarmain", ("navbarnested") x 10 ],
+    'no_leading_dot' => 1,
     );
 
 my $rendered_results = $nav_bar->render();
