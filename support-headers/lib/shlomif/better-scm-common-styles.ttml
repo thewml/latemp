@@ -22,6 +22,13 @@ a:hover
 {
     padding-bottom: 0.5em;
 }
+/* This is so Table-of-Contents items won't have a spacing between
+them, because they are nested and it looks weird */
+.toc li
+{
+    padding-bottom: 0;
+}
+
 .righty
 {
    float: right;
