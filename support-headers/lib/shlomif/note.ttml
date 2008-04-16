@@ -8,6 +8,7 @@
     padding : 0.5em;
     background-color : [% note_background_color %];
     margin-top: 1em;
+    overflow: hidden;
 }
 .note h2
 {
