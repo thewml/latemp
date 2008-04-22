@@ -35,6 +35,7 @@
 {#LATEMP_BODY#}
 
 <define-tag latemp_end_layout>
+        <latemp_after_body_text />
         </div>
     </div>
     <div id="supportingText">
