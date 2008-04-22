@@ -187,17 +187,22 @@ Management below".
 
 =head3 <latemp_top_banner>...</latemp_to_banner>
 
-This tags defines the HTML of a banner to put at the top of the page.
+This tag defines the HTML of a banner to put at the top of the page.
 
 =head3 <latemp_before_main_title>...</latemp_before_main_title>
 
-This tags defines text that will come after all the layout but before the
+This tag defines text that will come after all the layout but before the
 main title. (usually an C<E<lt>h1E<gt>> tag).
 
 =head3 <latemp_after_main_title>...</latemp_before_main_title>
 
-This tags defines text that will come after the
+This tag defines text that will come after the
 main title (usually an C<E<lt>h1E<gt>> tag), but before the main body.
+
+=head3 <latemp_after_body>...</latemp_after_body>
+
+This tag defines text that will come after the main body, so that it will
+be appended to the end.
 
 =head3 <latemp_html_doctype standard="MyStandard" />
 
