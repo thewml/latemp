@@ -125,3 +125,11 @@
 {#LATEMP_AFTER_MAIN_TITLE#:%body:##}
 </define-tag>
 
+<define-tag latemp_after_body_text>
+{#LATEMP_AFTER_BODY_TEXT#}
+</define-tag>
+
+<define-tag latemp_after_body endtag="required" whitespace="delete">
+{#LATEMP_AFTER_BODY_TEXT#:%body:##}
+</define-tag>
+
