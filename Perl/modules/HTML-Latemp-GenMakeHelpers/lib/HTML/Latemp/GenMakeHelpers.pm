@@ -109,7 +109,7 @@ use vars qw(@ISA);
 use File::Find::Rule;
 use File::Basename;
 
-__PACKAGE__->mk_accessors(qw(base_dir hosts hosts_id_map));
+__PACKAGE__->mk_accessors(qw(base_dir _common_buckets hosts hosts_id_map));
 
 =head2 initialize()
 
@@ -135,6 +135,9 @@ sub initialize
         ]
         );
     $self->hosts_id_map(+{ map { $_->{'id'} => $_ } @{$self->hosts()}});
+    $self->_common_buckets({});
+
+    return;
 }
 
 sub process_all
@@ -203,6 +206,7 @@ sub get_initial_buckets
                 my $file = shift; 
                 return (-d $self->_make_path($host, $file)) 
             },
+            filter_out_common => 1,
         },
         {
             'name' => "DOCS",
@@ -331,7 +335,23 @@ sub place_files_into_buckets
         {
             if ($b->{'filter'}->($f))
             {
-                push @{$b->{'results'}}, $b->{'map'}->($f);
+                if ($host->{'id'} eq "common")
+                {
+                    $self->_common_buckets->{$b->{name}}->{$f} = 1;
+                }
+                
+                if (   ($host->{'id'} eq "common")
+                    || 
+                    (!(
+                        $b->{'filter_out_common'}
+                            &&
+                        exists($self->_common_buckets->{$b->{name}}->{$f})
+                    ))
+                )
+                {
+                    push @{$b->{'results'}}, $b->{'map'}->($f);
+                }
+
                 next FILE_LOOP;
             }
         }
