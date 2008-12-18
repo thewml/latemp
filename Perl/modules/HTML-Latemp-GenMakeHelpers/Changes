@@ -1,5 +1,8 @@
 Revision history for HTML-Latemp-GenMakeHelpers
 
+0.2.0    FILL IN
+    - Changed the GNU make rules from "::" to ":".
+
 0.1.9    Fri Mar 14 22:06:49 IST 2008
     - Removed a {{{ use lib "./lib"; }}} declaration from t/01-output-basic.t.
         - I don't know what it was doing there in the first place.
