@@ -2,6 +2,8 @@ Revision history for HTML-Latemp-GenMakeHelpers
 
 0.2.0    FILL IN
     - Changed the GNU make rules from "::" to ":".
+    - Now filtering out the 'common' host directories from the directories
+    buckets of the other hosts so GNU make won't warn about them.
 
 0.1.9    Fri Mar 14 22:06:49 IST 2008
     - Removed a {{{ use lib "./lib"; }}} declaration from t/01-output-basic.t.
