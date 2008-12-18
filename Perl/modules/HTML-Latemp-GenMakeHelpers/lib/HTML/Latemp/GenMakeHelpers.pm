@@ -387,29 +387,29 @@ X8X_COMMON_TTMLS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_TTMLS))
 
 X8X_COMMON_DOCS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_DOCS))
 
-\$(X8X_DOCS_DEST) :: $h_dest_star : \$(X8X_SRC_DIR)/%.wml \$(DOCS_COMMON_DEPS) 
+\$(X8X_DOCS_DEST) : $h_dest_star : \$(X8X_SRC_DIR)/%.wml \$(DOCS_COMMON_DEPS) 
 	 $wml_path ; ( cd \$(X8X_SRC_DIR) && wml -o "\$\${WML_LATEMP_PATH}" \$(X8X_WML_FLAGS) -DLATEMP_FILENAME=\$(patsubst $h_dest_star,%,\$(patsubst %.wml,%,\$@)) \$(patsubst \$(X8X_SRC_DIR)/%,%,\$<) )
 
-\$(X8X_TTMLS_DEST) :: $h_dest_star : \$(X8X_SRC_DIR)/%.ttml \$(TTMLS_COMMON_DEPS)
+\$(X8X_TTMLS_DEST) : $h_dest_star : \$(X8X_SRC_DIR)/%.ttml \$(TTMLS_COMMON_DEPS)
 	ttml -o \$@ \$(X8X_TTML_FLAGS) -DLATEMP_FILENAME=\$(patsubst $h_dest_star,%,\$(patsubst %.ttml,%,\$@)) \$<
 
-\$(X8X_DIRS_DEST) :: $h_dest_star : unchanged
+\$(X8X_DIRS_DEST) : $h_dest_star : unchanged
 	mkdir -p \$@
 	touch \$@
 
-\$(X8X_IMAGES_DEST) :: $h_dest_star : \$(X8X_SRC_DIR)/%
+\$(X8X_IMAGES_DEST) : $h_dest_star : \$(X8X_SRC_DIR)/%
 	cp -f \$< \$@
 
-\$(X8X_COMMON_IMAGES_DEST) :: $h_dest_star : \$(COMMON_SRC_DIR)/%
+\$(X8X_COMMON_IMAGES_DEST) : $h_dest_star : \$(COMMON_SRC_DIR)/%
 	cp -f \$< \$@
 
-\$(X8X_COMMON_TTMLS_DEST) :: $h_dest_star : \$(COMMON_SRC_DIR)/%.ttml \$(TTMLS_COMMON_DEPS)
+\$(X8X_COMMON_TTMLS_DEST) : $h_dest_star : \$(COMMON_SRC_DIR)/%.ttml \$(TTMLS_COMMON_DEPS)
 	ttml -o \$@ \$(X8X_TTML_FLAGS) -DLATEMP_FILENAME=\$(patsubst $h_dest_star,%,\$(patsubst %.ttml,%,\$@)) \$<
 
-\$(X8X_COMMON_DOCS_DEST) :: $h_dest_star : \$(COMMON_SRC_DIR)/%.wml \$(DOCS_COMMON_DEPS)
+\$(X8X_COMMON_DOCS_DEST) : $h_dest_star : \$(COMMON_SRC_DIR)/%.wml \$(DOCS_COMMON_DEPS)
 	$wml_path ; ( cd \$(COMMON_SRC_DIR) && wml -o "\$\${WML_LATEMP_PATH}" \$(X8X_WML_FLAGS) -DLATEMP_FILENAME=\$(patsubst $h_dest_star,%,\$(patsubst %.wml,%,\$@)) \$(patsubst \$(COMMON_SRC_DIR)/%,%,\$<) )
 
-\$(X8X_COMMON_DIRS_DEST)  :: $h_dest_star : unchanged
+\$(X8X_COMMON_DIRS_DEST)  : $h_dest_star : unchanged
 	mkdir -p \$@
 	touch \$@
 
