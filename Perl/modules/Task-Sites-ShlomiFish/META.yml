@@ -1,0 +1,19 @@
+# http://module-build.sourceforge.net/META-spec.html
+#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
+name:         Task-Sites-ShlomiFish
+version:      0.0201
+version_from: lib/Task/Sites/ShlomiFish.pm
+installdirs:  site
+requires:
+    DateTime:                      0
+    HTML::TokeParser::Simple:      0
+    IO::All:                       0
+    Task::Latemp:                  0
+    Template::Preprocessor::TTML:  0
+    WWW::Google::SiteMap:          0
+    XML::Grammar::ProductsSyndication: 0.02
+    XML::LibXML::XPathContext:     0
+    XML::LibXSLT:                  0
+
+distribution_type: module
+generated_by: ExtUtils::MakeMaker version 6.30_01
