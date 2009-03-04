@@ -5,17 +5,26 @@ use strict;
 
 =head1 NAME
 
-Task::Sites::ShlomiFish - Specifications for modules needed by the homesite
-of Shlomi Fish.
+Task::Sites::ShlomiFish - Specifications for modules needed for building www.shlomifish.org , whose sources are publically available, and serve as examples for several technologies.
+
 =cut
 
-our $VERSION = '0.0201';
+our $VERSION = '0.0202';
 
 =head1 DESCRIPTION
 
 Shlomi Fish maintains a homesite at L<http://www.shlomifish.org/>. Installing
 this task from CPAN will install all of the CPAN modules that are required
 to build it.
+
+The sources of this web-site are available in a Subversion repository with
+detailed building instructions:
+
+L<http://www.shlomifish.org/meta/site-source/>
+
+This site serves as an example for the Latemp content-management system
+( L<http://web-cpan.berlios.de/latemp/> ) and for other open-source
+technologies such as some of my XML-Grammar-* modules.
 
 =head1 AUTHOR
 
@@ -61,13 +70,15 @@ L<http://search.cpan.org/dist/Task-Sites-ShlomiFish>
 
 =head1 SEE ALSO
 
-L<Task> .
+L<Task> , L<Task::Latemp>
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2006 Shlomi Fish, all rights reserved.
+Copyright 2006 Shlomi Fish.
 
-This program is released under the following license: bsd
+This program is released under the X11 License:
+
+L<http://www.opensource.org/licenses/mit-license.php>
 
 =cut
 
