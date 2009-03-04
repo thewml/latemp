@@ -1,10 +1,14 @@
 Revision history for Task-Sites-ShlomiFish:
 
+        - Added more dependencies: App::XML::DocBook::Builder , 
+        String::ShellQuote, and the XML::Grammar's.
+            - These are now required by the module.
+
 0.0201    Sun Sep 10 15:49:16 IDT 2006
-          - Added XML::Grammar::ProductsSyndication that is required for
-          the music syndication (and future syndications).
-          - Added XML::LibXML::XPathContext.
+        - Added XML::Grammar::ProductsSyndication that is required for
+        the music syndication (and future syndications).
+        - Added XML::LibXML::XPathContext.
 
 0.0100    Thu Jun 15 13:48:49 IDT 2006
-          First version, released on an unsuspecting world.
+        First version, released on an unsuspecting world.
 
