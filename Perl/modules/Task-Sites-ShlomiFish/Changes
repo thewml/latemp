@@ -3,6 +3,9 @@ Revision history for Task-Sites-ShlomiFish:
         - Added more dependencies: App::XML::DocBook::Builder , 
         String::ShellQuote, and the XML::Grammar's.
             - These are now required by the module.
+        - Revised the POD in lib/Task/Sites/ShlomiFish.pm to make the
+        intentions that this is a task for publically-available source
+        code clearer.
 
 0.0201    Sun Sep 10 15:49:16 IDT 2006
         - Added XML::Grammar::ProductsSyndication that is required for
