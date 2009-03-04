@@ -6,6 +6,7 @@ Revision history for Task-Sites-ShlomiFish:
         - Revised the POD in lib/Task/Sites/ShlomiFish.pm to make the
         intentions that this is a task for publically-available source
         code clearer.
+        - Added the NOTE about the motivation to the POD.
 
 0.0201    Sun Sep 10 15:49:16 IDT 2006
         - Added XML::Grammar::ProductsSyndication that is required for
