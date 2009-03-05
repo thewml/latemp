@@ -36,16 +36,16 @@ env = Environment(tools = ["default", "disttar"], toolpath=".")
 env.Append(BUILDERS = {'ConfigScript': config_script_bld, 'Upload':scp_bld, 'Rsync':rsync_bld})
 
 config_file = 'latemp.conf'
-opts = Options(config_file)
-opts.Add(PathOption('PREFIX',
+vars = Variables(config_file)
+vars.Add(PathVariable('PREFIX',
     'Directory to install under (Default: /usr/local)',
     '/usr/local'))
-opts.Add('DESTDIR', 
+vars.Add('DESTDIR', 
         'Prefix to append to the installation directory (without affecting the paths in the files) - Default: empty',
     '')
 
-opts.Update(env)
-opts.Save(config_file, env)
+vars.Update(env)
+vars.Save(config_file, env)
 
 idir_prefix = '$DESTDIR$PREFIX'
 Export('env idir_prefix')
