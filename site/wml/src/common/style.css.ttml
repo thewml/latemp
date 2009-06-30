@@ -1,4 +1,22 @@
 [% INCLUDE "shlomif/sheets/better-scm-kitchy.ttml" %]
+
+.example
+{
+    margin-left: 1.5em;
+    margin-right: 2.5em;
+    border-width : 1.5pt;
+    border-color : #006400; /* darkgreen; */
+    border-style: solid;
+    margin-bottom : 1em;
+    background-color: #E0FF80;
+    padding-right: 0.5em;
+}
+.example:hover
+{    
+    border-color: red;
+    background-color:#E0FFA0;
+}
+
 .image_list
 {
     padding-top: 0.5em;
