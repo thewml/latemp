@@ -12,12 +12,16 @@
 <body>
 
 <define-tag latemp_start_layout>
+<div class="header" id="header">
+<latemp_top_banner_text />
+<latemp_get_breadcrumbs_trail />
+</div>
+<div id="faux">
+<div id="container-all">
 <p class="invisible">
 <a href="#main">Go to main content</a>
 </p>
 
-<latemp_top_banner_text />
-<latemp_get_breadcrumbs_trail />
 <div class="navbar" id="navbar">
 <p class="invisible">
 <a href="#nav_menu">Go to the navigation menu</a>
@@ -46,8 +50,10 @@
 <define-tag latemp_end_layout>
 <latemp_after_body_text />
 </div>
+</div>
+</div>
 
-<div class="footer">
+<div id="footer" class="footer">
 <hr />
 
 <div class="righty">
