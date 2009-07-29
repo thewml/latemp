@@ -49,9 +49,11 @@
 
 <define-tag latemp_end_layout>
 <latemp_after_body_text />
+</div> ;;; main
+<div id="container-footer">
 </div>
-</div>
-</div>
+</div> ;;; container-all
+</div> ;;; faux
 
 <div id="footer" class="footer">
 <hr />
