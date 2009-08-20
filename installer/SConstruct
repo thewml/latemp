@@ -100,6 +100,7 @@ for t in themes:
     add_install(latemp_wml_install_path + 'themes/' + t['id'] + '/', t['scons_file'])
 
 package_files = package_files + [
+        'Changes',
         'COPYING',
         'disttar.py', 
         'INSTALL',
