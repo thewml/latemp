@@ -27,7 +27,7 @@ sources for contributing to everybody's learning experience.
 </define-tag>
 
 <example url="$(ROOT)" text="Latemp Homepage" 
-source_url="svn://svn.berlios.de/web-cpan/latemp/trunk/site/wml/">
+source_url="http://svn.berlios.de/svnroot/repos/web-cpan/latemp/trunk/site/wml/">
 <p>
 Yes, we're 
 <a href="http://www.joelonsoftware.com/articles/fog0000000012.html">eating 
@@ -44,7 +44,7 @@ navigation controls. Little was added above what Latemp provides.
 </example>
 
 <example url="http://www.shlomifish.org/" text="Shlomi Fish' Homepage" 
-source_url="http://stalker.iguide.co.il:8080/svn/shlomif-homepage/homepage/trunk/" >
+source_url="http://opensvn.csie.org/shlomif/homepage/trunk/">
 <p>
 The homepage of Latemp's originator. A site that spreads across two hosts, with
 a navigation menu, a breadcrumbs trail, navigation links, a site map, and lots
@@ -53,7 +53,7 @@ and lots of pages.
 </example>
 
 <example url="http://perl-begin.org/" text="The Perl Beginners' Site"
-source_url="http://opensvn.csie.org/perlbegin/perl-begin/trunk/" >
+source_url="http://svn.berlios.de/svnroot/repos/perl-begin/perl-begin/trunk/" >
 <p>
 The Perl Beginners' Site - a portal for people who are new to Perl.
 </p>
@@ -76,7 +76,7 @@ small number of pages.
 </example>
 
 <example url="http://fc-solve.berlios.de/" text="The Freecell Solver Homepage"
-source_url="svn://svn.berlios.de/fc-solve/trunk/fc-solve/site/wml/">
+source_url="http://svn.berlios.de/viewcvs/fc-solve/trunk/fc-solve/site/wml/">
 <p>
 A relatively simple site Latemp-wise, but has a complex underlying build 
 system.
