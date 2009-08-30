@@ -1,0 +1,44 @@
+#include "template.wml"
+
+<latemp_subject "Latemp Version 0.6.0 was Released" />
+<latemp_version_control_id "$Id$" />
+
+<p>
+<b>Date:</b> 2009-August-30
+</p>
+
+<p>
+Latemp version 0.6.0, a new stable release was released, with several
+enhancements:
+</p>
+
+<ol>
+
+<li>
+Added some macros - <tt>&lt;latemp_after body /&gt;</tt>,
+<tt>&lt;latemp_html_doctype /&gt;</tt> and 
+<tt>&lt;latemp_after_title_head_elements /&gt;</tt>
+</li>
+
+<li>
+The SConstruct file was adapted for recent 
+<a href="http://www.scons.org/">Scons</a>. (We are planning to switch
+away from SCons to <a href="http://www.cmake.org/">CMake</a> or
+<a href="http://search.cpan.org/dist/Module-Build/">Module-Build</a>
+</li>
+
+<li>
+Made <tt>$leading_path</tt> a package variable instead of a lexical.
+</li>
+
+<li>
+Removed the <tt>./</tt> prefix for local URLs from the HTML generated
+by HTML-Widgets-NavMenu.
+</li>
+
+</ol>
+
+<p>
+Find it on <a href="$(ROOT)/download/">the download page</a>.
+</p>
+

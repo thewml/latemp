@@ -41,6 +41,13 @@ my @news_items =
             a new stable version.},
             'date' => "2006-08-29",
         },
+        {
+            'title' => "Version 0.6.0",
+            'id' => "0.6.0",
+            'description' => q{Latemp version 0.6.0 was released. This is
+            a new stable version.},
+            'date' => "2009-08-24",
+        },
         )
     )
 );
