@@ -39,9 +39,15 @@
     "http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd">
 </define-tag>
 
+<define-tag latemp_html_doctype_xhtml5>
+<!DOCTYPE html>
+</define-tag>
+
 <define-tag latemp_html_doctype>
 <preserve standard />
 <set-var %attributes />
+<ifeq "<get-var standard />" "xhtml5"
+    "<latemp_html_doctype_xhtml5 />"
 <ifeq "<get-var standard />" "xhtml1.1"
     "<latemp_html_doctype_xhtml11 />"
 <ifeq "<get-var standard />" "xhtml1.0-strict"
@@ -55,6 +61,7 @@
     
     "<ERORORE ASDKOASD KAOSDKASOD KASD OAKSD ASODKSAD S >"
     ;;; To be filled in
+    />
     />
     />
     />
