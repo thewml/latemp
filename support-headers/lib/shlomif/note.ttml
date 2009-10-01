@@ -5,6 +5,7 @@
 { 
     border-color : black; 
     border-style : double;
+    border-width : medium;
     padding : 0.5em;
     background-color : [% note_background_color %];
     margin-top: 1em;
