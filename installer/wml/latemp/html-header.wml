@@ -39,6 +39,10 @@
     "http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd">
 </define-tag>
 
+<define-tag latemp_html_doctype_xhtml_and_rdfa_1_0>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+</define-tag>
+
 <define-tag latemp_html_doctype_xhtml5>
 <!DOCTYPE html>
 </define-tag>
@@ -58,9 +62,11 @@
     "<latemp_html_doctype_xhtml11_mathml />"
 <ifeq "<get-var standard />" "xhtml1.1-mathml-svg"
     "<latemp_html_doctype_xhtml11_mathml_svg />"
-    
+<ifeq "<get-var standard />" "xhtml+rdfa-1.0"
+    "<latemp_html_doctype_xhtml_and_rdfa_1_0 />"
     "<ERORORE ASDKOASD KAOSDKASOD KASD OAKSD ASODKSAD S >"
     ;;; To be filled in
+    />
     />
     />
     />
