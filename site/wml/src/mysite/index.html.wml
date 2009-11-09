@@ -1,13 +1,15 @@
 #include "template.wml"
 
-<latemp_subject "Latemp - A CMS for Static HTML" />
+<latemp_subject "Latemp - An Offline CMS" />
 <latemp_version_control_id "$Id$" />
 
 <p>
-Welcome to the homepage of Latemp. Latemp (a play on "Template") is a 
-content management system based on <a href="http://thewml.org/">Website Meta
-Language</a>, a powerful framework for generating static HTML, and server-side
-HTML that embeds code (such as <a href="http://www.php.net/">PHP</a>,
+Welcome to the homepage of Latemp. Latemp (a play on "Template") is an
+<b>offline CMS</b> (= content management system) based on 
+<a href="http://thewml.org/">Website Meta
+Language</a>, a powerful, off-line framework for generating static HTML, and 
+server-side HTML that embeds code (such as 
+<a href="http://www.php.net/">PHP</a>,
 <a href="http://www.masonhq.com/">HTML::Mason</a>, ASP, or
 <a href="http://perl.apache.org/embperl/">Embperl</a>). Latemp allows
 one to create attractive, themable sites, which are very usable, accessible
@@ -18,9 +20,9 @@ license</a>.
 </p>
 
 <p>
-You can find more information about Latemp in the 
-<a href="$(ROOT)/about/">about page</a>. You can also see 
-<a href="$(ROOT)/examples/">example sites that were prepared with 
+You can find more information about Latemp in the
+<a href="$(ROOT)/about/">about page</a>. You can also see
+<a href="$(ROOT)/examples/">example sites that were prepared with
 Latemp</a> and view their source code. The
 <a href="$(ROOT)/docs/">documentation page</a> contains various documents
 describing how to use Latemp.
