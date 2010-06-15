@@ -48,6 +48,13 @@ my @news_items =
             a new stable version.},
             'date' => "2009-08-24",
         },
+        {
+            'title' => "Latemp Post on the Codegreen Forum",
+            'id' => "codegreen-post-2009-09-11",
+            'description' => q{I posted a post about Latemp on the Codegreen
+            forum. It sparked some interesting discussion.},
+            'date' => "2009-09-11",
+        }
         )
     )
 );
