@@ -5,3 +5,4 @@ MANIFEST
 META.yml # Will be created by "make dist"
 README
 t/00-load.t
+tag-release.pl
