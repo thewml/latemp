@@ -1,12 +1,12 @@
 Revision history for Task-Sites-ShlomiFish:
 
-0.0203
+0.0203     Sat Oct 16 10:22:45 IST 2010
         - Add Spork::Shlomify , Text::VimColor and XML::Grammar::Fiction
         that are now needed to build the site.
         - Remove WWW::Google::SiteMap - no longer needed.
         - Add the tag-release.pl file to tag a release using Subversion.
 
-0.0202    Wed Mar  4 15:12:10 IST 2009
+0.0202     Wed Mar  4 15:12:10 IST 2009
         - Added more dependencies: App::XML::DocBook::Builder , 
         String::ShellQuote, and the XML::Grammar's.
             - These are now required by the module.
