@@ -1,5 +1,8 @@
 Revision history for Task-Sites-ShlomiFish:
 
+0.0204     Wed Dec 15 18:29:31 IST 2010
+        - Add Term::ReadPassword.
+
 0.0203     Sat Oct 16 10:22:45 IST 2010
         - Add Spork::Shlomify , Text::VimColor and XML::Grammar::Fiction
         that are now needed to build the site.

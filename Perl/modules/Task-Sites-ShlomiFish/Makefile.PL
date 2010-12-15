@@ -18,6 +18,7 @@ WriteMakefile(
         'String::ShellQuote' => 0,
         'Task::Latemp' => 0,
         'Template::Preprocessor::TTML' => 0,
+        'Term::ReadPassword' => 0,
         'Text::VimColor' => 0,
         'XML::Grammar::Fiction' => 0,
         'XML::Grammar::Fortune' => '0.0107',
