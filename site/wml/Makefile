@@ -37,13 +37,13 @@ $(RSS_FEED): gen-feeds.pl lib/MyManageNews.pm
 
 upload: all
 	cd $(ALL_DEST_BASE)/mysite && \
-	$(RSYNC) -r * shlomif@shell.berlios.de:/home/groups/web-cpan/htdocs/latemp/
+	$(RSYNC) -a * shlomif@shell.berlios.de:/home/groups/web-cpan/htdocs/latemp/
 
 upload_beta: all
 	cd $(ALL_DEST_BASE)/mysite && \
-	$(RSYNC) -r * shlomif@shell.berlios.de:/home/groups/web-cpan/htdocs/latemp/__Beta-Site/
+	$(RSYNC) -a * shlomif@shell.berlios.de:/home/groups/web-cpan/htdocs/latemp/__Beta-Site/
 
 upload_iglu: all
 	cd $(ALL_DEST_BASE)/mysite && \
-	$(RSYNC) -r * shlomif@iglu.org.il:Home-Site/__Latemp-Beta-Site/
+	$(RSYNC) -a * shlomif@iglu.org.il:Home-Site/__Latemp-Beta-Site/
 
