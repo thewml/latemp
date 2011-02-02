@@ -1,0 +1,13 @@
+#include "template.wml"
+
+<latemp_subject "Latemp Post on the Codegreen Forum" />
+<latemp_version_control_id "$Id: index.html.wml 3828 2009-08-30 09:35:17Z shlomif $" />
+
+<p>
+<b>Date:</b> 2009-September-11
+</p>
+
+<p>
+I had posted a post to Code Green Forum, but the Code Green Forum is
+now offline.
+</p>
