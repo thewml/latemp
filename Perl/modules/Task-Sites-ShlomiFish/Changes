@@ -1,6 +1,7 @@
 Revision history for Task-Sites-ShlomiFish:
 
         - Add HTML::TreeBuilder::LibXML .
+        - Add XML::Amazon .
 
 0.0205      Tue Jun  7 14:31:53 IDT 2011
         - Made the XML::Grammar::Fiction and XML::Grammar::Screenplay versions
