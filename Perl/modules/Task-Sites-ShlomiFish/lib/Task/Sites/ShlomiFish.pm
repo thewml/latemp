@@ -9,7 +9,7 @@ Task::Sites::ShlomiFish - Specifications for modules needed for building www.shl
 
 =cut
 
-our $VERSION = '0.0204';
+our $VERSION = '0.0205';
 
 =head1 DESCRIPTION
 
