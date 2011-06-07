@@ -31,6 +31,7 @@ WriteMakefile(
         'File::Spec' => 0,
         'File::Spec::Functions' => 0,
         'HTML::TokeParser::Simple' => 0,
+        'HTML::TreeBuilder::LibXML' => 0,
         'IO::All' => 0,
         'Spork::Shlomify' => '0.0200',
         'strict' => 0,
