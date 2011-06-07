@@ -44,6 +44,7 @@ WriteMakefile(
         'utf8' => 0,
         'vars' => 0,
         'warnings' => 0,
+        'XML::Amazon' => 0,
         'XML::Feed' => 0,
         'XML::Grammar::Fiction' => '0.7.0',
         'XML::Grammar::Fortune' => '0.0107',
