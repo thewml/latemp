@@ -5,7 +5,7 @@ use strict;
 
 =head1 NAME
 
-Task::Sites::ShlomiFish - Specifications for modules needed for building www.shlomifish.org , whose sources are publically available, and serve as examples for several technologies.
+Task::Sites::ShlomiFish - Specifications for modules needed for building www.shlomifish.org , whose sources are publically available, and which serves as examples for several technologies.
 
 =cut
 
