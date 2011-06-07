@@ -3,6 +3,7 @@ Revision history for Task-Sites-ShlomiFish:
 0.0205      Tue Jun  7 14:31:53 IDT 2011
         - Made the XML::Grammar::Fiction and XML::Grammar::Screenplay versions
         0.7.0.
+        - Add many more explicit and implicit used or required modules.
 
 0.0204     Wed Dec 15 18:29:31 IST 2010
         - Add Term::ReadPassword.
