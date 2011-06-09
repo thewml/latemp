@@ -1,5 +1,6 @@
 Revision history for Task-Sites-ShlomiFish:
 
+0.0206      Thu Jun  9 12:28:12 IDT 2011
         - Add HTML::TreeBuilder::LibXML .
         - Add XML::Amazon .
         - Add Imager .
