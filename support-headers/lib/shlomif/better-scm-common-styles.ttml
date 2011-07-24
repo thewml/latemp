@@ -95,7 +95,7 @@ pre
     padding-right: 1em;
     padding-bottom: 0.5em;
     padding-top: 0.5em;
-    background-color: #FF8080;
+    background-color: #D0FFD0;
     border-width : thin;
     border-color: #004000;
     border-style: solid;
