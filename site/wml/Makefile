@@ -1,5 +1,5 @@
 
-RSYNC = rsync --progress --verbose --rsh=ssh
+RSYNC = rsync --progress --verbose --rsh=ssh --inplace -a 
 
 ALL_DEST_BASE = dest
 
@@ -35,15 +35,12 @@ $(RSS_FEED): gen-feeds.pl lib/MyManageNews.pm
 
 .PHONY: dummy news_feeds upload upload_beta upload_iglu all
 
+UPLOAD_TARGET = hostgator:domains/web-cpan/public_html/latemp
+
 upload: all
 	cd $(ALL_DEST_BASE)/mysite && \
-	$(RSYNC) -a * shlomif@shell.berlios.de:/home/groups/web-cpan/htdocs/latemp/
+	$(RSYNC) * $(UPLOAD_TARGET)/
 
 upload_beta: all
 	cd $(ALL_DEST_BASE)/mysite && \
-	$(RSYNC) -a * shlomif@shell.berlios.de:/home/groups/web-cpan/htdocs/latemp/__Beta-Site/
-
-upload_iglu: all
-	cd $(ALL_DEST_BASE)/mysite && \
-	$(RSYNC) -a * shlomif@iglu.org.il:Home-Site/__Latemp-Beta-Site/
-
+	$(RSYNC) * $(UPLOAD_TARGET)/__Beta-Site/
