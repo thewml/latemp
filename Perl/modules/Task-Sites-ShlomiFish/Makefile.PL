@@ -18,6 +18,7 @@ WriteMakefile(
         'Class::Accessor' => 0,
         'Cwd' => 0,
         'DateTime' => 0,
+        'DBD::SQLite' => 0,
         'DBI' => 0,
         'Encode' => 0,
         'Exporter' => 0,
