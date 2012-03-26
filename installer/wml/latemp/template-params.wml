@@ -61,7 +61,7 @@
 </define-tag>
 
 <define-tag latemp_meta_desc>
-{#LATEMP_META_DESC#:%0:##}
+{#!LATEMP_META_DESC#:%0:##}
 </define-tag>
 
 <define-tag latemp_extra_head_elements endtag="required" whitespace="delete">
