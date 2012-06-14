@@ -76,16 +76,16 @@ HTML::Latemp::GenMakeHelpers - A Latemp Utility Module.
 
     use HTML::Latemp::GenMakeHelpers;
 
-    my $generator = 
+    my $generator =
         HTML::Latemp::GenMakeHelpers->new(
             'hosts' =>
-            [ map { 
-                +{ 'id' => $_, 'source_dir' => $_, 
-                    'dest_dir' => "\$(ALL_DEST_BASE)/$_-homepage" 
-                } 
+            [ map {
+                +{ 'id' => $_, 'source_dir' => $_,
+                    'dest_dir' => "\$(ALL_DEST_BASE)/$_-homepage"
+                }
             } (qw(common t2 vipe)) ],
         );
-        
+
     $generator->process_all();
 
 =head1 API METHODS
@@ -125,8 +125,8 @@ sub initialize
 
     $self->base_dir("src");
     $self->hosts(
-        [ 
-        map { 
+        [
+        map {
             HTML::Latemp::GenMakeHelpers::HostEntry->new(
                 %$_
             ),
@@ -192,37 +192,37 @@ sub get_initial_buckets
         {
             'name' => "IMAGES",
             'filter' =>
-            sub 
-            { 
+            sub
+            {
                 my $file = shift;
-                return ($file !~ /\.(?:tt|w)ml$/) && (-f $self->_make_path($host, $file)) 
+                return ($file !~ /\.(?:tt|w)ml$/) && (-f $self->_make_path($host, $file))
             },
         },
         {
             'name' => "DIRS",
-            'filter' => 
-            sub 
+            'filter' =>
+            sub
             {
-                my $file = shift; 
-                return (-d $self->_make_path($host, $file)) 
+                my $file = shift;
+                return (-d $self->_make_path($host, $file))
             },
             filter_out_common => 1,
         },
         {
             'name' => "DOCS",
-            'filter' => 
-            sub 
-            { 
+            'filter' =>
+            sub
+            {
                 my $file = shift;
-                return $file =~ /\.x?html\.wml$/; 
+                return $file =~ /\.x?html\.wml$/;
             },
             'map' => sub { my $a = shift; $a =~ s{\.wml$}{}; return $a;},
         },
         {
             'name' => "TTMLS",
             'filter' =>
-            sub 
-            { 
+            sub
+            {
                 my $file = shift;
                 return $file =~ /\.ttml$/;
             },
@@ -239,9 +239,9 @@ sub _identity
 sub _process_bucket
 {
     my ($self, $bucket) = @_;
-    return 
-        { 
-            %$bucket, 
+    return
+        {
+            %$bucket,
             'results' => [],
             (
                 (!exists($bucket->{'map'})) ?
@@ -261,11 +261,11 @@ sub get_buckets
 {
     my ($self, $host) = @_;
 
-    return 
-        [ 
-            map 
-            { $self->_process_bucket($_) } 
-            @{$self->get_initial_buckets($host)} 
+    return
+        [
+            map
+            { $self->_process_bucket($_) }
+            @{$self->get_initial_buckets($host)}
         ];
 }
 
@@ -277,12 +277,12 @@ sub _filter_out_special_files
 
     @files = (grep { ! m{(^|/)\.svn(/|$)} } @files);
     @files = (grep { ! /~$/ } @files);
-    @files = 
-        (grep 
+    @files =
+        (grep
         {
-            my $b = basename($_); 
+            my $b = basename($_);
             !(($b =~ /^\./) && ($b =~ /\.swp$/))
-        } 
+        }
         @files
         );
 
@@ -339,9 +339,9 @@ sub place_files_into_buckets
                 {
                     $self->_common_buckets->{$b->{name}}->{$f} = 1;
                 }
-                
+
                 if (   ($host->{'id'} eq "common")
-                    || 
+                    ||
                     (!(
                         $b->{'filter_out_common'}
                             &&
@@ -407,7 +407,7 @@ X8X_COMMON_TTMLS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_TTMLS))
 
 X8X_COMMON_DOCS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_DOCS))
 
-\$(X8X_DOCS_DEST) : $h_dest_star : \$(X8X_SRC_DIR)/%.wml \$(DOCS_COMMON_DEPS) 
+\$(X8X_DOCS_DEST) : $h_dest_star : \$(X8X_SRC_DIR)/%.wml \$(DOCS_COMMON_DEPS)
 	 $wml_path ; ( cd \$(X8X_SRC_DIR) && wml -o "\$\${WML_LATEMP_PATH}" \$(X8X_WML_FLAGS) -DLATEMP_FILENAME=\$(patsubst $h_dest_star,%,\$(patsubst %.wml,%,\$@)) \$(patsubst \$(X8X_SRC_DIR)/%,%,\$<) )
 
 \$(X8X_TTMLS_DEST) : $h_dest_star : \$(X8X_SRC_DIR)/%.ttml \$(TTMLS_COMMON_DEPS)
@@ -467,9 +467,9 @@ sub process_host
     my $host_uc = uc($host->id());
     foreach my $b (@$buckets)
     {
-        $file_lists_text .= $host_uc . "_" . $b->{'name'} . " = " . join(" ", @{$b->{'results'}}) . "\n";
+        $file_lists_text .= $host_uc . "_" . $b->{'name'} . " =" . join("", map { " $_" } @{$b->{'results'}}) . "\n";
     }
-    
+
     if ($host->id() ne "common")
     {
         my $rules = $self->get_rules_template($host);
