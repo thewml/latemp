@@ -41,3 +41,4 @@ t/sample-data/sample-site-1/subversion/compelling_alternative.html.wml
 t/sample-data/sample-site-1/subversion/index.html.wml
 t/sample-data/sample-site-1/subversion/Subversion-Win32-Installation-Guide.txt
 t/sample-data/sample-site-1/subversion/Svn-Win32-Inst-Guide.html.wml
+META.json
