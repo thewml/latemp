@@ -1,19 +1,19 @@
-.navbar 
-{ 
+.navbar
+{
     float : left;
     width : [% navbar_width %];
-    padding-left : 0.5em;    
+    padding-left : 0.5em;
     padding-right : 0.5em;
     padding-top : 1.5em;
     padding-bottom: 2em;
 }
 ul.navbarmain
-{ 
+{
     padding-left : 1em;
     margin-left : 1em;
 }
 ul.navbarnested
 {
-    padding-left : 0em; 
+    padding-left : 0em;
     margin-left : 2em;
 }

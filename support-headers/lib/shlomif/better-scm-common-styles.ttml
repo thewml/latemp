@@ -1,5 +1,5 @@
 a:hover
-{ 
+{
     color : [% a_hover_color %];
 }
 .main
@@ -50,7 +50,7 @@ them, because they are nested and it looks weird */
     margin-bottom: 0em;
 }
 .vcs
-{    
+{
     margin-top: 0.5em;
     clear: left;
 }
@@ -80,7 +80,7 @@ them, because they are nested and it looks weird */
     margin-bottom: 0.5em;
     margin-right: 10pt;
 }
-/* Workaround to get the <hr /> element at the bottom to properly display 
+/* Workaround to get the <hr /> element at the bottom to properly display
    with Konqueror 3.3.x
    */
 .footer hr
@@ -152,7 +152,7 @@ pre
 }
 .link { background : transparent; }
 ul.navbarmain
-{ 
+{
     font-size: 80%;
     font-family: sans-serif;
 }
@@ -164,26 +164,26 @@ h2, h3, h4
 {
     padding-left: 0.3em;
 }
-.navbar 
+.navbar
 {
     background-color : [% navbar_bgcolor %];
 }
-h2 
-{ 
+h2
+{
     background-color: [% h2_bgcolor %];
 }
 
 .comparison h2 { background-color : #98FB98; /* PaleGreen */ }
 .comparison h3 { background-color : #FFA500; /* Orange */ }
-table.compare 
-{ 
-    margin-left : 1em; 
-    margin-right : 1em; 
+table.compare
+{
+    margin-left : 1em;
+    margin-right : 1em;
     width: 90%;
     max-width : 40em;
 }
-.compare td 
-{ 
+.compare td
+{
     border-color : black; border-style : solid ; border-width : thin;
     vertical-align : top;
     padding : 0.2em;
@@ -194,8 +194,8 @@ table.compare
 }
 .comparison .toc ul
 {
-    list-style-type : none ; 
-    padding-left : 0em; 
+    list-style-type : none ;
+    padding-left : 0em;
     margin-left : 2em;
 }
 .comparison .expl
