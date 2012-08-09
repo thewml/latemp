@@ -29,7 +29,7 @@
 </define-tag>
 
 <define-tag latemp_webmaster_text>
-{#LATEMP_WEBMASTER#} 
+{#LATEMP_WEBMASTER#}
 </define-tag>
 
 <define-tag latemp_webmaster endtag="required" whitespace="delete">

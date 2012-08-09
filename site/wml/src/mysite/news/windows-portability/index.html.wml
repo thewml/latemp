@@ -9,15 +9,15 @@
 
 <p>
 <a href="$(ROOT)/">Latemp</a> can now be run on Microsoft Windows. Shlomi
-Fish (the main developer of Latemp, and now the maintainer of 
+Fish (the main developer of Latemp, and now the maintainer of
 <a href="http://thewml.org/">Website Meta Language</a>, the preprocessor
-that it uses), has fixed Website Meta Language to successfully build on 
+that it uses), has fixed Website Meta Language to successfully build on
 Windows using the <a href="http://www.cygwin.com/">Cygwin UNIX emulation
 layer</a>).
 </p>
 
 <p>
-Fish was able to use WML and Latemp to succesfully build 
+Fish was able to use WML and Latemp to succesfully build
 <a href="http://www.shlomifish.org/">his homesite</a>, which has a large
 and complex codebase.
 </p>

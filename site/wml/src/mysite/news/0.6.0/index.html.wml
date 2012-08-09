@@ -16,12 +16,12 @@ enhancements:
 
 <li>
 Added some macros - <tt>&lt;latemp_after body /&gt;</tt>,
-<tt>&lt;latemp_html_doctype /&gt;</tt> and 
+<tt>&lt;latemp_html_doctype /&gt;</tt> and
 <tt>&lt;latemp_after_title_head_elements /&gt;</tt>
 </li>
 
 <li>
-The SConstruct file was adapted for recent 
+The SConstruct file was adapted for recent
 <a href="http://www.scons.org/">Scons</a>. (We are planning to switch
 away from SCons to <a href="http://www.cmake.org/">CMake</a> or
 <a href="http://search.cpan.org/dist/Module-Build/">Module-Build</a>

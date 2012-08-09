@@ -31,7 +31,7 @@ news_feeds: $(RSS_FEED)
 $(RSS_FEED): gen-feeds.pl lib/MyManageNews.pm
 	perl -Ilib gen-feeds.pl --rss2-out="$@"
 
-.PHONY: 
+.PHONY:
 
 upload: all
 	cd $(ALL_DEST_BASE)/mysite && \

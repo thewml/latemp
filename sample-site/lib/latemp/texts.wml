@@ -1,6 +1,6 @@
 <define-tag latemp_webmaster_text>
 <p class="webmaster">
-Webmaster: {#LATEMP_WEBMASTER#} 
+Webmaster: {#LATEMP_WEBMASTER#}
 </p>
 </define-tag>
 

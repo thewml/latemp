@@ -61,7 +61,7 @@ alt="Next Page" class="bless" /></a>
 EOF
     chomp($expected);
     # TEST
-    is ($obj->get_total_html(), $expected, 
+    is ($obj->get_total_html(), $expected,
         "Testing that the output is OK."
     );
 }

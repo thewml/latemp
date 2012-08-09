@@ -42,8 +42,8 @@ sub trap
     }
     my $out = slurp("altout.txt");
     my $error = slurp("alterr.txt");
-    return 
-    { 
+    return
+    {
         'out' => $out, 'err' => $error, 'ret' => \@ret
     };
 }
@@ -110,9 +110,9 @@ my $invalid_ttml = File::Spec->catfile( $input_dir, "invalid.ttml" );
 
 {
     my $pp = Template::Preprocessor::TTML->new(
-        'argv' => 
+        'argv' =>
         [
-            "--include", $inc1_dir, "-I".$inc2_dir, 
+            "--include", $inc1_dir, "-I".$inc2_dir,
             "--includefile", "header.tt2", "--includefile=inc2.tt2",
             $implicit_includes_ttml
         ]);

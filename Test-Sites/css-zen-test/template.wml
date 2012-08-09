@@ -1,4 +1,4 @@
-# Read all the latemp macros 
+# Read all the latemp macros
 #include "latemp/latemp-prelude.wml"
 
 # You can put some customizations here

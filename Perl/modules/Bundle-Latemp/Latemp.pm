@@ -8,8 +8,8 @@ __END__
 
 =head1 NAME
 
-Bundle::Latemp - A bundle to install external CPAN modules used by 
-the Latemp Content Management System 
+Bundle::Latemp - A bundle to install external CPAN modules used by
+the Latemp Content Management System
 
 =head1 SYNOPSIS
 
@@ -24,7 +24,7 @@ Use of CPAN.pm in interactive mode:
   cpan> quit
 
 Just like the manual installation of perl modules, the user may
-need root access during this process to insure write permission 
+need root access during this process to insure write permission
 is allowed within the intstallation directory.
 
 

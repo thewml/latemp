@@ -37,7 +37,7 @@ my $tree_contents =
             [
                 @{$news_manager->get_navmenu_items('num_items' => 5)},
             ],
-        },        
+        },
         {
             'text' => "Download",
             'url' => "download/",
@@ -70,7 +70,7 @@ my $tree_contents =
 
 sub get_params
 {
-    return 
+    return
         (
             'hosts' => $hosts,
             'tree_contents' => $tree_contents,

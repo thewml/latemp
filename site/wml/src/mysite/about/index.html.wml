@@ -16,7 +16,7 @@ sites, he was looking for a better solution.
 
 <p>
 He came across <a href="http://thewml.org/">Website Meta Language</a> which
-after he learned, and set up on his Linux servers, allowed him to build 
+after he learned, and set up on his Linux servers, allowed him to build
 integrated, usable and attractive sites. As time went by he created a great
 deal of sites this way, by copying the contents of an old site and adapting
 it to the needs of the new site.
@@ -34,7 +34,7 @@ the common code.
 <p>
 This was the birth of Latemp ("Latemp" being a play on the word "Template"):
 a powerful, integrated framework for maintaining static HTML web-sites. This
-site, for example was created using Latemp, and so are 
+site, for example was created using Latemp, and so are
 <a href="$(ROOT)/examples/">others</a>.
 </p>
 
@@ -43,7 +43,7 @@ site, for example was created using Latemp, and so are
 <ul class="links">
 <li>
 Portable. Runs on all UNIX Systems (including Mac OS X) as well as on
-Microsoft Windows using the <a href="http://www.cygwin.com/">cygwin UNIX 
+Microsoft Windows using the <a href="http://www.cygwin.com/">cygwin UNIX
 emulation</a>.
 </li>
 <li>
@@ -53,13 +53,13 @@ Generates Static HTML Files.
 Allows sites to have a common look and feel.
 </li>
 <li>
-Supports setting up navigation menus, breadcrumbs trails, navigation 
+Supports setting up navigation menus, breadcrumbs trails, navigation
 links ("Up", "Next" and "Previous"), site maps with sophisticated site
 flow.
 </li>
 <li>
 Makes use of <a href="http://thewml.org/">Web Meta Language</a> and so has
-all of its power (including extending its functionality by using 
+all of its power (including extending its functionality by using
 embedded <a href="http://www.perl.org/">Perl</a>).
 </li>
 <li>
@@ -68,18 +68,18 @@ Themable. Three themes (<tt>perl-begin-1</tt>, <tt>better-scm</tt>, and
 by the user. (and contributed).
 </li>
 <li>
-Open Source. Distributed under the 
-<a href="http://www.opensource.org/licenses/mit-license.php">MIT X11 
-License</a>, which allows for free distribution, use, modification and 
+Open Source. Distributed under the
+<a href="http://www.opensource.org/licenses/mit-license.php">MIT X11
+License</a>, which allows for free distribution, use, modification and
 re-licensing.
 </li>
 <li>
 Can generate valid XHTML 1.0 Transitional, XHTML 1.0 Strict or XHTML 1.1.
 </li>
 <li>
-Has pre-defined insertion points for including a breadcrumbs trail, a 
-navigation menu, various HTML <tt>&lt;head&gt;</tt> elements, a logo, 
-navigation links buttons, affiliation buttons, a license, a webmaster 
+Has pre-defined insertion points for including a breadcrumbs trail, a
+navigation menu, various HTML <tt>&lt;head&gt;</tt> elements, a logo,
+navigation links buttons, affiliation buttons, a license, a webmaster
 contact, a time stamp, and a foot image.
 </li>
 <li>
@@ -89,7 +89,7 @@ aside from the body).
 <li>
 Supported <tt>&lt;head&gt;</tt> elements: <tt>&lt;title&gt;</tt> tag,
 "author", "description" and "keywords" <tt>&lt;meta&gt;</tt> elements,
-Stylesheets (screen and print), favicon, Mozilla/Opera-style navigation 
+Stylesheets (screen and print), favicon, Mozilla/Opera-style navigation
 links, and customizable user-defined text to be inserted there.
 </li>
 <li>
@@ -105,7 +105,7 @@ Latemp makes use of the following technologies:
 </p>
 <ul>
 <li>
-<a href="http://thewml.org/">Website Meta Language</a> - a powerful HTML 
+<a href="http://thewml.org/">Website Meta Language</a> - a powerful HTML
 generating system.
 </li>
 <li>
@@ -116,7 +116,7 @@ which is a superset of traditional UNIX make. Very powerful and usable.
 <a href="http://web-cpan.berlios.de/modules/HTML-Widgets-NavMenu/">HTML-Widgets-NavMenu</a> - a CPAN module used to maintain navigation menus and site flow.
 </li>
 <li>
-<a href="http://www.template-toolkit.org/">The Template Toolkit</a> - a 
+<a href="http://www.template-toolkit.org/">The Template Toolkit</a> - a
 powerful templating system for Perl.
 </li>
 <li>
@@ -132,8 +132,8 @@ a module for managing news items.
 </ul>
 
 <p>
-Additionally, in order to install Latemp, you'll need 
-<a href="http://www.scons.org/">SCons</a>, which is a Python-based build 
+Additionally, in order to install Latemp, you'll need
+<a href="http://www.scons.org/">SCons</a>, which is a Python-based build
 system.
 </p>
 

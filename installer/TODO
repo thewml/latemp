@@ -18,7 +18,7 @@ Delay to later:
 * Create a CSS Zen Garden based theme. (ask for copyright permission for the
 HTML).
 
-* Add a tag to retrieve relative links using the HTML::Widgets::NavMenu 
+* Add a tag to retrieve relative links using the HTML::Widgets::NavMenu
 get_relative_url function.
 
 * Enable processing of template toolkit-processed files.

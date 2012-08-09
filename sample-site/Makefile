@@ -28,7 +28,7 @@ WML_FLAGS += --passoption=2,-X3074 --passoption=3,-I../lib/ \
 
 dummy : $(SUBDIRS) $(IMAGES) $(HTMLS)
 
-$(SUBDIRS) :: % : 
+$(SUBDIRS) :: % :
 	@if [ ! -e $@ ] ; then \
 		mkdir $@ ; \
 	fi
@@ -39,7 +39,7 @@ $(HTMLS) :: $(D)/% : src/%.wml template.wml $(INCLUDES)
 $(IMAGES) :: $(D)/% : src/%
 	cp -f $< $@
 
-.PHONY: 
+.PHONY:
 
 
 src/comparison/comparison.html: src/comparison/scm-comparison.xml

@@ -20,7 +20,7 @@ HTML::Latemp::NavLinks::GenHtml::ArrowImages - A class to generate the image-bas
 
 =head1 DESCRIPTION
 
-This module generates text navigation links. C<root> is the relative path to 
+This module generates text navigation links. C<root> is the relative path to
 the site's root directory. C<nav_links_obj> are the hash of navigation links'
 objects as returned by L<HTML::Widgets::NavMenu> or something similar.
 
@@ -43,18 +43,18 @@ sub _get_nav_buttons_html
     my $self = shift;
 
     my (%args) = (@_);
-    
+
     my $with_accesskey = $args{'with_accesskey'};
 
     my $root = $self->root();
 
-    my $template = 
+    my $template =
         Template->new(
         {
             'POST_CHOMP' => 1,
         }
         );
-    
+
     my $vars =
     {
         'buttons' => $self->_get_buttons(),
@@ -62,7 +62,7 @@ sub _get_nav_buttons_html
         'with_accesskey' => $with_accesskey,
         'image_base' => $self->get_image_base(),
     };
-    
+
     my $nav_links_template = <<'EOF';
 [% USE HTML %]
 [% FOREACH b = buttons %]
@@ -79,9 +79,9 @@ alt="[% b.title %]" class="bless" />[% IF b.exists %]</a>
 </li>
 [% END %]
 EOF
-    
+
     my $nav_buttons_html = "";
-    
+
     $template->process(\$nav_links_template, $vars, \$nav_buttons_html);
     return $nav_buttons_html;
 }

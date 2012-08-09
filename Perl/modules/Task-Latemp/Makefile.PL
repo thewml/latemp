@@ -8,7 +8,7 @@ WriteMakefile(
     VERSION_FROM        => 'lib/Task/Latemp.pm',
     ABSTRACT_FROM       => 'lib/Task/Latemp.pm',
     PL_FILES            => {},
-    PREREQ_PM => 
+    PREREQ_PM =>
     {
         'CGI' => 0,
         'Class::Accessor' => 0,

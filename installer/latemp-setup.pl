@@ -30,7 +30,7 @@ GetOptions(
     "lang=s" => \$language,
     "encoding=s" => \$encoding,
     "remote-path=s" => \$remote_path,
-    'help|h|?' => \$help, 
+    'help|h|?' => \$help,
     'man' => \$man
 ) or pod2usage(2);
 
@@ -75,16 +75,16 @@ use warnings;
 
 use HTML::Latemp::GenMakeHelpers;
 
-my \$generator = 
+my \$generator =
     HTML::Latemp::GenMakeHelpers->new(
         'hosts' =>
-        [ 
-            map 
-            { 
-                +{ 'id' => \$_, 'source_dir' => "src/\$_", 
+        [
+            map
+            {
+                +{ 'id' => \$_, 'source_dir' => "src/\$_",
                    'dest_dir' => "\\\$(ALL_DEST_BASE)/\$_",
-               }, 
-            } 
+               },
+            }
             (qw(common $host))
         ]
     );
@@ -126,7 +126,7 @@ $current_file = "$project_dir/template.wml";
 
 open O, ">", $current_file;
 print O <<"EOF";
-# Read all the latemp macros 
+# Read all the latemp macros
 #include "latemp/latemp-prelude.wml"
 
 # You can put some customizations here
@@ -189,7 +189,7 @@ news_feeds: \$(RSS_FEED)
 \$(RSS_FEED): gen-feeds.pl lib/MyManageNews.pm
 	perl -Ilib gen-feeds.pl --rss2-out="\$\@"
 
-.PHONY: 
+.PHONY:
 
 upload: all
 	cd \$(ALL_DEST_BASE)/$host && \\
@@ -294,11 +294,11 @@ use HTML::Latemp::News;
 
 my \@news_items =
 (
-    (map 
-        { 
-            +{\%\$_, 
-                'author' => "$author", 
-                'category' => "My Site Category", 
+    (map
+        {
+            +{\%\$_,
+                'author' => "$author",
+                'category' => "My Site Category",
             }
         }
         (
@@ -358,7 +358,7 @@ print O <<"EOF";
 /*
     CSS Stylesheet for better-scm.berlios.de
     Copyright (c) Shlomi Fish, 2003-2005
-    Feel free to use, modify and re-distribute under the terms of the 
+    Feel free to use, modify and re-distribute under the terms of the
     MIT X11 License (http://www.opensource.org/licenses/mit-license.php)
 
     \$Id: style.css 175 2005-04-17 07:43:41Z shlomif \$
@@ -388,9 +388,9 @@ a:hover { color : red }
 }
 
 p.desc { margin-left : 3em }
-h2 
-{ 
-    background-color: #FFEE00  
+h2
+{
+    background-color: #FFEE00
 }
 h2, h3, h4
 {
@@ -409,19 +409,19 @@ h2, h3, h4
     margin-left: 0;
 }
 ul.navbarmain
-{ 
-    padding-left : 1em; 
+{
+    padding-left : 1em;
     font-size: 80%;
     font-family: sans-serif;
 }
-ul.navbarnested 
-{ 
-    padding-left : 0em ; 
+ul.navbarnested
+{
+    padding-left : 0em ;
     margin-left : 2em;
 }
-.note 
-{ 
-    border-color : black; 
+.note
+{
+    border-color : black;
     border-style : double;
     padding : 0.5em;
     background-color : #98FB98; /* PaleGreen */
@@ -454,7 +454,7 @@ ul.my li
     margin-bottom: 0em;
 }
 .vcs
-{    
+{
     margin-top: 0.5em;
     clear: left;
 }
@@ -499,7 +499,7 @@ ul.my li
     margin-right : 30px;
     padding-top: 0.5em;
 }
-/* Workaround to get the <hr /> element at the bottom to properly display 
+/* Workaround to get the <hr /> element at the bottom to properly display
    with Konqueror 3.3.x
    */
 .footer hr
@@ -530,7 +530,7 @@ close(O);
 
 open O, ">", "$project_dir/src/common/print.css";
 print O <<"EOF";
-.navbar 
+.navbar
 {
     display: none;
 }
@@ -539,9 +539,9 @@ print O <<"EOF";
     background-color : white;
 }
 p.desc { margin-left : 3em }
-.note 
-{ 
-    border-color : black; 
+.note
+{
+    border-color : black;
     border-style : double;
     padding : 0.5em;
 }
@@ -655,7 +655,7 @@ my $latemp_params =
 {
     'version' => $version,
     'prefix' => $prefix,
-    'program' => 
+    'program' =>
     {
         'name' => "Latemp",
         'author' => "Shlomi Fish",
@@ -712,7 +712,7 @@ page.
 
 =item B<--dir>
 
-This is a dir in which to create the project. It would be created if it does 
+This is a dir in which to create the project. It would be created if it does
 not exist.
 
 =item B<--remote-path>
@@ -733,7 +733,7 @@ This specifies an encoding to use ("utf-8", "iso-8859-8", etc.)
 
 =head1 SEE ALSO
 
-B<The Latemp Homepage>: 
+B<The Latemp Homepage>:
 
 http://web-cpan.berlios.de/latemp/
 

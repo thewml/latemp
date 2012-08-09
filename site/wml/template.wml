@@ -46,7 +46,7 @@ title="Receive Site Updates using an RSS Reader" /></a>
 
 <latemp_top_left_corner_logo>
 <div class="logo">
-<a href="$(ROOT)/" title="Latemp - Static HTML Content Management"><img 
+<a href="$(ROOT)/" title="Latemp - Static HTML Content Management"><img
     src="$(ROOT)/images/latemp-logo.png"
     alt="Latemp - Static HTML Content Management" /></a>
 </div>

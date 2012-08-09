@@ -40,7 +40,7 @@ vars = Variables(config_file)
 vars.Add(PathVariable('PREFIX',
     'Directory to install under (Default: /usr/local)',
     '/usr/local'))
-vars.Add('DESTDIR', 
+vars.Add('DESTDIR',
         'Prefix to append to the installation directory (without affecting the paths in the files) - Default: empty',
     '')
 
@@ -69,8 +69,8 @@ env.Alias('build', env.Command('docs/latemp-ref.html', 'docs/latemp-ref.pod', "c
 env.Alias('doc_upload', env.Rsync("popd9j3490m2r8vnkwnc8", 'docs/latemp-ref.html'))
 
 for file in ['html-header.wml','html-head-tag.wml','h-w-nav-menu.wml', \
-        'latemp-driver.wml', 'latemp-main.wml', 'latemp-prelude.wml', 
-        'news-management.wml', 'template-params.wml', 'texts.wml', 
+        'latemp-driver.wml', 'latemp-main.wml', 'latemp-prelude.wml',
+        'news-management.wml', 'template-params.wml', 'texts.wml',
         'utils.wml']:
     latemp_wml_files.append(env.File(file, 'wml/latemp'))
     package_files.append('wml/latemp/' + file)
@@ -102,12 +102,12 @@ for t in themes:
 package_files = package_files + [
         'Changes',
         'COPYING',
-        'disttar.py', 
+        'disttar.py',
         'INSTALL',
         'README',
-        'SConstruct', 
+        'SConstruct',
         'TODO',
-        'ver.txt', 
+        'ver.txt',
         ]
 
 dist_node = env.DistTar("latemp-" + version + ".tar.gz", package_files)

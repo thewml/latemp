@@ -22,7 +22,7 @@ my $tree_contents =
         {
             'text' => "General Docs",
             'url' => "docs/",
-            'title' => ("General Documents that don't Belong to " . 
+            'title' => ("General Documents that don't Belong to " .
                 "Anywhere More Specific."),
             'subs' =>
             [
@@ -43,7 +43,7 @@ my $tree_contents =
             'text' => "Alternatives",
             'url' => "alternatives/",
             'expand' => { 're' => ""},
-            'subs' => 
+            'subs' =>
             [
                 {
                     'text' => "Arch",
@@ -53,7 +53,7 @@ my $tree_contents =
                 {
                     'text' => "Subversion",
                     'url' => "subversion/",
-                    'title' => ("A Version Control System that Aims to " . 
+                    'title' => ("A Version Control System that Aims to " .
                         "Provide a Good Alternative to CVS"),
                 },
             ],
@@ -68,7 +68,7 @@ my $tree_contents =
             'title' => "Chat about Version Control using the Internet",
         },
         {
-            'text' => "Links", 
+            'text' => "Links",
             'url' => "links.html",
             'title' => "Links of Relevance",
         },
@@ -95,7 +95,7 @@ my $tree_contents =
 
 sub get_params
 {
-    return 
+    return
         (
             'hosts' => $hosts,
             'tree_contents' => $tree_contents,

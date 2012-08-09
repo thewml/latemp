@@ -66,7 +66,7 @@ sub get_res
 # Test for junk after one filename
 {
     my $r;
-    
+
     eval {
          $r = get_res(argv => ["hello.ttml", "YOWZA!"]);
     };
@@ -128,8 +128,8 @@ sub get_res
     is($r->input_filename(), "hello.ttml", "Input filename is OK");
     # TEST
     is_deeply(
-        $r->include_path(), 
-        ["mydir/", "/hello/home", "/yes/no", "./you-say/",], 
+        $r->include_path(),
+        ["mydir/", "/hello/home", "/yes/no", "./you-say/",],
         "Include Path is OK"
     );
 }
@@ -176,8 +176,8 @@ sub get_res
     # TEST
     is($r->input_filename(), "hello.ttml", "Input filename is OK");
     # TEST
-    is_deeply($r->defines(), 
-        {'myarg' => "myval", "super" => "par", "write" => "1"}, 
+    is_deeply($r->defines(),
+        {'myarg' => "myval", "super" => "par", "write" => "1"},
         "Multiple Defines are OK");
 }
 
@@ -187,10 +187,10 @@ sub get_res
     # TEST
     is($r->input_filename(), "hello.ttml", "Input filename is OK");
     # TEST
-    is_deeply($r->defines(), 
-        {'myarg' => "myval", "super" => "par", "write" => "1", 
+    is_deeply($r->defines(),
+        {'myarg' => "myval", "super" => "par", "write" => "1",
          "hi" => "there", "ext" => ".txt",
-        }, 
+        },
         "Multiple Defines are OK");
 }
 
@@ -200,8 +200,8 @@ sub get_res
     # TEST
     is($r->input_filename(), "hello.ttml", "Input filename is OK");
     # TEST
-    is_deeply($r->include_files(), 
-        [qw(myfile.ttml turn.txt)], 
+    is_deeply($r->include_files(),
+        [qw(myfile.ttml turn.txt)],
         "Include files are ok"
     );
 }

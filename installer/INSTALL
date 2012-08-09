@@ -8,7 +8,7 @@ Or if you don't have CPANPLUS installed:
 
     # perl -MCPAN -e "install Task::Latemp"
 
-Afterwards, install "scons" (http://www.scons.org/) and type 
+Afterwards, install "scons" (http://www.scons.org/) and type
 "scons -Q install" to install.
 
 By default it will be installed under "/usr/local". If you'd like to install

@@ -1,20 +1,20 @@
 # Autoscons - An autotools replacement for SCons
 # Copyright 2003 David Snopek
-# 
+#
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
 # License as published by the Free Software Foundation; either
 # version 2.1 of the License, or (at your option) any later version.
-# 
+#
 # This library is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 # Lesser General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU Lesser General Public
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-# 
+#
 
 import SCons, os, sys, string, shutil, types
 import Autoscons.Util
@@ -23,19 +23,19 @@ from Autoscons.Template import Template
 
 _default_install_pathes = None
 def GetDefaultInstallPathes():
-	""" Returns the default install pathes for this platform.  This data is cached and 
+	""" Returns the default install pathes for this platform.  This data is cached and
 	doesn't change from the first call. """
 
 	global _default_install_pathes
 
 	if _default_install_pathes == None:
-		# default prefix for the given platform.  Some platforms require you to set a 
+		# default prefix for the given platform.  Some platforms require you to set a
 		# prefix manually.
 		if os.name == 'posix':
 			prefix = "/usr/local"
 		else:
 			prefix = None
-		
+
 		inst = {}
 		inst['AC_PREFIX'] = prefix
 		inst['AC_EXECPREFIX'] = "$AC_PREFIX"
@@ -66,7 +66,7 @@ def _build_install_pathes(env):
 def Options(files = None):
 	""" Creates an "Autocons aware" Options object.  This essentially
 	means that its an Options object with a couple default options that
-	make configuring Autocons easy for the user of your build system (ie. 
+	make configuring Autocons easy for the user of your build system (ie.
 	not the developer). """
 
 	from SCons.Options import Options
@@ -99,14 +99,14 @@ def Features(env, defaults=[]):
 			return val
 		else:
 			raise SCons.Errors.UserError, "Bad feature value: %s" % val
-		
+
 	enable = breakup(env.get('ENABLE_FEATURES', []))
 	disable = breakup(env.get('DISABLE_FEATURES', []))
 
 	for f in enable:
 		if not f in features:
 			features.append(f)
-	
+
 	for f in disable:
 		# NOTE: We loop to make sure that multiples are removed
 		while f in features:
@@ -119,13 +119,13 @@ class Package:
 		self.DistName = distname
 		self.Root = SCons.Node.FS.default_fs.Dir(path)
 		self.DistFiles = []
-	
+
 	def __str__(self):
 		return self.DistName
 
 	def BuildDist(self, env):
 		DistDir = self.Root.Dir(self.DistName)
-		
+
 		# install the files into the distdir
 		source_nodes = []
 		for file in self.DistFiles:
@@ -179,10 +179,10 @@ class Package:
 			self.dist_node = n
 		else:
 			self.dist_node = DistDir
-		
+
 		env.Alias('dist', self.dist_node)
 		return self.dist_node
-	
+
 	def AddToDist(self, *dist_files):
 		for name in Autoscons.Util.flatten(dist_files):
 			node = SCons.Node.FS.default_fs.File(name)
@@ -191,7 +191,7 @@ class Package:
 
 	# a logical alias
 	ExtraDist = AddToDist
-	
+
 	def SearchAndAdd(self, names, dir = None, **kw):
 		if type(names) != types.ListType:
 			names = [ names ]
@@ -204,7 +204,7 @@ class Package:
 		def HandleAddToDist(names, self=self):
 			self.AddToDist(filter(lambda x: not os.path.isdir(x), names))
 		search.Traverse(HandleAddToDist)
-		
+
 def Init(name, version, **pkg_opts):
 	""" Creates a Package with the given name and version.  All extra keyword arguments are
 	passed to the Package constructor.  This will make a package from the root of the source-tree
@@ -221,14 +221,14 @@ def Init(name, version, **pkg_opts):
 		n = pkg.Root.File(f)
 		if n.exists():
 			pkg.AddToDist(f)
-	
+
 	return pkg
 
 # TODO: replace with config.guess
 def get_target(env):
 	if env.Dictionary().has_key("TARGET"):
 		return env['TARGET']
-	
+
 	# check for gcc
 	child = os.popen(env['CC'] + " -dumpmachine", "r")
 	target = child.readline()
@@ -246,16 +246,16 @@ def get_target(env):
 				target = h_list[0] + "-pc-" + h_list[1]
 			else:
 				target = h_list[0] + "-unknown-" + h_list[1]
-		
+
 		env['TARGET'] = target
 		return target
-	
+
 	if os.name == 'nt':
 		# TODO: is there a way to read the proc type? or win version?
 		target = 'i386-pc-windows'
 		env['TARGET'] = target
 		return target
-	
+
 	if os.name == 'dos':
 		target = 'i386-pc-dos'
 		env['TARGET'] = target
@@ -264,15 +264,15 @@ def get_target(env):
 	# TODO: this detection could problably go on for ever!
 	target = 'unknown-unknown-unknown'
 	env['TARGET'] = target
-	return target	
-	
+	return target
+
 class ConfHeader:
 	""" Used to generate a configure header. """
 
 	def __init__(self):
 		self.node = None
 		self.defines = []
-	
+
 	def Build(self, env, header_file):
 		# add the custom builders
 		new_env = env.Copy()
@@ -280,18 +280,18 @@ class ConfHeader:
 
 		self.node = new_env.ConfigHeader(header_file, source = [ SCons.Node.Python.Value(self.defines) ])
 		return self.node
-	
+
 	def Copy(self):
 		temp = ConfHeader()
 		temp.defines = self.defines[:]
 		return temp
-	
+
 	def Define(self, name, value=1, description=None):
 		self.defines.append((name, str(value), description))
-	
+
 	def DefineQuoted(self, name, value, description=None):
 		self.defines.append((name, "\"%s\"" % str(value), description))
-	
+
 	DefineUnquoted = Define
 
 	def GetCPPFlags(self):
@@ -305,11 +305,11 @@ class ConfHeader:
 			qd.append("-D%s=%s" % (name, temp))
 		return string.join(qd)
 
-# TODO: To really, really get the ACObject dependancies right we have to use the 
+# TODO: To really, really get the ACObject dependancies right we have to use the
 # SCons build engine more.  What we need to do is make a builder for ACLibrary
 # and have the ACObject style dependancies held in an environment variable.  Then
 # we can use a Scanner to determine which nodes depend on which and an environment
-# function (like $_concat()) or simply an early build action to expand the 
+# function (like $_concat()) or simply an early build action to expand the
 # dependancies at build time.  This is The Right Way (tm)!
 
 class ACObject:
@@ -318,17 +318,17 @@ class ACObject:
 		self.env = apply(env.Copy, [], kw)
 		_build_install_pathes(self.env)
 		Autoscons.Builder.ExtendEnvironment(self.env)
-		
+
 		self.target = target
 		self.owner = 0
 		self.building = 0
-		
+
 		self.dependancies = []
 		if deps != None:
 			self.Depends(deps)
 
 		self.install_node = []
-	
+
 	def _install(self, target, sources):
 		if type(sources) != types.ListType:
 			sources = [ sources ]
@@ -336,21 +336,21 @@ class ACObject:
 		for f in sources:
 			# NOTE: I wish this would work by using the construction variables in
 			# the path name but for now just subst the string
-			# TODO: make a special node type that uses the construction variables 
+			# TODO: make a special node type that uses the construction variables
 			# to resolve actual path.
 			inst_target = self.env.Install(self.env.subst(target), f)
 			#inst_target = self.env.Install(target, f)
 			rnodes.append(inst_target)
 		self.install_node = self.install_node + rnodes
 		return rnodes
-		
+
 	def _preBuild(self, target, source, env, **kw):
 		# TODO: for what ever reason the caching system here fails! Removed until
 		# further notice.
 		#
 		#if not self.building:
 		#	# execute this if it is the first time this object is being built
-		#	
+		#
 		#	# calculate dependancies
 		#	for d in self.dependancies:
 		#		d.ApplyDependToObject2(self, env)
@@ -361,7 +361,7 @@ class ACObject:
 		#	self.building = 1
 		#else:
 		#	# execute this on all subsequent builds of this object
-		#	
+		#
 		#	# use cached build environment
 		#	env.Replace(**self.build_env.Dictionary())
 
@@ -378,26 +378,26 @@ class ACObject:
 		#print "build", self.target,
 		#if env.has_key('LIBPATH'):
 		#	print env['LIBPATH']
-	
+
 	def _postBuild(self, target, source, env, **kw):
 		if self.building:
 			# stop the build
 			del self.build_env
 			self.building = 0
-		
+
 	def ApplyDependToObject1(self, acobject, env):
 		""" Used by a child class to set-up the given Environment for the given object to
-		depend correctly on this object.  This is called when the object is added via 
+		depend correctly on this object.  This is called when the object is added via
 		ACObject.Depends() and "env" == "acobject.env". """
 		pass
-	
+
 	def ApplyDependToObject2(self, acobject, env):
-		""" Used by a child class to set-up the given Environment for the given object to 
+		""" Used by a child class to set-up the given Environment for the given object to
 		depend correctly on this object.  Warning: The argument "env" is not the same as
 		"acobject.env"!  "env" is instead the build environment.  This gets called before
 		the object is actually built.  """
 		pass
-	
+
 	def Depends(self, deps):
 		if type(deps) != types.ListType:
 			deps = [ deps ]
@@ -407,26 +407,26 @@ class ACObject:
 			# first because it has already commited to building the current file!
 			d.ApplyDependToObject1(self, self.env)
 			self.dependancies.append(d)
-		
+
 	def __setitem__(self, key, value):
 		self.env[key] = value
-		
+
 	def __getitem__(self, key):
 		return self.env[key]
 
 	def __delitem__(self, key):
 		del self.env[key]
-	
+
 class Library(ACObject):
 	def __init__(self, env, target, depends=None, **kw):
 		""" Creates a Library object representing a shared or static system
 		library.  This object can represent another library that exists on
-		the system that SCons had nothing to do with or act as the build 
+		the system that SCons had nothing to do with or act as the build
 		instructions for it.  The *_prefix variables are install directories
 		for the library components.  Use enviroment variables to set the paths
 		that the library reads from.  The dep_* variables are used to add to
 		the environment of a program or library that depends on this one. """
-		
+
 		ACObject.__init__(self, env, target, depends, **kw)
 		self.owner = 0
 		self.dep_flags = { 'LIBS': [], 'LIBPATH': [], 'CPPPATH': [], 'CPPFLAGS': "", \
@@ -434,7 +434,7 @@ class Library(ACObject):
 
 		# HACK: a hack to try and know the directory before the object is built
 		self.cwd = SCons.Node.FS.default_fs.getcwd().path
-		
+
 		# a hack to get the excess libflags added to _LIBFLAGS
 		self.env['AC_LIBFLAGS'] = ""
 		self.env.Append(_LIBFLAGS = " ${AC_LIBFLAGS}")
@@ -446,7 +446,7 @@ class Library(ACObject):
 			else:
 				return str(self.bin_node)
 		return None
-	
+
 	def GetDir(self):
 		path = self.GetPath()
 		if path:
@@ -456,13 +456,13 @@ class Library(ACObject):
 
 	def _BuildDefString(self, target, source, env):
 		return "Creating library: %s" % target[0]
-	
+
 	def _BuildDefFunc(self, target, source, env):
 		fd = open(str(target[0]), "w")
 		fd.write("# This is a library definition file automatically generated by Autocons!\n")
 		fd.write("# The format for this file is yet undefined.\n\n")
 		fd.close()
-	
+
 	def Build(self, source, headers, version = None, install = 0, build_shared = 1, build_static = 0, package = None, **kw):
 		""" Uses the current environment to build and install the library in question. """
 
@@ -487,7 +487,7 @@ class Library(ACObject):
 		self.build_static = build_static
 		self.build_shared = build_shared
 		self.version = version
-		
+
 		if build_shared == 0 and build_static == 0:
 			raise SCons.Errors.UserError, "Library is set not to build shared or static."
 
@@ -514,7 +514,7 @@ class Library(ACObject):
 						version = version.split(".")
 				if version == None or len(version) < 3:
 					raise SCons.Errors.UserError, "Library needs a valid three part version number!"
-				
+
 				if have_gcc:
 					# NOTE: this is necessary for doing linking to a library
 					# before it is installed.
@@ -544,7 +544,7 @@ class Library(ACObject):
 				self.node.extend(self.shared_node)
 			else:
 				self.node.append(self.shared_node)
-							
+
 		if install:
 			# install the library
 			if build_shared:
@@ -625,9 +625,9 @@ class Library(ACObject):
 		for key, value in self.env.items():
 			if key[:3] == "AC_":
 				dec[key] = value
-		
+
 		return dec
-	
+
 	def BuildConfigScript(self, target = None, install = 1):
 		if not self.owner:
 			raise SCons.Errors.UserError, "Cannot build a *-config script without first calling Build() for this library"
@@ -636,7 +636,7 @@ class Library(ACObject):
 		conf_node = self.env.ExpandTemplate(target = target, source = [ Template('config-script') ], DECODER = self._decoder(), PERMISSION = 0755)
 		self._install("$AC_BINDIR", conf_node)
 		return conf_node
-	
+
 	def BuildAutoconfM4(self, target = None, install = 1):
 		if not self.owner:
 			raise SCons.Errors.UserError, "Cannot build an Autoconf M4 file without first calling Build() for this library"
@@ -645,20 +645,20 @@ class Library(ACObject):
 		conf_node = self.env.ExpandTemplate(target = target, source = [ Template('autoconf.m4') ], DECODER = self._decoder())
 		self._install(os.path.join("$AC_DATADIR", "autoconf"), conf_node)
 		return conf_node
-	
+
 	def ApplyDependToEnv(self, env):
 		""" Adds the depflags of this library to an environment.  This function performs
-		a very simple task that is in its own function simply so that you can use the 
+		a very simple task that is in its own function simply so that you can use the
 		configure aspects of Autcons without using ACObject and family.  Otherwise, calling
 		Depends() is more appropriate. """
-		
+
 		# change 'LIBFLAGS' to '_LIBFLAGS'.  At this point we can assume that
 		# we are using either SCons or A-A-P with an SCons engine.
 		dep_flags = self.dep_flags.copy()
 		dep_flags['_LIBFLAGS'] = dep_flags['LIBFLAGS']
 		del dep_flags['LIBFLAGS']
 		apply(env.Append, [], dep_flags)
-		
+
 		target_type = string.split(get_target(env), "-")[2]
 
 		# NOTE: on linux, you must include the dependancies of your dependancies
@@ -679,17 +679,17 @@ class Library(ACObject):
 			# look for the version of the library that we built first
 			env.Prepend(LIBPATH = [ self.GetDir() ])
 			env.Append(LIBS = [ self.target ])
-		
+
 	def ApplyDependToObject2(self, acobject, env):
 		self.ApplyDependToEnv(env)
-		
+
 		have_gcc = "gcc" in self.env['TOOLS']
-		
+
 		# NOTE: Does this do anything?
 		# for posix systems we must have the final paths of the lib built-in
 		if self.owner and self.env['PLATFORM'] == 'posix':
 			# TODO: this only works with gcc!! Add a check for gcc.
-			# link to the local version of a library but tell the dynamic linker 
+			# link to the local version of a library but tell the dynamic linker
 			# to really look in the installdir when actually run
 			if self.install and (acobject.owner and acobject.install):
 				ldflags = " -Wl,-rpath -Wl," + self.env["AC_LIBDIR"] + " -L" + self.env["AC_LIBDIR"] + " " + self.GetPath()
@@ -736,23 +736,23 @@ class Library(ACObject):
 			else:
 				#self.dep_flags['SHLINKFLAGS'] += " " + arg
 				#self.dep_flags['LINKFLAGS'] += " " + arg
-				
+
 				# HACK: this is a hack to get the --rpath stuff into
 				# the libflags instead of right after the compiler.
-				# The flag name used here is "LIBFLAGS" which is 
-				# actually changed before being appended to an 
+				# The flag name used here is "LIBFLAGS" which is
+				# actually changed before being appended to an
 				# environment to "_LIBFLAGS".  This is because the
 				# name "_LIBFLAGS" only makes sense to SCons users and
 				# I want to foster A-A-P interest.
 				self.dep_flags['LIBFLAGS'] += " " + arg
-	
+
 class Program(ACObject):
 	def __init__(self, env, target, depends=None, **kw):
 		""" Creates a program definition. """
 		ACObject.__init__(self, env, target, depends, **kw)
 
 		self.owner = 0
-	
+
 	def Build(self, source, install=0, package=None, **kw):
 		# since we are building this program, mark as owner and set build info
 		self.owner = 1
@@ -761,13 +761,13 @@ class Program(ACObject):
 		# add the extra keywords to the environment
 		for key, value in kw.items():
 			self.env[key] = value
-		
+
 		# build the source node
 		source_node = []
 		for s in source:
 			n = self.env.Object(target = str(s).split('.')[0], source = s)
 			source_node.append(n)
-		
+
 		self.node = self.env.Program(target=self.target, source=source_node)
 
 		if install:
@@ -776,7 +776,7 @@ class Program(ACObject):
 			# make fake install target
 			self.env.Alias('install_' + self.target, self.install_node)
 
-		# dist 
+		# dist
 		if package:
 			package.AddToDist(source)
 

@@ -28,7 +28,7 @@ Flags:
 
     Defines a variable "$VAR" as "$VALUE".
 
-    Note: $VALUE is a simple Perl string. 
+    Note: $VALUE is a simple Perl string.
 
 * --includefile="$MYFILE"
 

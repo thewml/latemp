@@ -9,7 +9,7 @@ Revision history for HTML-Latemp-News
 
 0.1.5    2005-05-05
     - Some documentation updates: made the synopsis better.
-    
+
 0.1.4    2005-04-30
     - Added the get_news_box_contents function.
 

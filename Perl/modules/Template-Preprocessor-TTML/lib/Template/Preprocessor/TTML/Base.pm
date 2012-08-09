@@ -14,7 +14,7 @@ use base 'Class::Accessor';
 =head2 Template::Preprocessor::TTML::Base->new(@args)
 
 What this does is create an object that inherits from Class::Accessor, and
-also has a default constructor that is initialized using the initialize() 
+also has a default constructor that is initialized using the initialize()
 function.
 
 =cut

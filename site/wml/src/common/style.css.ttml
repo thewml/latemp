@@ -12,7 +12,7 @@
     padding-right: 0.5em;
 }
 .example:hover
-{    
+{
     border-color: red;
     background-color:#E0FFA0;
 }
