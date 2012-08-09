@@ -4,16 +4,16 @@
 <latemp_version_control_id "$Id: index.html.wml 154 2005-04-16 09:53:31Z shlomif $" />
 
 <p>
-The site source code is present in 
+The site source code is present in
 <a href="svn://svn.berlios.de/better-scm/better-scm-site/trunk/">a
 directory</a> in a <a href="svn://svn.berlios.de/better-scm/">Subversion
-repository</a> kindly hosted by 
+repository</a> kindly hosted by
 <a href="http://opensvn.csie.org/">BerliOS</a>.
 </p>
 
 <p>
-To check it out, install a 
-<a href="http://subversion.tigris.org/">Subversion</a> client for your 
+To check it out, install a
+<a href="http://subversion.tigris.org/">Subversion</a> client for your
 system and issue the command:
 </p>
 
@@ -22,7 +22,7 @@ svn checkout http://opensvn.csie.org/betterscm/better-scm-site/trunk/
 </pre>
 
 <p>
-You can browse the repository online using 
+You can browse the repository online using
 <a href="http://svn.berlios.de/viewcvs/better-scm/">its web-interface</a>.
 </p>
 

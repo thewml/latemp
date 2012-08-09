@@ -5,7 +5,7 @@ use strict;
 
 =head1 NAME
 
-HTML::Latemp::News - News Maintenance Module for Latemp (and possibly other 
+HTML::Latemp::News - News Maintenance Module for Latemp (and possibly other
 web frameworks)
 
 =cut
@@ -21,7 +21,7 @@ our $VERSION = '0.1.7';
 
     use MyManageNews;
 
-    my @news_items = 
+    my @news_items =
     (
         .
         .
@@ -40,7 +40,7 @@ our $VERSION = '0.1.7';
         .
     );
 
-    my $news_manager = 
+    my $news_manager =
         HTML::Latemp::News->new(
             'news_items' => \@news_items,
             'title' => "Better SCM News",
@@ -49,7 +49,7 @@ our $VERSION = '0.1.7';
             'copyright' => "Copyright by Jane Smith, (c) 2005",
             'webmaster' => "Jane Smith <jane@janes-site.tld>",
             'managing_editor' => "Jane Smith <jane@janes-site.tld>",
-            'description' => "News of Jane's Site - a personal site of " . 
+            'description' => "News of Jane's Site - a personal site of " .
                 "Jane Smith",
         );
 
@@ -78,7 +78,7 @@ package HTML::Latemp::News::Item;
 
 our @ISA=(qw(HTML::Latemp::News::Base));
 
-__PACKAGE__->mk_accessors(qw(index title id description author date 
+__PACKAGE__->mk_accessors(qw(index title id description author date
     category text));
 
 sub initialize
@@ -101,7 +101,7 @@ package HTML::Latemp::News;
 
 our @ISA=(qw(HTML::Latemp::News::Base));
 
-__PACKAGE__->mk_accessors(qw(copyright description docs generator items 
+__PACKAGE__->mk_accessors(qw(copyright description docs generator items
     language link managing_editor rating title ttl webmaster));
 
 use XML::RSS;
@@ -112,10 +112,10 @@ sub input_items
 
     my $items = shift;
 
-    return 
-    [ 
-        map 
-        { $self->input_single_item($_, $items->[$_]) } 
+    return
+    [
+        map
+        { $self->input_single_item($_, $items->[$_]) }
         (0 .. $#$items)
     ];
 }
@@ -125,7 +125,7 @@ sub input_single_item
     my $self = shift;
     my ($index, $inputted_item) = (@_);
 
-    return 
+    return
         HTML::Latemp::News::Item->new(
             %$inputted_item,
             'index' => $index,
@@ -328,13 +328,13 @@ sub generate_rss_feed
     }
 
     my $filename = $args{'output_filename'} || "rss.xml";
-    
+
     $rss_feed->save($filename);
 }
 
 =head2 $news_manager->generate_rss_feed('output_filename' => "rss.xml")
 
-This generates an RSS feed. It accepts two named arguments. 
+This generates an RSS feed. It accepts two named arguments.
 C<'output_filename'> is the name of the RSS file to write to. C<'num_items'>
 is the number of items to include, which defaults to 10.
 
@@ -374,7 +374,7 @@ sub format_news_page_item
     my $item = $args{'item'};
     my $base_url = $args{'base_url'};
 
-    return "<h3><a href=\"$base_url" . $item->id() . "/\">" . 
+    return "<h3><a href=\"$base_url" . $item->id() . "/\">" .
         CGI::escapeHTML($item->title()) . "</a></h3>\n" .
         "<p>\n" . $item->description() . "\n</p>\n";
 }
@@ -401,7 +401,7 @@ sub get_news_page_entries
 
 =head2 $news_manager->get_news_page_entries('num_items' => 5, 'base_url' => "news/")
 
-This generates HTML for the news page. 'base_url' points to a URL to be 
+This generates HTML for the news page. 'base_url' points to a URL to be
 appended to each item's ID.
 
 =cut
@@ -410,12 +410,12 @@ sub get_news_box_contents
 {
     my $self = shift;
     my (%args) = (@_);
-    
+
     my $html = "";
     foreach my $item (reverse(@{$self->get_items_to_include(\%args)}))
     {
-        $html .= "<li><a href=\"" . 
-            $self->get_item_rel_url($item) . "\">" . 
+        $html .= "<li><a href=\"" .
+            $self->get_item_rel_url($item) . "\">" .
         CGI::escapeHTML($item->title()) . "</a></li>\n";
     }
     return $html;

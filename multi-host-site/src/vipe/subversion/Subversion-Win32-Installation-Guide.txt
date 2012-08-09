@@ -44,14 +44,14 @@ Install.
     D. Type:
 
     svn checkout http://svn.collab.net/repos/svn/trunk/
-    
+
     At the command line.
 
     E. After a short while you should see an entire directory tree being
     checked out.
 
     F. It's OK, to cancel this operation by pressing Ctrl+Break
-    
+
 4. Setting up a subversion.so service
 
     A. Copy the files "mod_dav_svn.so" and "mod_authz_svn.so" from
@@ -69,12 +69,12 @@ Install.
 
     to the end of the LoadModule block.
 
-    C. In the command prompt, goto an empty directory 
+    C. In the command prompt, goto an empty directory
     and type the command:
 
         svnadmin create myrepos
 
-    D. Next, in httpd.conf add the following statements to the end of the 
+    D. Next, in httpd.conf add the following statements to the end of the
     file:
 
         <Location /svn/myrepos>
@@ -93,8 +93,8 @@ Install.
 5. Congratulations!
 
     You can now run:
-    
-        svn checkout http://localhost:8080/svn/myrepos 
+
+        svn checkout http://localhost:8080/svn/myrepos
 
     from the command line and start populating your repository. Read the
     Subversion book for more information on Subversion usage.

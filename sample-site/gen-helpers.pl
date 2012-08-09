@@ -13,17 +13,17 @@ s!^src/!! for @files;
 @files = (grep { $_ ne $dir } @files);
 @files = (grep { ! m{(^|/)\.svn(/|$)} } @files);
 @files = (grep { ! /~$/ } @files);
-@files = 
-    (grep 
+@files =
+    (grep
     {
-        my $b = basename($_); 
+        my $b = basename($_);
         !(($b =~ /^\./) && ($b =~ /\.swp$/))
-    } 
+    }
     @files
     );
 @files = sort { $a cmp $b } @files;
 
-my @buckets = 
+my @buckets =
 (
     {
         'name' => "IMAGES_PRE1",
@@ -40,9 +40,9 @@ my @buckets =
     },
 );
 
-foreach (@buckets) 
-{ 
-    $_->{'results'}=[]; 
+foreach (@buckets)
+{
+    $_->{'results'}=[];
     if (!exists($_->{'map'}))
     {
         $_->{'map'} = sub { return shift;},

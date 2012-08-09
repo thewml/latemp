@@ -11,11 +11,11 @@ use HTML::Latemp::News;
 
 my @news_items =
 (
-    (map 
-        { 
-            +{%$_, 
-                'author' => "Shlomi Fish", 
-                'category' => "Latemp", 
+    (map
+        {
+            +{%$_,
+                'author' => "Shlomi Fish",
+                'category' => "Latemp",
                 'text' => "Hello"
             }
         }
@@ -70,7 +70,7 @@ sub gen_news_manager
             'copyright' => "Copyright by Shlomi Fish, (c) 2005",
             'webmaster' => "Shlomi Fish <shlomif\@iglu.org.il>",
             'managing_editor' => "Shlomi Fish <shlomif\@iglu.org.il>",
-            'description' => ("News of Latemp - the CMS for Static HTML " . 
+            'description' => ("News of Latemp - the CMS for Static HTML " .
                 "web-sites."),
         );
 }

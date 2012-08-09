@@ -23,9 +23,9 @@ if ($opt_wml_include_path)
 }
 if ($opt_wml_flags)
 {
-    my @inc_paths = 
+    my @inc_paths =
     (
-        $wml_include_path, 
+        $wml_include_path,
         ($ENV{'HOME'} . "/.latemp/lib/")
     );
     print join(" ", (map { "-I$_ --passoption=2,-I$_" } @inc_paths)) . "\n";

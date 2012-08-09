@@ -8,7 +8,7 @@ WriteMakefile(
     VERSION_FROM        => 'lib/Task/Sites/ShlomiFish.pm',
     ABSTRACT_FROM       => 'lib/Task/Sites/ShlomiFish.pm',
     PL_FILES            => {},
-    PREREQ_PM => 
+    PREREQ_PM =>
     {
         'App::XML::DocBook::Builder' => 0,
         'base' => 0,

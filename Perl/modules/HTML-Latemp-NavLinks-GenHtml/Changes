@@ -10,7 +10,7 @@ Revision history for HTML-Latemp-NavLinks-GenHtml
     - Added an examples under examples/.
 
 0.1.7    2006-09-18
-    - Added the get_image_base() (over-ridable) method to customize the base 
+    - Added the get_image_base() (over-ridable) method to customize the base
     filename of the images.
     - Changed the vanilla M::B to Test::Run::Builder.
 

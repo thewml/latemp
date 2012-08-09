@@ -12,7 +12,7 @@ __PACKAGE__->mk_accessors(qw(
 
 =head1 NAME
 
-HTML::Latemp::NavLinks::GenHtml - A module to generate the HTML of the 
+HTML::Latemp::NavLinks::GenHtml - A module to generate the HTML of the
 navigation links.
 
 =cut
@@ -24,7 +24,7 @@ our $VERSION = '0.1.8';
     package MyNavLinks;
 
     use base 'HTML::Latemp::NavLinks::GenHtml::ArrowImages';
-    
+
 
 =head1 METHODS
 
@@ -118,5 +118,5 @@ under the terms of the MIT X11 license.
 
 =cut
 
-1; 
+1;
 

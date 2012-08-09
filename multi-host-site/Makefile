@@ -25,7 +25,7 @@ include rules.mak
 
 dummy : latemp_targets
 
-.PHONY: 
+.PHONY:
 
 upload_beta: all
 	cd $(D) && \

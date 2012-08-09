@@ -65,7 +65,7 @@ __PACKAGE__->mk_accessors(qw(
 
 =head1 SYNOPSIS
 
-    my $obj = 
+    my $obj =
         Template::Preprocessor::TTML::CmdLineProc->new(
             argv => [@ARGV],
         );

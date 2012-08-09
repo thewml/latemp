@@ -7,7 +7,7 @@ they can be easily added to SCons eventually.
 
 #
 # Copyright (c) 2001, 2002, 2003 Steven Knight
-# 
+#
 # Permission is hereby granted, free of charge, to any person obtaining
 # a copy of this software and associated documentation files (the
 # "Software"), to deal in the Software without restriction, including
@@ -44,7 +44,7 @@ class ToolSpec:
 
     def __str__(self):
         return self.name
-    
+
 def Tool(name):
     """Select a canned Tool specification.
     """

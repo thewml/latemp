@@ -1,7 +1,7 @@
 HTML-Latemp-NavLinks-GenHtml
 
 This module is used by Latemp (and possibly other web frameworks) to render
-the HTML navigation links (inside the <body> tag) as returned by 
+the HTML navigation links (inside the <body> tag) as returned by
 HTML::Widgets::NavMenu.
 
 INSTALLATION

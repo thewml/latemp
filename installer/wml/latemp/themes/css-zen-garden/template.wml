@@ -19,9 +19,9 @@
             <latemp_get_breadcrumbs_trail />
 
             <latemp_top_left_corner_logo_text />
-            <latemp_get_html_body_nav_links 
-                place="top-left" 
-                with_accesskey="1" 
+            <latemp_get_html_body_nav_links
+                place="top-left"
+                with_accesskey="1"
                 />
 		</div>
 
@@ -48,7 +48,7 @@
 
 	</div>
 
-	
+
 	<div id="linkList">
 		<!--extra div for flexibility - this list will probably be the trickiest spot youll deal with -->
 		<div id="linkList2">
@@ -63,7 +63,7 @@
                 <latemp_affiliations_buttons_text />
                 <latemp_get_html_body_nav_links place="bottom-left" />
 			</div>
-			
+
 		</div>
 	</div>
 </div>

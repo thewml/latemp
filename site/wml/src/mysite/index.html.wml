@@ -5,17 +5,17 @@
 
 <p>
 Welcome to the homepage of Latemp. Latemp (a play on "Template") is an
-<b>offline CMS</b> (= content management system) based on 
+<b>offline CMS</b> (= content management system) based on
 <a href="http://thewml.org/">Website Meta
-Language</a>, a powerful, off-line framework for generating static HTML, and 
-server-side HTML that embeds code (such as 
+Language</a>, a powerful, off-line framework for generating static HTML, and
+server-side HTML that embeds code (such as
 <a href="http://www.php.net/">PHP</a>,
 <a href="http://www.masonhq.com/">HTML::Mason</a>, ASP, or
 <a href="http://perl.apache.org/embperl/">Embperl</a>). Latemp allows
 one to create attractive, themable sites, which are very usable, accessible
 and fully standards compliant. Latemp is open-source software - fully usable,
-modifiable and distributable under the terms of the 
-<a href="http://www.opensource.org/licenses/mit-license.php">MIT X11 
+modifiable and distributable under the terms of the
+<a href="http://www.opensource.org/licenses/mit-license.php">MIT X11
 license</a>.
 </p>
 
@@ -29,7 +29,7 @@ describing how to use Latemp.
 </p>
 
 <p>
-Finally, you can actually <a href="$(ROOT)/download/">download Latemp</a>, 
+Finally, you can actually <a href="$(ROOT)/download/">download Latemp</a>,
 set it up and give it a try.
 </p>
 

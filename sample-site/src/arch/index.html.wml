@@ -28,7 +28,7 @@ to provide better Subversion compatibility, and other nice features.
 </li>
 <li>
 <a href="http://www.bazaar-ng.org/">Bazaar-NG</a> - a rewrite of Bazaar (from
-the same source) written in <a href="http://www.python.org/">Python</a>, which 
+the same source) written in <a href="http://www.python.org/">Python</a>, which
 offers some advantages.
 </li>
 </ul>
@@ -36,13 +36,13 @@ offers some advantages.
 <h2>Summary</h2>
 
 <p>
-Arch was created by Tom Lord to satisfy his and others revision control 
-needs. It handles file renames, branching, changesets and other things that 
-CVS lacks. 
+Arch was created by Tom Lord to satisfy his and others revision control
+needs. It handles file renames, branching, changesets and other things that
+CVS lacks.
 </p>
 
 <p>
-In <a href="http://subversion.tigris.org/servlets/ReadMsg?list=dev&amp;msgNo=24695">a 
+In <a href="http://subversion.tigris.org/servlets/ReadMsg?list=dev&amp;msgNo=24695">a
 message to the Subversion Development Team</a> Tom Lord noted that it is
 worthwhile to unify Arch' approach to distribution and Subversion's approach to storage management. When the following will take course has yet to be seen.
 </p>
@@ -62,7 +62,7 @@ Contains a wiki, many links, bug list, a roadmap, popular essays, and other
 resources.
 </li>
 <li>
-<a href="http://dmoz.org/Computers/Software/Configuration_Management/Tools/Arch/">Dmoz.org 
+<a href="http://dmoz.org/Computers/Software/Configuration_Management/Tools/Arch/">Dmoz.org
 Category of Arch Resource</a> - contains other links.
 </li>
 </ul>

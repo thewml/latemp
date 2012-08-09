@@ -17,7 +17,7 @@
 <a href="#nav_menu">Go to the navigation menu</a>
 </p>
 
-<a href="$(ROOT)/" title="Home"><img 
+<a href="$(ROOT)/" title="Home"><img
     src="$(ROOT)/images/better-scm-logo.png"
     alt="Better SCM" class="bless" /></a>
 <latemp_get_html_body_nav_links with_accesskey="1" />

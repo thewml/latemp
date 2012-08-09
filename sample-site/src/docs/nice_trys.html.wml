@@ -17,19 +17,19 @@ In this space, I will explain why I believe they are flawed.
 
 <p>
 <a href="http://users.footprints.net/~kaz/mcvs.html">Meta-CVS</a>
-provides a sophisticated CVS client that while using unchanged 
+provides a sophisticated CVS client that while using unchanged
 CVS servers, enables some features not present in CVS. The problem with this
 approach is that <b>all the developers</b> on your projects would have
 to use the Meta-CVS clients on their machines. You cannot mix Meta-CVS with
-plain CVS usage. Plus, some inherent flaws of the CVS system 
+plain CVS usage. Plus, some inherent flaws of the CVS system
 (like non-atomicity of commits) are not resolved.
 </p>
 
 <p>
 I don't view attempts to keep CVS alive very optimistically. CVS is merely
-a group of scripts over RCS, that is very limited in what it can do, and so 
+a group of scripts over RCS, that is very limited in what it can do, and so
 provide little room for improvement. Projects like Subversion aim to provide
-everythin CVS has and more, while requiring an upgrade of the server. 
+everythin CVS has and more, while requiring an upgrade of the server.
 I believe upgrading the servers is not such an issue that one has to try
 and create clients that overcome the servers' inherent deficiencies.
 </p>
@@ -37,8 +37,8 @@ and create clients that overcome the servers' inherent deficiencies.
 <p>
 Another downside to Meta-CVS is that it is written in Common LISP. Granted,
 Common LISP is a very powerful and flexible language. However, it is not very
-common (pardon the pun) on UNIX and other systems, and few people could be 
-expected to install a client if they need to install it first. If Meta-CVS' 
+common (pardon the pun) on UNIX and other systems, and few people could be
+expected to install a client if they need to install it first. If Meta-CVS'
 author wishes to make it more popular, I strongly advise him to re-implement
 it in C, Perl, Python or something more standard.
 </p>
@@ -46,17 +46,17 @@ it in C, Perl, Python or something more standard.
 <h2>OpenCM</h2>
 
 <p>
-<a href="http://www.opencm.org/">OpenCM</a> is a version control system that 
-was developed as part of the 
+<a href="http://www.opencm.org/">OpenCM</a> is a version control system that
+was developed as part of the
 <a href="http://www.eros-os.org">EROS</a> Operating System project. Its
 homepage says that it is "not as 'feature rich' as CVS, [but] supports some
 useful things that CVS lacks". The reason I don't like it is that people need
-<b>all</b> of CVS features, if they wish to convert to a better CVS 
-alternative. 
+<b>all</b> of CVS features, if they wish to convert to a better CVS
+alternative.
 </p>
 
 <p>
-OpenCM seems like an ad-hoc version control system that was written to 
+OpenCM seems like an ad-hoc version control system that was written to
 suit the needs and whims of a specific team. I don't see it becoming Shrinkwrap
 material unless it acquires all of CVS features. I suggest the OpenCM team
 to take a look at Subversion which aims to provide all of CVS' features and

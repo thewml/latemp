@@ -19,11 +19,11 @@ be used to preprocess CSS files, etc.
 </li>
 <li>
 Added an experimenal css-zen-garden theme, that can be used to style the
-site using a <a href="http://www.csszengarden.com/">CSS Zen Garden</a> 
+site using a <a href="http://www.csszengarden.com/">CSS Zen Garden</a>
 stylehseet. (Which possibly has to be somewhat adapted.)
 </li>
 <li>
-Converted Bundle::Latemp to 
+Converted Bundle::Latemp to
 <a href="http://search.cpan.org/dist/Task-Latemp/">Task::Latemp</a>.
 </li>
 <li>

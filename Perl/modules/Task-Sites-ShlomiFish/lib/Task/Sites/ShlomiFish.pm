@@ -65,16 +65,16 @@ have CPAN "contaminated" with modules that are of little public use, then we
 should implement a secondary sources mechanism in CPANPLUS.pm which will allow
 configuring remote sources with their own indices, which will provide different
 packages to what CPAN provides. Such mechanism will also allow organisations to
-set up repositories for their own private use. 
+set up repositories for their own private use.
 
 Last time I raised the idea, someone objected and nothing was done to take it
 forward. I'm willing to work on implementing it myself assuming there's enough
 interest and that I'll know my effort will not go to waste.
 
 Now regarding the fact that this module wastes space on CPAN. Looking at my
-CPAN directory, I see that the tar.gz of version 0.0201 of it occupies 
-2.1 KB. What a disaster! Seriously now, it occupies much less space than 
-"XML-Grammar-ProductSyndication" which takes 159KB, from "XML-RSS" which 
+CPAN directory, I see that the tar.gz of version 0.0201 of it occupies
+2.1 KB. What a disaster! Seriously now, it occupies much less space than
+"XML-Grammar-ProductSyndication" which takes 159KB, from "XML-RSS" which
 takes 99 KB, from "Test-Run" which takes 83 KB, and from most of my other
 modules. Obviously, there's some extra overhead in indexing and in displaying
 on search engines, but taking it into proportion, it's not a burden on CPAN.

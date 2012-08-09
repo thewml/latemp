@@ -16,7 +16,7 @@ This document provides a reference to all the Latemp directives.
 
 =head1 Overview of a Standard Latemp Workspace
 
-This section will provide an overview of a standard latemp workspace. To 
+This section will provide an overview of a standard latemp workspace. To
 understand what is going here, invoke the following command:
 
     latemp-setup --theme=better-scm --dir=my-project \
@@ -35,7 +35,7 @@ Now, let's overview the files there:
 
 This file searches for source files that should be used to generate the
 site's contents, and the files C<include.mak> and C<rules.mak> that will
-be included in the makefile. It uses the auxiliary module 
+be included in the makefile. It uses the auxiliary module
 L<HTML::Latemp::GenMakeHelpers> by default, but can be modified to have
 a different logic, but with common results.
 
@@ -44,7 +44,7 @@ or rename an existing ones. To do that, just manipulate the following line:
 
     (qw(common mysite))
 
-And add or remove hosts. Note that you should always keep the C<common> 
+And add or remove hosts. Note that you should always keep the C<common>
 meta-host.
 
 This file should be run whenever files or directories are added or removed
@@ -58,17 +58,17 @@ C<latemp_target> template.
 
 =head2 lib/MyNavData.pm
 
-This file contains the definition for the navigation menu and site-flow. 
+This file contains the definition for the navigation menu and site-flow.
 Latemp makes use of L<HTML::Widgets::NavMenu> for this, and this module serves
 as an input to it. Read the online documentation of HTML::Widgets::NavMenu
 for more information how to edit this file.
 
 =head2 lib/MyNavLinks.pm
 
-This is a module that is used to generate the HTML navigation links 
-("Previous", "Up" and "Next"). It can be customized by the user to create more 
+This is a module that is used to generate the HTML navigation links
+("Previous", "Up" and "Next"). It can be customized by the user to create more
 sophisticated rendering of them. It should be noted that generating navigation
-links in the C<E<lt>headE<gt>> tag is not dependent on this. 
+links in the C<E<lt>headE<gt>> tag is not dependent on this.
 
 =head2 unchanged
 
@@ -115,12 +115,12 @@ This tag controls the encoding of the page.
 =head3 <latemp_subject "My Subject" />
 
 This directive sets the subject of the page. Generally the subject appears
-within the C<E<lt>titleE<gt>> tag within the HTML C<E<lt>headE<gt>> and 
+within the C<E<lt>titleE<gt>> tag within the HTML C<E<lt>headE<gt>> and
 possibly also the first C<E<lt>h1E<gt>> tag.
 
 =head3 <latemp_common_keywords "Keyword 1, other keyword" />
 
-This directive sets site-wide keywords to be mentioned in the 
+This directive sets site-wide keywords to be mentioned in the
 C<E<lt>meta name="keywords" /E<gt>> tag of the HTML head tag.
 
 =head3 <latemp_more_keywords "Foo, Bar" />
@@ -147,7 +147,7 @@ A License information for the page.
 
 =head3 <latemp_affiliations_buttons>...</latemp_affiliations_buttons>
 
-This sets out HTML code for various affiliations links that the site 
+This sets out HTML code for various affiliations links that the site
 maintainer would like to see in the side-bar.
 
 =head3 <latemp_top_left_corner_logo>...<latemp_top_left_corner_logo>
@@ -160,7 +160,7 @@ A description to put inside the appropriate C<E<lt>meta /E<gt>> tag.
 
 =head3 <latemp_extra_head_elements>...</latemp_extra_head_elements>
 
-More HTML to put between the opening and closing C<E<lt>headE<gt>> tags 
+More HTML to put between the opening and closing C<E<lt>headE<gt>> tags
 at the end.
 
 =head3 <latemp_after_title_head_elements>...</latemp_after_title_head_elements>
@@ -176,7 +176,7 @@ or "Hosted at MyHosting" footer.
 
 =head3 <latemp_news_get_news_box_contents />
 
-This retrieves the HTML of a news box. The news box contains one HTML 
+This retrieves the HTML of a news box. The news box contains one HTML
 C<E<lt>liE<gt>> tag for each news item, with summaries and links. See
 "News Management" below.
 
@@ -223,18 +223,18 @@ root. If it is not specified, it defaults to C<$(LATEMP_FILENAME)>.
 
 =head3 <set-var latemp_server="myhost" />
 
-This variable specifies the server of the current file for input to 
-L<HTML::Widgets::NavMenu>. If not specified, it defaults to 
+This variable specifies the server of the current file for input to
+L<HTML::Widgets::NavMenu>. If not specified, it defaults to
 C<$(LATEMP_SERVER)>.
 
 =head3 <set-var latemp_with_favicon="1" />
 
-The C<latemp_with_favicon> controls whether a link tag to a favicon should be 
+The C<latemp_with_favicon> controls whether a link tag to a favicon should be
 placed in the HTML head tag.
 
 =head3 <set-var latemp_with_breadcrumbs_trail="1" />
 
-This variable controls whether a breadcrumbs trail 
+This variable controls whether a breadcrumbs trail
 (e.g: "Home -> Software -> Games -> Freecell") should be displayed at the
 top of the page.
 
@@ -288,12 +288,12 @@ at the beginning of the document.
 =head3 <set-var latemp_html_standard="xhtml11" />
 
 Sets the default HTML standard to be declared in the DOCTYPE. Valid options
-are: "xhtml1.0-trans", "xhtml1.0-strict", "xhtml1.1-mathml" (XHTML 1.1 with 
-MathML), "xhmtl1.1-mathml-svg (XHTML 1.1 with MathML and SVG). 
-The DOCTYPE defaults to XHTML 1.1 Transitional if this variable is not 
+are: "xhtml1.0-trans", "xhtml1.0-strict", "xhtml1.1-mathml" (XHTML 1.1 with
+MathML), "xhmtl1.1-mathml-svg (XHTML 1.1 with MathML and SVG).
+The DOCTYPE defaults to XHTML 1.1 Transitional if this variable is not
 specified.
 
-=head3 <set-var latemp_navmenu_object_class="My::NavMenu" /> 
+=head3 <set-var latemp_navmenu_object_class="My::NavMenu" />
 
 Sets the class and module for the navigation menu. Defaults to the standard
 "HTML::Widgets::NavMenu".
@@ -312,15 +312,15 @@ bars available for popular browsers, for easy navigation within the site.
 
 =head3 <set-var latemp_with_html_head_stylesheets="1" />
 
-This variable controls whether or not the default <link /> tags to the 
-stylesheets will be displayed within the <head>...</head> section of 
+This variable controls whether or not the default <link /> tags to the
+stylesheets will be displayed within the <head>...</head> section of
 the document.
 
 =head2 Tags to be defined by the user:
 
 =head3 <define-tag latemp_timestamp_wrapper endtag="required">...</define-tag>
 
-C<%body> contains the version control ID as passed from 
+C<%body> contains the version control ID as passed from
 C<E<lt>latemp_version_control_id /E<gt>> and this wraps it in a display
 for the user.
 
@@ -333,7 +333,7 @@ is not specified.
 
 =head3 $(LATEMP_FILENAME)
 
-This specifies the default filename of the file relative to the root directory 
+This specifies the default filename of the file relative to the root directory
 of the host to be used if the C<latemp_filename> variable is not specified.
 
 =head3 $(LATEMP_SERVER)
@@ -343,28 +343,28 @@ is not set.
 
 =head3 $(ROOT)
 
-This variable gives a path to the root directory of the current server. It can 
+This variable gives a path to the root directory of the current server. It can
 be used to construct relative links.
 
 =head1 News Management
 
-To manage news one populates the C<@news_items> array in the file 
+To manage news one populates the C<@news_items> array in the file
 C<lib/MyManageNews.pm> in your distribution. Generall the fields C<'author'>
-and C<'category'> will be common to all the items. (If not - specify them 
-explicitly in every item). Other items are specified in the 
+and C<'category'> will be common to all the items. (If not - specify them
+explicitly in every item). Other items are specified in the
 L<HTML::Latemp::News> man page. An example news item is brought here:
 
         {
             'title' => "Changes of 18-April-2005",
             'id' => "changes-2005-04-18",
-            'description' => q{Around 18 April, 2005, Jane's Site has seen a 
+            'description' => q{Around 18 April, 2005, Jane's Site has seen a
                 lot of changes. Click the link for details on them.},
             'date' => "2005-04-18",
             'author' => "Jane Smith",
             'category' => "Jane's Site",
         },
 
-This will propogate the news into the navigation menu, etc. See the 
+This will propogate the news into the navigation menu, etc. See the
 news-related tags above for embedding news related content into your pages.
 
 If you want to build an RSS feed, you should add the C<news_feeds> target to

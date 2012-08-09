@@ -1,5 +1,5 @@
 
-RSYNC = rsync --progress --verbose --rsh=ssh --inplace -a 
+RSYNC = rsync --progress --verbose --rsh=ssh --inplace -a
 
 ALL_DEST_BASE = dest
 

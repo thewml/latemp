@@ -21,7 +21,7 @@ the navigation links.
 
 =head1 DESCRIPTION
 
-This module generates text navigation links. C<root> is the relative path to 
+This module generates text navigation links. C<root> is the relative path to
 the site's root directory. C<nav_links> are the navigation links' objects
 hash as returned by L<HTML::Widgets::NavMenu> or something similar.
 
@@ -72,25 +72,25 @@ sub _get_nav_buttons_html
     my $self = shift;
 
     my (%args) = (@_);
-    
+
     my $with_accesskey = $args{'with_accesskey'};
 
-    my $root = $self->root();    
+    my $root = $self->root();
 
-    my $template = 
+    my $template =
         Template->new(
         {
             'POST_CHOMP' => 1,
         }
         );
- 
-    my $vars = 
+
+    my $vars =
     {
         'buttons' => $self->_get_buttons(),
         'root' => $root,
         'with_accesskey' => $with_accesskey,
     };
-    
+
     my $nav_links_template = <<'EOF';
 [% USE HTML %]
 [% FOREACH b = buttons %]
@@ -106,9 +106,9 @@ accesskey="[% key %]"
 ]</li>
 [% END %]
 EOF
-    
+
     my $nav_buttons_html = "";
-    
+
     $template->process(\$nav_links_template, $vars, \$nav_buttons_html);
     return $nav_buttons_html;
 }
