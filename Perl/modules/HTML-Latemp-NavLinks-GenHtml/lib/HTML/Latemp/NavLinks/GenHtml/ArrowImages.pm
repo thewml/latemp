@@ -7,6 +7,23 @@ use vars qw($nav_buttons_html);
 
 use base 'HTML::Latemp::NavLinks::GenHtml';
 
+__PACKAGE__->mk_accessors(qw(
+    _ext
+    )
+);
+
+sub _init
+{
+    my $self = shift;
+    my (%args) = (@_);
+
+    $self->SUPER::_init(%args);
+
+    $self->_ext($args{ext} || '.png');
+
+    return;
+}
+
 =head1 NAME
 
 HTML::Latemp::NavLinks::GenHtml::ArrowImages - A class to generate the image-based HTML of the navigation links.
@@ -14,6 +31,7 @@ HTML::Latemp::NavLinks::GenHtml::ArrowImages - A class to generate the image-bas
 =head1 SYNOPSIS
 
     my $obj = HTML::Latemp::NavLinks::GenHtml::Text->new(
+        ext => '.png', # Default.
         root => $path_to_root,
         nav_links_obj => $links,
         );
@@ -61,6 +79,7 @@ sub _get_nav_buttons_html
         'root' => $root,
         'with_accesskey' => $with_accesskey,
         'image_base' => $self->get_image_base(),
+        ext => $self->_ext(),
     };
 
     my $nav_links_template = <<'EOF';
@@ -73,7 +92,7 @@ sub _get_nav_buttons_html
 [% IF with_accesskey %]
 accesskey="[% key %]"
 [% END %]
->[% END %]<img src="[% root %]/images/[% image_base %][% b.button %][% UNLESS b.exists %]-disabled[% END %].png"
+>[% END %]<img src="[% root %]/images/[% image_base %][% b.button %][% UNLESS b.exists %]-disabled[% END %][% ext %]"
 alt="[% b.title %]" class="bless" />[% IF b.exists %]</a>
 [% END %]
 </li>
