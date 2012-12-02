@@ -17,7 +17,7 @@ navigation links.
 
 =cut
 
-our $VERSION = '0.1.8';
+our $VERSION = '0.2.0';
 
 =head1 SYNOPSIS
 
