@@ -12,6 +12,9 @@ my $builder = Test::Run::Builder->new(
     license             => 'bsd',
     dist_author         => 'Shlomi Fish <shlomif@iglu.org.il>',
     dist_version_from   => 'lib/HTML/Latemp/NavLinks/GenHtml.pm',
+    configure_requires => {
+        'Module::Build' => '0.39',
+    },
     requires => {
         'Class::Accessor' => 0,
         'strict' => 0,
