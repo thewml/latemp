@@ -13,9 +13,14 @@ my $builder = Test::Run::Builder->new(
     dist_author         => 'Shlomi Fish <shlomif@iglu.org.il>',
     dist_version_from   => 'lib/HTML/Latemp/NavLinks/GenHtml.pm',
     requires => {
-        'Test::More' => 0,
-        'Template' => 0,
         'Class::Accessor' => 0,
+        'strict' => 0,
+        'Template' => 0,
+        'warnings' => 0,
+    },
+    build_requires => {
+        'Test::Differences' => 0,
+        'Test::More' => 0,
     },
     add_to_cleanup      => [ 'HTML-Latemp-NavLinks-GenHtml-*' ],
 );
