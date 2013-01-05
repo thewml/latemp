@@ -116,9 +116,29 @@ FOREACH (name "latemp-config" "latemp-setup")
         DEPENDS "${TARGET_NAME}"
     )
     INSTALL(
-        PROGRAMS "${name}"
+        PROGRAMS "${TARGET_NAME}"
         DESTINATION "bin"
     )
 ENDFOREACH (name)
+
+SET (WML_FILES
+    "html-header.wml"
+    "html-head-tag.wml"
+    "h-w-nav-menu.wml"
+    "latemp-driver.wml"
+    "latemp-main.wml"
+    "latemp-prelude.wml"
+    "news-management.wml"
+    "template-params.wml"
+    "texts.wml"
+    "utils.wml"
+)
+
+FOREACH (wml_file ${WML_FILES})
+    INSTALL (
+        FILES "${CMAKE_CURRENT_SOURCE_DIR}/wml/latemp/${wml_file}"
+        DESTINATION "lib/wml/include/latemp"
+    )
+ENDFOREACH (wml_file)
 
 INCLUDE (CPack)
