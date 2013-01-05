@@ -3,12 +3,14 @@
 use strict;
 use warnings;
 
+use autodie;
+
 use Pod::Xhtml;
 
 my $parser = Pod::Xhtml->new(FragmentOnly => 1);
-open I, "<", "latemp-ref.pod";
-open O, ">", "latemp-ref.html";
-print O <<"EOF";
+open my $in, "<", "latemp-ref.pod";
+open my $out, ">", "latemp-ref.html";
+print {$out} <<'EOF';
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE html
      PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -37,9 +39,9 @@ p, pre, ul, ol
 <body>
 EOF
 
-$parser->parse_from_filehandle(\*I, \*O);
-close(I);
-print O "</body>\n</html>\n";
-close(O);
+$parser->parse_from_filehandle($in, $out);
+close ($in);
+print {$out} "</body>\n</html>\n";
+close ($out);
 
 1;
