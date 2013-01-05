@@ -109,10 +109,15 @@ FOREACH (name "latemp-config" "latemp-setup")
             COMMAND chmod ARGS "a+x" "${TARGET_NAME}"
         DEPENDS "${SRC_NAME}"
     )
+    SET (TARGET "${name}_preproc")
     # The custom command needs to be assigned to a target.
     ADD_CUSTOM_TARGET(
-        "${name}_preproc" ALL
+        "${TARGET}" ALL
         DEPENDS "${TARGET_NAME}"
+    )
+    INSTALL(
+        PROGRAMS "${name}"
+        DESTINATION "bin"
     )
 ENDFOREACH (name)
 
