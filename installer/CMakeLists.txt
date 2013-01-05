@@ -134,11 +134,27 @@ SET (WML_FILES
     "utils.wml"
 )
 
+SET (latemp_dest  "lib/wml/include/latemp")
+
 FOREACH (wml_file ${WML_FILES})
     INSTALL (
         FILES "${CMAKE_CURRENT_SOURCE_DIR}/wml/latemp/${wml_file}"
-        DESTINATION "lib/wml/include/latemp"
+        DESTINATION "${latemp_dest}"
     )
 ENDFOREACH (wml_file)
+
+SET (THEMES
+    "better-scm"
+    "perl-begin-1"
+    "sinorca-2.0"
+    "css-zen-garden"
+)
+
+FOREACH (theme ${THEMES})
+    INSTALL (
+        FILES "${CMAKE_CURRENT_SOURCE_DIR}/wml/latemp/themes/${theme}/template.wml"
+        DESTINATION "${latemp_dest}/themes/${theme}"
+    )
+ENDFOREACH (theme)
 
 INCLUDE (CPack)
