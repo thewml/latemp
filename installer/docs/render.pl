@@ -7,9 +7,11 @@ use autodie;
 
 use Pod::Xhtml;
 
+my ($input_pod, $output_xhtml) = @ARGV;
+
 my $parser = Pod::Xhtml->new(FragmentOnly => 1);
-open my $in, "<", "latemp-ref.pod";
-open my $out, ">", "latemp-ref.html";
+open my $in, "<", $input_pod;
+open my $out, ">", $output_xhtml;
 print {$out} <<'EOF';
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE html
