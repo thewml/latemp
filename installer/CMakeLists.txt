@@ -90,7 +90,30 @@ ELSE(WIN32 AND NOT UNIX)
 ENDIF(WIN32 AND NOT UNIX)
 
 SET(CPACK_PACKAGE_EXECUTABLES
-    "wml" "Website Meta Language Frontend"
+    "latemp-config" "Latemp configuration flags"
+    "latemp-setup" "Set up a latemp site"
 )
+
+FOREACH (name "latemp-config" "latemp-setup")
+    SET (source_script "${name}.pl")
+    SET (SRC_NAME "${CMAKE_CURRENT_SOURCE_DIR}/${source_script}")
+    SET (TARGET_NAME "${CMAKE_CURRENT_BINARY_DIR}/${name}")
+    ADD_CUSTOM_COMMAND(
+        OUTPUT "${TARGET_NAME}"
+        COMMAND "${PERL_EXECUTABLE}"
+        ARGS "${CMAKE_SOURCE_DIR}/cmake/preprocess-prefix-and-version.pl"
+            "--input" "${SRC_NAME}"
+            "--output" "${TARGET_NAME}"
+            "--version" "${VERSION}"
+            "--prefix" "${CMAKE_INSTALL_PREFIX}"
+            COMMAND chmod ARGS "a+x" "${TARGET_NAME}"
+        DEPENDS "${SRC_NAME}"
+    )
+    # The custom command needs to be assigned to a target.
+    ADD_CUSTOM_TARGET(
+        "${name}_preproc" ALL
+        DEPENDS "${TARGET_NAME}"
+    )
+ENDFOREACH (name)
 
 INCLUDE (CPack)
