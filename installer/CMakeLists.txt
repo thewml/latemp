@@ -24,8 +24,8 @@ SET (WML_LIBEXE_DIR "${WML_LIB_DIR}/exec/")
 INCLUDE ("Common.cmake")
 
 # This is the equivalent to perform a "make dist"/"make distdir" etc.
-SET(CPACK_PACKAGE_NAME "wml")
-SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Website Meta Language")
+SET(CPACK_PACKAGE_NAME "laetmp")
+SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "The Latemp Offline Content Management System")
 SET(CPACK_PACKAGE_VENDOR "Shlomi Fish")
 SET(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/README")
 SET(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/COPYING")
@@ -97,26 +97,26 @@ SET(CPACK_PACKAGE_EXECUTABLES
 FOREACH (name "latemp-config" "latemp-setup")
     SET (source_script "${name}.pl")
     SET (SRC_NAME "${CMAKE_CURRENT_SOURCE_DIR}/${source_script}")
-    SET (TARGET_NAME "${CMAKE_CURRENT_BINARY_DIR}/${name}")
+    SET (DEST "${CMAKE_CURRENT_BINARY_DIR}/${name}")
     ADD_CUSTOM_COMMAND(
-        OUTPUT "${TARGET_NAME}"
+        OUTPUT "${DEST}"
         COMMAND "${PERL_EXECUTABLE}"
         ARGS "${CMAKE_SOURCE_DIR}/cmake/preprocess-prefix-and-version.pl"
             "--input" "${SRC_NAME}"
-            "--output" "${TARGET_NAME}"
+            "--output" "${DEST}"
             "--version" "${VERSION}"
             "--prefix" "${CMAKE_INSTALL_PREFIX}"
-            COMMAND chmod ARGS "a+x" "${TARGET_NAME}"
+            COMMAND chmod ARGS "a+x" "${DEST}"
         DEPENDS "${SRC_NAME}"
     )
     SET (TARGET "${name}_preproc")
     # The custom command needs to be assigned to a target.
     ADD_CUSTOM_TARGET(
         "${TARGET}" ALL
-        DEPENDS "${TARGET_NAME}"
+        DEPENDS "${DEST}"
     )
     INSTALL(
-        PROGRAMS "${TARGET_NAME}"
+        PROGRAMS "${DEST}"
         DESTINATION "bin"
     )
 ENDFOREACH (name)
@@ -150,6 +150,45 @@ SET (THEMES
     "css-zen-garden"
 )
 
+# Build the document:
+IF (1)
+    SET (basename "latemp-ref")
+    SET (pod "${basename}.pod")
+    SET (html "${basename}.html")
+    SET (SRC "${CMAKE_CURRENT_SOURCE_DIR}/docs/${pod}")
+    SET (DEST_DIR "${CMAKE_CURRENT_BINARY_DIR}/docs/")
+    SET (DEST "${DEST_DIR}/${html}")
+
+    FILE (MAKE_DIRECTORY "${DEST_DIR}")
+    ADD_CUSTOM_COMMAND(
+        OUTPUT "${DEST}"
+        COMMAND "${PERL_EXECUTABLE}"
+        ARGS "${CMAKE_SOURCE_DIR}/docs/render.pl"
+            "${SRC}" "${DEST}"
+        DEPENDS "${SRC}"
+    )
+
+    SET (TARGET "${basename}_preproc")
+    # The custom command needs to be assigned to a target.
+    ADD_CUSTOM_TARGET(
+        "${TARGET}" ALL
+        DEPENDS "${DEST}"
+    )
+
+    INSTALL (
+        FILES
+            "${DEST}"
+            "${SRC}"
+        DESTINATION
+            "share/doc/${CPACK_PACKAGE_NAME}"
+    )
+
+ENDIF (1)
+
+INSTALL(
+    PROGRAMS "${DEST}"
+    DESTINATION "bin"
+)
 FOREACH (theme ${THEMES})
     INSTALL (
         FILES "${CMAKE_CURRENT_SOURCE_DIR}/wml/latemp/themes/${theme}/template.wml"
