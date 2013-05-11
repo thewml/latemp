@@ -5,5 +5,5 @@ META.yml # Will be created by "make dist"
 README
 lib/Task/Sites/ShlomiFish.pm
 t/00-load.t
-tag-release.pl
+scripts/tag-release.pl
 META.json

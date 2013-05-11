@@ -15,7 +15,7 @@ name: Task-Sites-ShlomiFish
 provides:
   Task::Sites::ShlomiFish:
     file: lib/Task/Sites/ShlomiFish.pm
-    version: 0.0207
+    version: 0.0208
 requires:
   App::XML::DocBook::Builder: 0
   CGI: 0
@@ -76,4 +76,4 @@ requires:
   utf8: 0
   vars: 0
   warnings: 0
-version: 0.0207
+version: 0.0208
