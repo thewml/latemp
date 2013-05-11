@@ -16,15 +16,12 @@ if (!defined ($version))
     die "Version is undefined!";
 }
 
-my $mini_repos_base = 'https://svn.berlios.de/svnroot/repos/web-cpan/latemp/';
-
 my @cmd = (
-    "svn", "copy", "-m",
+    "hg", "tag", "-m",
     "Tagging the Task-Sites-ShlomiFish release as $version",
-    "$mini_repos_base/trunk",
-    "$mini_repos_base/tags/Perl/Task-Sites-ShlomiFish/releases/$version",
+    "Perl/Task-Sites-ShlomiFish/releases/$version",
 );
 
-print join(" ", @cmd), "\n";
+print join(" ", map { /\s/ ? qq{"$_"} : $_ } @cmd), "\n";
 exec(@cmd);
 
