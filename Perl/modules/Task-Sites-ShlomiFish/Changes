@@ -1,5 +1,8 @@
 Revision history for Task-Sites-ShlomiFish:
 
+0.0208      Sat 11 May 18:17:31 IDT 2013
+        - Add more dependencies.
+
 0.0207      Sat Mar 24 11:23:03 IST 2012
         - Add DBD::SQLite (it is needed).
         - Add JSON.
