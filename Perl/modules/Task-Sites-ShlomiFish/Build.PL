@@ -1,14 +1,16 @@
 use strict;
 use warnings;
-use ExtUtils::MakeMaker;
 
-WriteMakefile(
-    NAME                => 'Task::Sites::ShlomiFish',
-    AUTHOR              => 'Shlomi Fish <shlomif@iglu.org.il>',
-    VERSION_FROM        => 'lib/Task/Sites/ShlomiFish.pm',
-    ABSTRACT_FROM       => 'lib/Task/Sites/ShlomiFish.pm',
-    PL_FILES            => {},
-    PREREQ_PM =>
+use Module::Build;
+
+my $builder = Module::Build->new(
+    module_name                => 'Task::Sites::ShlomiFish',
+    dist_author              => 'Shlomi Fish <shlomif@iglu.org.il>',
+    dist_version_from        => 'lib/Task/Sites/ShlomiFish.pm',
+    configure_requires => {
+        'Module::Build' => '0.36',
+    },
+    requires =>
     {
         'App::XML::DocBook::Builder' => 0,
         'base' => 0,
@@ -70,6 +72,7 @@ WriteMakefile(
         'XML::Parser' => 0,
         'XML::Writer' => 0,
     },
-    dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
-    clean               => { FILES => 'Task-Sites-ShlomiFish-*' },
+    add_to_cleanup      => [ 'Task-Sites-ShlomiFish-*' ],
 );
+
+$builder->create_build_script();
