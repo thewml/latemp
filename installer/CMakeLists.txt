@@ -1,7 +1,7 @@
 # see - http://www.cmake.org/Wiki/CMake_FAQ#Is_there_an_option_to_produce_more_.27verbose.27_compiling.3F
 # SET(CMAKE_VERBOSE_MAKEFILE ON)
 
-INCLUDE( "${CMAKE_CURRENT_SOURCE_DIR}/Common.cmake" )
+INCLUDE(Shlomif_Common)
 
 READ_VERSION_FROM_VER_TXT()
 
@@ -20,8 +20,6 @@ SET (WML_LIB_DIR_BASE "lib")
 SET (WML_LIB_DIR "${WML_LIB_DIR_BASE}/wml")
 SET (WML_DATA_DIR "${WML_LIB_DIR}/data")
 SET (WML_LIBEXE_DIR "${WML_LIB_DIR}/exec/")
-
-INCLUDE ("Common.cmake")
 
 # This is the equivalent to perform a "make dist"/"make distdir" etc.
 SET(CPACK_PACKAGE_NAME "laetmp")
