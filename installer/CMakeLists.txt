@@ -26,7 +26,7 @@ SET (WML_DATA_DIR "${WML_LIB_DIR}/data")
 SET (WML_LIBEXE_DIR "${WML_LIB_DIR}/exec/")
 
 # This is the equivalent to perform a "make dist"/"make distdir" etc.
-SET(CPACK_PACKAGE_NAME "laetmp")
+SET(CPACK_PACKAGE_NAME "latemp")
 SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "The Latemp Offline Content Management System")
 SET(CPACK_PACKAGE_VENDOR "Shlomi Fish")
 SET(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/README")
