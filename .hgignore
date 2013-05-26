@@ -27,3 +27,4 @@ site/wml/dest
 site/wml/include.mak
 site/wml/rules.mak
 installer/build
+installer/cmake/Shlomif_Common.cmake
