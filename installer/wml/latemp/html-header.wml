@@ -8,6 +8,9 @@
 />
 </define-tag>
 
+<define-tag latemp_is_xhtml5>
+<ifeq "<get-var latemp_html_standard />" "xhtml5" "1" "" />
+</define-tag>
 
 <define-tag latemp_html_doctype_xhtml11>
 <!DOCTYPE
