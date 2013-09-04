@@ -18,7 +18,7 @@
 </define-tag>
 
 <define-tag latemp_meta_charset_elem>
-<ifeq "<latemp_is_xhtml5 />" "<latemp_xhtml5_meta_charset_elem />" "<latemp_xhtml1_meta_charset_elem />" />
+<if "<latemp_is_xhtml5 />" "<latemp_xhtml5_meta_charset_elem />" "<latemp_xhtml1_meta_charset_elem />" />
 </define-tag>
 
 <define-tag latemp_html_head_tag>
