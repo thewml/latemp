@@ -7,7 +7,7 @@ use 5.008;
 
 use vars (qw($VERSION));
 
-$VERSION = '0.2.3';
+$VERSION = '0.2.4';
 
 1;
 

@@ -15,7 +15,7 @@ name: Bundle-Latemp
 provides:
   Bundle::Latemp:
     file: lib/Bundle/Latemp.pm
-    version: v0.2.3
+    version: v0.2.4
 requires:
   CGI: 0
   Class::Accessor: 0
@@ -38,4 +38,4 @@ requires:
 resources:
   license: http://www.opensource.org/licenses/mit-license.php
   repository: https://bitbucket.org/shlomif/latemp
-version: v0.2.3
+version: v0.2.4
