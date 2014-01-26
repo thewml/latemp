@@ -1,6 +1,7 @@
-MANIFEST
-Makefile.PL
-README
+Build.PL
 Changes
-Latemp.pm
+MANIFEST
 META.yml                                 Module meta-data (added by MakeMaker)
+README
+lib/Bundle/Latemp.pm
+META.json
