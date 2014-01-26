@@ -23,6 +23,12 @@ Perl/modules/HTML-Latemp-NavLinks-GenHtml/MYMETA.yml
 Perl/modules/HTML-Latemp-NavLinks-GenHtml/MYMETA.json
 Perl/modules/HTML-Latemp-NavLinks-GenHtml/_build
 Perl/modules/HTML-Latemp-NavLinks-GenHtml/blib
+Perl/modules/Bundle-Latemp/Build
+Perl/modules/Bundle-Latemp/MYMETA.json
+Perl/modules/Bundle-Latemp/META.json
+Perl/modules/Bundle-Latemp/MYMETA.yml
+Perl/modules/Bundle-Latemp/_build
+Perl/modules/Bundle-Latemp/blib
 site/wml/dest
 site/wml/include.mak
 site/wml/rules.mak
