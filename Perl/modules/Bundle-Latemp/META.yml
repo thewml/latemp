@@ -1,7 +1,7 @@
 ---
 abstract: 'A bundle to install external CPAN modules used by'
 author:
-  - 'Shlomi Fish E<lt>F<shlomif@iglu.org.il>E<gt>'
+  - unknown
 build_requires: {}
 configure_requires:
   Module::Build: 0.36
