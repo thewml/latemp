@@ -6,3 +6,5 @@ META.json
 META.yml                                 Module meta-data (added by MakeMaker)
 README
 lib/Bundle/Latemp.pm
+t/00-load.t
+t/pod.t
