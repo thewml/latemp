@@ -12,6 +12,9 @@ my $builder = Module::Build->new(
         'Class::Accessor' => 0,
         'CGI' => 0,
         'XML::RSS' => 0,
+        'perl' => '5.008',
+        'strict' => 0,
+        'warnings' => 0,
     },
     add_to_cleanup      => [ 'HTML-Latemp-News-*' ],
 );
