@@ -21,6 +21,7 @@ my $builder = Test::Run::Builder->new(
         'warnings' => 0,
         'strict' => 0,
         'base' => 0,
+        'perl' => '5.008',
     },
     build_requires => {
         'Test::More' => 0,
