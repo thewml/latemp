@@ -1,6 +1,7 @@
 Build.PL
 Changes
 examples/shlomifish.org-gen-helpers.pl
+inc/Test/Run/Builder.pm
 lib/HTML/Latemp/GenMakeHelpers.pm
 Makefile.PL
 MANIFEST
