@@ -1,14 +1,14 @@
 Revision history for HTML-Latemp-GenMakeHelpers
 
-0.3.0    Wed  3 Oct 19:26:14 IST 2012
+0.3.0   2012-10-03
     - Get rid of trailing space in the output.
 
-0.2.0    Thu Dec 18 08:26:19 IST 2008
+0.2.0   2008-12-18
     - Changed the GNU make rules from "::" to ":".
     - Now filtering out the 'common' host directories from the directories
     buckets of the other hosts so GNU make won't warn about them.
 
-0.1.9    Fri Mar 14 22:06:49 IST 2008
+0.1.9   2008-03-14
     - Removed a {{{ use lib "./lib"; }}} declaration from t/01-output-basic.t.
         - I don't know what it was doing there in the first place.
     - Added t/pod.t and t/pod-coverage.t (for better Kwalitee.)
@@ -17,23 +17,28 @@ Revision history for HTML-Latemp-GenMakeHelpers
     - Changed the license declaration in Build.PL from "bsd" to "mit".
     - Added more modules to "requires" and "build_requires".
 
-0.1.8    Thu Aug 17 20:46:55 IDT 2006
+0.1.8   2006-08-17
     - Added a system test.
     - Factored out many methods and created several classes. Functionality
     remained the same.
-0.1.7    Thu Jul 13 12:56:07 IDT 2006
+
+0.1.7   2006-07-13
     - Made the wml commands use -o instead of a > $@ redirection. This way,
     an empty file won't be created if wml failed, which in turn will cause
     it to be re-compiled upon the next invocation of make.
-0.1.6
+
+0.1.6   2006-04-02
     - Added support for the TTMLS target to generate TTML-processed files.
     - Fixed a bug where a parenthesis was missing.
     - Added a COMMON_DOCS target to generate WMLs out of common/.
-0.1.5    2005-12-07
+
+0.1.5   2005-12-07
     - Added a Makefile.PL wrapper to the Build.PL build process (taken
     verbatim from http://search.cpan.org/dist/accessors/)
-0.1.3    2005-04-20
+
+0.1.3   2005-04-20
     - Fixed a bug in which the directory X8X_DEST was not mkdir'ed.
-0.1.2    2005-04-19
+
+0.1.2   2005-04-19
     - First version
 

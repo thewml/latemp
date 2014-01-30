@@ -9,6 +9,7 @@ META.yml # Will be created by "make dist"
 README
 t/00-load.t
 t/01-output-basic.t
+t/cpan-changes.t
 t/pod-coverage.t
 t/pod.t
 t/sample-data/sample-site-1/alternatives/index.html.wml
@@ -42,4 +43,5 @@ t/sample-data/sample-site-1/subversion/compelling_alternative.html.wml
 t/sample-data/sample-site-1/subversion/index.html.wml
 t/sample-data/sample-site-1/subversion/Subversion-Win32-Installation-Guide.txt
 t/sample-data/sample-site-1/subversion/Svn-Win32-Inst-Guide.html.wml
+t/style-trailing-space.t
 META.json
