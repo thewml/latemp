@@ -7,6 +7,9 @@ my $builder = Module::Build->new(
     license             => 'mit',
     dist_author         => 'Shlomi Fish <shlomif@iglu.org.il>',
     dist_version_from   => 'lib/HTML/Latemp/GenMakeHelpers.pm',
+    configure_requires => {
+        'Module::Build' => '0.36',
+    },
     requires => {
         'Class::Accessor' => 0,
         'File::Find::Rule' => 0,
