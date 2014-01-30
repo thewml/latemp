@@ -7,7 +7,7 @@ use 5.008;
 
 use vars qw($VERSION);
 
-$VERSION = '0.3.0';
+$VERSION = '0.3.1';
 
 package HTML::Latemp::GenMakeHelpers::Base;
 
