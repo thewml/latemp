@@ -1,5 +1,8 @@
 Revision history for HTML-Latemp-News
 
+0.1.8   2014-01-30
+    - Add t/cpan-changes.t and t/style-trailing-space.t .
+
 0.1.7    2005-12-07
     - Added a Makefile.PL wrapper to the Build.PL build process (taken
     verbatim from http://search.cpan.org/dist/accessors/)
