@@ -1,9 +1,11 @@
 Build.PL
 Changes
-Makefile.PL
 MANIFEST
 META.yml # Will be created by "make dist"
+Makefile.PL
 README
 lib/HTML/Latemp/News.pm
 t/00-load.t
+t/cpan-changes.t
 t/pod.t
+t/style-trailing-space.t
