@@ -5,7 +5,7 @@ use warnings;
 
 use vars qw($nav_buttons_html);
 
-use base 'HTML::Latemp::NavLinks::GenHtml';
+use parent 'HTML::Latemp::NavLinks::GenHtml';
 
 =head1 NAME
 

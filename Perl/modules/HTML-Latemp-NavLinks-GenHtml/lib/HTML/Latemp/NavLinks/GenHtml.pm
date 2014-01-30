@@ -3,7 +3,9 @@ package HTML::Latemp::NavLinks::GenHtml;
 use warnings;
 use strict;
 
-use base 'Class::Accessor';
+use 5.008;
+
+use parent 'Class::Accessor';
 
 __PACKAGE__->mk_accessors(qw(
     nav_links_obj

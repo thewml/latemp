@@ -5,7 +5,7 @@ use warnings;
 
 use vars qw($nav_buttons_html);
 
-use base 'HTML::Latemp::NavLinks::GenHtml';
+use parent 'HTML::Latemp::NavLinks::GenHtml';
 
 __PACKAGE__->mk_accessors(qw(
     _ext
