@@ -8,7 +8,7 @@ use Test::Run::Builder;
 
 my $builder = Test::Run::Builder->new(
     module_name         => 'HTML::Latemp::News',
-    license             => 'bsd',
+    license             => 'mit',
     dist_author         => 'Shlomi Fish <shlomif@iglu.org.il>',
     dist_version_from   => 'lib/HTML/Latemp/News.pm',
     configure_requires => {
