@@ -10,10 +10,11 @@ Perl/modules/HTML-Latemp-GenMakeHelpers/MYMETA.yml
 Perl/modules/HTML-Latemp-News/blib
 Perl/modules/HTML-Latemp-News/_build
 Perl/modules/HTML-Latemp-News/Build
+Perl/modules/HTML-Latemp-News/HTML-Latemp-News-v*
 Perl/modules/HTML-Latemp-News/META.json
 Perl/modules/HTML-Latemp-News/META.yml
 Perl/modules/HTML-Latemp-News/MYMETA.json
-Perl/modules/HTML-Latemp-News/MYMETA.yml
+Perl/modules/HTML-Latemp-News/MYMETA.json
 Perl/modules/Task-Sites-ShlomiFish/_build
 Perl/modules/Task-Sites-ShlomiFish/blib
 Perl/modules/Task-Sites-ShlomiFish/Build
