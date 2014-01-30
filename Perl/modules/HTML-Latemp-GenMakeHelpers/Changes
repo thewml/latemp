@@ -4,6 +4,7 @@ Revision history for HTML-Latemp-GenMakeHelpers
     - Add t/cpan-changes.t , t/style-trailing-space.t .
     - Convert to Test::Run::Builder.
     - Minimal perl version set to 5.008.
+    - Add the LICENSE (CPANTS Kwalitee).
 
 0.3.0   2012-10-03
     - Get rid of trailing space in the output.
