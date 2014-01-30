@@ -11,6 +11,9 @@ my $builder = Test::Run::Builder->new(
     license             => 'bsd',
     dist_author         => 'Shlomi Fish <shlomif@iglu.org.il>',
     dist_version_from   => 'lib/HTML/Latemp/News.pm',
+    configure_requires => {
+        'Module::Build' => '0.36',
+    },
     requires => {
         'Test::More' => 0,
         'Class::Accessor' => 0,
