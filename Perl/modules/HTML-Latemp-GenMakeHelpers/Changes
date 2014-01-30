@@ -1,5 +1,9 @@
 Revision history for HTML-Latemp-GenMakeHelpers
 
+0.3.1   2014-01-30
+    - Add t/cpan-changes.t , t/style-trailing-space.t .
+    - Convert to Test::Run::Builder.
+
 0.3.0   2012-10-03
     - Get rid of trailing space in the output.
 
