@@ -3,6 +3,8 @@ package HTML::Latemp::News;
 use warnings;
 use strict;
 
+use 5.008;
+
 =head1 NAME
 
 HTML::Latemp::News - News Maintenance Module for Latemp (and possibly other

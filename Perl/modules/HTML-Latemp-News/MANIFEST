@@ -9,3 +9,4 @@ t/00-load.t
 t/cpan-changes.t
 t/pod.t
 t/style-trailing-space.t
+META.json
