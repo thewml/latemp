@@ -1,39 +1,41 @@
 Revision history for Task-Sites-ShlomiFish:
 
-0.0209      Fri 31 Jan 18:21:52 IST 2014
+0.0209  2014-01-31
         - Add separate LICENSE file (CPANTS).
         - Explicit 'mit' license in Build.PL / META.yml.
         - Minimal perl version (CPANTS).
+        - Add t/cpan-changes.t , t/pod-coverage.t , t/pod.t
+        and t/style-trailing-space.t .
 
-0.0208      Sat 11 May 18:17:31 IDT 2013
+0.0208  2013-05-11
         - Add more dependencies.
         - Convert to Build.PL / Module-Build to handle three version
         digits properly.
 
-0.0207      Sat Mar 24 11:23:03 IST 2012
+0.0207  2012-03-24
         - Add DBD::SQLite (it is needed).
         - Add JSON.
 
-0.0206      Thu Jun  9 12:28:12 IDT 2011
+0.0206  2011-06-09
         - Add HTML::TreeBuilder::LibXML .
         - Add XML::Amazon .
         - Add Imager .
 
-0.0205      Tue Jun  7 14:31:53 IDT 2011
+0.0205  2011-06-07
         - Made the XML::Grammar::Fiction and XML::Grammar::Screenplay versions
         0.7.0.
         - Add many more explicit and implicit used or required modules.
 
-0.0204     Wed Dec 15 18:29:31 IST 2010
+0.0204  2010-12-15
         - Add Term::ReadPassword.
 
-0.0203     Sat Oct 16 10:22:45 IST 2010
+0.0203  2010-10-16
         - Add Spork::Shlomify , Text::VimColor and XML::Grammar::Fiction
         that are now needed to build the site.
         - Remove WWW::Google::SiteMap - no longer needed.
         - Add the tag-release.pl file to tag a release using Subversion.
 
-0.0202     Wed Mar  4 15:12:10 IST 2009
+0.0202  2009-03-04
         - Added more dependencies: App::XML::DocBook::Builder ,
         String::ShellQuote, and the XML::Grammar's.
             - These are now required by the module.
@@ -42,11 +44,11 @@ Revision history for Task-Sites-ShlomiFish:
         code clearer.
         - Added the NOTE about the motivation to the POD.
 
-0.0201    Sun Sep 10 15:49:16 IDT 2006
+0.0201  2006-09-10
         - Added XML::Grammar::ProductsSyndication that is required for
         the music syndication (and future syndications).
         - Added XML::LibXML::XPathContext.
 
-0.0100    Thu Jun 15 13:48:49 IDT 2006
+0.0100  2006-06-15
         First version, released on an unsuspecting world.
 

@@ -72,6 +72,7 @@ requires:
   XML::Parser: 0
   XML::Writer: 0
   base: 0
+  perl: 5.008
   strict: 0
   utf8: 0
   vars: 0
