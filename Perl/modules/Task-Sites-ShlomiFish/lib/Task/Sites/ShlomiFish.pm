@@ -3,6 +3,8 @@ package Task::Sites::ShlomiFish;
 use warnings;
 use strict;
 
+use 5.008;
+
 =head1 NAME
 
 Task::Sites::ShlomiFish - Specifications for modules needed for building www.shlomifish.org , whose sources are publically available, and which serves as examples for several technologies.

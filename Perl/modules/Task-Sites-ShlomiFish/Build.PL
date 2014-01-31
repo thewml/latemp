@@ -45,6 +45,7 @@ my $builder = Module::Build->new(
         'MIME::Types' => 0,
         'Parallel::ForkManager' => 0,
         'Spork::Shlomify' => '0.0200',
+        'perl' => '5.008',
         'strict' => 0,
         'String::ShellQuote' => 0,
         'SVG' => 0,
