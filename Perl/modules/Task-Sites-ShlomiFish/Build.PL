@@ -72,6 +72,7 @@ my $builder = Module::Build->new(
         'XML::Parser' => 0,
         'XML::Writer' => 0,
     },
+    license => 'mit',
     add_to_cleanup      => [ 'Task-Sites-ShlomiFish-*' ],
 );
 
