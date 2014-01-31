@@ -16,7 +16,7 @@ name: Task-Latemp
 provides:
   Task::Latemp:
     file: lib/Task/Latemp.pm
-    version: 0.0100
+    version: 0.0101
 requires:
   CGI: 0
   Class::Accessor: 0
@@ -32,6 +32,7 @@ requires:
   Pod::Usage: 0
   Template: 0
   YAML: 0
+  perl: 5.008
 resources:
   license: http://www.opensource.org/licenses/mit-license.php
-version: 0.0100
+version: 0.0101
