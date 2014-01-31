@@ -15,7 +15,7 @@ name: Task-Sites-ShlomiFish
 provides:
   Task::Sites::ShlomiFish:
     file: lib/Task/Sites/ShlomiFish.pm
-    version: 0.0208
+    version: 0.0209
 requires:
   App::XML::DocBook::Builder: 0
   CGI: 0
@@ -79,4 +79,4 @@ requires:
   warnings: 0
 resources:
   license: http://www.opensource.org/licenses/mit-license.php
-version: 0.0208
+version: 0.0209
