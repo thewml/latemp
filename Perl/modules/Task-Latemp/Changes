@@ -1,4 +1,8 @@
 Revision history for Task-Latemp:
 
-0.0100    Mon Jun 12 23:50:56 IDT 2006
-          First version, released on an unsuspecting world.
+0.0101  2014-01-31
+    - Minimal version of perl
+    - Convert to Module::Build
+
+0.0100  2006-06-12
+    - First version, released on an unsuspecting world.

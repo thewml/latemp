@@ -25,6 +25,7 @@ my $builder = Module::Build->new(
         'Pod::Usage' => 0,
         'Template' => 0,
         'YAML' => 0,
+        'perl' => '5.008',
     },
     build_requires => {
         'Test::More' => 0,

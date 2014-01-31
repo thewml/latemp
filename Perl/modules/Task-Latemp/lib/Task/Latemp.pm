@@ -3,13 +3,15 @@ package Task::Latemp;
 use warnings;
 use strict;
 
+use 5.008;
+
 =head1 NAME
 
 Task::Latemp - Specifications for modules needed by the Latemp CMS.
 
 =cut
 
-our $VERSION = '0.0100';
+our $VERSION = '0.0101';
 
 =head1 DESCRIPTION
 
