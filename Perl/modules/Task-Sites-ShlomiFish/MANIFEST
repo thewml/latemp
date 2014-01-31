@@ -1,9 +1,10 @@
 Build.PL
 Changes
+LICENSE
 MANIFEST
+META.json
 META.yml # Will be created by "make dist"
 README
 lib/Task/Sites/ShlomiFish.pm
-t/00-load.t
 scripts/tag-release.pl
-META.json
+t/00-load.t
