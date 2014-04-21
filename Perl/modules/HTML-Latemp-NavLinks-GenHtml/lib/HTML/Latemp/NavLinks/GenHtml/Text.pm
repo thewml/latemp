@@ -3,6 +3,8 @@ package HTML::Latemp::NavLinks::GenHtml::Text;
 use strict;
 use warnings;
 
+our $VERSION = '0.2.2';
+
 use vars qw($nav_buttons_html);
 
 use parent 'HTML::Latemp::NavLinks::GenHtml';
