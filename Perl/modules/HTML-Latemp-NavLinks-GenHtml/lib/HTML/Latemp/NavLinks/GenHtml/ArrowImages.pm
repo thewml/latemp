@@ -30,7 +30,7 @@ HTML::Latemp::NavLinks::GenHtml::ArrowImages - A class to generate the image-bas
 
 =head1 SYNOPSIS
 
-    my $obj = HTML::Latemp::NavLinks::GenHtml::Text->new(
+    my $obj = HTML::Latemp::NavLinks::GenHtmlArrowImages->new(
         ext => '.png', # Default.
         root => $path_to_root,
         nav_links_obj => $links,
