@@ -1,5 +1,9 @@
 Revision history for HTML-Latemp-NavLinks-GenHtml
 
+0.2.3   2014-04-21
+    - Add missing $VERSION variable to the .pm files under lib/.
+    - Add scripts/bump-version-number.pl
+
 0.2.2   2014-01-30
     - Add t/cpan-changes.t and t/style-trailing-space.t .
     - Convert license to 'mit'.
