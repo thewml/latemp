@@ -1,5 +1,8 @@
 Revision history for Task-Sites-ShlomiFish:
 
+0.0210  2015-04-06
+        - Add some missing deps.
+
 0.0209  2014-01-31
         - Add separate LICENSE file (CPANTS).
         - Explicit 'mit' license in Build.PL / META.yml.
