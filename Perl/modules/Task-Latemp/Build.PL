@@ -32,6 +32,23 @@ my $builder = Module::Build->new(
     },
     add_to_cleanup      => [ 'Task-Latemp-*' ],
     create_makefile_pl => 'traditional',
+    meta_merge =>
+    {
+        resources =>
+        {
+            repository => "http://bitbucket.org/shlomif/latemp",
+            homepage => "http://web-cpan.shlomifish.org/latemp/",
+        },
+        keywords =>
+        [
+            "cms",
+            "generator",
+            "latemp",
+            "site",
+            "static",
+            "task",
+        ],
+    },
 );
 
 $builder->create_build_script();

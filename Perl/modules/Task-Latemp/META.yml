@@ -3,36 +3,45 @@ abstract: 'Specifications for modules needed by the Latemp CMS.'
 author:
   - 'Shlomi Fish <shlomif@shlomifish.org>'
 build_requires:
-  Test::More: 0
+  Test::More: '0'
 configure_requires:
-  Module::Build: 0.36
+  Module::Build: '0.36'
 dynamic_config: 1
-generated_by: 'Module::Build version 0.4007, CPAN::Meta::Converter version 2.132830'
+generated_by: 'Module::Build version 0.421, CPAN::Meta::Converter version 2.142060'
+keywords:
+  - cms
+  - generator
+  - latemp
+  - site
+  - static
+  - task
 license: mit
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
+  version: '1.4'
 name: Task-Latemp
 provides:
   Task::Latemp:
     file: lib/Task/Latemp.pm
-    version: 0.0101
+    version: '0.0102'
 requires:
-  CGI: 0
-  Class::Accessor: 0
-  Data::Dumper: 0
-  File::Basename: 0
-  File::Find::Rule: 0
-  File::Path: 0
-  Getopt::Long: 0
-  HTML::Latemp::GenMakeHelpers: 0
-  HTML::Latemp::NavLinks::GenHtml::Text: 0
-  HTML::Latemp::News: 0
-  HTML::Widgets::NavMenu: 0
-  Pod::Usage: 0
-  Template: 0
-  YAML: 0
-  perl: 5.008
+  CGI: '0'
+  Class::Accessor: '0'
+  Data::Dumper: '0'
+  File::Basename: '0'
+  File::Find::Rule: '0'
+  File::Path: '0'
+  Getopt::Long: '0'
+  HTML::Latemp::GenMakeHelpers: '0'
+  HTML::Latemp::NavLinks::GenHtml::Text: '0'
+  HTML::Latemp::News: '0'
+  HTML::Widgets::NavMenu: '0'
+  Pod::Usage: '0'
+  Template: '0'
+  YAML: '0'
+  perl: '5.008'
 resources:
+  homepage: http://web-cpan.shlomifish.org/latemp/
   license: http://www.opensource.org/licenses/mit-license.php
-version: 0.0101
+  repository: http://bitbucket.org/shlomif/latemp
+version: '0.0102'
