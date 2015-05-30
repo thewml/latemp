@@ -1,5 +1,9 @@
 Revision history for HTML-Latemp-NavLinks-GenHtml
 
+0.2.4   2015-05-30
+    - Convert the build system to Dist-Zilla.
+        - Some improvements as a result.
+
 0.2.3   2014-04-21
     - Add missing $VERSION variable to the .pm files under lib/.
     - Add scripts/bump-version-number.pl
