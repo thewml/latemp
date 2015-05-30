@@ -1,5 +1,10 @@
 Revision history for HTML-Latemp-GenMakeHelpers
 
+0.3.2   2015-05-30
+    - Convert the build system to Dist-Zilla
+        - In the process there are some improvements such as links to the
+        version control repositories.
+
 0.3.1   2014-01-30
     - Add t/cpan-changes.t , t/style-trailing-space.t .
     - Convert to Test::Run::Builder.
