@@ -80,6 +80,21 @@ my $builder = Module::Build->new(
     },
     license => 'mit',
     add_to_cleanup      => [ 'Task-Sites-ShlomiFish-*' ],
+    meta_merge =>
+    {
+        resources =>
+        {
+            repository => "http://bitbucket.org/shlomif/latemp",
+            homepage => "http://web-cpan.shlomifish.org/latemp/",
+        },
+        keywords =>
+        [
+            "bundle",
+            "shlomif",
+            "site",
+            "task",
+        ],
+    },
 );
 
 $builder->create_build_script();

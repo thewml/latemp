@@ -1,5 +1,8 @@
 Revision history for Task-Sites-ShlomiFish:
 
+0.0211  2015-05-30
+        - META.yml: Add repository, homepage and keywords.
+
 0.0210  2015-04-06
         - Add some missing deps.
 
