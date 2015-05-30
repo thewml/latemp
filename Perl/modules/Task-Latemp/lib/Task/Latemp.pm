@@ -11,7 +11,7 @@ Task::Latemp - Specifications for modules needed by the Latemp CMS.
 
 =cut
 
-our $VERSION = '0.0101';
+our $VERSION = '0.0102';
 
 =head1 DESCRIPTION
 
