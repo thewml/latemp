@@ -7,6 +7,11 @@ configure_requires:
   Module::Build: '0.36'
 dynamic_config: 1
 generated_by: 'Module::Build version 0.421, CPAN::Meta::Converter version 2.142060'
+keywords:
+  - bundle
+  - shlomif
+  - site
+  - task
 license: mit
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -15,7 +20,7 @@ name: Task-Sites-ShlomiFish
 provides:
   Task::Sites::ShlomiFish:
     file: lib/Task/Sites/ShlomiFish.pm
-    version: '0.0210'
+    version: '0.0211'
 requires:
   App::XML::DocBook::Builder: '0'
   CGI: '0'
@@ -83,5 +88,7 @@ requires:
   vars: '0'
   warnings: '0'
 resources:
+  homepage: http://web-cpan.shlomifish.org/latemp/
   license: http://www.opensource.org/licenses/mit-license.php
-version: '0.0210'
+  repository: http://bitbucket.org/shlomif/latemp
+version: '0.0211'
