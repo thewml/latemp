@@ -20,7 +20,7 @@ from the command line.
 
 =cut
 
-our $VERSION = '0.0101';
+our $VERSION = '0.0102';
 
 =head1 SYNOPSIS
 
