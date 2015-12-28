@@ -3,7 +3,7 @@ package HTML::Latemp::NavLinks::GenHtml::ArrowImages;
 use strict;
 use warnings;
 
-our $VERSION = '0.2.5';
+our $VERSION = '0.2.6';
 
 use vars qw($nav_buttons_html);
 
