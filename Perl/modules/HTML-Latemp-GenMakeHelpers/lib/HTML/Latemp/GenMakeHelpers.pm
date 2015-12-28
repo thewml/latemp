@@ -7,7 +7,7 @@ use 5.008;
 
 use vars qw($VERSION);
 
-$VERSION = '0.3.2';
+$VERSION = '0.3.3';
 
 package HTML::Latemp::GenMakeHelpers::Base;
 
@@ -494,7 +494,7 @@ __END__
 
 =head1 AUTHOR
 
-Shlomi Fish, C<< <shlomif@iglu.org.il> >>
+Shlomi Fish, L<http://www.shlomifish.org/> .
 
 =head1 BUGS
 
