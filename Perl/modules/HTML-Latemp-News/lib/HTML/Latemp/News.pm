@@ -12,7 +12,7 @@ web frameworks)
 
 =cut
 
-our $VERSION = '0.1.9';
+our $VERSION = '0.1.10';
 
 =head1 SYNOPSIS
 
@@ -455,7 +455,7 @@ __END__
 
 =head1 AUTHOR
 
-Shlomi Fish, C<< <shlomif@iglu.org.il> >>
+Shlomi Fish, L<http://www.shlomifish.org/> .
 
 =head1 BUGS
 
