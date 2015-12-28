@@ -19,7 +19,7 @@ navigation links.
 
 =cut
 
-our $VERSION = '0.2.4';
+our $VERSION = '0.2.5';
 
 =head1 SYNOPSIS
 
@@ -99,7 +99,7 @@ sub _get_buttons
 
 =head1 AUTHOR
 
-Shlomi Fish, C<< <shlomif@iglu.org.il> >>
+Shlomi Fish, L<http://www.shlomifish.org/> .
 
 =head1 BUGS
 
