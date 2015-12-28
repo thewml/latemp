@@ -3,7 +3,7 @@ package HTML::Latemp::NavLinks::GenHtml::ArrowImages;
 use strict;
 use warnings;
 
-our $VERSION = '0.2.4';
+our $VERSION = '0.2.5';
 
 use vars qw($nav_buttons_html);
 
@@ -138,7 +138,7 @@ sub get_total_html
 
 =head1 AUTHOR
 
-Shlomi Fish, C<< <shlomif@iglu.org.il> >>
+Shlomi Fish, L<http://www.shlomifish.org/> .
 
 =head1 BUGS
 
