@@ -55,7 +55,6 @@ my $builder = Module::Build->new(
         'SVG' => 0,
         'Task::Latemp' => 0,
         'Template::Preprocessor::TTML' => 0,
-        'Term::ReadPassword' => 0,
         'Test::Count' => 0,
         'Test::Count::Filter' => 0,
         'Test::More' => 0,
