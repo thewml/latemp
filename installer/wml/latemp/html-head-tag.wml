@@ -5,7 +5,7 @@
 </define-tag>
 
 <define-tag latemp_html_head_stylesheets>
-<link rel="stylesheet" href="<latemp_default_val "<get-var latemp_screen_stylesheet_url />" "$(ROOT)/style.css" />" type="text/css" media="screen, projection" title="Normal" />
+<link rel="stylesheet" href="<latemp_default_val "<get-var latemp_screen_stylesheet_url />" "$(ROOT)/style.css" />" type="text/css" media="screen" title="Normal" />
 <link rel="stylesheet" href="<latemp_default_val "<get-var latemp_print_stylesheet_url />" "$(ROOT)/print.css" />" type="text/css" media="print" />
 </define-tag>
 
