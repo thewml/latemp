@@ -5,14 +5,15 @@
 
 <p>
 Welcome to the homepage of Latemp. Latemp (a play on "Template") is an
-<b>offline CMS</b> (= content management system) based on
+<b>offline content management system</b> (also known as a “static site
+generator”) based on
 <a href="http://thewml.org/">Website Meta
-Language</a>, a powerful, off-line framework for generating static HTML, and
+Language</a>, a powerful, off-line, framework for generating static HTML, and
 server-side HTML that embeds code (such as
 <a href="http://www.php.net/">PHP</a>,
 <a href="http://www.masonhq.com/">HTML::Mason</a>, ASP, or
 <a href="http://perl.apache.org/embperl/">Embperl</a>). Latemp allows
-one to create attractive, themable sites, which are very usable, accessible
+one to create attractive, themable sites, which are usable, accessible
 and fully standards compliant. Latemp is open-source software - fully usable,
 modifiable and distributable under the terms of the
 <a href="http://www.opensource.org/licenses/mit-license.php">MIT X11
@@ -32,6 +33,78 @@ describing how to use Latemp.
 Finally, you can actually <a href="$(ROOT)/download/">download Latemp</a>,
 set it up and give it a try.
 </p>
+
+<h2>Should I use Latemp?</h2>
+
+<p>
+The title of this section is purposely risking
+<a href="https://en.wikipedia.org/wiki/Betteridge's_law_of_headlines">Betteridge’s
+Law of Headlines</a> and accordingly the short answer as of 2016 is “probably
+not”. As I like to say, “every self-respecting programmer has written at
+least one static site generator” since writing a basic one is easy and often
+tends to be easier than learning an existing one. Many programmers who wrote
+one decided to release it as “shrinkwrap” software (usually under an open
+source licence) and <a href="https://staticsitegenerators.net/">the Static
+Site Generators list</a> currently lists over 400 of them.
+</p>
+
+<p>
+Latemp started as a way to consolidate and extract some duplicate code and
+logic I had in some of my Website Meta Language sites, which themselves evolved
+out of directories of non-generated HTML pages that I maintained by hand
+directly on the servers (without version control!). Since the time it was
+released as open source software, it didn't really gain a lot of popularity
+outside my own personal use, although it inspired some sub-projects such
+as <a href="http://metacpan.org/">CPAN</a> modules, articles, or blog posts.
+</p>
+
+<p>
+I'm continuing to use Latemp for some of my sites, due to being familiar
+with it, because it works reliably for me, and because I cannot convert the
+code that uses it to something else overnight (lacking the necessary
+<a href="http://www.shlomifish.org/humour/fortunes/show.cgi?id=sharp-sharp-perl-chuck-norris-as-a-refactorer">Chuck
+Norris nature</a>). However, if you are seeking a static site generator, you
+are probably better off either writing your own using your favourite programming
+language and template system, or using a more popular alternative than Latemp.
+</p>
+
+<p>
+Some of the other options are:
+</p>
+
+<ol>
+
+<li>
+<p>
+<a href="http://en.wikipedia.org/wiki/Jekyll_%28software%29">Jekyll</a> - this
+appears to be the poster child of static site generators, but after using it
+for one site, I found it too opaque, with some poorly documented plugins
+and extensions, and such a system where trivial things were easy, but anything
+harder was very hard. I ended up converting the site away from it.
+</p>
+</li>
+
+<li>
+<p>
+<a href="http://ikiwiki.info/">Ikiwiki</a> takes the interesting approach
+of storing the pages in repositories of any number of version control systems,
+and allowing it to be used as both an online CMS and as a static site generator.
+It seems to have a poor taxonomy though.
+</p>
+</li>
+
+<li>
+<p>
+For the <a href="https://github.com/Hamakor/linux.org.il">linux.org.il
+sources</a>, I created yet another static site generator, this time using
+<a href="http://template-toolkit.org/">the Template Toolkit</a> and some
+Perl and GNU Make glue. I didn't use Latemp because I felt it needed too
+many dependencies and was too hard to learn for such a site where I was
+trying to encourage collaborators. So I wrote more than one static site
+generator.
+</p>
+</li>
+</ol>
 
 <h2>News</h2>
 
