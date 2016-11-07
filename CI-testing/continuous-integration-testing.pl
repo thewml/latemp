@@ -24,4 +24,5 @@ my $cmd = shift@ARGV;
 if ($cmd eq 'install_deps')
 {
     do_system({cmd => ["cd Perl/modules/HTML-Latemp-GenMakeHelpers/ && (dzil authordeps --missing | cpanm)"]});
+    do_system({cmd => ["cd Perl/modules/HTML-Latemp-NavLinks-GenHtml && (dzil authordeps --missing | cpanm)"]});
 }
