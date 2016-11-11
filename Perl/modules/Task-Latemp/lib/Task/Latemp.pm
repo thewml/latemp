@@ -5,6 +5,21 @@ use strict;
 
 use 5.008;
 
+use CGI;
+use Class::Accessor;
+use Data::Dumper;
+use File::Basename;
+use File::Find::Rule;
+use File::Path;
+use Getopt::Long;
+use HTML::Latemp::GenMakeHelpers;
+use HTML::Latemp::NavLinks::GenHtml::Text;
+use HTML::Latemp::News;
+use HTML::Widgets::NavMenu;
+use Pod::Usage;
+use Template;
+use YAML;
+
 =head1 NAME
 
 Task::Latemp - Specifications for modules needed by the Latemp CMS.
