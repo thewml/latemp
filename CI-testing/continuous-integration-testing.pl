@@ -44,6 +44,7 @@ elsif ($cmd eq 'test')
     {
         do_system({cmd => ["cd $d && (dzil smoke --release --author)"]});
     }
+    do_system({cmd => ["cd installer/ && mkdir B && cd B && cmake .. && make"]});
 }
 else
 {
