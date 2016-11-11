@@ -1,5 +1,8 @@
 Revision history for Template-Preprocessor-TTML
 
+0.0104  Unknown
+    - [RewriteVersion] in dist.ini .
+
 0.0103  2015-12-28
     - Update E-mail.
 

@@ -27,6 +27,7 @@ my @dzil_dirs =
     'Perl/modules/HTML-Latemp-GenMakeHelpers',
     'Perl/modules/HTML-Latemp-NavLinks-GenHtml',
     'Perl/modules/HTML-Latemp-News',
+    'Perl/modules/Template-Preprocessor-TTML',
 );
 
 if ($cmd eq 'install_deps')
