@@ -1,4 +1,4 @@
-oVersionFromModules: linux
+os: linux
 dist: trusty
 before_install:
     - sudo apt-get update -qq
