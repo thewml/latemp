@@ -1,4 +1,4 @@
-os: linux
+oVersionFromModules: linux
 dist: trusty
 before_install:
     - sudo apt-get update -qq
@@ -20,4 +20,4 @@ perl:
 python:
     - "3.5"
 # script: "perl black-hole-solitaire/CI-testing/continuous-integration-testing.pl"
-script: true
+script: perl CI-testing/continuous-integration-testing.pl test
