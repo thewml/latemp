@@ -1,5 +1,8 @@
 Revision history for HTML-Latemp-News
 
+0.1.11  Unknown
+    - [RewriteVersion] in dist.ini.
+
 0.1.10  2015-28-12
     - Move away from old E-mail.
 

@@ -24,8 +24,9 @@ my $cmd = shift@ARGV;
 
 my @dzil_dirs =
 (
-    'Perl/modules/HTML-Latemp-GenMakeHelpers/',
+    'Perl/modules/HTML-Latemp-GenMakeHelpers',
     'Perl/modules/HTML-Latemp-NavLinks-GenHtml',
+    'Perl/modules/HTML-Latemp-News',
 );
 
 if ($cmd eq 'install_deps')

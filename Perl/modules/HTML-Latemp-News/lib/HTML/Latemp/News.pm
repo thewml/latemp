@@ -12,7 +12,7 @@ web frameworks)
 
 =cut
 
-our $VERSION = '0.1.10';
+our $VERSION = 'v0.1.10';
 
 =head1 SYNOPSIS
 
