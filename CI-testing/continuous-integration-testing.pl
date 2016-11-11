@@ -32,7 +32,7 @@ if ($cmd eq 'install_deps')
 {
     foreach my $d (@dzil_dirs)
     {
-        do_system({cmd => ["cd $d && (dzil authordeps --missing | sudo cpanm)"]});
+        do_system({cmd => ["cd $d && (dzil authordeps --missing | sudo cpanm) && (dzil listdeps --author --missing | sudo cpanm)"]});
     }
 }
 elsif ($cmd eq 'test')
