@@ -1,4 +1,6 @@
 installer/cmake/Shlomif_Common.cmake
+sample-site/dest
+sample-site/include.mak
 site/wml/dest
 site/wml/include.mak
 site/wml/rules.mak
