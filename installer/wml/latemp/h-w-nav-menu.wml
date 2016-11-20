@@ -75,7 +75,8 @@ foreach my $key (@keys)
     my $val = $nav_links_obj->{$key};
     my $url = CGI::escapeHTML($val->direct_url());
     my $title = $val->title();
-    print "<link rel=\"$key\" href=\"$url\" title=\"$title\" />\n"
+    my $title_attr = defined($title) ? " title=\"$title\"" : "";
+    print "<link rel=\"$key\" href=\"$url\"$title_attr />\n"
 }
 }:>
 </define-tag>
