@@ -5,11 +5,9 @@ use warnings;
 
 use 5.008;
 
-our $VERSION = 'v0.3.3';
+our $VERSION = 'v0.4.0';
 
 package HTML::Latemp::GenMakeHelpers::Base;
-
-use base 'Class::Accessor';
 
 sub new
 {
@@ -22,11 +20,9 @@ sub new
 
 package HTML::Latemp::GenMakeHelpers::HostEntry;
 
-use vars qw(@ISA);
+our @ISA=(qw(HTML::Latemp::GenMakeHelpers::Base));
 
-@ISA=(qw(HTML::Latemp::GenMakeHelpers::Base));
-
-__PACKAGE__->mk_accessors(qw(id dest_dir source_dir));
+use Class::XSAccessor accessors => {'dest_dir' => 'dest_dir', 'id' => 'id', 'source_dir' => 'source_dir',};
 
 sub initialize
 {
@@ -40,20 +36,13 @@ sub initialize
 
 package HTML::Latemp::GenMakeHelpers::Error;
 
-use vars qw(@ISA);
-
-@ISA=(qw(HTML::Latemp::GenMakeHelpers::Base));
+our @ISA=(qw(HTML::Latemp::GenMakeHelpers::Base));
 
 package HTML::Latemp::GenMakeHelpers::Error::UncategorizedFile;
 
-use vars qw(@ISA);
+our @ISA=(qw(HTML::Latemp::GenMakeHelpers::Error));
 
-@ISA=(qw(HTML::Latemp::GenMakeHelpers::Error));
-
-__PACKAGE__->mk_accessors(qw(
-    file
-    host
-));
+use Class::XSAccessor accessors => {'file' => 'file', 'host' => 'host',};
 
 sub initialize
 {
@@ -101,15 +90,12 @@ Process all hosts.
 =head1 INTERNAL METHODS
 =cut
 
-
-use vars qw(@ISA);
-
-@ISA=(qw(HTML::Latemp::GenMakeHelpers::Base));
+our @ISA=(qw(HTML::Latemp::GenMakeHelpers::Base));
 
 use File::Find::Rule;
 use File::Basename;
 
-__PACKAGE__->mk_accessors(qw(base_dir _common_buckets hosts hosts_id_map));
+use Class::XSAccessor accessors => {'_common_buckets' => '_common_buckets', '_base_dir' => 'base_dir', 'hosts' => 'hosts', '_hosts_id_map' => 'hosts_id_map',};
 
 =head2 initialize()
 
@@ -123,7 +109,7 @@ sub initialize
     my $self = shift;
     my (%args) = (@_);
 
-    $self->base_dir("src");
+    $self->_base_dir("src");
     $self->hosts(
         [
         map {
@@ -134,7 +120,7 @@ sub initialize
         @{$args{'hosts'}}
         ]
         );
-    $self->hosts_id_map(+{ map { $_->{'id'} => $_ } @{$self->hosts()}});
+    $self->_hosts_id_map(+{ map { $_->{'id'} => $_ } @{$self->hosts()}});
     $self->_common_buckets({});
 
     return;
@@ -143,14 +129,14 @@ sub initialize
 sub process_all
 {
     my $self = shift;
-    my $dir = $self->base_dir();
+    my $dir = $self->_base_dir();
 
     my @hosts = @{$self->hosts()};
 
     open my $file_lists_fh, ">", "include.mak";
     open my $rules_fh, ">", "rules.mak";
 
-    print {$rules_fh} "COMMON_SRC_DIR = " . $self->hosts_id_map()->{'common'}->{'source_dir'} . "\n\n";
+    print {$rules_fh} "COMMON_SRC_DIR = " . $self->_hosts_id_map()->{'common'}->{'source_dir'} . "\n\n";
 
     foreach my $host (@hosts)
     {
@@ -175,6 +161,10 @@ sub _make_path
     return $host->source_dir(). "/".$path;
 }
 
+=head2 $generator->hosts()
+
+Returns an array reference of HTML::Latemp::GenMakeHelpers::HostEntry for
+the hosts.
 
 =head2 $generator->get_initial_buckets($host)
 
@@ -451,7 +441,7 @@ sub process_host
     my $self = shift;
     my $host = shift;
 
-    my $dir = $self->base_dir();
+    my $dir = $self->_base_dir();
 
     my $source_dir_path = $host->source_dir();
 
@@ -512,4 +502,7 @@ This program is free software; you can redistribute it and/or modify it
 under the MIT X11 License.
 
 =cut
+
+
+
 
