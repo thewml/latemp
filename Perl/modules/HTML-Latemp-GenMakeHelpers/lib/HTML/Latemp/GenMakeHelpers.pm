@@ -5,7 +5,7 @@ use warnings;
 
 use 5.008;
 
-our $VERSION = 'v0.4.0';
+our $VERSION = 'v0.5.0';
 
 package HTML::Latemp::GenMakeHelpers::Base;
 
@@ -79,9 +79,32 @@ HTML::Latemp::GenMakeHelpers - A Latemp Utility Module.
 
 =head1 API METHODS
 
-=head2 my $generator = HTML::Latemp::GenMakeHelpers->new('hosts => [@hosts])
+=head2 my $generator = HTML::Latemp::GenMakeHelpers->new(hosts => [@hosts])
 
 Construct an object with the host defined in @hosts.
+
+An optional parameter is C<'filename_lists_post_filter'> which must point
+to a subroutine that accepts a hash reference of C<'host'>, C<'bucket'>,
+and C<'filenames'> (which points to an array reference) and returns the
+modified list of filenames as an array reference (it is called separately
+for each host and bucket).
+
+An example for it is:
+
+    filename_lists_post_filter => sub {
+        my ($args) = @_;
+        my $filenames = $args->{filenames};
+        if ($args->{host} eq 'src' and $args->{bucket} eq 'IMAGES')
+        {
+            return [ grep { $_ !~ m#arrow-right# } @$filenames ];
+        }
+        else
+        {
+            return $filenames;
+        }
+    },
+
+(This parameter was added in version 0.5.0 of this module.)
 
 =head2 $generator->process_all()
 
@@ -95,7 +118,7 @@ our @ISA=(qw(HTML::Latemp::GenMakeHelpers::Base));
 use File::Find::Rule;
 use File::Basename;
 
-use Class::XSAccessor accessors => {'_common_buckets' => '_common_buckets', '_base_dir' => 'base_dir', 'hosts' => 'hosts', '_hosts_id_map' => 'hosts_id_map',};
+use Class::XSAccessor accessors => {'_common_buckets' => '_common_buckets', '_base_dir' => 'base_dir', '_filename_lists_post_filter' => '_filename_lists_post_filter', 'hosts' => 'hosts', '_hosts_id_map' => 'hosts_id_map',};
 
 =head2 initialize()
 
@@ -110,6 +133,12 @@ sub initialize
     my (%args) = (@_);
 
     $self->_base_dir("src");
+    $self->_filename_lists_post_filter(
+        $args{filename_lists_post_filter} || sub {
+            my ($params) = @_;
+            return $params->{filenames};
+        }
+    );
     $self->hosts(
         [
         map {
@@ -454,18 +483,20 @@ sub process_host
 
     $self->place_files_into_buckets($host, $files, $buckets);
 
-    my $host_uc = uc($host->id());
+    my $id = $host->id();
+    my $host_uc = uc($id);
     foreach my $b (@$buckets)
     {
-        $file_lists_text .= $host_uc . "_" . $b->{'name'} . " =" . join("", map { " $_" } @{$b->{'results'}}) . "\n";
+        my $name = $b->{name};
+        $file_lists_text .= $host_uc . "_" . $name . " =" . join("", map { " $_" } @{$self->_filename_lists_post_filter->({filenames => $b->{'results'}, bucket => $name, host => $id,})}) . "\n";
     }
 
-    if ($host->id() ne "common")
+    if ($id ne "common")
     {
         my $rules = $self->get_rules_template($host);
 
         $rules =~ s!X8X!$host_uc!g;
-        $rules =~ s!x8x!$host->id()!ge;
+        $rules =~ s!x8x!$id!ge;
         $rules_text .= $rules;
     }
 
