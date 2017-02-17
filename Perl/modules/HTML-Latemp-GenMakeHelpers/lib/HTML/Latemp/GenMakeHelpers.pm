@@ -187,7 +187,7 @@ sub _make_path
     my $host = shift;
     my $path = shift;
 
-    return $host->source_dir(). "/".$path;
+    return $host->source_dir() . "/" . $path;
 }
 
 =head2 $generator->hosts()
@@ -214,7 +214,7 @@ sub get_initial_buckets
             sub
             {
                 my $fn = shift;
-                return ($fn !~ /\.(?:tt|w)ml$/) && (-f $self->_make_path($host, $fn))
+                return ($fn !~ /\.(?:tt|w)ml\z/) && (-f $self->_make_path($host, $fn))
             },
         },
         {
@@ -231,11 +231,11 @@ sub get_initial_buckets
             'filter' =>
             sub
             {
-                return shift =~ /\.x?html\.wml$/;
+                return shift =~ /\.x?html\.wml\z/;
             },
             'map' => sub {
                 my $fn = shift;
-                $fn =~ s{\.wml$}{};
+                $fn =~ s{\.wml\z}{};
                 return $fn;
             },
         },
@@ -244,11 +244,11 @@ sub get_initial_buckets
             'filter' =>
             sub
             {
-                return shift =~ /\.ttml$/;
+                return shift =~ /\.ttml\z/;
             },
             'map' => sub {
                 my $fn = shift;
-                $fn =~ s{\.ttml$}{};
+                $fn =~ s{\.ttml\z}{};
                 return $fn;
             },
         },
@@ -299,13 +299,13 @@ sub _filter_out_special_files
 
     my @files = @$files_ref;
 
-    @files = (grep { ! m{(^|/)\.svn(/|$)} } @files);
-    @files = (grep { ! /~$/ } @files);
+    @files = (grep { ! m{(\A|/)\.svn(/|\z)} } @files);
+    @files = (grep { ! /~\z/ } @files);
     @files =
         (grep
         {
             my $bn = basename($_);
-            not (($bn =~ /^\./) && ($bn =~ /\.swp$/))
+            not (($bn =~ /\A\./) && ($bn =~ /\.swp\z/))
         }
         @files
         );
