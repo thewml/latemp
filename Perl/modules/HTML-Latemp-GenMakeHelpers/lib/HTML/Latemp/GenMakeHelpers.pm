@@ -213,8 +213,8 @@ sub get_initial_buckets
             'filter' =>
             sub
             {
-                my $file = shift;
-                return ($file !~ /\.(?:tt|w)ml$/) && (-f $self->_make_path($host, $file))
+                my $fn = shift;
+                return ($fn !~ /\.(?:tt|w)ml$/) && (-f $self->_make_path($host, $fn))
             },
         },
         {
@@ -222,8 +222,7 @@ sub get_initial_buckets
             'filter' =>
             sub
             {
-                my $file = shift;
-                return (-d $self->_make_path($host, $file))
+                return (-d $self->_make_path($host, shift))
             },
             filter_out_common => 1,
         },
@@ -232,20 +231,26 @@ sub get_initial_buckets
             'filter' =>
             sub
             {
-                my $file = shift;
-                return $file =~ /\.x?html\.wml$/;
+                return shift =~ /\.x?html\.wml$/;
             },
-            'map' => sub { my $a = shift; $a =~ s{\.wml$}{}; return $a;},
+            'map' => sub {
+                my $fn = shift;
+                $fn =~ s{\.wml$}{};
+                return $fn;
+            },
         },
         {
             'name' => "TTMLS",
             'filter' =>
             sub
             {
-                my $file = shift;
-                return $file =~ /\.ttml$/;
+                return shift =~ /\.ttml$/;
             },
-            'map' => sub { my $a = shift; $a =~ s{\.ttml$}{}; return $a;},
+            'map' => sub {
+                my $fn = shift;
+                $fn =~ s{\.ttml$}{};
+                return $fn;
+            },
         },
     ];
 }
