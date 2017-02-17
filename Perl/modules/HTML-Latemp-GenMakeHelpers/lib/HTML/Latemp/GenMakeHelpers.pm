@@ -304,8 +304,8 @@ sub _filter_out_special_files
     @files =
         (grep
         {
-            my $b = basename($_);
-            !(($b =~ /^\./) && ($b =~ /\.swp$/))
+            my $bn = basename($_);
+            not (($bn =~ /^\./) && ($bn =~ /\.swp$/))
         }
         @files
         );
@@ -355,25 +355,25 @@ sub place_files_into_buckets
     FILE_LOOP:
     foreach my $f (@$files)
     {
-        foreach my $b (@$buckets)
+        foreach my $bucket (@$buckets)
         {
-            if ($b->{'filter'}->($f))
+            if ($bucket->{'filter'}->($f))
             {
                 if ($host->{'id'} eq "common")
                 {
-                    $self->_common_buckets->{$b->{name}}->{$f} = 1;
+                    $self->_common_buckets->{$bucket->{name}}->{$f} = 1;
                 }
 
                 if (   ($host->{'id'} eq "common")
                     ||
                     (!(
-                        $b->{'filter_out_common'}
+                        $bucket->{'filter_out_common'}
                             &&
-                        exists($self->_common_buckets->{$b->{name}}->{$f})
+                        exists($self->_common_buckets->{$bucket->{name}}->{$f})
                     ))
                 )
                 {
-                    push @{$b->{'results'}}, $b->{'map'}->($f);
+                    push @{$bucket->{'results'}}, $bucket->{'map'}->($f);
                 }
 
                 next FILE_LOOP;
@@ -490,10 +490,10 @@ sub process_host
 
     my $id = $host->id();
     my $host_uc = uc($id);
-    foreach my $b (@$buckets)
+    foreach my $bucket (@$buckets)
     {
-        my $name = $b->{name};
-        $file_lists_text .= $host_uc . "_" . $name . " =" . join("", map { " $_" } @{$self->_filename_lists_post_filter->({filenames => $b->{'results'}, bucket => $name, host => $id,})}) . "\n";
+        my $name = $bucket->{name};
+        $file_lists_text .= $host_uc . "_" . $name . " =" . join("", map { " $_" } @{$self->_filename_lists_post_filter->({filenames => $bucket->{'results'}, bucket => $name, host => $id,})}) . "\n";
     }
 
     if ($id ne "common")
