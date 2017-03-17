@@ -13,33 +13,23 @@
 </define-tag>
 
 <define-tag latemp_html_doctype_xhtml11>
-<!DOCTYPE
-    html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 </define-tag>
 
 <define-tag latemp_html_doctype_xhtml10_strict>
-<!DOCTYPE html
-     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 </define-tag>
 
 <define-tag latemp_html_doctype_xhtml10_trans>
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 </define-tag>
 
 <define-tag latemp_html_doctype_xhtml11_mathml>
-<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
-    "http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN" "http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd">
 </define-tag>
 
 <define-tag latemp_html_doctype_xhtml11_mathml_svg>
-<!DOCTYPE html PUBLIC
-    "-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN"
-    "http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN" "http://www.w3.org/2002/04/xhtml-math-svg/xhtml-math-svg.dtd">
 </define-tag>
 
 <define-tag latemp_html_doctype_xhtml_and_rdfa_1_0>
