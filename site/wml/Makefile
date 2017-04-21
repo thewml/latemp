@@ -44,3 +44,6 @@ upload: all
 upload_beta: all
 	cd $(ALL_DEST_BASE)/mysite && \
 	$(RSYNC) * $(UPLOAD_TARGET)/__Beta-Site/
+
+test: all
+	prove Tests/*.t
