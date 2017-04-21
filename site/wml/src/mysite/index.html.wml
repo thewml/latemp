@@ -39,9 +39,9 @@ set it up and give it a try.
 <p>
 The title of this section is purposely risking
 <a href="https://en.wikipedia.org/wiki/Betteridge's_law_of_headlines">Betteridge’s
-Law of Headlines</a> and accordingly the short answer as of 2016 is “probably
+Law of Headlines</a>, and accordingly the short answer as of 2016 is “probably
 not”. As I like to say, “every self-respecting programmer has written at
-least one static site generator” since writing a basic one is easy and often
+least one static site generator”, since writing a basic one is easy and often
 tends to be easier than learning an existing one. Many programmers who wrote
 one decided to release it as “shrinkwrap” software (usually under an open
 source licence) and <a href="https://staticsitegenerators.net/">the Static
