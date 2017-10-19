@@ -90,7 +90,7 @@ my $builder = Module::Build->new(
     {
         resources =>
         {
-            repository => "http://bitbucket.org/shlomif/latemp",
+            repository => "https://github.com/thewml/latemp",
             homepage => "http://web-cpan.shlomifish.org/latemp/",
         },
         keywords =>
