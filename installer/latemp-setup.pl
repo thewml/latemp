@@ -6,68 +6,68 @@ use warnings;
 use Getopt::Long;
 use File::Path;
 use Pod::Usage;
+use Path::Tiny qw/ path /;
 use YAML qw();
 
 my $version = "<<<VERSION>>>";
-my $prefix = "<<<PREFIX>>>";
+my $prefix  = "<<<PREFIX>>>";
 
 my $theme;
 my $project_dir;
-my $host = "mysite";
-my $author = "John Smith";
+my $host     = "mysite";
+my $author   = "John Smith";
 my $language = "en-US";
 my $encoding = "utf-8";
 my $remote_path;
 
 my $help = 0;
-my $man = 0;
+my $man  = 0;
 
 GetOptions(
-    "theme=s" => \$theme,
-    "dir=s" => \$project_dir,
-    "host=s", => \$host,
-    "author=s" => \$author,
-    "lang=s" => \$language,
-    "encoding=s" => \$encoding,
+    "theme=s"       => \$theme,
+    "dir=s"         => \$project_dir,
+    "host=s",       => \$host,
+    "author=s"      => \$author,
+    "lang=s"        => \$language,
+    "encoding=s"    => \$encoding,
     "remote-path=s" => \$remote_path,
-    'help|h|?' => \$help,
-    'man' => \$man
+    'help|h|?'      => \$help,
+    'man'           => \$man
 ) or pod2usage(2);
 
 pod2usage(1) if $help;
-pod2usage(-exitstatus => 0, -verbose => 2) if $man;
+pod2usage( -exitstatus => 0, -verbose => 2 ) if $man;
 
 my $host_uc = uc($host);
 
-if (!defined($theme))
+if ( !defined($theme) )
 {
     die "You must specify a theme.";
 }
 
-if (!defined($project_dir))
+if ( !defined($project_dir) )
 {
     die "You must specify a project directory.";
 }
 
-if (!defined($remote_path))
+if ( !defined($remote_path) )
 {
     die "You must specify a remote path.";
 }
 
-if (-e $project_dir)
+if ( -e $project_dir )
 {
-    die "The directory $project_dir already exists! Cannot overwrite " .
-        "existing directory.";
+    die "The directory $project_dir already exists! Cannot overwrite "
+        . "existing directory.";
 }
 
-mkpath($project_dir, 0, 0755);
+mkpath($project_dir);
 
 # If mkpath did not suceeed it will throw an exception
 
 my $current_file;
 $current_file = "$project_dir/gen-helpers.pl";
-open O, ">", $current_file;
-print O <<"EOF";
+path($current_file)->spew_utf8(<<"EOF");
 #!/usr/bin/perl
 
 use strict;
@@ -94,13 +94,9 @@ my \$generator =
 1;
 EOF
 
-close(O);
+chmod oct('0755'), $current_file;
 
-
-chmod 0755, $current_file;
-
-open O, ">", "$project_dir/gen-feeds.pl";
-print O <<'EOF';
+path("$project_dir/gen-feeds.pl")->spew_utf8(<<'EOF');
 #!/usr/bin/perl
 
 use strict;
@@ -120,12 +116,10 @@ $news_manager->generate_rss_feed(
 
 1;
 EOF
-close(O);
 
 $current_file = "$project_dir/template.wml";
 
-open O, ">", $current_file;
-print O <<"EOF";
+path($current_file)->spew_utf8(<<"EOF");
 # Read all the latemp macros
 #include "latemp/latemp-prelude.wml"
 
@@ -150,12 +144,9 @@ print O <<"EOF";
 </latemp_affiliations_buttons>
 EOF
 
-close(O);
-
 $current_file = "$project_dir/Makefile";
 
-open O, ">", $current_file;
-print O <<"EOF";
+path($current_file)->spew_utf8(<<"EOF");
 
 RSYNC = rsync --progress --verbose --rsh=ssh
 
@@ -196,14 +187,11 @@ upload: all
 	\$(RSYNC) -r * $remote_path
 EOF
 
-close(O);
-
-mkpath("$project_dir/lib", 0, 0775);
+mkpath("$project_dir/lib");
 
 $current_file = "$project_dir/lib/MyNavData.pm";
 
-open O, ">", $current_file;
-print O <<"EOF";
+path($current_file)->spew_utf8(<<"EOF");
 package MyNavData;
 
 use strict;
@@ -277,10 +265,7 @@ sub get_params
 1;
 EOF
 
-close(O);
-
-open O, ">", "$project_dir/lib/MyManageNews.pm";
-print O <<"EOF";
+path("$project_dir/lib/MyManageNews.pm")->spew_utf8(<<"EOF");
 package MyManageNews;
 
 use base 'Exporter';
@@ -338,10 +323,8 @@ sub gen_news_manager
 
 1;
 EOF
-close(O);
 
-open O, ">", "$project_dir/lib/MyNavLinks.pm";
-print O <<'EOF';
+path("$project_dir/lib/MyNavLinks.pm")->spew_utf8(<<'EOF');
 package MyNavLinks;
 
 use base 'HTML::Latemp::NavLinks::GenHtml::Text';
@@ -349,12 +332,9 @@ use base 'HTML::Latemp::NavLinks::GenHtml::Text';
 1;
 EOF
 
-close(O);
-
-mkpath("$project_dir/src/common", 0, 0755);
-mkpath("$project_dir/src/$host", 0, 0755);
-open O, ">", "$project_dir/src/common/style.css";
-print O <<"EOF";
+mkpath("$project_dir/src/common");
+mkpath("$project_dir/src/$host");
+path("$project_dir/src/common/style.css")->spew_utf8(<<"EOF");
 /*
     CSS Stylesheet for better-scm.berlios.de
     Copyright (c) Shlomi Fish, 2003-2005
@@ -526,10 +506,7 @@ pre
 }
 EOF
 
-close(O);
-
-open O, ">", "$project_dir/src/common/print.css";
-print O <<"EOF";
+path("$project_dir/src/common/print.css")->spew_utf8(<<"EOF");
 .navbar
 {
     display: none;
@@ -597,10 +574,8 @@ pre
     border : none;
 }
 EOF
-close(O);
 
-open O, ">", "$project_dir/src/$host/index.html.wml";
-print O <<"EOF";
+path("$project_dir/src/$host/index.html.wml")->spew_utf8(<<"EOF");
 #include "template.wml"
 
 <latemp_subject "My Subject" />
@@ -608,10 +583,7 @@ print O <<"EOF";
 
 EOF
 
-close(O);
-
-open O, ">", "$project_dir/src/$host/about.html.wml";
-print O <<"EOF";
+path("$project_dir/src/$host/about.html.wml")->spew_utf8(<<"EOF");
 #include "template.wml"
 
 <latemp_subject "About this site" />
@@ -624,10 +596,7 @@ it to about/index.html.wml.
 
 EOF
 
-close(O);
-
-open O, ">", "$project_dir/src/$host/links.html.wml";
-print O <<"EOF";
+path("$project_dir/src/$host/links.html.wml")->spew_utf8(<<"EOF");
 #include "template.wml"
 
 <latemp_subject "Links" />
@@ -645,25 +614,19 @@ print O <<"EOF";
 </ul>
 EOF
 
-close(O);
+path("$project_dir/unchanged")->spew_utf8("");
 
-open O, ">", "$project_dir/unchanged";
-print O "";
-close(O);
-
-my $latemp_params =
-{
+my $latemp_params = {
     'version' => $version,
-    'prefix' => $prefix,
-    'program' =>
-    {
-        'name' => "Latemp",
+    'prefix'  => $prefix,
+    'program' => {
+        'name'   => "Latemp",
         'author' => "Shlomi Fish",
     },
     'versioning_scheme' => 0,
 };
 
-YAML::DumpFile("$project_dir/params-latemp.yml", $latemp_params);
+YAML::DumpFile( "$project_dir/params-latemp.yml", $latemp_params );
 
 print STDERR "Successfully Created Latemp Project.\n";
 
