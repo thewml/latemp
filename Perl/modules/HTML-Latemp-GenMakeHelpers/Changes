@@ -1,5 +1,8 @@
 Revision history for HTML-Latemp-GenMakeHelpers
 
+0.5.2   2017-12-25
+    - Try to fix the $VERSION.
+
 0.5.1   2017-12-25
     - Remove trailing blank lines.
 
