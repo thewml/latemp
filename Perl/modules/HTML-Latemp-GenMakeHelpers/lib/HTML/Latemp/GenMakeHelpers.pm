@@ -5,8 +5,6 @@ use warnings;
 
 use 5.008;
 
-our $VERSION = 'v0.5.0';
-
 package HTML::Latemp::GenMakeHelpers::Base;
 
 sub new
