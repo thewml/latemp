@@ -460,7 +460,6 @@ X8X_COMMON_DOCS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_DOCS))
 \$(X8X_DEST): unchanged
 	mkdir -p \$@
 	touch \$@
-
 EOF
 }
 
@@ -538,7 +537,3 @@ This program is free software; you can redistribute it and/or modify it
 under the MIT X11 License.
 
 =cut
-
-
-
-
