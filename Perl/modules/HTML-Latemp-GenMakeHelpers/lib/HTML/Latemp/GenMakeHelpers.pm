@@ -173,8 +173,8 @@ sub process_all
 
     my @hosts = @{$self->hosts()};
 
-    open my $file_lists_fh, ">", "include.mak";
-    open my $rules_fh, ">", "rules.mak";
+    open my $file_lists_fh, ">", $self->_calc_out_path("include.mak");
+    open my $rules_fh, ">", $self->_calc_out_path("rules.mak");
 
     print {$rules_fh} "COMMON_SRC_DIR = " . $self->_hosts_id_map()->{'common'}->{'source_dir'} . "\n\n";
 
