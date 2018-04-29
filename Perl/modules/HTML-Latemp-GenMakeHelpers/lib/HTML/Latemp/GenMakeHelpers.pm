@@ -104,6 +104,9 @@ An example for it is:
 
 (This parameter was added in version 0.5.0 of this module.)
 
+An optional parameter is C<'out_dir'> which is the path to the output directory
+of the *.mak files. By default, they get output locally. It was added in version v0.6.0.
+
 =head2 $generator->process_all()
 
 Process all hosts.
@@ -116,11 +119,11 @@ our @ISA=(qw(HTML::Latemp::GenMakeHelpers::Base));
 use File::Find::Rule;
 use File::Basename;
 
-use Class::XSAccessor accessors => {'_common_buckets' => '_common_buckets', '_base_dir' => 'base_dir', '_filename_lists_post_filter' => '_filename_lists_post_filter', 'hosts' => 'hosts', '_hosts_id_map' => 'hosts_id_map',};
+use Class::XSAccessor accessors => {'_common_buckets' => '_common_buckets', '_base_dir' => 'base_dir', '_filename_lists_post_filter' => '_filename_lists_post_filter', 'hosts' => 'hosts', '_hosts_id_map' => 'hosts_id_map', '_out_dir' => '_out_dir',};
 
 =head2 initialize()
 
-Called by the constructor to initialize the object. Can be sub-classes by
+Called by the constructor to initialize the object. Can be sub-classed by
 derived classes.
 
 =cut
@@ -149,8 +152,18 @@ sub initialize
         );
     $self->_hosts_id_map(+{ map { $_->{'id'} => $_ } @{$self->hosts()}});
     $self->_common_buckets({});
+    $self->_out_dir($args{'out_dir'});
 
     return;
+}
+
+sub _calc_out_path
+{
+    my ($self, $bn) = @_;
+
+    my $out_dir = $self->_out_dir;
+
+    return $out_dir ? File::Spec->catfile($out_dir, $bn) : $bn;
 }
 
 sub process_all
