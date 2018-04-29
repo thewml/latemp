@@ -105,7 +105,7 @@ An example for it is:
 (This parameter was added in version 0.5.0 of this module.)
 
 An optional parameter is C<'out_dir'> which is the path to the output directory
-of the *.mak files. By default, they get output locally. It was added in version v0.6.0.
+of the *.mak files. By default, they get output locally. It was added in version v0.6.1.
 
 =head2 $generator->process_all()
 
