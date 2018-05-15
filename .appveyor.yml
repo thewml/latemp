@@ -6,6 +6,7 @@ install:
     - choco install strawberryperl
     - copy c:\Python35-x64\python.exe c:\Python35-x64\python3.exe
     - SET PATH=C:\Python35-x64;C:\strawberry\c\bin;C:\strawberry\perl\site\bin;C:\strawberry\perl\bin;%PATH%
+    - if not exist C:\_P5 mkdir C:\_P5
     - perl -v
     - copy C:\msys64\mingw64\bin\mingw32-make.exe C:\msys64\mingw64\bin\make.exe
     - SET PATH=C:\strawberry\c\bin;C:\strawberry\perl\site\bin;C:\strawberry\perl\bin;%PATH%
