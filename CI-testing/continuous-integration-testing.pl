@@ -16,6 +16,10 @@ sub do_system
     }
 }
 
+my $IS_WIN = ($^O eq "MSWin32");
+my $SEP = $IS_WIN ? "\\" : '/';
+my $MAKE = $IS_WIN ? 'gmake' : 'make';
+
 my $cmd = shift@ARGV;
 
 # do_system({cmd => ["cd black-hole-solitaire/ && mkdir B && cd B && ../c-solver/Tatzer && make && $^X ../c-solver/run-tests.pl"]});
@@ -31,11 +35,12 @@ my @dzil_dirs =
     'Perl/modules/Template-Preprocessor-TTML',
 );
 
+my $CPAN = sprintf('%scpanm', ($IS_WIN ? '' : 'sudo '));
 if ($cmd eq 'install_deps')
 {
     foreach my $d (@dzil_dirs)
     {
-        do_system({cmd => ["cd $d && (dzil authordeps --missing | sudo cpanm) && (dzil listdeps --author --missing | sudo cpanm)"]});
+        do_system({cmd => ["cd $d && (dzil authordeps --missing | $CPAN) && (dzil listdeps --author --missing | $CPAN)"]});
     }
 }
 elsif ($cmd eq 'test')
