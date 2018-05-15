@@ -24,6 +24,7 @@ test_script:
     - set LD_LIBRARY_PATH=C:\libtap\lib
     - set CPATH=C:\libtap\include
     - set PATH=C:\libtap\bin;%PATH%
+    - set PATH=C:\strawberry\c\bin;C:\strawberry\perl\site\bin;C:\strawberry\perl\bin;%PATH%
     - set HARNESS_BREAK=1
     - perl CI-testing/continuous-integration-testing.pl test
 cache:
