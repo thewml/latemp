@@ -27,7 +27,7 @@ test_script:
     - set HARNESS_BREAK=1
     - perl CI-testing/continuous-integration-testing.pl test
 cache:
-    - C:\libtap -> appveyor.yml
-    - C:\_P5 -> appveyor.yml
-    - C:\strawberry -> appveyor.yml
+    - C:\libtap -> .appveyor.yml
+    - C:\_P5 -> .appveyor.yml
+    - C:\strawberry -> .appveyor.yml
 shallow_clone: true
