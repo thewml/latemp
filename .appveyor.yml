@@ -15,6 +15,9 @@ install:
     - SET PERL_MM_OPT=INSTALL_BASE=C:/_P5
     - perl -v
     - cpanm --notest Dist::Zilla IO::All Test::Differences Test::Trap Env::Path Games::Solitaire::Verify::Solution Inline::C Inline Pod::Coverage::TrustPod Pod::Weaver::Section::Support Pod::Xhtml Test::CPAN::Changes Test::Pod::Coverage Test::Pod Test::TrailingSpace
+    - cd Perl/modules/HTML-Latemp-GenMakeHelpers
+    - dzil authordeps --missing | cpanm -n
+    - cd ..\..\..
     - perl CI-testing\continuous-integration-testing.pl install_deps
 build: off
 test_script:
