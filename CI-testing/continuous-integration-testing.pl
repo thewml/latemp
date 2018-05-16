@@ -20,6 +20,11 @@ my $IS_WIN = ($^O eq "MSWin32");
 my $SEP = $IS_WIN ? "\\" : '/';
 my $MAKE = $IS_WIN ? 'gmake' : 'make';
 
+my $cmake_gen;
+if ($IS_WIN)
+{
+    $cmake_gen = 'MSYS Makefiles';
+}
 my $cmd = shift@ARGV;
 
 # do_system({cmd => ["cd black-hole-solitaire/ && mkdir B && cd B && ../c-solver/Tatzer && make && $^X ../c-solver/run-tests.pl"]});
@@ -49,7 +54,7 @@ elsif ($cmd eq 'test')
     {
         do_system({cmd => ["cd $d && (dzil smoke --release --author)"]});
     }
-    do_system({cmd => ["cd installer/ && mkdir B && cd B && cmake .. && $MAKE"]});
+    do_system({cmd => ["cd installer/ && mkdir B && cd B && cmake " . (defined($cmake_gen) ? qq#-G "$cmake_gen"# : "") . " .. && $MAKE"]});
 }
 else
 {
