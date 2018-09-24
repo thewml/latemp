@@ -1,3 +1,8 @@
+Changes from 0.10.0 to 0.10.1:
+------------------------------
+
+* Convert an HTML entity to its utf8 character (for validation).
+
 Changes from 0.6.0 to 0.10.0:
 -----------------------------
 
