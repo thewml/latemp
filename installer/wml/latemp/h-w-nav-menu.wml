@@ -116,7 +116,8 @@ foreach my $key (@keys)
 
 <define-tag latemp_get_breadcrumbs_trail_unconditionally>
 <:{
-    print $leading_path_string;
+    use Text::WrapAsUtf8 qw/ print_utf8 /;
+    print_utf8( $leading_path_string );
 }:>
 </define-tag>
 

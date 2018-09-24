@@ -40,9 +40,10 @@ my $render_leading_path_component = sub {
 };
 
 use vars qw($leading_path_string);
+use utf8;
 
 $leading_path_string =
-    join(" &rarr; ",
+    join(" → ",
         (map
         { $render_leading_path_component->($_) }
         @$leading_path
