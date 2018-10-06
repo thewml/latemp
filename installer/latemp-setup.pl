@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
 use strict;
 use warnings;
@@ -68,7 +68,7 @@ mkpath($project_dir);
 my $current_file;
 $current_file = "$project_dir/gen-helpers.pl";
 path($current_file)->spew_utf8(<<"EOF");
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
 use strict;
 use warnings;
@@ -97,7 +97,7 @@ EOF
 chmod oct('0755'), $current_file;
 
 path("$project_dir/gen-feeds.pl")->spew_utf8(<<'EOF');
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
 use strict;
 use warnings;
