@@ -69,10 +69,10 @@ $(SRC_DIRS_DEST) : $(SRC_DEST)/% :
 	touch $@
 
 $(SRC_IMAGES_DEST) : $(SRC_DEST)/% : $(SRC_SRC_DIR)/%
-	cp -f $< $@
+	$(call LATEMP_COPY)
 
 $(SRC_COMMON_IMAGES_DEST) : $(SRC_DEST)/% : $(COMMON_SRC_DIR)/%
-	cp -f $< $@
+	$(call LATEMP_COPY)
 
 $(SRC_COMMON_TTMLS_DEST) : $(SRC_DEST)/% : $(COMMON_SRC_DIR)/%.ttml $(TTMLS_COMMON_DEPS)
 	ttml -o $@ $(SRC_TTML_FLAGS) -DLATEMP_FILENAME=$(patsubst $(SRC_DEST)/%,%,$(patsubst %.ttml,%,$@)) $<
@@ -169,10 +169,10 @@ $(SRC_DIRS_DEST) : $(SRC_DEST)/% :
 	touch $@
 
 $(SRC_IMAGES_DEST) : $(SRC_DEST)/% : $(SRC_SRC_DIR)/%
-	cp -f $< $@
+	$(call LATEMP_COPY)
 
 $(SRC_COMMON_IMAGES_DEST) : $(SRC_DEST)/% : $(COMMON_SRC_DIR)/%
-	cp -f $< $@
+	$(call LATEMP_COPY)
 
 $(SRC_COMMON_TTMLS_DEST) : $(SRC_DEST)/% : $(COMMON_SRC_DIR)/%.ttml $(TTMLS_COMMON_DEPS)
 	ttml -o $@ $(SRC_TTML_FLAGS) -DLATEMP_FILENAME=$(patsubst $(SRC_DEST)/%,%,$(patsubst %.ttml,%,$@)) $<

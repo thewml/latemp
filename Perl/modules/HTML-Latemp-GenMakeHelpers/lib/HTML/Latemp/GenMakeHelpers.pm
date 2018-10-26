@@ -453,10 +453,10 @@ X8X_COMMON_DOCS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_DOCS))
 	touch \$@
 
 \$(X8X_IMAGES_DEST) : $h_dest_star : \$(X8X_SRC_DIR)/%
-	cp -f \$< \$@
+	\$(call LATEMP_COPY)
 
 \$(X8X_COMMON_IMAGES_DEST) : $h_dest_star : \$(COMMON_SRC_DIR)/%
-	cp -f \$< \$@
+	\$(call LATEMP_COPY)
 
 \$(X8X_COMMON_TTMLS_DEST) : $h_dest_star : \$(COMMON_SRC_DIR)/%.ttml \$(TTMLS_COMMON_DEPS)
 	ttml -o \$@ \$(X8X_TTML_FLAGS) -DLATEMP_FILENAME=\$(patsubst $h_dest_star,%,\$(patsubst %.ttml,%,\$@)) \$<
