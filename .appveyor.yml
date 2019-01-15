@@ -16,6 +16,7 @@ install:
     - SET PERL_MB_OPT=--install_base C:/Perl5
     - SET PERL_MM_OPT=INSTALL_BASE=C:/Perl5
     - cpanm --notest Dist::Zilla IO::All Test::Differences Test::Trap Env::Path Games::Solitaire::Verify::Solution Inline::C Inline Pod::Coverage::TrustPod Pod::Weaver::Section::Support Pod::Xhtml Test::CPAN::Changes Test::Pod::Coverage Test::Pod Test::TrailingSpace
+    - cpam --verbose Test::Code::TidyAll
     - perl CI-testing\continuous-integration-testing.pl install_deps
 build: off
 test_script:
