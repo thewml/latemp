@@ -36,7 +36,6 @@ src="$(ROOT)/images/rss2feed.png"
 alt="RSS Feed" class="bless" style="margin-top:1em"
 title="Receive Site Updates using an RSS Reader" /></a>
 </p>
-<affil_collection_berlios />
 </latemp_affiliations_buttons>
 
 <latemp_extra_head_elements>

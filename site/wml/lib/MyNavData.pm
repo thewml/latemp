@@ -9,7 +9,7 @@ my $hosts =
 {
     'mysite' =>
     {
-        'base_url' => "http://web-cpan.berlios.de/latemp/",
+        'base_url' => "https://web-cpan.shlomifish.org/latemp/",
     },
 };
 

@@ -65,7 +65,7 @@ sub gen_news_manager
         HTML::Latemp::News->new(
             'news_items' => \@news_items,
             'title' => "Latemp News",
-            'link' => "http://web-cpan.berlios.de/latemp/",
+            'link' => "https://web-cpan.shlomifish.org/latemp/",
             'language' => "en-US",
             'copyright' => "Copyright by Shlomi Fish, (c) 2005",
             'webmaster' => "Shlomi Fish <shlomif\@iglu.org.il>",
