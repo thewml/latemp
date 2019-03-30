@@ -3,7 +3,7 @@ package HTML::Latemp::News;
 use warnings;
 use strict;
 
-use 5.008;
+use 5.014;
 
 =head1 NAME
 
@@ -60,7 +60,7 @@ web frameworks)
 
 package HTML::Latemp::News::Base;
 
-use CGI;
+use CGI ();
 
 sub new
 {
@@ -285,6 +285,30 @@ sub managing_editor
     }
 
     return $self->{managing_editor};
+}
+
+sub lastBuildDate
+{
+    my $self = shift;
+
+    if (@_)
+    {
+        $self->{lastBuildDate} = shift;
+    }
+
+    return $self->{lastBuildDate};
+}
+
+sub pubDate
+{
+    my $self = shift;
+
+    if (@_)
+    {
+        $self->{pubDate} = shift;
+    }
+
+    return $self->{pubDate};
 }
 
 sub rating
@@ -526,14 +550,15 @@ sub generate_rss_feed
 
     my $rss_feed = XML::RSS->new( 'version' => "2.0" );
     $rss_feed->channel(
-        'title'          => $self->title(),
-        'link'           => $self->link(),
-        'language'       => $self->language(),
-        'description'    => $self->description(),
-        'rating'         => $self->rating(),
-        'copyright'      => $self->copyright(),
-        'pubDate'        => ( scalar( localtime() ) ),
-        'lastBuildDate'  => ( scalar( localtime() ) ),
+        'title'       => $self->title(),
+        'link'        => $self->link(),
+        'language'    => $self->language(),
+        'description' => $self->description(),
+        'rating'      => $self->rating(),
+        'copyright'   => $self->copyright(),
+        'pubDate'     => ( $self->pubDate // ( scalar( localtime() ) ) ),
+        'lastBuildDate' =>
+            ( $self->lastBuildDate // ( scalar( localtime() ) ) ),
         'docs'           => $self->docs(),
         'ttl'            => $self->ttl(),
         'generator'      => $self->generator(),
