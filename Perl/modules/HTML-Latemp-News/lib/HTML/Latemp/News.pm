@@ -402,6 +402,15 @@ sub initialize
     $self->managing_editor( $args{'managing_editor'} || $self->webmaster() );
     $self->description( $args{'description'} );
 
+    if ( defined( my $date = delete $args{lastBuildDate} ) )
+    {
+        $self->lastBuildDate($date);
+    }
+    if ( defined( my $date = delete $args{pubDate} ) )
+    {
+        $self->pubDate($date);
+    }
+
     return 0;
 }
 
