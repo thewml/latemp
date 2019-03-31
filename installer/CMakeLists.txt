@@ -13,15 +13,9 @@ SET (MYPREFIX "${CMAKE_INSTALL_PREFIX}")
 # MESSAGE (FATAL_ERROR "MYPREFIX = <<${MYPREFIX}>>")
 STRING (LENGTH "${MYPREFIX}" MYPREFIX_LEN)
 
-SET (WML_LIB_DIR_BASE "lib")
-
-SET (WML_LIB_DIR "${WML_LIB_DIR_BASE}/wml")
-SET (WML_DATA_DIR "${WML_LIB_DIR}/data")
-SET (WML_LIBEXE_DIR "${WML_LIB_DIR}/exec/")
-
 # This is the equivalent to perform a "make dist"/"make distdir" etc.
 SET(CPACK_PACKAGE_NAME "latemp")
-SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "The Latemp Offline Content Management System")
+SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "The Latemp Static Site Generator")
 SET(CPACK_PACKAGE_VENDOR "Shlomi Fish")
 SET(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_CURRENT_SOURCE_DIR}/README")
 SET(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/COPYING")
@@ -71,8 +65,8 @@ IF(WIN32 AND NOT UNIX)
     # SET(CPACK_PACKAGE_ICON "${CMAKE_SOURCE_DIR}\\\\dondorf-king.bmp")
     SET(CPACK_NSIS_INSTALLED_ICON_NAME "bin\\\\wml.exe")
     SET(CPACK_NSIS_HELP_LINK "http:\\\\\\\\thewml.org")
-    SET(CPACK_NSIS_URL_INFO_ABOUT "http:\\\\\\\\thewml.org")
-    SET(CPACK_NSIS_DISPLAY_NAME "Website Meta Language")
+    SET(CPACK_NSIS_URL_INFO_ABOUT "http:\\\\\\\\web-cpan.shlomifish.org\\\\latemp")
+    SET(CPACK_NSIS_DISPLAY_NAME "Latemp")
     SET(CPACK_NSIS_CONTACT "shlomif@cpan.org")
     SET(CPACK_NSIS_MODIFY_PATH ON)
     # Setting for NSIS :
@@ -130,7 +124,7 @@ SET (WML_FILES
     "utils.wml"
 )
 
-SET (latemp_dest  "lib/wml/include/latemp")
+SET (latemp_dest  "share/wml/include/latemp")
 
 FOREACH (wml_file ${WML_FILES})
     INSTALL (

@@ -1,6 +1,6 @@
 <define-tag latemp_news_get_news_page_entries>
 <:{
-use MyManageNews;
+use MyManageNews qw/ get_news_manager /;
 
 my $news_manager = get_news_manager();
 
@@ -10,11 +10,10 @@ print $news_manager->get_news_page_entries();
 
 <define-tag latemp_news_get_news_box_contents>
 <:{
-use MyManageNews;
+use MyManageNews qw/ get_news_manager /;
 
 my $news_manager = get_news_manager();
 
 print $news_manager->get_news_box_contents();
 }:>
 </define-tag>
-

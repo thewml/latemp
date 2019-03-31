@@ -3,11 +3,11 @@
 use strict;
 use warnings;
 
-use Getopt::Long;
-use File::Path;
-use Pod::Usage;
+use Getopt::Long qw/ GetOptions /;
+use File::Path qw/ mkpath /;
+use Pod::Usage qw/ pod2usage /;
 use Path::Tiny qw/ path /;
-use YAML qw();
+use YAML ();
 
 my $version = "<<<VERSION>>>";
 my $prefix  = "<<<PREFIX>>>";
@@ -102,8 +102,8 @@ path("$project_dir/gen-feeds.pl")->spew_utf8(<<'EOF');
 use strict;
 use warnings;
 
-use MyManageNews;
-use Getopt::Long;
+use MyManageNews qw/ get_news_manager /;
+use Getopt::Long qw/ GetOptions /;
 
 my $rss2_out = "dest/rss.xml";
 GetOptions ("rss2-out=s" => \$rss2_out);
@@ -317,7 +317,7 @@ sub gen_news_manager
         {
             \$news_manager = gen_news_manager();
         }
-        return \$news_manager;
+    return \$news_manager;
     }
 }
 
@@ -705,5 +705,3 @@ http://web-cpan.berlios.de/latemp/
 Shlomi Fish <shlomif@iglu.org.il>
 
 =cut
-
-
