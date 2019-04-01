@@ -109,7 +109,7 @@ generator.
 <h2>News</h2>
 
 <:{
-use MyManageNews;
+use MyManageNews qw/ get_news_manager /;
 
 my $news_manager = get_news_manager();
 

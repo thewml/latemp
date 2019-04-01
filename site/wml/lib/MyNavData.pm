@@ -3,78 +3,71 @@ package MyNavData;
 use strict;
 use warnings;
 
-use MyManageNews;
+use MyManageNews qw/ get_news_manager /;
 
-my $hosts =
-{
-    'mysite' =>
-    {
+my $hosts = {
+    'mysite' => {
         'base_url' => "https://web-cpan.shlomifish.org/latemp/",
     },
 };
 
 my $news_manager = get_news_manager();
 
-my $tree_contents =
-{
-    'host' => "mysite",
-    'text' => "Latemp",
+my $tree_contents = {
+    'host'  => "mysite",
+    'text'  => "Latemp",
     'title' => "The Latemp Content Management System",
-    'subs' =>
-    [
+    'subs'  => [
         {
             'text' => "Home",
-            'url' => "",
+            'url'  => "",
         },
         {
             'text' => "About",
-            'url' => "about/",
+            'url'  => "about/",
         },
         {
             'text' => "News",
-            'url' => "news/",
+            'url'  => "news/",
             'subs' =>
-            [
-                @{$news_manager->get_navmenu_items('num_items' => 5)},
-            ],
+                [ @{ $news_manager->get_navmenu_items( 'num_items' => 5 ) }, ],
         },
         {
-            'text' => "Download",
-            'url' => "download/",
+            'text'  => "Download",
+            'url'   => "download/",
             'title' => "How to Download the Software.",
         },
         {
             'text' => "Documentation",
-            'url' => "docs/",
+            'url'  => "docs/",
         },
         {
-            'text' => "Examples",
-            'url' => "examples/",
+            'text'  => "Examples",
+            'url'   => "examples/",
             'title' => "Complete Example Sites",
         },
         {
-            'text' => "Graphics",
-            'url' => "graphics/",
+            'text'  => "Graphics",
+            'url'   => "graphics/",
             'title' => "Latemp Buttons, Logos and other Graphics",
         },
         {
             'separator' => 1,
-            'skip' => 1,
+            'skip'      => 1,
         },
         {
             'text' => "Links",
-            'url' => "links/",
+            'url'  => "links/",
         },
     ],
 };
 
 sub get_params
 {
-    return
-        (
-            'hosts' => $hosts,
-            'tree_contents' => $tree_contents,
-        );
+    return (
+        'hosts'         => $hosts,
+        'tree_contents' => $tree_contents,
+    );
 }
 
 1;
