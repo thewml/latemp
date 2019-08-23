@@ -5,8 +5,8 @@
 </define-tag>
 
 <define-tag latemp_html_head_stylesheets>
-<link rel="stylesheet" href="<latemp_default_val "<get-var latemp_screen_stylesheet_url />" "$(ROOT)/style.css" />" type="text/css" media="screen" title="Normal" />
-<link rel="stylesheet" href="<latemp_default_val "<get-var latemp_print_stylesheet_url />" "$(ROOT)/print.css" />" type="text/css" media="print" />
+<link rel="stylesheet" href="<latemp_default_val "<get-var latemp_screen_stylesheet_url />" "$(ROOT)/style.css" />" <when <not <latemp_is_xhtml5 /> /> > type="text/css"</when> media="screen" title="Normal" />
+<link rel="stylesheet" href="<latemp_default_val "<get-var latemp_print_stylesheet_url />" "$(ROOT)/print.css" />" <when <not <latemp_is_xhtml5 /> /> > type="text/css"</when> media="print" />
 </define-tag>
 
 <define-tag latemp_xhtml5_meta_charset_elem>
