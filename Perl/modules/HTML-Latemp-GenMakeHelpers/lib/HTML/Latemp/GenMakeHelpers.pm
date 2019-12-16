@@ -2,8 +2,8 @@ package HTML::Latemp::GenMakeHelpers;
 
 use strict;
 use warnings;
-
-use 5.008;
+use autodie;
+use 5.014;
 
 package HTML::Latemp::GenMakeHelpers::Base;
 
