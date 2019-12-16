@@ -10,27 +10,26 @@ use File::Spec ();
 use HTML::Latemp::GenMakeHelpers ();
 
 {
-my $finder = HTML::Latemp::GenMakeHelpers->new(
-    'hosts' =>
-    [
-        {
-            'id' => "src",
-            'source_dir' => "t/sample-data/sample-site-1",
-            'dest_dir' => "\$(HELLO)/src",
-        },
-    ],
-);
+    my $finder = HTML::Latemp::GenMakeHelpers->new(
+        'hosts' => [
+            {
+                'id'         => "src",
+                'source_dir' => "t/sample-data/sample-site-1",
+                'dest_dir'   => "\$(HELLO)/src",
+            },
+        ],
+    );
 
-my $host_outputs = $finder->process_host($finder->hosts()->[0]);
+    my $host_outputs = $finder->process_host( $finder->hosts()->[0] );
 
-my $file_lists_expected = <<"EOF";
+    my $file_lists_expected = <<"EOF";
 SRC_IMAGES = images/arrow-left-disabled.png images/arrow-left.png images/arrow-right-disabled.png images/arrow-right.png images/arrow-up-disabled.png images/arrow-up.png images/berlios-logo.png images/better-scm-logo.png images/get-firefox.png images/logo-wml.png images/somerights20.png images/valid-css.png images/valid-xhtml10.png images/valid-xhtml11.png print.css style.css subversion/Subversion-Win32-Installation-Guide.txt
 SRC_DIRS = alternatives arch docs images irc site-map source subversion
 SRC_DOCS = alternatives/index.html arch/index.html docs/index.html docs/nice_trys.html docs/shlomif-evolution.html index.html irc/index.html links.html mailing-list.html site-map/index.html source/index.html subversion/Svn-Win32-Inst-Guide.html subversion/compelling_alternative.html subversion/index.html
 SRC_TTMLS =
 EOF
 
-my $rules_expected = <<'EOFGALOG';
+    my $rules_expected = <<'EOFGALOG';
 
 SRC_SRC_DIR = t/sample-data/sample-site-1
 
@@ -89,48 +88,47 @@ $(SRC_DEST):
 	touch $@
 EOFGALOG
 
-# TEST
-is ($host_outputs->{'file_lists'}, $file_lists_expected, "File Lists");
+    # TEST
+    is( $host_outputs->{'file_lists'}, $file_lists_expected, "File Lists" );
 
-# TEST
-is_deeply ([split(/\n/, $host_outputs->{'rules'}, -1)],
-    [split(/\n/, $rules_expected, -1)], "Rules");
+    # TEST
+    is_deeply( [ split( /\n/, $host_outputs->{'rules'}, -1 ) ],
+        [ split( /\n/, $rules_expected, -1 ) ], "Rules" );
 }
 
 {
-my $finder = HTML::Latemp::GenMakeHelpers->new(
-    'hosts' =>
-    [
-        {
-            'id' => "src",
-            'source_dir' => "t/sample-data/sample-site-1",
-            'dest_dir' => "\$(HELLO)/src",
+    my $finder = HTML::Latemp::GenMakeHelpers->new(
+        'hosts' => [
+            {
+                'id'         => "src",
+                'source_dir' => "t/sample-data/sample-site-1",
+                'dest_dir'   => "\$(HELLO)/src",
+            },
+        ],
+        filename_lists_post_filter => sub {
+            my ($args) = @_;
+            my $filenames = $args->{filenames};
+            if ( $args->{host} eq 'src' and $args->{bucket} eq 'IMAGES' )
+            {
+                return [ grep { $_ !~ m#arrow-right# } @$filenames ];
+            }
+            else
+            {
+                return $filenames;
+            }
         },
-    ],
-    filename_lists_post_filter => sub {
-        my ($args) = @_;
-        my $filenames = $args->{filenames};
-        if ($args->{host} eq 'src' and $args->{bucket} eq 'IMAGES')
-        {
-            return [ grep { $_ !~ m#arrow-right# } @$filenames ];
-        }
-        else
-        {
-            return $filenames;
-        }
-    },
-);
+    );
 
-my $host_outputs = $finder->process_host($finder->hosts()->[0]);
+    my $host_outputs = $finder->process_host( $finder->hosts()->[0] );
 
-my $file_lists_expected = <<"EOF";
+    my $file_lists_expected = <<"EOF";
 SRC_IMAGES = images/arrow-left-disabled.png images/arrow-left.png images/arrow-up-disabled.png images/arrow-up.png images/berlios-logo.png images/better-scm-logo.png images/get-firefox.png images/logo-wml.png images/somerights20.png images/valid-css.png images/valid-xhtml10.png images/valid-xhtml11.png print.css style.css subversion/Subversion-Win32-Installation-Guide.txt
 SRC_DIRS = alternatives arch docs images irc site-map source subversion
 SRC_DOCS = alternatives/index.html arch/index.html docs/index.html docs/nice_trys.html docs/shlomif-evolution.html index.html irc/index.html links.html mailing-list.html site-map/index.html source/index.html subversion/Svn-Win32-Inst-Guide.html subversion/compelling_alternative.html subversion/index.html
 SRC_TTMLS =
 EOF
 
-my $rules_expected = <<'EOFGALOG';
+    my $rules_expected = <<'EOFGALOG';
 
 SRC_SRC_DIR = t/sample-data/sample-site-1
 
@@ -189,27 +187,26 @@ $(SRC_DEST):
 	touch $@
 EOFGALOG
 
-# TEST
-is ($host_outputs->{'file_lists'}, $file_lists_expected, "File Lists");
+    # TEST
+    is( $host_outputs->{'file_lists'}, $file_lists_expected, "File Lists" );
 
-# TEST
-is_deeply ([split(/\n/, $host_outputs->{'rules'}, -1)],
-    [split(/\n/, $rules_expected, -1)], "Rules");
+    # TEST
+    is_deeply( [ split( /\n/, $host_outputs->{'rules'}, -1 ) ],
+        [ split( /\n/, $rules_expected, -1 ) ], "Rules" );
 }
 {
-    my $DIR = tempdir( CLEANUP => 1);
+    my $DIR    = tempdir( CLEANUP => 1 );
     my $finder = HTML::Latemp::GenMakeHelpers->new(
-        'hosts' =>
-        [
+        'hosts' => [
             {
-                'id' => "common",
+                'id'         => "common",
                 'source_dir' => "t/sample-data/common-1",
-                'dest_dir' => "\$(HELLO)/src",
+                'dest_dir'   => "\$(HELLO)/src",
             },
             {
-                'id' => "src",
+                'id'         => "src",
                 'source_dir' => "t/sample-data/sample-site-1",
-                'dest_dir' => "\$(HELLO)/src",
+                'dest_dir'   => "\$(HELLO)/src",
             },
         ],
         out_dir => $DIR,
@@ -217,46 +214,48 @@ is_deeply ([split(/\n/, $host_outputs->{'rules'}, -1)],
     $finder->process_all();
 
     # TEST
-    ok (scalar (-f File::Spec->catfile($DIR, "include.mak")), "include.mak was written.");
+    ok( scalar( -f File::Spec->catfile( $DIR, "include.mak" ) ),
+        "include.mak was written." );
+
     # TEST
-    ok (scalar (-f File::Spec->catfile($DIR, "rules.mak")), "rules.mak was written.");
+    ok( scalar( -f File::Spec->catfile( $DIR, "rules.mak" ) ),
+        "rules.mak was written." );
 }
 
 {
-my $finder = HTML::Latemp::GenMakeHelpers->new(
-    out_docs_ext => '.tt2',
-    'hosts' =>
-    [
-        {
-            'id' => "src",
-            'source_dir' => "t/sample-data/sample-site-1",
-            'dest_dir' => "\$(HELLO)/src",
+    my $finder = HTML::Latemp::GenMakeHelpers->new(
+        out_docs_ext => '.tt2',
+        'hosts'      => [
+            {
+                'id'         => "src",
+                'source_dir' => "t/sample-data/sample-site-1",
+                'dest_dir'   => "\$(HELLO)/src",
+            },
+        ],
+        filename_lists_post_filter => sub {
+            my ($args) = @_;
+            my $filenames = $args->{filenames};
+            if ( $args->{host} eq 'src' and $args->{bucket} eq 'IMAGES' )
+            {
+                return [ grep { $_ !~ m#arrow-right# } @$filenames ];
+            }
+            else
+            {
+                return $filenames;
+            }
         },
-    ],
-    filename_lists_post_filter => sub {
-        my ($args) = @_;
-        my $filenames = $args->{filenames};
-        if ($args->{host} eq 'src' and $args->{bucket} eq 'IMAGES')
-        {
-            return [ grep { $_ !~ m#arrow-right# } @$filenames ];
-        }
-        else
-        {
-            return $filenames;
-        }
-    },
-);
+    );
 
-my $host_outputs = $finder->process_host($finder->hosts()->[0]);
+    my $host_outputs = $finder->process_host( $finder->hosts()->[0] );
 
-my $file_lists_expected = <<"EOF";
+    my $file_lists_expected = <<"EOF";
 SRC_IMAGES = images/arrow-left-disabled.png images/arrow-left.png images/arrow-up-disabled.png images/arrow-up.png images/berlios-logo.png images/better-scm-logo.png images/get-firefox.png images/logo-wml.png images/somerights20.png images/valid-css.png images/valid-xhtml10.png images/valid-xhtml11.png print.css style.css subversion/Subversion-Win32-Installation-Guide.txt
 SRC_DIRS = alternatives arch docs images irc site-map source subversion
 SRC_DOCS = alternatives/index.html arch/index.html docs/index.html docs/nice_trys.html docs/shlomif-evolution.html index.html irc/index.html links.html mailing-list.html site-map/index.html source/index.html subversion/Svn-Win32-Inst-Guide.html subversion/compelling_alternative.html subversion/index.html
 SRC_TTMLS =
 EOF
 
-my $rules_expected = <<'EOFGALOG';
+    my $rules_expected = <<'EOFGALOG';
 
 SRC_SRC_DIR = t/sample-data/sample-site-1
 
@@ -315,10 +314,10 @@ $(SRC_DEST):
 	touch $@
 EOFGALOG
 
-# TEST
-is ($host_outputs->{'file_lists'}, $file_lists_expected, "File Lists");
+    # TEST
+    is( $host_outputs->{'file_lists'}, $file_lists_expected, "File Lists" );
 
-# TEST
-is_deeply ([split(/\n/, $host_outputs->{'rules'}, -1)],
-    [split(/\n/, $rules_expected, -1)], "Rules");
+    # TEST
+    is_deeply( [ split( /\n/, $host_outputs->{'rules'}, -1 ) ],
+        [ split( /\n/, $rules_expected, -1 ) ], "Rules" );
 }

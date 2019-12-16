@@ -10,7 +10,7 @@ package HTML::Latemp::GenMakeHelpers::Base;
 sub new
 {
     my $class = shift;
-    my $self = {};
+    my $self  = {};
     bless $self, $class;
     $self->initialize(@_);
     return $self;
@@ -18,37 +18,38 @@ sub new
 
 package HTML::Latemp::GenMakeHelpers::HostEntry;
 
-our @ISA=(qw(HTML::Latemp::GenMakeHelpers::Base));
+our @ISA = (qw(HTML::Latemp::GenMakeHelpers::Base));
 
-use Class::XSAccessor accessors => {'dest_dir' => 'dest_dir', 'id' => 'id', 'source_dir' => 'source_dir',};
+use Class::XSAccessor accessors =>
+    { 'dest_dir' => 'dest_dir', 'id' => 'id', 'source_dir' => 'source_dir', };
 
 sub initialize
 {
     my $self = shift;
     my %args = (@_);
 
-    $self->id($args{'id'});
-    $self->source_dir($args{'source_dir'});
-    $self->dest_dir($args{'dest_dir'});
+    $self->id( $args{'id'} );
+    $self->source_dir( $args{'source_dir'} );
+    $self->dest_dir( $args{'dest_dir'} );
 }
 
 package HTML::Latemp::GenMakeHelpers::Error;
 
-our @ISA=(qw(HTML::Latemp::GenMakeHelpers::Base));
+our @ISA = (qw(HTML::Latemp::GenMakeHelpers::Base));
 
 package HTML::Latemp::GenMakeHelpers::Error::UncategorizedFile;
 
-our @ISA=(qw(HTML::Latemp::GenMakeHelpers::Error));
+our @ISA = (qw(HTML::Latemp::GenMakeHelpers::Error));
 
-use Class::XSAccessor accessors => {'file' => 'file', 'host' => 'host',};
+use Class::XSAccessor accessors => { 'file' => 'file', 'host' => 'host', };
 
 sub initialize
 {
     my $self = shift;
     my $args = shift;
 
-    $self->file($args->{'file'});
-    $self->host($args->{'host'});
+    $self->file( $args->{'file'} );
+    $self->host( $args->{'host'} );
 
     return 0;
 }
@@ -118,12 +119,20 @@ Process all hosts.
 =head1 INTERNAL METHODS
 =cut
 
-our @ISA=(qw(HTML::Latemp::GenMakeHelpers::Base));
+our @ISA = (qw(HTML::Latemp::GenMakeHelpers::Base));
 
 use File::Find::Rule ();
 use File::Basename qw/ basename /;
 
-use Class::XSAccessor accessors => {'_common_buckets' => '_common_buckets', '_base_dir' => 'base_dir', '_filename_lists_post_filter' => '_filename_lists_post_filter', 'hosts' => 'hosts', '_hosts_id_map' => 'hosts_id_map', '_out_dir' => '_out_dir', '_out_docs_ext' => '_out_docs_ext',};
+use Class::XSAccessor accessors => {
+    '_common_buckets'             => '_common_buckets',
+    '_base_dir'                   => 'base_dir',
+    '_filename_lists_post_filter' => '_filename_lists_post_filter',
+    'hosts'                       => 'hosts',
+    '_hosts_id_map'               => 'hosts_id_map',
+    '_out_dir'                    => '_out_dir',
+    '_out_docs_ext'               => '_out_docs_ext',
+};
 
 =head2 initialize()
 
@@ -146,42 +155,39 @@ sub initialize
     );
     $self->hosts(
         [
-        map {
-            HTML::Latemp::GenMakeHelpers::HostEntry->new(
-                %$_
-            ),
-        }
-        @{$args{'hosts'}}
+            map { HTML::Latemp::GenMakeHelpers::HostEntry->new(%$_), }
+                @{ $args{'hosts'} }
         ]
-        );
-    $self->_hosts_id_map(+{ map { $_->{'id'} => $_ } @{$self->hosts()}});
-    $self->_common_buckets({});
-    $self->_out_dir($args{'out_dir'});
-    $self->_out_docs_ext($args{'out_docs_ext'} // '.wml');
+    );
+    $self->_hosts_id_map( +{ map { $_->{'id'} => $_ } @{ $self->hosts() } } );
+    $self->_common_buckets( {} );
+    $self->_out_dir( $args{'out_dir'} );
+    $self->_out_docs_ext( $args{'out_docs_ext'} // '.wml' );
 
     return;
 }
 
 sub _calc_out_path
 {
-    my ($self, $bn) = @_;
+    my ( $self, $bn ) = @_;
 
     my $out_dir = $self->_out_dir;
 
-    return $out_dir ? File::Spec->catfile($out_dir, $bn) : $bn;
+    return $out_dir ? File::Spec->catfile( $out_dir, $bn ) : $bn;
 }
 
 sub process_all
 {
     my $self = shift;
-    my $dir = $self->_base_dir();
+    my $dir  = $self->_base_dir();
 
-    my @hosts = @{$self->hosts()};
+    my @hosts = @{ $self->hosts() };
 
     open my $file_lists_fh, ">", $self->_calc_out_path("include.mak");
-    open my $rules_fh, ">", $self->_calc_out_path("rules.mak");
+    open my $rules_fh,      ">", $self->_calc_out_path("rules.mak");
 
-    print {$rules_fh} "COMMON_SRC_DIR = " . $self->_hosts_id_map()->{'common'}->{'source_dir'} . "\n\n";
+    print {$rules_fh} "COMMON_SRC_DIR = "
+        . $self->_hosts_id_map()->{'common'}->{'source_dir'} . "\n\n";
 
     foreach my $host (@hosts)
     {
@@ -190,7 +196,11 @@ sub process_all
         print {$rules_fh} $host_outputs->{'rules'};
     }
 
-    print {$rules_fh} "latemp_targets: " . join(" ", map { '$('.uc($_->{'id'})."_TARGETS)" } grep { $_->{'id'} ne "common" } @hosts) . "\n\n";
+    print {$rules_fh} "latemp_targets: "
+        . join( " ",
+        map  { '$(' . uc( $_->{'id'} ) . "_TARGETS)" }
+        grep { $_->{'id'} ne "common" } @hosts )
+        . "\n\n";
 
     close($rules_fh);
     close($file_lists_fh);
@@ -222,31 +232,25 @@ sub get_initial_buckets
     my $self = shift;
     my $host = shift;
 
-    return
-    [
+    return [
         {
-            'name' => "IMAGES",
-            'filter' =>
-            sub
-            {
+            'name'   => "IMAGES",
+            'filter' => sub {
                 my $fn = shift;
-                return ($fn !~ /\.(?:tt|w)ml\z/) && (-f $self->_make_path($host, $fn))
+                return ( $fn !~ /\.(?:tt|w)ml\z/ )
+                    && ( -f $self->_make_path( $host, $fn ) );
             },
         },
         {
-            'name' => "DIRS",
-            'filter' =>
-            sub
-            {
-                return (-d $self->_make_path($host, shift))
+            'name'   => "DIRS",
+            'filter' => sub {
+                return ( -d $self->_make_path( $host, shift ) );
             },
             filter_out_common => 1,
         },
         {
-            'name' => "DOCS",
-            'filter' =>
-            sub
-            {
+            'name'   => "DOCS",
+            'filter' => sub {
                 return shift =~ /\.x?html\.wml\z/;
             },
             'map' => sub {
@@ -256,10 +260,8 @@ sub get_initial_buckets
             },
         },
         {
-            'name' => "TTMLS",
-            'filter' =>
-            sub
-            {
+            'name'   => "TTMLS",
+            'filter' => sub {
                 return shift =~ /\.ttml\z/;
             },
             'map' => sub {
@@ -278,17 +280,16 @@ sub _identity
 
 sub _process_bucket
 {
-    my ($self, $bucket) = @_;
-    return
-        {
-            %$bucket,
-            'results' => [],
-            (
-                (!exists($bucket->{'map'})) ?
-                    ('map' => \&_identity) :
-                    ()
-            ),
-        };
+    my ( $self, $bucket ) = @_;
+    return {
+        %$bucket,
+        'results' => [],
+        (
+              ( !exists( $bucket->{'map'} ) )
+            ? ( 'map' => \&_identity )
+            : ()
+        ),
+    };
 }
 
 =head2 $generator->get_buckets($host)
@@ -299,39 +300,33 @@ Get the processed buckets.
 
 sub get_buckets
 {
-    my ($self, $host) = @_;
+    my ( $self, $host ) = @_;
 
-    return
-        [
-            map
-            { $self->_process_bucket($_) }
-            @{$self->get_initial_buckets($host)}
-        ];
+    return [ map { $self->_process_bucket($_) }
+            @{ $self->get_initial_buckets($host) } ];
 }
 
 sub _filter_out_special_files
 {
-    my ($self, $host, $files_ref) = @_;
+    my ( $self, $host, $files_ref ) = @_;
 
     my @files = @$files_ref;
 
-    @files = (grep { ! m{(\A|/)\.svn(/|\z)} } @files);
-    @files = (grep { ! /~\z/ } @files);
-    @files =
-        (grep
-        {
+    @files = ( grep { !m{(\A|/)\.svn(/|\z)} } @files );
+    @files = ( grep { !/~\z/ } @files );
+    @files = (
+        grep {
             my $bn = basename($_);
-            not (($bn =~ /\A\./) && ($bn =~ /\.swp\z/))
-        }
-        @files
-        );
+            not( ( $bn =~ /\A\./ ) && ( $bn =~ /\.swp\z/ ) )
+        } @files
+    );
 
     return \@files;
 }
 
 sub _sort_files
 {
-    my ($self, $host, $files_ref) = @_;
+    my ( $self, $host, $files_ref ) = @_;
 
     return [ sort { $a cmp $b } @$files_ref ];
 }
@@ -344,18 +339,18 @@ Get the files that were not placed in any bucket.
 
 sub get_non_bucketed_files
 {
-    my ($self, $host) = @_;
+    my ( $self, $host ) = @_;
 
     my $source_dir_path = $host->source_dir();
 
     my $files = [ File::Find::Rule->in($source_dir_path) ];
 
     s!^$source_dir_path/!! for @$files;
-    $files = [grep { $_ ne $source_dir_path } @$files];
+    $files = [ grep { $_ ne $source_dir_path } @$files ];
 
-    $files = $self->_filter_out_special_files($host, $files);
+    $files = $self->_filter_out_special_files( $host, $files );
 
-    return $self->_sort_files($host, $files);
+    return $self->_sort_files( $host, $files );
 }
 
 =head2 $self->place_files_into_buckets($host, $files, $buckets)
@@ -366,30 +361,33 @@ Sort the files into the buckets.
 
 sub place_files_into_buckets
 {
-    my ($self, $host, $files, $buckets) = @_;
+    my ( $self, $host, $files, $buckets ) = @_;
 
-    FILE_LOOP:
+FILE_LOOP:
     foreach my $f (@$files)
     {
         foreach my $bucket (@$buckets)
         {
-            if ($bucket->{'filter'}->($f))
+            if ( $bucket->{'filter'}->($f) )
             {
-                if ($host->{'id'} eq "common")
+                if ( $host->{'id'} eq "common" )
                 {
-                    $self->_common_buckets->{$bucket->{name}}->{$f} = 1;
+                    $self->_common_buckets->{ $bucket->{name} }->{$f} = 1;
                 }
 
-                if (   ($host->{'id'} eq "common")
-                    ||
-                    (!(
-                        $bucket->{'filter_out_common'}
-                            &&
-                        exists($self->_common_buckets->{$bucket->{name}}->{$f})
-                    ))
-                )
+                if (
+                    ( $host->{'id'} eq "common" )
+                    || (
+                        !(
+                            $bucket->{'filter_out_common'} && exists(
+                                $self->_common_buckets->{ $bucket->{name} }
+                                    ->{$f}
+                            )
+                        )
+                    )
+                    )
                 {
-                    push @{$bucket->{'results'}}, $bucket->{'map'}->($f);
+                    push @{ $bucket->{'results'} }, $bucket->{'map'}->($f);
                 }
 
                 next FILE_LOOP;
@@ -412,13 +410,14 @@ Get the makefile rules template for the host $host.
 
 sub get_rules_template
 {
-    my ($self, $host) = @_;
+    my ( $self, $host ) = @_;
 
     my $h_dest_star = "\$(X8X_DEST)/%";
-    my $wml_path = qq{WML_LATEMP_PATH="\$\$(perl -MFile::Spec -e 'print File::Spec->rel2abs(shift)' '\$\@')"};
-    my $dest_dir = $host->dest_dir();
+    my $wml_path =
+qq{WML_LATEMP_PATH="\$\$(perl -MFile::Spec -e 'print File::Spec->rel2abs(shift)' '\$\@')"};
+    my $dest_dir        = $host->dest_dir();
     my $source_dir_path = $host->source_dir();
-    my $out_docs_ext = $self->_out_docs_ext;
+    my $out_docs_ext    = $self->_out_docs_ext;
 
     return <<"EOF";
 
@@ -496,23 +495,37 @@ sub process_host
     my $source_dir_path = $host->source_dir();
 
     my $file_lists_text = "";
-    my $rules_text = "";
+    my $rules_text      = "";
 
     my $files = $self->get_non_bucketed_files($host);
 
     my $buckets = $self->get_buckets($host);
 
-    $self->place_files_into_buckets($host, $files, $buckets);
+    $self->place_files_into_buckets( $host, $files, $buckets );
 
-    my $id = $host->id();
+    my $id      = $host->id();
     my $host_uc = uc($id);
     foreach my $bucket (@$buckets)
     {
         my $name = $bucket->{name};
-        $file_lists_text .= $host_uc . "_" . $name . " =" . join("", map { " $_" } @{$self->_filename_lists_post_filter->({filenames => $bucket->{'results'}, bucket => $name, host => $id,})}) . "\n";
+        $file_lists_text .=
+              $host_uc . "_"
+            . $name . " ="
+            . join(
+            "",
+            map { " $_" } @{
+                $self->_filename_lists_post_filter->(
+                    {
+                        filenames => $bucket->{'results'},
+                        bucket    => $name,
+                        host      => $id,
+                    }
+                )
+            }
+            ) . "\n";
     }
 
-    if ($id ne "common")
+    if ( $id ne "common" )
     {
         my $rules = $self->get_rules_template($host);
 
@@ -521,11 +534,10 @@ sub process_host
         $rules_text .= $rules;
     }
 
-    return
-        {
-            'file_lists' => $file_lists_text,
-            'rules' => $rules_text,
-        };
+    return {
+        'file_lists' => $file_lists_text,
+        'rules'      => $rules_text,
+    };
 }
 
 1;
