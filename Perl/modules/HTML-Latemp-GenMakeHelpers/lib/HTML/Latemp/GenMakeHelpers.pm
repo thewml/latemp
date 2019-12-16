@@ -112,6 +112,9 @@ An optional parameter is C<'out_docs_ext'> which is the extension for the docs
 files (which should include the leading period) and which defaults to C<'.wml'>.
 It was added in version v0.8.0.
 
+An optional parameter is C<'docs_build_command_cb'> which is TBD.
+It was added in version v0.8.0.
+
 =head2 $generator->process_all()
 
 Process all hosts.
@@ -132,6 +135,7 @@ use Class::XSAccessor accessors => {
     '_hosts_id_map'               => 'hosts_id_map',
     '_out_dir'                    => '_out_dir',
     '_out_docs_ext'               => '_out_docs_ext',
+    '_docs_build_command_cb'      => '_docs_build_command_cb',
 };
 
 =head2 initialize()
@@ -163,6 +167,7 @@ sub initialize
     $self->_common_buckets( {} );
     $self->_out_dir( $args{'out_dir'} );
     $self->_out_docs_ext( $args{'out_docs_ext'} // '.wml' );
+    $self->_docs_build_command_cb( $args{'docs_build_command_cb'} );
 
     return;
 }
@@ -419,6 +424,19 @@ qq{WML_LATEMP_PATH="\$\$(perl -MFile::Spec -e 'print File::Spec->rel2abs(shift)'
     my $source_dir_path = $host->source_dir();
     my $out_docs_ext    = $self->_out_docs_ext;
 
+    my ( $common_cmd, $no_common_cmd );
+    if ( my $cb = $self->_docs_build_command_cb )
+    {
+        $common_cmd    = $cb->( $self, { host => $host, is_common => 1, } );
+        $no_common_cmd = $cb->( $self, { host => $host, is_common => '', } );
+    }
+    else
+    {
+        $common_cmd =
+qq#$wml_path ; ( cd \$(COMMON_SRC_DIR) && wml -o "\$\${WML_LATEMP_PATH}" \$(X8X_WML_FLAGS) -DLATEMP_FILENAME=\$(patsubst $h_dest_star,%,\$(patsubst %${out_docs_ext},%,\$@)) \$(patsubst \$(COMMON_SRC_DIR)/%,%,\$<) )#;
+        $no_common_cmd =
+qq#$wml_path ; ( cd \$(X8X_SRC_DIR) && wml -o "\$\${WML_LATEMP_PATH}" \$(X8X_WML_FLAGS) -DLATEMP_FILENAME=\$(patsubst $h_dest_star,%,\$(patsubst %${out_docs_ext},%,\$@)) \$(patsubst \$(X8X_SRC_DIR)/%,%,\$<) )#;
+    }
     return <<"EOF";
 
 X8X_SRC_DIR = $source_dir_path
@@ -448,7 +466,7 @@ X8X_COMMON_TTMLS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_TTMLS))
 X8X_COMMON_DOCS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_DOCS))
 
 \$(X8X_DOCS_DEST) : $h_dest_star : \$(X8X_SRC_DIR)/%${out_docs_ext} \$(DOCS_COMMON_DEPS)
-	 $wml_path ; ( cd \$(X8X_SRC_DIR) && wml -o "\$\${WML_LATEMP_PATH}" \$(X8X_WML_FLAGS) -DLATEMP_FILENAME=\$(patsubst $h_dest_star,%,\$(patsubst %${out_docs_ext},%,\$@)) \$(patsubst \$(X8X_SRC_DIR)/%,%,\$<) )
+	$no_common_cmd
 
 \$(X8X_TTMLS_DEST) : $h_dest_star : \$(X8X_SRC_DIR)/%.ttml \$(TTMLS_COMMON_DEPS)
 	ttml -o \$@ \$(X8X_TTML_FLAGS) -DLATEMP_FILENAME=\$(patsubst $h_dest_star,%,\$(patsubst %.ttml,%,\$@)) \$<
@@ -467,7 +485,7 @@ X8X_COMMON_DOCS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_DOCS))
 	ttml -o \$@ \$(X8X_TTML_FLAGS) -DLATEMP_FILENAME=\$(patsubst $h_dest_star,%,\$(patsubst %.ttml,%,\$@)) \$<
 
 \$(X8X_COMMON_DOCS_DEST) : $h_dest_star : \$(COMMON_SRC_DIR)/%${out_docs_ext} \$(DOCS_COMMON_DEPS)
-	$wml_path ; ( cd \$(COMMON_SRC_DIR) && wml -o "\$\${WML_LATEMP_PATH}" \$(X8X_WML_FLAGS) -DLATEMP_FILENAME=\$(patsubst $h_dest_star,%,\$(patsubst %${out_docs_ext},%,\$@)) \$(patsubst \$(COMMON_SRC_DIR)/%,%,\$<) )
+	$common_cmd
 
 \$(X8X_COMMON_DIRS_DEST)  : $h_dest_star :
 	mkdir -p \$@
