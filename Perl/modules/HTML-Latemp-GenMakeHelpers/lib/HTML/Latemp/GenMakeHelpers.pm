@@ -115,6 +115,9 @@ It was added in version v0.8.0.
 An optional parameter is C<'docs_build_command_cb'> which is TBD.
 It was added in version v0.8.0.
 
+An optional parameter is C<'images_dest_varname_cb'> which is TBD.
+It was added in version v0.8.0.
+
 =head2 $generator->process_all()
 
 Process all hosts.
@@ -136,6 +139,7 @@ use Class::XSAccessor accessors => {
     '_out_dir'                    => '_out_dir',
     '_out_docs_ext'               => '_out_docs_ext',
     '_docs_build_command_cb'      => '_docs_build_command_cb',
+    '_images_dest_varname_cb'     => '_images_dest_varname_cb',
 };
 
 =head2 initialize()
@@ -168,6 +172,7 @@ sub initialize
     $self->_out_dir( $args{'out_dir'} );
     $self->_out_docs_ext( $args{'out_docs_ext'} // '.wml' );
     $self->_docs_build_command_cb( $args{'docs_build_command_cb'} );
+    $self->_images_dest_varname_cb( $args{'images_dest_varname_cb'} );
 
     return;
 }
@@ -437,6 +442,20 @@ qq#$wml_path ; ( cd \$(COMMON_SRC_DIR) && wml -o "\$\${WML_LATEMP_PATH}" \$(X8X_
         $no_common_cmd =
 qq#$wml_path ; ( cd \$(X8X_SRC_DIR) && wml -o "\$\${WML_LATEMP_PATH}" \$(X8X_WML_FLAGS) -DLATEMP_FILENAME=\$(patsubst $h_dest_star,%,\$(patsubst %${out_docs_ext},%,\$@)) \$(patsubst \$(X8X_SRC_DIR)/%,%,\$<) )#;
     }
+    my ( $common_images_dest, $no_common_images_dest );
+    if ( my $cb = $self->_images_dest_varname_cb )
+    {
+        $common_images_dest =
+            $cb->( $self, { host => $host, is_common => 1, } );
+        $no_common_images_dest =
+            $cb->( $self, { host => $host, is_common => '', } );
+    }
+    else
+    {
+        $no_common_images_dest = $common_images_dest = 'X8X_DEST';
+    }
+    my $ci_h_dest_star  = "\$($common_images_dest)/%";
+    my $nci_h_dest_star = "\$($no_common_images_dest)/%";
     return <<"EOF";
 
 X8X_SRC_DIR = $source_dir_path
@@ -453,11 +472,11 @@ X8X_DOCS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(X8X_DOCS))
 
 X8X_DIRS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(X8X_DIRS))
 
-X8X_IMAGES_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(X8X_IMAGES))
+X8X_IMAGES_DEST = \$(patsubst %,\$($no_common_images_dest)/%,\$(X8X_IMAGES))
 
 X8X_TTMLS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(X8X_TTMLS))
 
-X8X_COMMON_IMAGES_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_IMAGES))
+X8X_COMMON_IMAGES_DEST = \$(patsubst %,\$($common_images_dest)/%,\$(COMMON_IMAGES))
 
 X8X_COMMON_DIRS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_DIRS))
 
@@ -475,10 +494,10 @@ X8X_COMMON_DOCS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_DOCS))
 	mkdir -p \$@
 	touch \$@
 
-\$(X8X_IMAGES_DEST) : $h_dest_star : \$(X8X_SRC_DIR)/%
+\$(X8X_IMAGES_DEST) : $nci_h_dest_star : \$(X8X_SRC_DIR)/%
 	\$(call LATEMP_COPY)
 
-\$(X8X_COMMON_IMAGES_DEST) : $h_dest_star : \$(COMMON_SRC_DIR)/%
+\$(X8X_COMMON_IMAGES_DEST) : $ci_h_dest_star : \$(COMMON_SRC_DIR)/%
 	\$(call LATEMP_COPY)
 
 \$(X8X_COMMON_TTMLS_DEST) : $h_dest_star : \$(COMMON_SRC_DIR)/%.ttml \$(TTMLS_COMMON_DEPS)
