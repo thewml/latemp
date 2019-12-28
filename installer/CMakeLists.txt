@@ -9,7 +9,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 
 IF (NOT CMAKE_INSTALL_PREFIX)
     MESSAGE (FATAL_ERROR "CMAKE_INSTALL_PREFIX must be defined. Specify it with -DCMAKE_INSTALL_PREFIX=...")
-ENDIF (NOT CMAKE_INSTALL_PREFIX)
+ENDIF ()
 
 SET (MYPREFIX "${CMAKE_INSTALL_PREFIX}")
 # MESSAGE (FATAL_ERROR "MYPREFIX = <<${MYPREFIX}>>")
@@ -76,10 +76,10 @@ IF(WIN32 AND NOT UNIX)
     SET(CPACK_NSIS_MUI_UNIICON ${CPACK_NSIS_MUI_ICON})
     SET(CPACK_PACKAGE_ICON ${CPACK_NSIS_MUI_ICON})
     SET(CPACK_NSIS_MODIFY_PATH "ON")
-ELSE(WIN32 AND NOT UNIX)
+ELSE ()
     # SET(CPACK_STRIP_FILES "")
     # SET(CPACK_SOURCE_STRIP_FILES "")
-ENDIF(WIN32 AND NOT UNIX)
+ENDIF ()
 
 SET(CPACK_PACKAGE_EXECUTABLES
     "latemp-config" "Latemp configuration flags"
@@ -111,7 +111,7 @@ FOREACH (name "latemp-config" "latemp-setup")
         PROGRAMS "${DEST}"
         DESTINATION "bin"
     )
-ENDFOREACH (name)
+ENDFOREACH ()
 
 SET (WML_FILES
     "html-header.wml"
@@ -133,7 +133,7 @@ FOREACH (wml_file ${WML_FILES})
         FILES "${CMAKE_CURRENT_SOURCE_DIR}/wml/latemp/${wml_file}"
         DESTINATION "${latemp_dest}"
     )
-ENDFOREACH (wml_file)
+ENDFOREACH ()
 
 SET (THEMES
     "better-scm"
@@ -186,6 +186,6 @@ FOREACH (theme ${THEMES})
         FILES "${CMAKE_CURRENT_SOURCE_DIR}/wml/latemp/themes/${theme}/template.wml"
         DESTINATION "${latemp_dest}/themes/${theme}"
     )
-ENDFOREACH (theme)
+ENDFOREACH ()
 
 INCLUDE (CPack)
