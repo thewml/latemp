@@ -458,31 +458,31 @@ qq#$wml_path ; ( cd \$(X8X_SRC_DIR) && wml -o "\$\${WML_LATEMP_PATH}" \$(X8X_WML
     my $nci_h_dest_star = "\$($no_common_images_dest)/%";
     return <<"EOF";
 
-X8X_SRC_DIR = $source_dir_path
+X8X_SRC_DIR := $source_dir_path
 
-X8X_DEST = $dest_dir
+X8X_DEST := $dest_dir
 
-X8X_TARGETS = \$(X8X_DEST) \$(X8X_DIRS_DEST) \$(X8X_COMMON_DIRS_DEST) \$(X8X_COMMON_IMAGES_DEST) \$(X8X_COMMON_DOCS_DEST) \$(X8X_COMMON_TTMLS_DEST) \$(X8X_IMAGES_DEST) \$(X8X_DOCS_DEST) \$(X8X_TTMLS_DEST)
+X8X_WML_FLAGS := \$(WML_FLAGS) -DLATEMP_SERVER=x8x
 
-X8X_WML_FLAGS = \$(WML_FLAGS) -DLATEMP_SERVER=x8x
+X8X_TTML_FLAGS := \$(TTML_FLAGS) -DLATEMP_SERVER=x8x
 
-X8X_TTML_FLAGS = \$(TTML_FLAGS) -DLATEMP_SERVER=x8x
+X8X_DOCS_DEST := \$(patsubst %,\$(X8X_DEST)/%,\$(X8X_DOCS))
 
-X8X_DOCS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(X8X_DOCS))
+X8X_DIRS_DEST := \$(patsubst %,\$(X8X_DEST)/%,\$(X8X_DIRS))
 
-X8X_DIRS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(X8X_DIRS))
+X8X_IMAGES_DEST := \$(patsubst %,\$($no_common_images_dest)/%,\$(X8X_IMAGES))
 
-X8X_IMAGES_DEST = \$(patsubst %,\$($no_common_images_dest)/%,\$(X8X_IMAGES))
+X8X_TTMLS_DEST := \$(patsubst %,\$(X8X_DEST)/%,\$(X8X_TTMLS))
 
-X8X_TTMLS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(X8X_TTMLS))
+X8X_COMMON_IMAGES_DEST := \$(patsubst %,\$($common_images_dest)/%,\$(COMMON_IMAGES))
 
-X8X_COMMON_IMAGES_DEST = \$(patsubst %,\$($common_images_dest)/%,\$(COMMON_IMAGES))
+X8X_COMMON_DIRS_DEST := \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_DIRS))
 
-X8X_COMMON_DIRS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_DIRS))
+X8X_COMMON_TTMLS_DEST := \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_TTMLS))
 
-X8X_COMMON_TTMLS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_TTMLS))
+X8X_COMMON_DOCS_DEST := \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_DOCS))
 
-X8X_COMMON_DOCS_DEST = \$(patsubst %,\$(X8X_DEST)/%,\$(COMMON_DOCS))
+X8X_TARGETS := \$(X8X_DEST) \$(X8X_DIRS_DEST) \$(X8X_COMMON_DIRS_DEST) \$(X8X_COMMON_IMAGES_DEST) \$(X8X_COMMON_DOCS_DEST) \$(X8X_COMMON_TTMLS_DEST) \$(X8X_IMAGES_DEST) \$(X8X_DOCS_DEST) \$(X8X_TTMLS_DEST)
 
 \$(X8X_DOCS_DEST) : $h_dest_star : \$(X8X_SRC_DIR)/%${out_docs_ext} \$(DOCS_COMMON_DEPS)
 	$no_common_cmd
@@ -547,7 +547,7 @@ sub process_host
         my $name = $bucket->{name};
         $file_lists_text .=
               $host_uc . "_"
-            . $name . " ="
+            . $name . " :="
             . join(
             "",
             map { " $_" } @{
