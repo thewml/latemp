@@ -1,5 +1,9 @@
 Revision history for HTML-Latemp-GenMakeHelpers
 
+0.10.0   2019-12-29
+    - Convert the makefile directives to use ":="  instead of "=":
+        - https://stackoverflow.com/questions/448910
+
 0.8.0   2019-12-16
     - Convert dzil to @SHLOMIF .
     - Add 'out_docs_ext'.
