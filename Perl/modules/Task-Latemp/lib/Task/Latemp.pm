@@ -26,7 +26,7 @@ Task::Latemp - Specifications for modules needed by the Latemp static site gener
 
 =cut
 
-our $VERSION = '0.0105';
+our $VERSION = '0.0106';
 
 =head1 DESCRIPTION
 
