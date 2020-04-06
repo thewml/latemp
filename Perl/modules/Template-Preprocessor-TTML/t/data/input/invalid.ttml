@@ -1,4 +1,3 @@
-[% SET a = BLOCK %]
 Hello.
 [% END %]
 

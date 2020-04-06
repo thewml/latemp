@@ -8,10 +8,12 @@ use base 'Template::Preprocessor::TTML::Base';
 use Template;
 use Template::Preprocessor::TTML::CmdLineProc;
 
-__PACKAGE__->mk_accessors(qw(
-    argv
-    opts
-));
+__PACKAGE__->mk_accessors(
+    qw(
+        argv
+        opts
+        )
+);
 
 =head1 NAME
 
@@ -19,8 +21,6 @@ Template::Preprocessor::TTML - Preprocess files using the Template Toolkit
 from the command line.
 
 =cut
-
-our $VERSION = '0.0103';
 
 =head1 SYNOPSIS
 
@@ -43,7 +43,7 @@ sub initialize
 {
     my $self = shift;
     my %args = (@_);
-    $self->argv([@{$args{'argv'}}]);
+    $self->argv( [ @{ $args{'argv'} } ] );
 
     return 0;
 }
@@ -57,20 +57,21 @@ Performs the processing.
 sub _calc_opts
 {
     my $self = shift;
-    my $cmd_line = Template::Preprocessor::TTML::CmdLineProc->new(argv => $self->argv());
-    $self->opts($cmd_line->get_result());
+    my $cmd_line =
+        Template::Preprocessor::TTML::CmdLineProc->new( argv => $self->argv() );
+    $self->opts( $cmd_line->get_result() );
 }
 
 sub _get_output
 {
     my $self = shift;
-    if ($self->opts()->output_to_stdout())
+    if ( $self->opts()->output_to_stdout() )
     {
         return ();
     }
     else
     {
-        return ($self->opts()->output_filename());
+        return ( $self->opts()->output_filename() );
     }
 }
 
@@ -78,7 +79,7 @@ sub _get_mode_callbacks
 {
     return {
         'regular' => "_mode_regular",
-        'help' => "_mode_help",
+        'help'    => "_mode_help",
         'version' => "_mode_version",
     };
 }
@@ -86,7 +87,7 @@ sub _get_mode_callbacks
 sub _mode_version
 {
     print <<"EOF";
-This is TTML version $VERSION
+This is TTML version $Template::Preprocessor::TTML::VERSION
 TTML is a Command Line Preprocessor based on the Template Toolkit
 (http://www.template-toolkit.org/)
 
@@ -128,28 +129,25 @@ sub run
     $self->_calc_opts();
 
     return $self->can(
-        $self->_get_mode_callbacks()->{$self->opts()->run_mode()}
-    )->($self);
+        $self->_get_mode_callbacks()->{ $self->opts()->run_mode() } )->($self);
 }
 
 sub _mode_regular
 {
-    my $self = shift;
-    my $config =
-    {
-        INCLUDE_PATH => [ @{$self->opts()->include_path()}, ".", ],
-        EVAL_PERL => 1,
-        PRE_PROCESS => $self->opts()->include_files(),
+    my $self   = shift;
+    my $config = {
+        INCLUDE_PATH => [ @{ $self->opts()->include_path() }, ".", ],
+        EVAL_PERL    => 1,
+        PRE_PROCESS  => $self->opts()->include_files(),
     };
     my $template = Template->new($config);
 
-    if (!
-        $template->process(
-            $self->opts()->input_filename(),
-            $self->opts()->defines(),
+    if (
+        !$template->process(
+            $self->opts()->input_filename(), $self->opts()->defines(),
             $self->_get_output(),
         )
-    )
+        )
     {
         die $template->error();
     }
