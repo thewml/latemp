@@ -3,11 +3,11 @@
 use strict;
 use warnings;
 
-use IO::Al qw/ io /;
+use Path::Tiny qw/ path /;
 
 my ($version) =
-    ( map { m{\$VERSION *= *'([^']+)'} ? ($1) : () }
-        io->file('lib/HTML/Latemp/NavLinks/GenHtml.pm')->getlines() );
+    ( map { m{\Aversion * = *(\S+)} ? ($1) : () }
+        path("./dist.ini")->lines_utf8() );
 
 if ( !defined($version) )
 {
@@ -22,4 +22,3 @@ my @cmd = (
 
 print join( " ", map { /\s/ ? qq{"$_"} : $_ } @cmd ), "\n";
 exec(@cmd);
-

@@ -3,15 +3,14 @@ package HTML::Latemp::NavLinks::GenHtml::ArrowImages;
 use strict;
 use warnings;
 
-our $VERSION = '0.2.6';
-
 use vars qw($nav_buttons_html);
 
 use parent 'HTML::Latemp::NavLinks::GenHtml';
 
-__PACKAGE__->mk_accessors(qw(
-    _ext
-    )
+__PACKAGE__->mk_accessors(
+    qw(
+        _ext
+        )
 );
 
 sub _init
@@ -21,7 +20,7 @@ sub _init
 
     $self->SUPER::_init(%args);
 
-    $self->_ext($args{ext} || '.png');
+    $self->_ext( $args{ext} || '.png' );
 
     return;
 }
@@ -54,8 +53,8 @@ use Template;
 use Template::Stash;
 
 # Define a method to return a substring.
-$Template::Stash::SCALAR_OPS->{ 'substr' } = sub {
-    return substr($_[0], $_[1], $_[2]);
+$Template::Stash::SCALAR_OPS->{'substr'} = sub {
+    return substr( $_[0], $_[1], $_[2] );
 };
 
 sub _get_nav_buttons_html
@@ -68,20 +67,18 @@ sub _get_nav_buttons_html
 
     my $root = $self->root();
 
-    my $template =
-        Template->new(
+    my $template = Template->new(
         {
             'POST_CHOMP' => 1,
         }
-        );
+    );
 
-    my $vars =
-    {
-        'buttons' => $self->_get_buttons(),
-        'root' => $root,
+    my $vars = {
+        'buttons'        => $self->_get_buttons(),
+        'root'           => $root,
         'with_accesskey' => $with_accesskey,
-        'image_base' => $self->get_image_base(),
-        ext => $self->_ext(),
+        'image_base'     => $self->get_image_base(),
+        ext              => $self->_ext(),
     };
 
     my $nav_links_template = <<'EOF';
@@ -103,10 +100,9 @@ EOF
 
     my $nav_buttons_html = "";
 
-    $template->process(\$nav_links_template, $vars, \$nav_buttons_html);
+    $template->process( \$nav_links_template, $vars, \$nav_buttons_html );
     return $nav_buttons_html;
 }
-
 
 =head2 $obj->get_image_base()
 
@@ -131,9 +127,10 @@ sub get_total_html
 {
     my $self = shift;
 
-    return "<ul class=\"nav_links\">\n" .
-        $self->_get_nav_buttons_html(@_) .
-        "\n</ul>";
+    return
+          "<ul class=\"nav_links\">\n"
+        . $self->_get_nav_buttons_html(@_)
+        . "\n</ul>";
 }
 
 =head1 AUTHOR
@@ -158,5 +155,4 @@ under the terms of the MIT X11 license.
 =cut
 
 1;
-
 

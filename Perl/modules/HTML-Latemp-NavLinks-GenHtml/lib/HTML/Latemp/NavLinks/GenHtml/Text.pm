@@ -3,8 +3,6 @@ package HTML::Latemp::NavLinks::GenHtml::Text;
 use strict;
 use warnings;
 
-our $VERSION = '0.2.6';
-
 use vars qw($nav_buttons_html);
 
 use parent 'HTML::Latemp::NavLinks::GenHtml';
@@ -54,10 +52,12 @@ under the terms of the MIT X11 license.
 
 =cut
 
-__PACKAGE__->mk_accessors(qw(
-    nav_links
-    root
-    ));
+__PACKAGE__->mk_accessors(
+    qw(
+        nav_links
+        root
+        )
+);
 
 use Template;
 
@@ -65,8 +65,8 @@ use Template;
 use Template::Stash;
 
 # Define a method to return a substring.
-$Template::Stash::SCALAR_OPS->{ 'substr' } = sub {
-    return substr($_[0], $_[1], $_[2]);
+$Template::Stash::SCALAR_OPS->{'substr'} = sub {
+    return substr( $_[0], $_[1], $_[2] );
 };
 
 sub _get_nav_buttons_html
@@ -79,17 +79,15 @@ sub _get_nav_buttons_html
 
     my $root = $self->root();
 
-    my $template =
-        Template->new(
+    my $template = Template->new(
         {
             'POST_CHOMP' => 1,
         }
-        );
+    );
 
-    my $vars =
-    {
-        'buttons' => $self->_get_buttons(),
-        'root' => $root,
+    my $vars = {
+        'buttons'        => $self->_get_buttons(),
+        'root'           => $root,
         'with_accesskey' => $with_accesskey,
     };
 
@@ -111,7 +109,7 @@ EOF
 
     my $nav_buttons_html = "";
 
-    $template->process(\$nav_links_template, $vars, \$nav_buttons_html);
+    $template->process( \$nav_links_template, $vars, \$nav_buttons_html );
     return $nav_buttons_html;
 }
 
@@ -119,9 +117,10 @@ sub get_total_html
 {
     my $self = shift;
 
-    return "<ul class=\"nav_links\">\n" .
-        $self->_get_nav_buttons_html(@_) .
-        "\n</ul>";
+    return
+          "<ul class=\"nav_links\">\n"
+        . $self->_get_nav_buttons_html(@_)
+        . "\n</ul>";
 }
 
 1;

@@ -7,10 +7,12 @@ use 5.008;
 
 use parent 'Class::Accessor';
 
-__PACKAGE__->mk_accessors(qw(
-    nav_links_obj
-    root
-    ));
+__PACKAGE__->mk_accessors(
+    qw(
+        nav_links_obj
+        root
+        )
+);
 
 =head1 NAME
 
@@ -18,8 +20,6 @@ HTML::Latemp::NavLinks::GenHtml - A module to generate the HTML of the
 navigation links.
 
 =cut
-
-our $VERSION = 'v0.2.6';
 
 =head1 SYNOPSIS
 
@@ -39,7 +39,7 @@ Initialises the object.
 sub new
 {
     my $class = shift;
-    my $self = {};
+    my $self  = {};
     bless $self, $class;
     $self->_init(@_);
     return $self;
@@ -50,8 +50,8 @@ sub _init
     my $self = shift;
     my (%args) = @_;
 
-    $self->root($args{root});
-    $self->nav_links_obj($args{nav_links_obj});
+    $self->root( $args{root} );
+    $self->nav_links_obj( $args{nav_links_obj} );
 
     return $self;
 }
@@ -66,29 +66,28 @@ sub _get_buttons
 {
     my $self = shift;
 
-    my @buttons =
-    (
+    my @buttons = (
         {
-            'dir' => "prev",
+            'dir'    => "prev",
             'button' => "left",
-            'title' => "Previous Page",
+            'title'  => "Previous Page",
         },
         {
-            'dir' => "up",
+            'dir'    => "up",
             'button' => "up",
-            'title' => "Up in the Site",
+            'title'  => "Up in the Site",
         },
         {
-            'dir' => "next",
+            'dir'    => "next",
             'button' => "right",
-            'title' => "Next Page",
+            'title'  => "Next Page",
         },
     );
 
     foreach my $button (@buttons)
     {
         my $dir = $button->{'dir'};
-        if ($button->{'exists'} = exists($self->nav_links_obj->{$dir}))
+        if ( $button->{'exists'} = exists( $self->nav_links_obj->{$dir} ) )
         {
             $button->{'link_obj'} = $self->nav_links_obj->{$dir};
         }
