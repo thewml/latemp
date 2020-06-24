@@ -15,7 +15,8 @@ install:
     - SET PERL_LOCAL_LIB_ROOT=C:/Perl5
     - SET PERL_MB_OPT=--install_base C:/Perl5
     - SET PERL_MM_OPT=INSTALL_BASE=C:/Perl5
-    - cpanm --verbose Test::Code::TidyAll
+    # - cpanm --verbose Test::Code::TidyAll
+    - cpanm -n -q Test::Code::TidyAll
     - cpanm --notest Dist::Zilla IO::All Test::Differences Test::Trap Env::Path Games::Solitaire::Verify::Solution Inline::C Inline Pod::Coverage::TrustPod Pod::Weaver::Section::Support Pod::Xhtml Test::CPAN::Changes Test::Pod::Coverage Test::Pod Test::TrailingSpace
     - perl CI-testing\continuous-integration-testing.pl install_deps
 build: off
@@ -23,7 +24,9 @@ test_script:
     - set CMAKE_MAKE_PROGRAM=C:\strawberry\c\bin\gmake.exe
     - set PATH=C:\strawberry\c\bin;C:\strawberry\perl\site\bin;C:\strawberry\perl\bin;%PATH%
     - set HARNESS_BREAK=1
-    - ( cd Perl\modules\HTML-Latemp-GenMakeHelpers\ && ( tidyall -a ; git add -u . ; git diff HEAD .) )
+    - ( cd Perl\modules\HTML-Latemp-GenMakeHelpers && tidyall -a )
+    - ( cd Perl\modules\HTML-Latemp-GenMakeHelpers && git add -u . )
+    - ( cd Perl\modules\HTML-Latemp-GenMakeHelpers && git diff HEAD . )
     - perl CI-testing/continuous-integration-testing.pl test
 # cache:
       # - C:\libtap -> .appveyor.yml
