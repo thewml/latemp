@@ -36,9 +36,7 @@ my @dzil_dirs = (
     'Perl/modules/Template-Preprocessor-TTML',
 );
 
-my $CPAN = 'cpanm --notest';
-
-# my $CPAN = 'cpanm';
+my $CPAN = 'cpanm';
 if ( $ACTION eq 'install_deps' )
 {
     foreach my $d (@dzil_dirs)

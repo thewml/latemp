@@ -1,7 +1,7 @@
-#cache:
-#    directories:
-#        - $HOME/perl_modules
-#        - $HOME/tidyall_d
+cache:
+    directories:
+        - $HOME/perl_modules
+        - $HOME/tidyall_d
 
 os: linux
 dist: bionic
