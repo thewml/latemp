@@ -24,9 +24,11 @@ test_script:
     - set CMAKE_MAKE_PROGRAM=C:\strawberry\c\bin\gmake.exe
     - set PATH=C:\strawberry\c\bin;C:\strawberry\perl\site\bin;C:\strawberry\perl\bin;%PATH%
     - set HARNESS_BREAK=1
-    - ( cd Perl\modules\HTML-Latemp-GenMakeHelpers && tidyall -a )
-    - ( cd Perl\modules\HTML-Latemp-GenMakeHelpers && git add -u . )
-    - ( cd Perl\modules\HTML-Latemp-GenMakeHelpers && git diff HEAD . )
+    - cd .\Perl\modules\HTML-Latemp-GenMakeHelpers
+    - tidyall -a
+    - git add -u .
+    - git diff HEAD .
+    - cd ..\..\..\
     - perl CI-testing/continuous-integration-testing.pl test
 # cache:
       # - C:\libtap -> .appveyor.yml
