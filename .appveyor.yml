@@ -25,9 +25,12 @@ test_script:
     - set PATH=C:\strawberry\c\bin;C:\strawberry\perl\site\bin;C:\strawberry\perl\bin;%PATH%
     - set HARNESS_BREAK=1
     - cd .\Perl\modules\HTML-Latemp-GenMakeHelpers
+    - copy .\t\01-output-basic.t ..\foo.pl
     - tidyall -a
-    - git add -u .
-    - git diff HEAD .
+    # - git add -u .
+    # - git diff HEAD .
+    - fc  ..\foo.pl .\t\01-output-basic.t
+    - diff -u  ..\foo.pl .\t\01-output-basic.t
     - cd ..\..\..\
     - perl CI-testing/continuous-integration-testing.pl test
 # cache:
