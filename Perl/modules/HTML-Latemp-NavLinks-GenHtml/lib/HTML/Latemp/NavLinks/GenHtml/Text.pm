@@ -3,8 +3,6 @@ package HTML::Latemp::NavLinks::GenHtml::Text;
 use strict;
 use warnings;
 
-use vars qw($nav_buttons_html);
-
 use parent 'HTML::Latemp::NavLinks::GenHtml';
 
 =head1 NAME
@@ -31,31 +29,11 @@ hash as returned by L<HTML::Widgets::NavMenu> or something similar.
 
 Calculates and returns the final HTML.
 
-=head1 AUTHOR
-
-Shlomi Fish, L<http://www.shlomifish.org/> .
-
-=head1 BUGS
-
-Please report any bugs or feature requests to
-C<bug-html-latemp-navlinks-genhtml@rt.cpan.org>, or through the web interface at
-L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=HTML-Latemp-NavLinks-GenHtml>.
-I will be notified, and then you'll automatically be notified of progress on
-your bug as I make changes.
-
-=head1 COPYRIGHT & LICENSE
-
-Copyright 2005 Shlomi Fish, All Rights Reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the terms of the MIT X11 license.
-
 =cut
 
 __PACKAGE__->mk_accessors(
     qw(
         nav_links
-        root
         )
 );
 
@@ -124,4 +102,3 @@ sub get_total_html
 }
 
 1;
-
