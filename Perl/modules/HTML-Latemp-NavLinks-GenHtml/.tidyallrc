@@ -6,5 +6,5 @@ select = {t,lib,scripts}/**/*.{pl,pm,t} {t,lib,scripts}/*.{pl,pm,t}
 argv = -ci=4 -bl -cti=0
 select = {t,lib,scripts}/**/*.{pl,pm,t} {t,lib,scripts}/*.{pl,pm,t}
 
-;[TestCount]
-;select = t/*.t
+[TestCount]
+select = t/*.t
