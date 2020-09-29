@@ -559,13 +559,13 @@ sub generate_rss_feed
 
     my $rss_feed = XML::RSS->new( 'version' => "2.0" );
     $rss_feed->channel(
-        'title'       => $self->title(),
-        'link'        => $self->link(),
-        'language'    => $self->language(),
-        'description' => $self->description(),
-        'rating'      => $self->rating(),
-        'copyright'   => $self->copyright(),
-        'pubDate'     => ( $self->pubDate // ( scalar( localtime() ) ) ),
+        'title'         => $self->title(),
+        'link'          => $self->link(),
+        'language'      => $self->language(),
+        'description'   => $self->description(),
+        'rating'        => $self->rating(),
+        'copyright'     => $self->copyright(),
+        'pubDate'       => ( $self->pubDate // ( scalar( localtime() ) ) ),
         'lastBuildDate' =>
             ( $self->lastBuildDate // ( scalar( localtime() ) ) ),
         'docs'           => $self->docs(),
