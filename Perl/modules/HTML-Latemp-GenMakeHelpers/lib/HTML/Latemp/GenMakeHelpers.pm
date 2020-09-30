@@ -123,6 +123,7 @@ It was added in version v0.8.0.
 Process all hosts.
 
 =head1 INTERNAL METHODS
+
 =cut
 
 our @ISA = (qw(HTML::Latemp::GenMakeHelpers::Base));

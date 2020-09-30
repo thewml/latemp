@@ -61,15 +61,14 @@ elsif ( $ACTION eq 'test' )
             my $cwd = cwd();
             chdir($d);
             do_system( { cmd => [ "dzil", "build", ] } );
+            my $build = "HTML-Latemp-News-0.2.1";
+            chdir($build);
+            my $fn = "lib/HTML/Latemp/News.pm";
+            path($fn)->copy("$fn.orig");
+            eval { do_system( { cmd => [ "tidyall", "-a", ] } ); };
             do_system(
                 {
-                    cmd => [
-                        "diff", "-u",
-                        (
-                            map { "$_/lib/HTML/Latemp/News.pm" }
-                                ( ".", "HTML-Latemp-News-0.2.1" )
-                        )
-                    ]
+                    cmd => [ "diff", "-u", "$fn.orig", $fn, ],
                 }
             );
             chdir($cwd);

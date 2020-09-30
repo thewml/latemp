@@ -2,7 +2,7 @@ package HTML::Latemp::News;
 
 use warnings;
 use strict;
-
+use autodie;
 use 5.014;
 
 =head1 NAME
@@ -56,6 +56,12 @@ web frameworks)
     );
 
     1;
+
+=head1 DESCRIPTION
+
+This is a module that maintains news item for a web-site. It can generate
+an RSS feed, as well as a news page, and an HTML newsbox, all from the same
+data.
 
 =cut
 
@@ -264,7 +270,7 @@ sub language
     return $self->{language};
 }
 
-sub link
+sub link_
 {
     my $self = shift;
 
@@ -390,7 +396,7 @@ sub initialize
     $self->items( $self->input_items($items) );
 
     $self->title( $args{'title'} );
-    $self->link( $args{'link'} );
+    $self->link_( $args{'link'} );
     $self->language( $args{'language'} );
     $self->rating( $args{'rating'}
             || '(PICS-1.1 "http://www.classify.org/safesurf/" 1 r (SS~~000 1))'
@@ -414,12 +420,6 @@ sub initialize
 
     return 0;
 }
-
-=head1 DESCRIPTION
-
-This is a module that maintains news item for a web-site. It can generate
-an RSS feed, as well as a news page, and an HTML newsbox, all from the same
-data.
 
 =head1 FUNCTIONS
 
@@ -525,7 +525,7 @@ sub get_item_url
 {
     my $self = shift;
     my $item = shift;
-    return $self->link() . $self->get_item_rel_url($item);
+    return $self->link_() . $self->get_item_rel_url($item);
 }
 
 sub get_item_rel_url
@@ -561,7 +561,7 @@ sub generate_rss_feed
     my $rss_feed = XML::RSS->new( 'version' => "2.0" );
     $rss_feed->channel(
         'title'         => $self->title(),
-        'link'          => $self->link(),
+        'link'          => $self->link_(),
         'language'      => $self->language(),
         'description'   => $self->description(),
         'rating'        => $self->rating(),
@@ -715,17 +715,9 @@ __END__
 
 Shlomi Fish, L<http://www.shlomifish.org/> .
 
-=head1 BUGS
-
-Please report any bugs or feature requests to
-C<bug-html-latemp-news@rt.cpan.org>, or through the web interface at
-L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=HTML-Latemp-News>.
-I will be notified, and then you'll automatically be notified of progress on
-your bug as I make changes.
-
 =head1 SEE ALSO
 
-L<XML::RSS>, L<HTML::Widgets::NavMenu>.
+L<XML::RSS>, L<HTML::Widgets::NavMenu> .
 
 =head1 ACKNOWLEDGEMENTS
 
