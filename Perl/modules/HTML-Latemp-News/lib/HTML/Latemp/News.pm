@@ -56,6 +56,7 @@ web frameworks)
     );
 
     1;
+
 =cut
 
 package HTML::Latemp::News::Base;
@@ -420,7 +421,7 @@ This is a module that maintains news item for a web-site. It can generate
 an RSS feed, as well as a news page, and an HTML newsbox, all from the same
 data.
 
-=head1 FUNCTION
+=head1 FUNCTIONS
 
 =head2 HTML::Latemp::News->new(...)
 
@@ -730,9 +731,9 @@ L<XML::RSS>, L<HTML::Widgets::NavMenu>.
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2005 Shlomi Fish, All Rights Reserved.
+Copyright 2005 Shlomi Fish.
 
 This program is free software; you can redistribute it and/or modify it
-under the terms of the MIT X11 license.
+under the terms of the MIT / Expat license.
 
 =cut

@@ -18,7 +18,7 @@ sub do_system
 }
 
 my $IS_WIN = ( $^O eq "MSWin32" );
-my $SEP    = $IS_WIN ? "\\" : '/';
+my $SEP    = $IS_WIN ? "\\"    : '/';
 my $MAKE   = $IS_WIN ? 'gmake' : 'make';
 
 my $cmake_gen;
@@ -52,6 +52,31 @@ if ( $ACTION eq 'install_deps' )
 }
 elsif ( $ACTION eq 'test' )
 {
+    my $TEMP_DEBUG = 1;
+    if ( $TEMP_DEBUG and $IS_WIN )
+    {
+        foreach my $d ( 'Perl/modules/HTML-Latemp-News', )
+        {
+            use Path::Tiny qw/ cwd /;
+            my $cwd = cwd();
+            chdir($d);
+            do_system( { cmd => [ "dzil", "build", ] } );
+            do_system(
+                {
+                    cmd => [
+                        "diff", "-u",
+                        (
+                            map { "$_/lib/HTML/Latemp/News.pm" }
+                                ( ".", "HTML-Latemp-News-0.2.1" )
+                        )
+                    ]
+                }
+            );
+            chdir($cwd);
+        }
+        exit(1);
+    }
+
     foreach my $d (@dzil_dirs)
     {
         do_system( { cmd => ["cd $d && (dzil smoke --release --author)"] } );
