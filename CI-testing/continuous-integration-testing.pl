@@ -67,12 +67,13 @@ elsif ( $ACTION eq 'test' )
             do_system( { cmd => [ "dzil", "build", ] } );
             my $build = "HTML-Latemp-News-0.2.1";
             chdir($build);
-            my $fn = "lib/HTML/Latemp/News.pm";
-            path($fn)->copy("$fn.orig");
+            my $fn     = "lib/HTML/Latemp/News.pm";
+            my $backup = "c:/$fn.orig.orig";
+            path($fn)->copy($backup);
             eval { do_system( { cmd => [ "tidyall", "-a", ] } ); };
             do_system(
                 {
-                    cmd => [ "diff", "-u", "$fn.orig", $fn, ],
+                    cmd => [ "diff", "-u", $backup, $fn, ],
                 }
             );
             chdir($cwd);
