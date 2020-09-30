@@ -36,7 +36,12 @@ my @dzil_dirs = (
     'Perl/modules/Template-Preprocessor-TTML',
 );
 
-my $CPAN = 'cpanm';
+my $TEMP_DEBUG = $IS_WIN;
+my $CPAN       = 'cpanm';
+if ($TEMP_DEBUG)
+{
+    $CPAN .= " -n";
+}
 if ( $ACTION eq 'install_deps' )
 {
     foreach my $d (@dzil_dirs)
@@ -52,12 +57,11 @@ if ( $ACTION eq 'install_deps' )
 }
 elsif ( $ACTION eq 'test' )
 {
-    my $TEMP_DEBUG = 1;
     if ( $TEMP_DEBUG and $IS_WIN )
     {
         foreach my $d ( 'Perl/modules/HTML-Latemp-News', )
         {
-            use Path::Tiny qw/ cwd /;
+            use Path::Tiny qw/ cwd path /;
             my $cwd = cwd();
             chdir($d);
             do_system( { cmd => [ "dzil", "build", ] } );
