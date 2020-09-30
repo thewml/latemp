@@ -68,7 +68,7 @@ elsif ( $ACTION eq 'test' )
             my $build = "HTML-Latemp-News-0.2.1";
             chdir($build);
             my $fn     = "lib/HTML/Latemp/News.pm";
-            my $backup = "c:/$fn.orig.orig";
+            my $backup = "c:/News.pm-aristt.orig.orig";
             path($fn)->copy($backup);
             eval { do_system( { cmd => [ "tidyall", "-a", ] } ); };
             do_system(
