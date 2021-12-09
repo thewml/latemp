@@ -10,7 +10,7 @@ use parent 'HTML::Latemp::NavLinks::GenHtml';
 __PACKAGE__->mk_accessors(
     qw(
         _ext
-        )
+    )
 );
 
 sub _init

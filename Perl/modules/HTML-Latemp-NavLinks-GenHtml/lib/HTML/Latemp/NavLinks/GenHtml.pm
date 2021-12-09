@@ -11,7 +11,7 @@ __PACKAGE__->mk_accessors(
     qw(
         nav_links_obj
         root
-        )
+    )
 );
 
 =head1 NAME

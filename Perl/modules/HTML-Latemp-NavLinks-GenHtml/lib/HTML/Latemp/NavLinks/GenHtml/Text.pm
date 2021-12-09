@@ -34,7 +34,7 @@ Calculates and returns the final HTML.
 __PACKAGE__->mk_accessors(
     qw(
         nav_links
-        )
+    )
 );
 
 use Template;
