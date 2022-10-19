@@ -3,16 +3,25 @@
 use strict;
 use warnings;
 
-use File::Find::Rule ();
-use File::Basename   qw/ dirname /;
-use File::Path       qw/ mkpath /;
-use File::Copy       qw/ copy /;
+use File::Find;
+use File::Basename qw/ dirname /;
+use File::Path     qw/ mkpath /;
+use File::Copy     qw/ copy /;
 
 my $inst_dir = $ENV{'HOME'} . "/conf/wml/Latemp/";
 
-my @files =
-    File::Find::Rule->not( File::Find::Rule->directory->name(".svn")->prune )
-    ->not( File::Find::Rule->directory )->in("lib");
+my @files;
+
+sub wanted
+{
+    my $fn = $File::Find::name;
+    if ( ( -f $fn ) and ( $fn !~ m#\.svn# ) )
+    {
+        push @files, $fn;
+    }
+    return;
+}
+find( \&wanted, "lib/", );
 
 foreach my $f (@files)
 {
