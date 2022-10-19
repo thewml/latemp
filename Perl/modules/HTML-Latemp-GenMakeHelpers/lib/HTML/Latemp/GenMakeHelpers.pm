@@ -129,7 +129,7 @@ Process all hosts.
 our @ISA = (qw(HTML::Latemp::GenMakeHelpers::Base));
 
 use File::Find::Rule ();
-use File::Basename qw/ basename /;
+use File::Basename   qw/ basename /;
 
 use Class::XSAccessor accessors => {
     '_common_buckets'             => '_common_buckets',
