@@ -26,8 +26,8 @@ it to the needs of the new site.
 More recently, he came to the conclusion that he shouldn't duplicate his work
 in so many places. As he came upon older sites, he often found he had to
 revise their build system or templates to adapt them to the knowledge he
-acquired more recently. To remedy this, he decided to create a content
-management system that will allow to maintain multiple sites by abstracting
+acquired more recently. To remedy this, he decided to create a static
+site generation system that will allow to maintain multiple sites by abstracting
 the common code.
 </p>
 
@@ -54,11 +54,11 @@ Allows sites to have a common look and feel.
 </li>
 <li>
 Supports setting up navigation menus, breadcrumbs trails, navigation
-links ("Up", "Next" and "Previous"), site maps with sophisticated site
-flow.
+links ("Up", "Next" and "Previous"), and site maps - all with sophisticated
+site flow.
 </li>
 <li>
-Makes use of <a href="http://thewml.org/">Web Meta Language</a> and so has
+Makes use of <a href="http://thewml.org/">Website Meta Language</a> and so has
 all of its power (including extending its functionality by using
 embedded <a href="http://www.perl.org/">Perl</a>).
 </li>
@@ -109,7 +109,7 @@ Latemp makes use of the following technologies:
 generating system.
 </li>
 <li>
-<a href="http://www.gnu.org/software/make/">GNU Make</a> - a building system
+<a href="http://www.gnu.org/software/make/">GNU Make</a> - a build system
 which is a superset of traditional UNIX make. Very powerful and usable.
 </li>
 <li>
@@ -135,5 +135,3 @@ a module for managing news items.
 Additionally, in order to install Latemp, you'll need
 <a href="https://cmake.org/">CMake</a>.
 </p>
-
-

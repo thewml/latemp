@@ -1,12 +1,12 @@
 #include "template.wml"
 
-<latemp_subject "Latemp - An Offline CMS" />
+<latemp_subject "Latemp - a static site generator" />
 <latemp_version_control_id "$Id$" />
 
 <p>
-Welcome to the homepage of Latemp. Latemp (a play on "Template") is an
-<b>offline content management system</b> (also known as a “static site
-generator”) based on
+Welcome to the homepage of Latemp. Latemp (a play on "Template") is a
+<b>static site
+generator</b> (also known as an “offline content management system”) based on
 <a href="http://thewml.org/">Website Meta
 Language</a>, a powerful, off-line, framework for generating static HTML, and
 server-side HTML that embeds code (such as
@@ -39,7 +39,7 @@ set it up and give it a try.
 <p>
 The title of this section is purposely risking
 <a href="https://en.wikipedia.org/wiki/Betteridge's_law_of_headlines">Betteridge’s
-Law of Headlines</a>, and accordingly the short answer as of 2016 is “probably
+Law of Headlines</a>, and accordingly the short answer as of 2022 is “probably
 not”. As I like to say, “every self-respecting programmer has written at
 least one static site generator”, since writing a basic one is easy and often
 tends to be easier than learning an existing one. Many programmers who wrote
