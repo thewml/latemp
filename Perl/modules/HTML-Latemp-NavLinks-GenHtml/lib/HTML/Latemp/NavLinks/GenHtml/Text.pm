@@ -37,10 +37,10 @@ __PACKAGE__->mk_accessors(
     )
 );
 
-use Template;
+use Template ();
 
 # load Template::Stash to make method tables visible
-use Template::Stash;
+use Template::Stash ();
 
 # Define a method to return a substring.
 $Template::Stash::SCALAR_OPS->{'substr'} = sub {
