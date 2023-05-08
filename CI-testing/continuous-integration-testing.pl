@@ -5,6 +5,8 @@ use strict;
 use warnings;
 use autodie;
 
+use Path::Tiny qw/ cwd path /;
+
 =begin foo
 
     # - if false ; then ( a="$(pwd)"; mkdir B2 && cd B2 && hg clone https://bitbucket.org/shlomif/shlomif-cmake-modules && cd shlomif-cmake-modules/shlomif-cmake-modules && cp -f "$(pwd)"/Shlomif_Common.cmake "$a"/installer/cmake/ ) ; fi
@@ -69,7 +71,6 @@ elsif ( $ACTION eq 'test' )
     {
         foreach my $d ( 'Perl/modules/HTML-Latemp-News', )
         {
-            use Path::Tiny qw/ cwd path /;
             my $cwd = cwd();
             chdir($d);
             do_system( { cmd => [ "dzil", "build", ] } );
@@ -99,6 +100,9 @@ DZIL_DIRS:
         }
         do_system( { cmd => ["cd $d && (dzil smoke --release --author)"] } );
     }
+
+    path("installer/B")->remove_tree;
+
     do_system(
         {
             cmd => [
