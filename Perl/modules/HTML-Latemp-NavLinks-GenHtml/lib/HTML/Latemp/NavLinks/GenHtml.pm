@@ -1,9 +1,8 @@
 package HTML::Latemp::NavLinks::GenHtml;
 
-use warnings;
+use 5.014;
 use strict;
-
-use 5.008;
+use warnings;
 
 use parent 'Class::Accessor';
 
@@ -25,7 +24,7 @@ navigation links.
 
     package MyNavLinks;
 
-    use base 'HTML::Latemp::NavLinks::GenHtml::ArrowImages';
+    use parent 'HTML::Latemp::NavLinks::GenHtml::ArrowImages';
 
 
 =head1 METHODS

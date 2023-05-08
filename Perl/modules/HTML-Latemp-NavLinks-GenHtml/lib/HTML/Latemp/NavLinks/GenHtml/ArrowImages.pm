@@ -3,8 +3,6 @@ package HTML::Latemp::NavLinks::GenHtml::ArrowImages;
 use strict;
 use warnings;
 
-use vars qw($nav_buttons_html);
-
 use parent 'HTML::Latemp::NavLinks::GenHtml';
 
 __PACKAGE__->mk_accessors(
