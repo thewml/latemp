@@ -20,22 +20,12 @@ the navigation links.
 =head1 DESCRIPTION
 
 This module generates text navigation links. C<root> is the relative path to
-the site's root directory. C<nav_links> are the navigation links' objects
-hash as returned by L<HTML::Widgets::NavMenu> or something similar.
+the site's root directory. C<nav_links_obj> are the hash of navigation links'
+objects as returned by L<HTML::Widgets::NavMenu> or something similar.
 
 =head1 METHODS
 
-=head2 $obj->get_total_html()
-
-Calculates and returns the final HTML.
-
 =cut
-
-__PACKAGE__->mk_accessors(
-    qw(
-        nav_links
-    )
-);
 
 use Template ();
 
@@ -90,6 +80,12 @@ EOF
     $template->process( \$nav_links_template, $vars, \$nav_buttons_html );
     return $nav_buttons_html;
 }
+
+=head2 $obj->get_total_html()
+
+Calculates and returns the final HTML.
+
+=cut
 
 sub get_total_html
 {
