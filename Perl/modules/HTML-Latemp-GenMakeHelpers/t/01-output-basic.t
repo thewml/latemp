@@ -29,63 +29,63 @@ SRC_DOCS := alternatives/index.html arch/index.html docs/index.html docs/nice_tr
 SRC_TTMLS :=
 EOF
 
-    my $rules_expected = <<'EOFGALOG';
+    my $rules_expected = <<"EOFGALOG";
 
 SRC_SRC_DIR := t/sample-data/sample-site-1
 
-SRC_DEST := $(HELLO)/src
+SRC_DEST := \$(HELLO)/src
 
-SRC_WML_FLAGS := $(WML_FLAGS) -DLATEMP_SERVER=src
+SRC_WML_FLAGS := \$(WML_FLAGS) -DLATEMP_SERVER=src
 
-SRC_TTML_FLAGS := $(TTML_FLAGS) -DLATEMP_SERVER=src
+SRC_TTML_FLAGS := \$(TTML_FLAGS) -DLATEMP_SERVER=src
 
-SRC_DOCS_DEST := $(patsubst %,$(SRC_DEST)/%,$(SRC_DOCS))
+SRC_DOCS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(SRC_DOCS))
 
-SRC_DIRS_DEST := $(patsubst %,$(SRC_DEST)/%,$(SRC_DIRS))
+SRC_DIRS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(SRC_DIRS))
 
-SRC_IMAGES_DEST := $(patsubst %,$(SRC_DEST)/%,$(SRC_IMAGES))
+SRC_IMAGES_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(SRC_IMAGES))
 
-SRC_TTMLS_DEST := $(patsubst %,$(SRC_DEST)/%,$(SRC_TTMLS))
+SRC_TTMLS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(SRC_TTMLS))
 
-SRC_COMMON_IMAGES_DEST := $(patsubst %,$(SRC_DEST)/%,$(COMMON_IMAGES))
+SRC_COMMON_IMAGES_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(COMMON_IMAGES))
 
-SRC_COMMON_DIRS_DEST := $(patsubst %,$(SRC_DEST)/%,$(COMMON_DIRS))
+SRC_COMMON_DIRS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(COMMON_DIRS))
 
-SRC_COMMON_TTMLS_DEST := $(patsubst %,$(SRC_DEST)/%,$(COMMON_TTMLS))
+SRC_COMMON_TTMLS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(COMMON_TTMLS))
 
-SRC_COMMON_DOCS_DEST := $(patsubst %,$(SRC_DEST)/%,$(COMMON_DOCS))
+SRC_COMMON_DOCS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(COMMON_DOCS))
 
-SRC_TARGETS := $(SRC_DEST) $(SRC_DIRS_DEST) $(SRC_COMMON_DIRS_DEST) $(SRC_COMMON_IMAGES_DEST) $(SRC_COMMON_DOCS_DEST) $(SRC_COMMON_TTMLS_DEST) $(SRC_IMAGES_DEST) $(SRC_DOCS_DEST) $(SRC_TTMLS_DEST)
+SRC_TARGETS := \$(SRC_DEST) \$(SRC_DIRS_DEST) \$(SRC_COMMON_DIRS_DEST) \$(SRC_COMMON_IMAGES_DEST) \$(SRC_COMMON_DOCS_DEST) \$(SRC_COMMON_TTMLS_DEST) \$(SRC_IMAGES_DEST) \$(SRC_DOCS_DEST) \$(SRC_TTMLS_DEST)
 
-$(SRC_DOCS_DEST) : $(SRC_DEST)/% : $(SRC_SRC_DIR)/%.wml $(DOCS_COMMON_DEPS)
-	WML_LATEMP_PATH="$$(perl -MFile::Spec -e 'print File::Spec->rel2abs(shift)' '$@')" ; ( cd $(SRC_SRC_DIR) && wml -o "$${WML_LATEMP_PATH}" $(SRC_WML_FLAGS) -DLATEMP_FILENAME=$(patsubst $(SRC_DEST)/%,%,$(patsubst %.wml,%,$@)) $(patsubst $(SRC_SRC_DIR)/%,%,$<) )
+\$(SRC_DOCS_DEST) : \$(SRC_DEST)/% : \$(SRC_SRC_DIR)/%.wml \$(DOCS_COMMON_DEPS)
+\tWML_LATEMP_PATH="\$\$(perl -MFile::Spec -e 'print File::Spec->rel2abs(shift)' '\$\@')" ; ( cd \$(SRC_SRC_DIR) && wml -o "\$\${WML_LATEMP_PATH}" \$(SRC_WML_FLAGS) -DLATEMP_FILENAME=\$(patsubst \$(SRC_DEST)/%,%,\$(patsubst %.wml,%,\$\@)) \$(patsubst \$(SRC_SRC_DIR)/%,%,\$<) )
 
-$(SRC_TTMLS_DEST) : $(SRC_DEST)/% : $(SRC_SRC_DIR)/%.ttml $(TTMLS_COMMON_DEPS)
-	ttml -o $@ $(SRC_TTML_FLAGS) -DLATEMP_FILENAME=$(patsubst $(SRC_DEST)/%,%,$(patsubst %.ttml,%,$@)) $<
+\$(SRC_TTMLS_DEST) : \$(SRC_DEST)/% : \$(SRC_SRC_DIR)/%.ttml \$(TTMLS_COMMON_DEPS)
+\tttml -o \$\@ \$(SRC_TTML_FLAGS) -DLATEMP_FILENAME=\$(patsubst \$(SRC_DEST)/%,%,\$(patsubst %.ttml,%,\$\@)) \$<
 
-$(SRC_DIRS_DEST) : $(SRC_DEST)/% :
-	mkdir -p $@
-	touch $@
+\$(SRC_DIRS_DEST) : \$(SRC_DEST)/% :
+\tmkdir -p \$\@
+\ttouch \$\@
 
-$(SRC_IMAGES_DEST) : $(SRC_DEST)/% : $(SRC_SRC_DIR)/%
-	$(call LATEMP_COPY)
+\$(SRC_IMAGES_DEST) : \$(SRC_DEST)/% : \$(SRC_SRC_DIR)/%
+\t\$(call LATEMP_COPY)
 
-$(SRC_COMMON_IMAGES_DEST) : $(SRC_DEST)/% : $(COMMON_SRC_DIR)/%
-	$(call LATEMP_COPY)
+\$(SRC_COMMON_IMAGES_DEST) : \$(SRC_DEST)/% : \$(COMMON_SRC_DIR)/%
+\t\$(call LATEMP_COPY)
 
-$(SRC_COMMON_TTMLS_DEST) : $(SRC_DEST)/% : $(COMMON_SRC_DIR)/%.ttml $(TTMLS_COMMON_DEPS)
-	ttml -o $@ $(SRC_TTML_FLAGS) -DLATEMP_FILENAME=$(patsubst $(SRC_DEST)/%,%,$(patsubst %.ttml,%,$@)) $<
+\$(SRC_COMMON_TTMLS_DEST) : \$(SRC_DEST)/% : \$(COMMON_SRC_DIR)/%.ttml \$(TTMLS_COMMON_DEPS)
+\tttml -o \$\@ \$(SRC_TTML_FLAGS) -DLATEMP_FILENAME=\$(patsubst \$(SRC_DEST)/%,%,\$(patsubst %.ttml,%,\$\@)) \$<
 
-$(SRC_COMMON_DOCS_DEST) : $(SRC_DEST)/% : $(COMMON_SRC_DIR)/%.wml $(DOCS_COMMON_DEPS)
-	WML_LATEMP_PATH="$$(perl -MFile::Spec -e 'print File::Spec->rel2abs(shift)' '$@')" ; ( cd $(COMMON_SRC_DIR) && wml -o "$${WML_LATEMP_PATH}" $(SRC_WML_FLAGS) -DLATEMP_FILENAME=$(patsubst $(SRC_DEST)/%,%,$(patsubst %.wml,%,$@)) $(patsubst $(COMMON_SRC_DIR)/%,%,$<) )
+\$(SRC_COMMON_DOCS_DEST) : \$(SRC_DEST)/% : \$(COMMON_SRC_DIR)/%.wml \$(DOCS_COMMON_DEPS)
+\tWML_LATEMP_PATH="\$\$(perl -MFile::Spec -e 'print File::Spec->rel2abs(shift)' '\$\@')" ; ( cd \$(COMMON_SRC_DIR) && wml -o "\$\${WML_LATEMP_PATH}" \$(SRC_WML_FLAGS) -DLATEMP_FILENAME=\$(patsubst \$(SRC_DEST)/%,%,\$(patsubst %.wml,%,\$\@)) \$(patsubst \$(COMMON_SRC_DIR)/%,%,\$<) )
 
-$(SRC_COMMON_DIRS_DEST)  : $(SRC_DEST)/% :
-	mkdir -p $@
-	touch $@
+\$(SRC_COMMON_DIRS_DEST)  : \$(SRC_DEST)/% :
+\tmkdir -p \$\@
+\ttouch \$\@
 
-$(SRC_DEST):
-	mkdir -p $@
-	touch $@
+\$(SRC_DEST):
+\tmkdir -p \$\@
+\ttouch \$\@
 EOFGALOG
 
     # TEST
@@ -128,63 +128,63 @@ SRC_DOCS := alternatives/index.html arch/index.html docs/index.html docs/nice_tr
 SRC_TTMLS :=
 EOF
 
-    my $rules_expected = <<'EOFGALOG';
+    my $rules_expected = <<"EOFGALOG";
 
 SRC_SRC_DIR := t/sample-data/sample-site-1
 
-SRC_DEST := $(HELLO)/src
+SRC_DEST := \$(HELLO)/src
 
-SRC_WML_FLAGS := $(WML_FLAGS) -DLATEMP_SERVER=src
+SRC_WML_FLAGS := \$(WML_FLAGS) -DLATEMP_SERVER=src
 
-SRC_TTML_FLAGS := $(TTML_FLAGS) -DLATEMP_SERVER=src
+SRC_TTML_FLAGS := \$(TTML_FLAGS) -DLATEMP_SERVER=src
 
-SRC_DOCS_DEST := $(patsubst %,$(SRC_DEST)/%,$(SRC_DOCS))
+SRC_DOCS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(SRC_DOCS))
 
-SRC_DIRS_DEST := $(patsubst %,$(SRC_DEST)/%,$(SRC_DIRS))
+SRC_DIRS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(SRC_DIRS))
 
-SRC_IMAGES_DEST := $(patsubst %,$(SRC_DEST)/%,$(SRC_IMAGES))
+SRC_IMAGES_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(SRC_IMAGES))
 
-SRC_TTMLS_DEST := $(patsubst %,$(SRC_DEST)/%,$(SRC_TTMLS))
+SRC_TTMLS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(SRC_TTMLS))
 
-SRC_COMMON_IMAGES_DEST := $(patsubst %,$(SRC_DEST)/%,$(COMMON_IMAGES))
+SRC_COMMON_IMAGES_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(COMMON_IMAGES))
 
-SRC_COMMON_DIRS_DEST := $(patsubst %,$(SRC_DEST)/%,$(COMMON_DIRS))
+SRC_COMMON_DIRS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(COMMON_DIRS))
 
-SRC_COMMON_TTMLS_DEST := $(patsubst %,$(SRC_DEST)/%,$(COMMON_TTMLS))
+SRC_COMMON_TTMLS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(COMMON_TTMLS))
 
-SRC_COMMON_DOCS_DEST := $(patsubst %,$(SRC_DEST)/%,$(COMMON_DOCS))
+SRC_COMMON_DOCS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(COMMON_DOCS))
 
-SRC_TARGETS := $(SRC_DEST) $(SRC_DIRS_DEST) $(SRC_COMMON_DIRS_DEST) $(SRC_COMMON_IMAGES_DEST) $(SRC_COMMON_DOCS_DEST) $(SRC_COMMON_TTMLS_DEST) $(SRC_IMAGES_DEST) $(SRC_DOCS_DEST) $(SRC_TTMLS_DEST)
+SRC_TARGETS := \$(SRC_DEST) \$(SRC_DIRS_DEST) \$(SRC_COMMON_DIRS_DEST) \$(SRC_COMMON_IMAGES_DEST) \$(SRC_COMMON_DOCS_DEST) \$(SRC_COMMON_TTMLS_DEST) \$(SRC_IMAGES_DEST) \$(SRC_DOCS_DEST) \$(SRC_TTMLS_DEST)
 
-$(SRC_DOCS_DEST) : $(SRC_DEST)/% : $(SRC_SRC_DIR)/%.wml $(DOCS_COMMON_DEPS)
-	WML_LATEMP_PATH="$$(perl -MFile::Spec -e 'print File::Spec->rel2abs(shift)' '$@')" ; ( cd $(SRC_SRC_DIR) && wml -o "$${WML_LATEMP_PATH}" $(SRC_WML_FLAGS) -DLATEMP_FILENAME=$(patsubst $(SRC_DEST)/%,%,$(patsubst %.wml,%,$@)) $(patsubst $(SRC_SRC_DIR)/%,%,$<) )
+\$(SRC_DOCS_DEST) : \$(SRC_DEST)/% : \$(SRC_SRC_DIR)/%.wml \$(DOCS_COMMON_DEPS)
+\tWML_LATEMP_PATH="\$\$(perl -MFile::Spec -e 'print File::Spec->rel2abs(shift)' '\$\@')" ; ( cd \$(SRC_SRC_DIR) && wml -o "\$\${WML_LATEMP_PATH}" \$(SRC_WML_FLAGS) -DLATEMP_FILENAME=\$(patsubst \$(SRC_DEST)/%,%,\$(patsubst %.wml,%,\$\@)) \$(patsubst \$(SRC_SRC_DIR)/%,%,\$<) )
 
-$(SRC_TTMLS_DEST) : $(SRC_DEST)/% : $(SRC_SRC_DIR)/%.ttml $(TTMLS_COMMON_DEPS)
-	ttml -o $@ $(SRC_TTML_FLAGS) -DLATEMP_FILENAME=$(patsubst $(SRC_DEST)/%,%,$(patsubst %.ttml,%,$@)) $<
+\$(SRC_TTMLS_DEST) : \$(SRC_DEST)/% : \$(SRC_SRC_DIR)/%.ttml \$(TTMLS_COMMON_DEPS)
+\tttml -o \$\@ \$(SRC_TTML_FLAGS) -DLATEMP_FILENAME=\$(patsubst \$(SRC_DEST)/%,%,\$(patsubst %.ttml,%,\$\@)) \$<
 
-$(SRC_DIRS_DEST) : $(SRC_DEST)/% :
-	mkdir -p $@
-	touch $@
+\$(SRC_DIRS_DEST) : \$(SRC_DEST)/% :
+\tmkdir -p \$\@
+\ttouch \$\@
 
-$(SRC_IMAGES_DEST) : $(SRC_DEST)/% : $(SRC_SRC_DIR)/%
-	$(call LATEMP_COPY)
+\$(SRC_IMAGES_DEST) : \$(SRC_DEST)/% : \$(SRC_SRC_DIR)/%
+\t\$(call LATEMP_COPY)
 
-$(SRC_COMMON_IMAGES_DEST) : $(SRC_DEST)/% : $(COMMON_SRC_DIR)/%
-	$(call LATEMP_COPY)
+\$(SRC_COMMON_IMAGES_DEST) : \$(SRC_DEST)/% : \$(COMMON_SRC_DIR)/%
+\t\$(call LATEMP_COPY)
 
-$(SRC_COMMON_TTMLS_DEST) : $(SRC_DEST)/% : $(COMMON_SRC_DIR)/%.ttml $(TTMLS_COMMON_DEPS)
-	ttml -o $@ $(SRC_TTML_FLAGS) -DLATEMP_FILENAME=$(patsubst $(SRC_DEST)/%,%,$(patsubst %.ttml,%,$@)) $<
+\$(SRC_COMMON_TTMLS_DEST) : \$(SRC_DEST)/% : \$(COMMON_SRC_DIR)/%.ttml \$(TTMLS_COMMON_DEPS)
+\tttml -o \$\@ \$(SRC_TTML_FLAGS) -DLATEMP_FILENAME=\$(patsubst \$(SRC_DEST)/%,%,\$(patsubst %.ttml,%,\$\@)) \$<
 
-$(SRC_COMMON_DOCS_DEST) : $(SRC_DEST)/% : $(COMMON_SRC_DIR)/%.wml $(DOCS_COMMON_DEPS)
-	WML_LATEMP_PATH="$$(perl -MFile::Spec -e 'print File::Spec->rel2abs(shift)' '$@')" ; ( cd $(COMMON_SRC_DIR) && wml -o "$${WML_LATEMP_PATH}" $(SRC_WML_FLAGS) -DLATEMP_FILENAME=$(patsubst $(SRC_DEST)/%,%,$(patsubst %.wml,%,$@)) $(patsubst $(COMMON_SRC_DIR)/%,%,$<) )
+\$(SRC_COMMON_DOCS_DEST) : \$(SRC_DEST)/% : \$(COMMON_SRC_DIR)/%.wml \$(DOCS_COMMON_DEPS)
+\tWML_LATEMP_PATH="\$\$(perl -MFile::Spec -e 'print File::Spec->rel2abs(shift)' '\$\@')" ; ( cd \$(COMMON_SRC_DIR) && wml -o "\$\${WML_LATEMP_PATH}" \$(SRC_WML_FLAGS) -DLATEMP_FILENAME=\$(patsubst \$(SRC_DEST)/%,%,\$(patsubst %.wml,%,\$\@)) \$(patsubst \$(COMMON_SRC_DIR)/%,%,\$<) )
 
-$(SRC_COMMON_DIRS_DEST)  : $(SRC_DEST)/% :
-	mkdir -p $@
-	touch $@
+\$(SRC_COMMON_DIRS_DEST)  : \$(SRC_DEST)/% :
+\tmkdir -p \$\@
+\ttouch \$\@
 
-$(SRC_DEST):
-	mkdir -p $@
-	touch $@
+\$(SRC_DEST):
+\tmkdir -p \$\@
+\ttouch \$\@
 EOFGALOG
 
     # TEST
@@ -255,63 +255,63 @@ SRC_DOCS := alternatives/index.html arch/index.html docs/index.html docs/nice_tr
 SRC_TTMLS :=
 EOF
 
-    my $rules_expected = <<'EOFGALOG';
+    my $rules_expected = <<"EOFGALOG";
 
 SRC_SRC_DIR := t/sample-data/sample-site-1
 
-SRC_DEST := $(HELLO)/src
+SRC_DEST := \$(HELLO)/src
 
-SRC_WML_FLAGS := $(WML_FLAGS) -DLATEMP_SERVER=src
+SRC_WML_FLAGS := \$(WML_FLAGS) -DLATEMP_SERVER=src
 
-SRC_TTML_FLAGS := $(TTML_FLAGS) -DLATEMP_SERVER=src
+SRC_TTML_FLAGS := \$(TTML_FLAGS) -DLATEMP_SERVER=src
 
-SRC_DOCS_DEST := $(patsubst %,$(SRC_DEST)/%,$(SRC_DOCS))
+SRC_DOCS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(SRC_DOCS))
 
-SRC_DIRS_DEST := $(patsubst %,$(SRC_DEST)/%,$(SRC_DIRS))
+SRC_DIRS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(SRC_DIRS))
 
-SRC_IMAGES_DEST := $(patsubst %,$(SRC_DEST)/%,$(SRC_IMAGES))
+SRC_IMAGES_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(SRC_IMAGES))
 
-SRC_TTMLS_DEST := $(patsubst %,$(SRC_DEST)/%,$(SRC_TTMLS))
+SRC_TTMLS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(SRC_TTMLS))
 
-SRC_COMMON_IMAGES_DEST := $(patsubst %,$(SRC_DEST)/%,$(COMMON_IMAGES))
+SRC_COMMON_IMAGES_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(COMMON_IMAGES))
 
-SRC_COMMON_DIRS_DEST := $(patsubst %,$(SRC_DEST)/%,$(COMMON_DIRS))
+SRC_COMMON_DIRS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(COMMON_DIRS))
 
-SRC_COMMON_TTMLS_DEST := $(patsubst %,$(SRC_DEST)/%,$(COMMON_TTMLS))
+SRC_COMMON_TTMLS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(COMMON_TTMLS))
 
-SRC_COMMON_DOCS_DEST := $(patsubst %,$(SRC_DEST)/%,$(COMMON_DOCS))
+SRC_COMMON_DOCS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(COMMON_DOCS))
 
-SRC_TARGETS := $(SRC_DEST) $(SRC_DIRS_DEST) $(SRC_COMMON_DIRS_DEST) $(SRC_COMMON_IMAGES_DEST) $(SRC_COMMON_DOCS_DEST) $(SRC_COMMON_TTMLS_DEST) $(SRC_IMAGES_DEST) $(SRC_DOCS_DEST) $(SRC_TTMLS_DEST)
+SRC_TARGETS := \$(SRC_DEST) \$(SRC_DIRS_DEST) \$(SRC_COMMON_DIRS_DEST) \$(SRC_COMMON_IMAGES_DEST) \$(SRC_COMMON_DOCS_DEST) \$(SRC_COMMON_TTMLS_DEST) \$(SRC_IMAGES_DEST) \$(SRC_DOCS_DEST) \$(SRC_TTMLS_DEST)
 
-$(SRC_DOCS_DEST) : $(SRC_DEST)/% : $(SRC_SRC_DIR)/%.tt2 $(DOCS_COMMON_DEPS)
-	WML_LATEMP_PATH="$$(perl -MFile::Spec -e 'print File::Spec->rel2abs(shift)' '$@')" ; ( cd $(SRC_SRC_DIR) && wml -o "$${WML_LATEMP_PATH}" $(SRC_WML_FLAGS) -DLATEMP_FILENAME=$(patsubst $(SRC_DEST)/%,%,$(patsubst %.tt2,%,$@)) $(patsubst $(SRC_SRC_DIR)/%,%,$<) )
+\$(SRC_DOCS_DEST) : \$(SRC_DEST)/% : \$(SRC_SRC_DIR)/%.tt2 \$(DOCS_COMMON_DEPS)
+\tWML_LATEMP_PATH="\$\$(perl -MFile::Spec -e 'print File::Spec->rel2abs(shift)' '\$\@')" ; ( cd \$(SRC_SRC_DIR) && wml -o "\$\${WML_LATEMP_PATH}" \$(SRC_WML_FLAGS) -DLATEMP_FILENAME=\$(patsubst \$(SRC_DEST)/%,%,\$(patsubst %.tt2,%,\$\@)) \$(patsubst \$(SRC_SRC_DIR)/%,%,\$<) )
 
-$(SRC_TTMLS_DEST) : $(SRC_DEST)/% : $(SRC_SRC_DIR)/%.ttml $(TTMLS_COMMON_DEPS)
-	ttml -o $@ $(SRC_TTML_FLAGS) -DLATEMP_FILENAME=$(patsubst $(SRC_DEST)/%,%,$(patsubst %.ttml,%,$@)) $<
+\$(SRC_TTMLS_DEST) : \$(SRC_DEST)/% : \$(SRC_SRC_DIR)/%.ttml \$(TTMLS_COMMON_DEPS)
+\tttml -o \$\@ \$(SRC_TTML_FLAGS) -DLATEMP_FILENAME=\$(patsubst \$(SRC_DEST)/%,%,\$(patsubst %.ttml,%,\$\@)) \$<
 
-$(SRC_DIRS_DEST) : $(SRC_DEST)/% :
-	mkdir -p $@
-	touch $@
+\$(SRC_DIRS_DEST) : \$(SRC_DEST)/% :
+\tmkdir -p \$\@
+\ttouch \$\@
 
-$(SRC_IMAGES_DEST) : $(SRC_DEST)/% : $(SRC_SRC_DIR)/%
-	$(call LATEMP_COPY)
+\$(SRC_IMAGES_DEST) : \$(SRC_DEST)/% : \$(SRC_SRC_DIR)/%
+\t\$(call LATEMP_COPY)
 
-$(SRC_COMMON_IMAGES_DEST) : $(SRC_DEST)/% : $(COMMON_SRC_DIR)/%
-	$(call LATEMP_COPY)
+\$(SRC_COMMON_IMAGES_DEST) : \$(SRC_DEST)/% : \$(COMMON_SRC_DIR)/%
+\t\$(call LATEMP_COPY)
 
-$(SRC_COMMON_TTMLS_DEST) : $(SRC_DEST)/% : $(COMMON_SRC_DIR)/%.ttml $(TTMLS_COMMON_DEPS)
-	ttml -o $@ $(SRC_TTML_FLAGS) -DLATEMP_FILENAME=$(patsubst $(SRC_DEST)/%,%,$(patsubst %.ttml,%,$@)) $<
+\$(SRC_COMMON_TTMLS_DEST) : \$(SRC_DEST)/% : \$(COMMON_SRC_DIR)/%.ttml \$(TTMLS_COMMON_DEPS)
+\tttml -o \$\@ \$(SRC_TTML_FLAGS) -DLATEMP_FILENAME=\$(patsubst \$(SRC_DEST)/%,%,\$(patsubst %.ttml,%,\$\@)) \$<
 
-$(SRC_COMMON_DOCS_DEST) : $(SRC_DEST)/% : $(COMMON_SRC_DIR)/%.tt2 $(DOCS_COMMON_DEPS)
-	WML_LATEMP_PATH="$$(perl -MFile::Spec -e 'print File::Spec->rel2abs(shift)' '$@')" ; ( cd $(COMMON_SRC_DIR) && wml -o "$${WML_LATEMP_PATH}" $(SRC_WML_FLAGS) -DLATEMP_FILENAME=$(patsubst $(SRC_DEST)/%,%,$(patsubst %.tt2,%,$@)) $(patsubst $(COMMON_SRC_DIR)/%,%,$<) )
+\$(SRC_COMMON_DOCS_DEST) : \$(SRC_DEST)/% : \$(COMMON_SRC_DIR)/%.tt2 \$(DOCS_COMMON_DEPS)
+\tWML_LATEMP_PATH="\$\$(perl -MFile::Spec -e 'print File::Spec->rel2abs(shift)' '\$\@')" ; ( cd \$(COMMON_SRC_DIR) && wml -o "\$\${WML_LATEMP_PATH}" \$(SRC_WML_FLAGS) -DLATEMP_FILENAME=\$(patsubst \$(SRC_DEST)/%,%,\$(patsubst %.tt2,%,\$\@)) \$(patsubst \$(COMMON_SRC_DIR)/%,%,\$<) )
 
-$(SRC_COMMON_DIRS_DEST)  : $(SRC_DEST)/% :
-	mkdir -p $@
-	touch $@
+\$(SRC_COMMON_DIRS_DEST)  : \$(SRC_DEST)/% :
+\tmkdir -p \$\@
+\ttouch \$\@
 
-$(SRC_DEST):
-	mkdir -p $@
-	touch $@
+\$(SRC_DEST):
+\tmkdir -p \$\@
+\ttouch \$\@
 EOFGALOG
 
     # TEST
@@ -328,7 +328,7 @@ EOFGALOG
         docs_build_command_cb => sub {
             my ( $obj, $args ) = @_;
             return sprintf(
-                '$(call %s%s_INCLUDE_TT2_RENDER)',
+                "\$(call %s%s_INCLUDE_TT2_RENDER)",
                 uc( $args->{host}->id ),
                 $args->{is_common} ? "_COMMON" : ""
             );
@@ -363,63 +363,63 @@ SRC_DOCS := alternatives/index.html arch/index.html docs/index.html docs/nice_tr
 SRC_TTMLS :=
 EOF
 
-    my $rules_expected = <<'EOFGALOG';
+    my $rules_expected = <<"EOFGALOG";
 
 SRC_SRC_DIR := t/sample-data/sample-site-1
 
-SRC_DEST := $(HELLO)/src
+SRC_DEST := \$(HELLO)/src
 
-SRC_WML_FLAGS := $(WML_FLAGS) -DLATEMP_SERVER=src
+SRC_WML_FLAGS := \$(WML_FLAGS) -DLATEMP_SERVER=src
 
-SRC_TTML_FLAGS := $(TTML_FLAGS) -DLATEMP_SERVER=src
+SRC_TTML_FLAGS := \$(TTML_FLAGS) -DLATEMP_SERVER=src
 
-SRC_DOCS_DEST := $(patsubst %,$(SRC_DEST)/%,$(SRC_DOCS))
+SRC_DOCS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(SRC_DOCS))
 
-SRC_DIRS_DEST := $(patsubst %,$(SRC_DEST)/%,$(SRC_DIRS))
+SRC_DIRS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(SRC_DIRS))
 
-SRC_IMAGES_DEST := $(patsubst %,$(SRC_DEST)/%,$(SRC_IMAGES))
+SRC_IMAGES_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(SRC_IMAGES))
 
-SRC_TTMLS_DEST := $(patsubst %,$(SRC_DEST)/%,$(SRC_TTMLS))
+SRC_TTMLS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(SRC_TTMLS))
 
-SRC_COMMON_IMAGES_DEST := $(patsubst %,$(SRC_DEST)/%,$(COMMON_IMAGES))
+SRC_COMMON_IMAGES_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(COMMON_IMAGES))
 
-SRC_COMMON_DIRS_DEST := $(patsubst %,$(SRC_DEST)/%,$(COMMON_DIRS))
+SRC_COMMON_DIRS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(COMMON_DIRS))
 
-SRC_COMMON_TTMLS_DEST := $(patsubst %,$(SRC_DEST)/%,$(COMMON_TTMLS))
+SRC_COMMON_TTMLS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(COMMON_TTMLS))
 
-SRC_COMMON_DOCS_DEST := $(patsubst %,$(SRC_DEST)/%,$(COMMON_DOCS))
+SRC_COMMON_DOCS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(COMMON_DOCS))
 
-SRC_TARGETS := $(SRC_DEST) $(SRC_DIRS_DEST) $(SRC_COMMON_DIRS_DEST) $(SRC_COMMON_IMAGES_DEST) $(SRC_COMMON_DOCS_DEST) $(SRC_COMMON_TTMLS_DEST) $(SRC_IMAGES_DEST) $(SRC_DOCS_DEST) $(SRC_TTMLS_DEST)
+SRC_TARGETS := \$(SRC_DEST) \$(SRC_DIRS_DEST) \$(SRC_COMMON_DIRS_DEST) \$(SRC_COMMON_IMAGES_DEST) \$(SRC_COMMON_DOCS_DEST) \$(SRC_COMMON_TTMLS_DEST) \$(SRC_IMAGES_DEST) \$(SRC_DOCS_DEST) \$(SRC_TTMLS_DEST)
 
-$(SRC_DOCS_DEST) : $(SRC_DEST)/% : $(SRC_SRC_DIR)/%.tt2 $(DOCS_COMMON_DEPS)
-	$(call SRC_INCLUDE_TT2_RENDER)
+\$(SRC_DOCS_DEST) : \$(SRC_DEST)/% : \$(SRC_SRC_DIR)/%.tt2 \$(DOCS_COMMON_DEPS)
+\t\$(call SRC_INCLUDE_TT2_RENDER)
 
-$(SRC_TTMLS_DEST) : $(SRC_DEST)/% : $(SRC_SRC_DIR)/%.ttml $(TTMLS_COMMON_DEPS)
-	ttml -o $@ $(SRC_TTML_FLAGS) -DLATEMP_FILENAME=$(patsubst $(SRC_DEST)/%,%,$(patsubst %.ttml,%,$@)) $<
+\$(SRC_TTMLS_DEST) : \$(SRC_DEST)/% : \$(SRC_SRC_DIR)/%.ttml \$(TTMLS_COMMON_DEPS)
+\tttml -o \$\@ \$(SRC_TTML_FLAGS) -DLATEMP_FILENAME=\$(patsubst \$(SRC_DEST)/%,%,\$(patsubst %.ttml,%,\$\@)) \$<
 
-$(SRC_DIRS_DEST) : $(SRC_DEST)/% :
-	mkdir -p $@
-	touch $@
+\$(SRC_DIRS_DEST) : \$(SRC_DEST)/% :
+\tmkdir -p \$\@
+\ttouch \$\@
 
-$(SRC_IMAGES_DEST) : $(SRC_DEST)/% : $(SRC_SRC_DIR)/%
-	$(call LATEMP_COPY)
+\$(SRC_IMAGES_DEST) : \$(SRC_DEST)/% : \$(SRC_SRC_DIR)/%
+\t\$(call LATEMP_COPY)
 
-$(SRC_COMMON_IMAGES_DEST) : $(SRC_DEST)/% : $(COMMON_SRC_DIR)/%
-	$(call LATEMP_COPY)
+\$(SRC_COMMON_IMAGES_DEST) : \$(SRC_DEST)/% : \$(COMMON_SRC_DIR)/%
+\t\$(call LATEMP_COPY)
 
-$(SRC_COMMON_TTMLS_DEST) : $(SRC_DEST)/% : $(COMMON_SRC_DIR)/%.ttml $(TTMLS_COMMON_DEPS)
-	ttml -o $@ $(SRC_TTML_FLAGS) -DLATEMP_FILENAME=$(patsubst $(SRC_DEST)/%,%,$(patsubst %.ttml,%,$@)) $<
+\$(SRC_COMMON_TTMLS_DEST) : \$(SRC_DEST)/% : \$(COMMON_SRC_DIR)/%.ttml \$(TTMLS_COMMON_DEPS)
+\tttml -o \$\@ \$(SRC_TTML_FLAGS) -DLATEMP_FILENAME=\$(patsubst \$(SRC_DEST)/%,%,\$(patsubst %.ttml,%,\$\@)) \$<
 
-$(SRC_COMMON_DOCS_DEST) : $(SRC_DEST)/% : $(COMMON_SRC_DIR)/%.tt2 $(DOCS_COMMON_DEPS)
-	$(call SRC_COMMON_INCLUDE_TT2_RENDER)
+\$(SRC_COMMON_DOCS_DEST) : \$(SRC_DEST)/% : \$(COMMON_SRC_DIR)/%.tt2 \$(DOCS_COMMON_DEPS)
+\t\$(call SRC_COMMON_INCLUDE_TT2_RENDER)
 
-$(SRC_COMMON_DIRS_DEST)  : $(SRC_DEST)/% :
-	mkdir -p $@
-	touch $@
+\$(SRC_COMMON_DIRS_DEST)  : \$(SRC_DEST)/% :
+\tmkdir -p \$\@
+\ttouch \$\@
 
-$(SRC_DEST):
-	mkdir -p $@
-	touch $@
+\$(SRC_DEST):
+\tmkdir -p \$\@
+\ttouch \$\@
 EOFGALOG
 
     # TEST
@@ -436,7 +436,7 @@ EOFGALOG
         docs_build_command_cb => sub {
             my ( $obj, $args ) = @_;
             return sprintf(
-                '$(call %s%s_INCLUDE_TT2_RENDER)',
+                "\$(call %s%s_INCLUDE_TT2_RENDER)",
                 uc( $args->{host}->id ),
                 $args->{is_common} ? "_COMMON" : ""
             );
@@ -475,63 +475,63 @@ SRC_DOCS := alternatives/index.html arch/index.html docs/index.html docs/nice_tr
 SRC_TTMLS :=
 EOF
 
-    my $rules_expected = <<'EOFGALOG';
+    my $rules_expected = <<"EOFGALOG";
 
 SRC_SRC_DIR := t/sample-data/sample-site-1
 
-SRC_DEST := $(HELLO)/src
+SRC_DEST := \$(HELLO)/src
 
-SRC_WML_FLAGS := $(WML_FLAGS) -DLATEMP_SERVER=src
+SRC_WML_FLAGS := \$(WML_FLAGS) -DLATEMP_SERVER=src
 
-SRC_TTML_FLAGS := $(TTML_FLAGS) -DLATEMP_SERVER=src
+SRC_TTML_FLAGS := \$(TTML_FLAGS) -DLATEMP_SERVER=src
 
-SRC_DOCS_DEST := $(patsubst %,$(SRC_DEST)/%,$(SRC_DOCS))
+SRC_DOCS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(SRC_DOCS))
 
-SRC_DIRS_DEST := $(patsubst %,$(SRC_DEST)/%,$(SRC_DIRS))
+SRC_DIRS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(SRC_DIRS))
 
-SRC_IMAGES_DEST := $(patsubst %,$(SRC_POST_DEST)/%,$(SRC_IMAGES))
+SRC_IMAGES_DEST := \$(patsubst %,\$(SRC_POST_DEST)/%,\$(SRC_IMAGES))
 
-SRC_TTMLS_DEST := $(patsubst %,$(SRC_DEST)/%,$(SRC_TTMLS))
+SRC_TTMLS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(SRC_TTMLS))
 
-SRC_COMMON_IMAGES_DEST := $(patsubst %,$(SRC_POST_DEST)/%,$(COMMON_IMAGES))
+SRC_COMMON_IMAGES_DEST := \$(patsubst %,\$(SRC_POST_DEST)/%,\$(COMMON_IMAGES))
 
-SRC_COMMON_DIRS_DEST := $(patsubst %,$(SRC_DEST)/%,$(COMMON_DIRS))
+SRC_COMMON_DIRS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(COMMON_DIRS))
 
-SRC_COMMON_TTMLS_DEST := $(patsubst %,$(SRC_DEST)/%,$(COMMON_TTMLS))
+SRC_COMMON_TTMLS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(COMMON_TTMLS))
 
-SRC_COMMON_DOCS_DEST := $(patsubst %,$(SRC_DEST)/%,$(COMMON_DOCS))
+SRC_COMMON_DOCS_DEST := \$(patsubst %,\$(SRC_DEST)/%,\$(COMMON_DOCS))
 
-SRC_TARGETS := $(SRC_DEST) $(SRC_DIRS_DEST) $(SRC_COMMON_DIRS_DEST) $(SRC_COMMON_IMAGES_DEST) $(SRC_COMMON_DOCS_DEST) $(SRC_COMMON_TTMLS_DEST) $(SRC_IMAGES_DEST) $(SRC_DOCS_DEST) $(SRC_TTMLS_DEST)
+SRC_TARGETS := \$(SRC_DEST) \$(SRC_DIRS_DEST) \$(SRC_COMMON_DIRS_DEST) \$(SRC_COMMON_IMAGES_DEST) \$(SRC_COMMON_DOCS_DEST) \$(SRC_COMMON_TTMLS_DEST) \$(SRC_IMAGES_DEST) \$(SRC_DOCS_DEST) \$(SRC_TTMLS_DEST)
 
-$(SRC_DOCS_DEST) : $(SRC_DEST)/% : $(SRC_SRC_DIR)/%.tt2 $(DOCS_COMMON_DEPS)
-	$(call SRC_INCLUDE_TT2_RENDER)
+\$(SRC_DOCS_DEST) : \$(SRC_DEST)/% : \$(SRC_SRC_DIR)/%.tt2 \$(DOCS_COMMON_DEPS)
+\t\$(call SRC_INCLUDE_TT2_RENDER)
 
-$(SRC_TTMLS_DEST) : $(SRC_DEST)/% : $(SRC_SRC_DIR)/%.ttml $(TTMLS_COMMON_DEPS)
-	ttml -o $@ $(SRC_TTML_FLAGS) -DLATEMP_FILENAME=$(patsubst $(SRC_DEST)/%,%,$(patsubst %.ttml,%,$@)) $<
+\$(SRC_TTMLS_DEST) : \$(SRC_DEST)/% : \$(SRC_SRC_DIR)/%.ttml \$(TTMLS_COMMON_DEPS)
+\tttml -o \$\@ \$(SRC_TTML_FLAGS) -DLATEMP_FILENAME=\$(patsubst \$(SRC_DEST)/%,%,\$(patsubst %.ttml,%,\$\@)) \$<
 
-$(SRC_DIRS_DEST) : $(SRC_DEST)/% :
-	mkdir -p $@
-	touch $@
+\$(SRC_DIRS_DEST) : \$(SRC_DEST)/% :
+\tmkdir -p \$\@
+\ttouch \$\@
 
-$(SRC_IMAGES_DEST) : $(SRC_POST_DEST)/% : $(SRC_SRC_DIR)/%
-	$(call LATEMP_COPY)
+\$(SRC_IMAGES_DEST) : \$(SRC_POST_DEST)/% : \$(SRC_SRC_DIR)/%
+\t\$(call LATEMP_COPY)
 
-$(SRC_COMMON_IMAGES_DEST) : $(SRC_POST_DEST)/% : $(COMMON_SRC_DIR)/%
-	$(call LATEMP_COPY)
+\$(SRC_COMMON_IMAGES_DEST) : \$(SRC_POST_DEST)/% : \$(COMMON_SRC_DIR)/%
+\t\$(call LATEMP_COPY)
 
-$(SRC_COMMON_TTMLS_DEST) : $(SRC_DEST)/% : $(COMMON_SRC_DIR)/%.ttml $(TTMLS_COMMON_DEPS)
-	ttml -o $@ $(SRC_TTML_FLAGS) -DLATEMP_FILENAME=$(patsubst $(SRC_DEST)/%,%,$(patsubst %.ttml,%,$@)) $<
+\$(SRC_COMMON_TTMLS_DEST) : \$(SRC_DEST)/% : \$(COMMON_SRC_DIR)/%.ttml \$(TTMLS_COMMON_DEPS)
+\tttml -o \$\@ \$(SRC_TTML_FLAGS) -DLATEMP_FILENAME=\$(patsubst \$(SRC_DEST)/%,%,\$(patsubst %.ttml,%,\$\@)) \$<
 
-$(SRC_COMMON_DOCS_DEST) : $(SRC_DEST)/% : $(COMMON_SRC_DIR)/%.tt2 $(DOCS_COMMON_DEPS)
-	$(call SRC_COMMON_INCLUDE_TT2_RENDER)
+\$(SRC_COMMON_DOCS_DEST) : \$(SRC_DEST)/% : \$(COMMON_SRC_DIR)/%.tt2 \$(DOCS_COMMON_DEPS)
+\t\$(call SRC_COMMON_INCLUDE_TT2_RENDER)
 
-$(SRC_COMMON_DIRS_DEST)  : $(SRC_DEST)/% :
-	mkdir -p $@
-	touch $@
+\$(SRC_COMMON_DIRS_DEST)  : \$(SRC_DEST)/% :
+\tmkdir -p \$\@
+\ttouch \$\@
 
-$(SRC_DEST):
-	mkdir -p $@
-	touch $@
+\$(SRC_DEST):
+\tmkdir -p \$\@
+\ttouch \$\@
 EOFGALOG
 
     # TEST
