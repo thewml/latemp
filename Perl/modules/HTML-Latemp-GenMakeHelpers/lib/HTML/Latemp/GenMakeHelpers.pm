@@ -76,6 +76,26 @@ HTML::Latemp::GenMakeHelpers - A Latemp Utility Module.
 
     $generator->process_all();
 
+=head1 DEPRECATION NOTE
+
+The use of L<HTML::Latemp::GenMakeHelpers> is now discouraged given it seems
+that for most use cases, it is easier and often even requires less code, to
+use L<File::Find::Object> or similar directly.
+
+L<HTML::Latemp::GenMakeHelpers> will continue to be maintained and bugs
+and build/test failures will hopefully be investigated and fixed, but it
+is hereby B<deprecated>.
+
+For some examples, see:
+
+=over 4
+
+=item * L<https://github.com/shlomif/perl-begin/blob/ad8c054a1301e4fb16772561bacaf4d0d2e36588/gen-helpers#L62>
+
+=item * L<https://github.com/shlomif/shlomi-fish-homepage/blob/ef5619d08b71ae1b804f132a19e8e9a8ec09e354/bin/gen-helpers-main.pl#L153>
+
+=back
+
 =head1 API METHODS
 
 =head2 my $generator = HTML::Latemp::GenMakeHelpers->new(hosts => [@hosts])
