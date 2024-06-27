@@ -229,9 +229,8 @@ sub process_all
 
     print {$rules_fh} "latemp_targets: "
         . join( " ",
-        map  { '$(' . uc( $_->{'id'} ) . "_TARGETS)" }
-        grep { $_->{'id'} ne "common" } @hosts )
-        . "\n\n";
+        map { '$(' . uc( $_->{'id'} ) . "_TARGETS)" }
+        grep { $_->{'id'} ne "common" } @hosts ) . "\n\n";
 
     close($rules_fh);
     close($file_lists_fh);
