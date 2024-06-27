@@ -33,7 +33,7 @@ Fill in the details, and select the port 8080 option.
 
 2. Install Subversion:
 
-Go to http://subversion.tigris.org/ ==&gt; Downloads ==&gt;
+Go to https://subversion.apache.org/ ==&gt; Downloads ==&gt;
 Packaged Distributions ==&gt; Win32 ==&gt; friendly Installer program ==&gt;
 svn-X.Y.Z-setup.exe
 

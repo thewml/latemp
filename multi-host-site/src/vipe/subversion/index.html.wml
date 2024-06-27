@@ -6,7 +6,7 @@
 <h2>Homepage</h2>
 
 <p>
-<a href="http://subversion.tigris.org/">subversion.tigris.org</a>
+<a href="https://subversion.apache.org/">subversion.apache.org</a>
 </p>
 
 <h2>Summary</h2>
@@ -65,7 +65,7 @@ Subversion FUD</a> - an essay by Ben Collins-Sussman, that attempts to
 dispel a lot of common dis-information regarding Subversion.
 </li>
 <li>
-<a href="http://subversion.tigris.org/bitmover-svn.html">Debunking BitMover's
+<a href="https://subversion.apache.org/bitmover-svn.html">Debunking BitMover's
 Subversion Comparison</a> - an essay on the subversion site, which debunks the
 <a href="http://www.bitkeeper.com/Comparisons.Subversion.html">comparison
 between BitKeeper and Subversion</a> that was published on the BitKeeper
