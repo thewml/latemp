@@ -115,4 +115,3 @@ my $news_manager = get_news_manager();
 
 print $news_manager->get_news_page_entries('base_url' => "news/",);
 }:>
-
