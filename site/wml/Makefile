@@ -33,6 +33,21 @@ news_feeds: $(RSS_FEED)
 $(RSS_FEED): gen-feeds.pl lib/MyManageNews.pm
 	perl -Ilib gen-feeds.pl --rss2-out="$@"
 
+LOGO_SVGS = \
+	latemp-button-rounded.svg \
+	latemp-button.svg \
+	latemp-button-white-gill-sans-rounded.svg \
+	latemp-button-white-gill-sans.svg \
+	latemp-button-white.svg \
+	latemp-logo.svg \
+
+DEST_LOGO_SVGS = $(patsubst %,$(MYSITE_DEST)/graphics/%,$(LOGO_SVGS))
+
+dummy: $(DEST_LOGO_SVGS)
+
+$(DEST_LOGO_SVGS): $(MYSITE_DEST)/graphics/%: Images/logo/%
+	cp -f $< $@
+
 .PHONY: dummy news_feeds upload upload_beta upload_iglu all
 
 UPLOAD_TARGET = hostgator:domains/web-cpan/public_html/latemp
