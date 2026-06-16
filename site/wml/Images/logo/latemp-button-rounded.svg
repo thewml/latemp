@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
-   xmlns:xml="http://www.w3.org/XML/1998/namespace"
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://web.resource.org/cc/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="744.09448819"
    height="1052.3622047"
    id="svg2"
    sodipodi:version="0.32"
-   inkscape:version="0.41+cvs"
-   sodipodi:docbase="/home/shlomi/progs/wml/Latemp/latemp/trunk/site/wml/Images/logo"
-   sodipodi:docname="latemp-button-rounded.svg">
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   sodipodi:docname="latemp-button-rounded.svg"
+   version="1.1"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs3">
     <linearGradient
@@ -170,7 +170,7 @@
        y1="147.79912"
        x1="204.72853"
        spreadMethod="pad"
-       gradientTransform="matrix(1.120541,0.000000,0.000000,1.120541,-19.84943,248.4177)"
+       gradientTransform="matrix(1.120541,0,0,1.120541,-3.04828,415.7831)"
        gradientUnits="userSpaceOnUse"
        id="linearGradient2586"
        xlink:href="#linearGradient2339"
@@ -185,26 +185,26 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.5475126"
-     inkscape:cx="216.47643"
-     inkscape:cy="424.25284"
+     inkscape:zoom="3.6046999"
+     inkscape:cx="219.57445"
+     inkscape:cy="585.34692"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
-     inkscape:window-width="772"
-     inkscape:window-height="590"
-     inkscape:window-x="244"
-     inkscape:window-y="0" />
+     inkscape:window-width="1920"
+     inkscape:window-height="1031"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:window-maximized="1" />
   <metadata
      id="metadata4">
-    <rdf:RDF
-       id="RDF5">
+    <rdf:RDF>
       <cc:Work
-         rdf:about=""
-         id="Work6">
-        <dc:format
-           id="format7">image/svg+xml</dc:format>
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
         <dc:type
-           id="type9"
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
       </cc:Work>
     </rdf:RDF>
@@ -233,7 +233,6 @@
        x="159.93561"
        y="322.34158"
        id="text1300"
-       sodipodi:linespacing="130%"
        transform="scale(1.143061,0.874844)"><tspan
          sodipodi:role="line"
          id="tspan1302"
@@ -243,70 +242,53 @@
          id="tspan1306"
          x="159.93561"
          y="352.00312">Content Management</tspan></text>
-    <g
-       inkscape:export-ydpi="27.241041"
-       inkscape:export-xdpi="27.241041"
-       inkscape:export-filename="/home/shlomi/progs/wml/Latemp/latemp/trunk/site/wml/Images/logo/latemp-button-rounded.png"
-       transform="translate(16.80115,167.3654)"
-       id="g2576">
-      <rect
-         ry="0.0000000"
-         y="371.91516"
-         x="38.521946"
-         height="20.594879"
-         width="328.73749"
-         id="rect2430"
-         style="fill:#004beb;fill-opacity:1.0000000;fill-rule:nonzero;stroke:none;stroke-width:2.0000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000" />
-      <rect
-         style="fill:#ffffff;fill-opacity:1.0000000;fill-rule:nonzero;stroke:none;stroke-width:2.0000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000"
-         id="rect2083"
-         width="328.73749"
-         height="92.683731"
-         x="38.521946"
-         y="394.98264"
-         ry="12.923965"
-         rx="12.923965" />
-      <rect
-         rx="12.923965"
-         ry="0.0000000"
-         y="391.94119"
-         x="38.521946"
-         height="22.248119"
-         width="328.73749"
-         id="rect2574"
-         style="fill:#ffffff;fill-opacity:1.0000000;fill-rule:nonzero;stroke:none;stroke-width:2.0000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000" />
-      <rect
-         style="fill:#004beb;fill-opacity:1.0000000;fill-rule:nonzero;stroke:none;stroke-width:2.0000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4.0000000;stroke-opacity:1.0000000"
-         id="rect1323"
-         width="328.73749"
-         height="41.273224"
-         x="38.521946"
-         y="348.40216"
-         ry="11.631569"
-         rx="11.631569" />
-      <text
-         xml:space="preserve"
-         style="font-size:35.857311;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;line-height:100.00000%;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Gill Sans"
-         x="46.640312"
-         y="384.10309"
-         id="text1319"
-         sodipodi:linespacing="100.00000%"><tspan
-           sodipodi:role="line"
-           id="tspan1321"
-           x="46.640312"
-           y="384.10309">Made With</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-size:80.678955;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient2586);fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Crillee"
-         x="51.661015"
-         y="462.80759"
-         id="text1288"><tspan
-           style="fill:url(#linearGradient2586)"
-           sodipodi:role="line"
-           id="tspan1290"
-           x="51.661015"
-           y="462.80759">Latemp</tspan></text>
-    </g>
+    <rect
+       ry="0.0000000"
+       y="539.28058"
+       x="55.323097"
+       height="20.594879"
+       width="328.73749"
+       id="rect2430"
+       style="fill:#004beb;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1" />
+    <rect
+       style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1"
+       id="rect2083"
+       width="328.73749"
+       height="92.683731"
+       x="55.323097"
+       y="562.34802"
+       ry="12.923965"
+       rx="12.923965" />
+    <rect
+       style="fill:#004beb;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1"
+       id="rect1323"
+       width="328.73749"
+       height="41.273224"
+       x="55.323097"
+       y="515.76758"
+       ry="11.631569"
+       rx="11.631569" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:35.8573px;line-height:100%;font-family:'Gill Sans';writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="63.441463"
+       y="551.46851"
+       id="text1319"><tspan
+         sodipodi:role="line"
+         id="tspan1321"
+         x="63.441463"
+         y="551.46851">Made With</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:80.679px;font-family:Crillee;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient2586);fill-opacity:1;stroke:none;stroke-width:1pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="68.462166"
+       y="630.17297"
+       id="text1288"><tspan
+         style="fill:url(#linearGradient2586)"
+         sodipodi:role="line"
+         id="tspan1290"
+         x="68.462166"
+         y="630.17297">Latemp</tspan></text>
   </g>
   <g
      inkscape:groupmode="layer"
